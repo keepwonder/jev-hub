@@ -15,7 +15,9 @@ if (meta.lastUpdated) {
   const now = new Date();
   const diffMs = now.getTime() - d.getTime();
   const diffH = Math.floor(diffMs / (1000 * 60 * 60));
-  lastUpdatedLabel = d.toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+  // 本地时间 — 不用 toISOString()（永远 UTC），用 getXxx() 拿本地时区
+  const pad = (n: number) => String(n).padStart(2, '0');
+  lastUpdatedLabel = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
   if (diffH < 1) lastUpdatedRel = `${Math.max(1, Math.floor(diffMs / 60000))} 分钟前`;
   else if (diffH < 24) lastUpdatedRel = `${diffH} 小时前`;
   else lastUpdatedRel = `${Math.floor(diffH / 24)} 天前`;
@@ -64,9 +66,9 @@ if (meta.lastUpdated) {
         <div>
           <label class="mb-1.5 block text-xs font-medium uppercase text-ink-500">排序</label>
           <select id="filter-sort" class="w-full rounded-md border bg-transparent px-3 py-1.5 text-sm" style="border-color: var(--color-border);">
-            <option value="stars-desc">⭐ 星数 (高→低)</option>
+            <option value="stars-desc">星数 (高→低)</option>
             <option value="stars-asc">星数 (低→高)</option>
-            <option value="created-desc">🆕 最新创建</option>
+            <option value="created-desc">最新创建</option>
             <option value="updated-desc">最近活跃</option>
             <option value="forks-desc">分叉数 (高→低)</option>
             <option value="name-asc">名字 A→Z</option>
@@ -247,7 +249,7 @@ if (meta.lastUpdated) {
     const parts: string[] = [];
     if (state.q) parts.push(`"${state.q}"`);
     if (state.time !== 'all') parts.push(`${state.time} 内`);
-    if (state.minStars > 0) parts.push(`≥${state.minStars}★`);
+    if (state.minStars > 0) parts.push(`≥${state.minStars} 星`);
     if (state.langs.size > 0) parts.push(`语言: ${[...state.langs].join(', ')}`);
     summary.textContent = parts.length ? `已应用: ${parts.join(' · ')}` : '';
   }
