@@ -9,11 +9,17 @@ import founderTweets from '@/data/founder-tweets.json';
 import recentDiscussions from '@/data/recent-discussions.json';
 import awesomeProjects from '@/data/awesome-typesafe.json';
 
-const officialTweets = (tweetsData as any[]).slice(0, 3);
-const discussions = (recentDiscussions as any[]).slice(0, 6);
+const officialTweets = (tweetsData as any[])
+  .slice()
+  .sort((a, b) => +new Date(b.datetime) - +new Date(a.datetime))
+  .slice(0, 3);
+const discussions = (recentDiscussions as any[])
+  .slice()
+  .sort((a, b) => +new Date(b.datetime) - +new Date(a.datetime))
+  .slice(0, 6);
 
 const latestTutorials = (await getCollection('tutorials', ({ data }) => !data.draft))
-  .sort((a, b) => +b.data.pubDate - +a.data.pubDate)
+  .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 4);
 
 // Real content counts (not .slice'd lengths)
@@ -40,7 +46,6 @@ const stats = {
   versions: allVersions.length,
 };
 
-const lastUpdated = new Date().toISOString().slice(0, 10);
 ---
 <BaseLayout title="Jev Hub" description="Jev / TypeSafe AI 中文跟踪与文档聚合站:官方动态、X 讨论、Cookbook 实战、SDK 版本、横向对比。">
   <Search />
@@ -48,53 +53,76 @@ const lastUpdated = new Date().toISOString().slice(0, 10);
   <!-- HERO -->
   <section class="border-b" style="border-color: var(--color-border);">
     <div class="container-wide py-16 sm:py-24">
-      <div class="grid items-center gap-8 lg:grid-cols-2">
+      <div class="grid items-end gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <div>
-          <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-signal-200 bg-signal-50 px-3 py-1 text-xs font-medium text-signal-700 dark:border-signal-800 dark:bg-signal-900/30 dark:text-signal-300">
-            <span class="relative flex h-2 w-2">
-              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal-400 opacity-75"></span>
-              <span class="relative inline-flex h-2 w-2 rounded-full bg-signal-500"></span>
-            </span>
-            跟踪 TypeSafe AI 发布的 System One Model
+          <div class="mb-6 inline-flex items-stretch overflow-hidden rounded-pill border border-signal-200 bg-white shadow-sm dark:border-signal-700 dark:bg-ink-800">
+            <!-- 左：身份 + 状态 -->
+            <div class="flex items-center gap-2 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal-700 dark:text-signal-300">
+              <span class="inline-block h-1.5 w-1.5 rounded-full bg-signal-500"></span>
+              <span>Jev · 雷达就绪</span>
+            </div>
+            <!-- 分隔 1 -->
+            <div class="w-px self-stretch bg-signal-200 dark:bg-signal-700" aria-hidden="true"></div>
+            <!-- 中：推文数 -->
+            <div class="flex items-baseline gap-1.5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal-700 dark:text-signal-300">
+              <span class="font-semibold tabular-nums">{stats.tweets}</span>
+              <span>推文</span>
+            </div>
+            <!-- 分隔 2 -->
+            <div class="w-px self-stretch bg-signal-200 dark:bg-signal-700" aria-hidden="true"></div>
+            <!-- 右：项目数 -->
+            <div class="flex items-baseline gap-1.5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal-700 dark:text-signal-300">
+              <span class="font-semibold tabular-nums">{stats.projects}</span>
+              <span>项目</span>
+            </div>
+            <!-- 分隔 3 -->
+            <div class="w-px self-stretch bg-signal-200 dark:bg-signal-700" aria-hidden="true"></div>
+            <!-- 补充：总文档数 -->
+            <div class="flex items-baseline gap-1.5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal-700 dark:text-signal-300">
+              <span class="font-semibold tabular-nums">{stats.docs + stats.cookbooks + stats.tutorials + stats.faqs + stats.glossary}</span>
+              <span>文档</span>
+            </div>
           </div>
-          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
-            <span class="bg-gradient-to-r from-signal-600 to-calibrated-500 bg-clip-text text-transparent">Jev</span> Hub
+          <h1 class="text-display font-semibold tracking-tight text-ink-900 dark:text-ink-50">
+            把 Jev 讲清楚<span class="text-signal-600">。</span>
           </h1>
-          <p class="mt-4 max-w-xl text-lg text-ink-600 dark:text-ink-300">
+          <p class="mt-6 max-w-xl text-[17px] leading-[1.7] text-ink-700 dark:text-ink-300">
             一个不写文章、只做判断、跑得快到 70ms、便宜到输出免费的 AI。
-            中文圈的跟踪站,聚合官方动态、X 讨论、实战 Cookbook、SDK 版本、横向对比。
+            中文 Jev 索引站，聚合官方动态、X 讨论、实战 Cookbook、SDK 版本、横向对比。
           </p>
-          <div class="mt-6 flex flex-wrap gap-3">
+          <div class="mt-8 flex flex-wrap gap-3">
             <a href="/tutorials" class="btn-primary">从入门到能用 →</a>
             <a href="/cookbooks" class="btn-ghost">看 Cookbook</a>
             <a href="/discussions" class="btn-ghost">最新讨论</a>
           </div>
-          <dl class="mt-10 grid grid-cols-3 gap-4 text-sm">
-            <div>
-              <dt class="text-ink-500">社区讨论</dt>
-              <dd class="mt-1 text-2xl font-semibold">{stats.tweets}</dd>
+          <dl class="mt-12 flex items-center divide-x divide-ink-200 font-mono dark:divide-ink-700">
+            <div class="pr-6">
+              <dt class="text-[10px] uppercase tracking-[0.18em] text-ink-500">社区讨论</dt>
+              <dd class="mt-1.5 text-2xl font-semibold tabular-nums text-ink-900 dark:text-ink-50">{stats.tweets}</dd>
             </div>
-            <div>
-              <dt class="text-ink-500">Cookbook</dt>
-              <dd class="mt-1 text-2xl font-semibold">{stats.cookbooks}</dd>
+            <div class="px-6">
+              <dt class="text-[10px] uppercase tracking-[0.18em] text-ink-500">Cookbook</dt>
+              <dd class="mt-1.5 text-2xl font-semibold tabular-nums text-ink-900 dark:text-ink-50">{stats.cookbooks}</dd>
             </div>
-            <div>
-              <dt class="text-ink-500">教程</dt>
-              <dd class="mt-1 text-2xl font-semibold">{stats.tutorials}</dd>
+            <div class="px-6">
+              <dt class="text-[10px] uppercase tracking-[0.18em] text-ink-500">教程</dt>
+              <dd class="mt-1.5 text-2xl font-semibold tabular-nums text-ink-900 dark:text-ink-50">{stats.tutorials}</dd>
             </div>
-          </dl>
-          <dl class="mt-3 grid grid-cols-3 gap-4 text-xs text-ink-500">
-            <div><span>{stats.docs} 文档</span></div>
-            <div><span>{stats.faqs} FAQ</span></div>
-            <div><span>{stats.glossary} 术语</span></div>
+            <div class="pl-6">
+              <dt class="text-[10px] uppercase tracking-[0.18em] text-ink-500">文档 / FAQ / 术语</dt>
+              <dd class="mt-1.5 text-2xl font-semibold tabular-nums text-ink-900 dark:text-ink-50">{stats.docs + stats.faqs + stats.glossary}</dd>
+            </div>
           </dl>
         </div>
-        <div class="card relative overflow-hidden">
-          <div class="mb-2 flex items-center justify-between">
-            <span class="text-xs text-ink-500">Python SDK 示例</span>
-            <span class="badge-ink">demo · Jev Playground</span>
+        <div class="card relative overflow-hidden p-0">
+          <div class="flex items-center justify-between border-b px-4 py-2.5" style="border-color: var(--color-border);">
+            <div class="flex items-center gap-2">
+              <span class="inline-block h-2 w-2 rounded-full bg-signal-500"></span>
+              <span class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-500">demo · sdk.py</span>
+            </div>
+            <span class="badge-ink font-mono">JEV-01</span>
           </div>
-          <pre class="font-mono text-xs leading-relaxed text-ink-700 dark:text-ink-200"><code>{`from typesafe_sdk import Choice, Noul, TypeSafeClient
+          <pre class="overflow-x-auto bg-ink-900 px-5 py-4 font-mono text-[12.5px] leading-[1.7] text-ink-100"><code>{`from typesafe_sdk import Choice, Noul, TypeSafeClient
 
 client = TypeSafeClient()
 
@@ -112,27 +140,33 @@ resp = client.system_one(
 if resp.refund.noul > 0.8 and resp.team.confidence > 0.85:
     route_to(resp.team.choice)
 `}</code></pre>
-          <div class="mt-3 grid grid-cols-2 gap-3 text-xs">
-            <div class="rounded-lg border border-calibrated-500/30 bg-calibrated-500/5 p-3">
-              <div class="font-mono">refund.noul</div>
-              <div class="mt-1 text-xl font-semibold text-calibrated-600 dark:text-calibrated-400">0.97</div>
+          <div class="grid grid-cols-2 gap-px bg-ink-200 dark:bg-ink-700" style="background-color: var(--color-border);">
+            <div class="bg-[var(--color-card)] p-3">
+              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-500">refund.noul</div>
+              <div class="mt-1 font-mono text-2xl font-semibold text-calibrated-600 dark:text-calibrated-400 tabular-nums">0.97</div>
             </div>
-            <div class="rounded-lg border border-signal-500/30 bg-signal-500/5 p-3">
-              <div class="font-mono">team.choice</div>
-              <div class="mt-1 text-xl font-semibold text-signal-600 dark:text-signal-400">billing (0.95)</div>
+            <div class="bg-[var(--color-card)] p-3">
+              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-500">team.choice</div>
+              <div class="mt-1 font-mono text-base font-semibold text-signal-700 dark:text-signal-400">billing · 0.95</div>
             </div>
           </div>
-          <p class="mt-3 text-xs text-ink-500">一次调用 · 2 个并行判断 · ~120ms · ≈ $0.00005</p>
+          <div class="flex items-center justify-between border-t px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-500" style="border-color: var(--color-border);">
+            <span>1 call · 2 parallel</span>
+            <span>≈ 120 ms · $0.00005</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 官方动态 -->
-  <section class="container-wide py-12 sm:py-16">
-    <div class="mb-6 flex items-end justify-between">
-      <h2 class="text-2xl font-bold">官方动态</h2>
-      <a href="/discussions" class="text-sm link">查看全部 →</a>
+  <section class="container-wide py-16 sm:py-20">
+    <div class="mb-8 flex items-end justify-between gap-4">
+      <div>
+        <div class="tag-label">01 / 官方动态</div>
+        <h2 class="mt-2 text-title font-semibold tracking-tight">来自 @typesafeai 的第一手信号</h2>
+      </div>
+      <a href="/discussions" class="link text-sm whitespace-nowrap">查看全部 →</a>
     </div>
     <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {officialTweets.map((t: any) => <TweetCard tweet={{ ...t, source: t.source ?? 'official' }} />)}
@@ -140,10 +174,13 @@ if resp.refund.noul > 0.8 and resp.team.confidence > 0.85:
   </section>
 
   <!-- 最新讨论 -->
-  <section class="container-wide pb-12 sm:pb-16">
-    <div class="mb-6 flex items-end justify-between">
-      <h2 class="text-2xl font-bold">社区热议</h2>
-      <a href="/discussions" class="text-sm link">查看全部 →</a>
+  <section class="container-wide pb-16 sm:pb-20">
+    <div class="mb-8 flex items-end justify-between gap-4">
+      <div>
+        <div class="tag-label">02 / 社区热议</div>
+        <h2 class="mt-2 text-title font-semibold tracking-tight">第三方在聊什么</h2>
+      </div>
+      <a href="/discussions" class="link text-sm whitespace-nowrap">查看全部 →</a>
     </div>
     <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {discussions.map((t: any) => <TweetCard tweet={{ ...t, source: t.source ?? 'community' }} />)}
@@ -151,44 +188,51 @@ if resp.refund.noul > 0.8 and resp.team.confidence > 0.85:
   </section>
 
   <!-- 教程入口 -->
-  <section class="border-y py-12 sm:py-16" style="border-color: var(--color-border); background-color: color-mix(in oklab, var(--color-bg) 50%, transparent);">
+  <section class="border-y py-16 sm:py-20" style="border-color: var(--color-border); background-color: color-mix(in oklab, var(--color-bg) 50%, transparent);">
     <div class="container-wide">
-      <div class="mb-6 flex items-end justify-between">
-        <h2 class="text-2xl font-bold">入门教程</h2>
-        <a href="/tutorials" class="text-sm link">所有教程 →</a>
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <div class="tag-label">03 / 入门路径</div>
+          <h2 class="mt-2 text-title font-semibold tracking-tight">从零到能用的最短路径</h2>
+        </div>
+        <a href="/tutorials" class="link text-sm whitespace-nowrap">所有教程 →</a>
       </div>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <ol class="divide-y" style="border-color: var(--color-border);">
         {latestTutorials.map((t) => (
-          <a href={`/tutorials/${t.slug}`} class="card flex h-full flex-col">
-            <div class="mb-2 text-xs text-ink-500">{t.data.pubDate.toISOString().slice(0, 10)}</div>
-            <h3 class="text-base font-semibold">{t.data.title}</h3>
-            <p class="mt-2 line-clamp-3 flex-1 text-sm text-ink-600 dark:text-ink-400">{t.data.description}</p>
-            <div class="mt-3 flex flex-wrap gap-1">
-              {t.data.tags.slice(0, 3).map((tag) => <span class="badge-ink">{tag}</span>)}
+          <li class="group flex flex-col gap-2 py-5 first:pt-0 sm:flex-row sm:items-start sm:gap-6">
+            <div class="flex-shrink-0 font-mono text-2xl font-semibold tabular-nums text-signal-700 dark:text-signal-400 sm:w-14">
+              {String(t.data.order).padStart(2, '0')}
             </div>
-          </a>
+            <a href={`/tutorials/${t.slug}`} class="block min-w-0 flex-1">
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 class="text-base font-semibold leading-snug group-hover:underline">{t.data.title}</h3>
+                <time class="font-mono text-xs text-ink-400 tabular-nums">{t.data.pubDate.toISOString().slice(0, 10)}</time>
+              </div>
+              <p class="mt-1.5 text-sm leading-relaxed text-ink-600 dark:text-ink-400">{t.data.description}</p>
+              <div class="mt-2 flex flex-wrap gap-1">
+                {t.data.tags.slice(0, 3).map((tag) => <span class="badge-ink">{tag}</span>)}
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA — 起步引导（不再是订阅提醒） -->
   <section class="container-wide py-16">
     <div class="card flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
       <div>
-        <h3 class="text-xl font-semibold">想第一时间收到更新?</h3>
-        <p class="mt-1 text-sm text-ink-600 dark:text-ink-400">
-          订阅 RSS,或者关注 <a class="link" href="https://x.com/typesafeai" target="_blank" rel="noopener">@typesafeai</a>。
+        <div class="tag-label">下一步</div>
+        <h3 class="mt-2 text-xl font-semibold">Jev 中文索引，跟得紧。</h3>
+        <p class="mt-1.5 text-sm leading-relaxed text-ink-600 dark:text-ink-400">
+          先读一份教程，或直接看大家在聊什么。
         </p>
       </div>
       <div class="flex gap-2">
-        <a href="/rss.xml" class="btn-primary">订阅 RSS</a>
-        <a href="https://typesafe.ai" target="_blank" rel="noopener" class="btn-ghost">访问 typesafe.ai ↗</a>
+        <a href="/tutorials" class="btn-primary">开始阅读 →</a>
+        <a href="/discussions" class="btn-ghost">最新讨论 →</a>
       </div>
     </div>
   </section>
-
-  <p class="container-wide pb-10 text-center text-xs text-ink-400">
-    最后抓取: {lastUpdated} · 数据每 6–12 小时更新 · 本站非官方
-  </p>
 </BaseLayout>
