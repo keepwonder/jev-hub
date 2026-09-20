@@ -36,6 +36,8 @@
     background-color: var(--color-bg);
     color: var(--color-fg);
     font-family: theme('fontFamily.sans');
+    /* 安全网：防止任何子元素意外溢出导致页面水平滚动 */
+    overflow-x: hidden;
   }
 
   /* 数字 tabular，避免抖动 */
