@@ -1,47 +1,75 @@
 ---
 const year = new Date().getFullYear();
+const monoLinks = [
+  { label: 'RSS', href: '/rss.xml', external: false },
+  { label: '@typesafeai', href: 'https://x.com/typesafeai', external: true },
+  { label: '@CompleteSkeptic', href: 'https://x.com/CompleteSkeptic', external: true },
+  { label: 'GitHub', href: 'https://github.com/keepwonder/jev-hub', external: true },
+];
 ---
-<footer class="mt-24 border-t py-10" style="border-color: var(--color-border);">
-  <div class="container-wide grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-    <div>
+<footer class="mt-24 border-t" style="border-color: var(--color-border);">
+  <div class="container-wide grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+    <!-- Brand -->
+    <div class="lg:pr-8">
       <div class="flex items-center gap-2 font-semibold">
         <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-signal-600 font-mono text-sm font-bold text-white">J</span>
         <span>Jev Hub</span>
       </div>
-      <p class="mt-3 text-sm text-ink-500 dark:text-ink-400">
-        非官方聚合站,与 TypeSafe AI 无隶属关系。
+      <p class="mt-3 max-w-xs text-sm leading-relaxed text-ink-600 dark:text-ink-400">
+        中文 Jev 索引站。聚合官方动态、X 讨论、实战 Cookbook、SDK 版本、横向对比。
+      </p>
+      <p class="mt-3 text-xs text-ink-500">
+        非官方聚合站，与 TypeSafe AI 无隶属关系。
       </p>
     </div>
+
+    <!-- 站内 -->
     <div>
-      <h3 class="mb-3 text-sm font-semibold">导航</h3>
+      <h3 class="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-500">站内 / Site</h3>
       <ul class="space-y-2 text-sm">
-        <li><a class="hover:underline" href="/tutorials">教程</a></li>
-        <li><a class="hover:underline" href="/cookbooks">Cookbook</a></li>
-        <li><a class="hover:underline" href="/docs">官方文档</a></li>
-        <li><a class="hover:underline" href="/discussions">讨论墙</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/tutorials">入门教程</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/cookbooks">Cookbook</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/docs">官方文档</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/discussions">讨论墙</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/glossary">术语表</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/faqs">FAQ</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/community">社区项目</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/changelog">更新日志</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="/about">关于本站</a></li>
       </ul>
     </div>
+
+    <!-- 官方 -->
     <div>
-      <h3 class="mb-3 text-sm font-semibold">官方</h3>
+      <h3 class="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-500">官方 / TypeSafe</h3>
       <ul class="space-y-2 text-sm">
-        <li><a class="hover:underline" href="https://typesafe.ai" target="_blank" rel="noopener">typesafe.ai ↗</a></li>
-        <li><a class="hover:underline" href="https://docs.typesafe.ai" target="_blank" rel="noopener">docs.typesafe.ai ↗</a></li>
-        <li><a class="hover:underline" href="https://console.typesafe.ai" target="_blank" rel="noopener">Playground ↗</a></li>
-        <li><a class="hover:underline" href="https://evals.typesafe.ai" target="_blank" rel="noopener">Workflow Evals ↗</a></li>
-        <li><a class="hover:underline" href="https://discord.gg/typesafe" target="_blank" rel="noopener">Discord ↗</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="mb-3 text-sm font-semibold">订阅</h3>
-      <ul class="space-y-2 text-sm">
-        <li><a class="hover:underline" href="/rss.xml">RSS</a></li>
-        <li><a class="hover:underline" href="https://x.com/typesafeai" target="_blank" rel="noopener">@typesafeai ↗</a></li>
-        <li><a class="hover:underline" href="https://x.com/CompleteSkeptic" target="_blank" rel="noopener">@CompleteSkeptic ↗</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="https://typesafe.ai" target="_blank" rel="noopener">typesafe.ai ↗</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="https://docs.typesafe.ai" target="_blank" rel="noopener">docs.typesafe.ai ↗</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="https://console.typesafe.ai" target="_blank" rel="noopener">Playground ↗</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="https://evals.typesafe.ai" target="_blank" rel="noopener">Workflow Evals ↗</a></li>
+        <li><a class="hover:text-signal-700 dark:hover:text-signal-300 transition" href="https://discord.gg/typesafe" target="_blank" rel="noopener">Discord ↗</a></li>
       </ul>
     </div>
   </div>
-  <div class="container-wide mt-10 flex flex-col gap-2 border-t pt-6 text-xs text-ink-500 sm:flex-row sm:justify-between" style="border-color: var(--color-border);">
-    <div>© {year} Jev Hub · 内容遵循各源许可</div>
-    <div>本站不存储任何用户数据 · 仅在浏览器本地保存主题与收藏</div>
+
+  <!-- 底部 mono 行 -->
+  <div class="border-t" style="border-color: var(--color-border);">
+    <div class="container-wide flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between">
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-500">
+        © {year} Jev Hub · content under each source license
+      </div>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] uppercase tracking-[0.18em]">
+        {monoLinks.map((l) => (
+          <a
+            href={l.href}
+            target={l.external ? '_blank' : undefined}
+            rel={l.external ? 'noopener' : undefined}
+            class="text-ink-500 hover:text-signal-700 dark:hover:text-signal-300 transition"
+          >
+            {l.label}{l.external ? ' ↗' : ''}
+          </a>
+        ))}
+      </div>
+    </div>
   </div>
 </footer>

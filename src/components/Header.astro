@@ -28,12 +28,16 @@ const navGroups = [
     ],
   },
   {
+    label: '社区',
+    href: '/community',
+    single: true,
+  },
+  {
     label: '工具',
     items: [
       { href: '/tools/cheatsheet', label: 'Cheatsheet', desc: 'Choice/Score/Noul 速查' },
       { href: '/tools/confidence-calculator', label: '阈值计算器', desc: '自动算 confidence 阈值' },
       { href: '/changelog', label: '更新日志', desc: 'Jev 版本 + SDK 发版' },
-      { href: '/community', label: '社区项目', desc: 'awesome-typesafe' },
     ],
   },
 ];
@@ -51,16 +55,16 @@ function isActive(href: string): boolean {
       <span class="hidden sm:inline">Jev Hub</span>
     </a>
 
-    <nav class="hidden flex-1 items-center gap-0.5 lg:flex" aria-label="主导航">
+    <nav class="hidden flex-1 items-center lg:flex" aria-label="主导航">
       {navGroups.map((group) => (
         group.single ? (
           <a
             href={group.href}
             class:list={[
-              'rounded-md px-3 py-1.5 text-sm transition whitespace-nowrap',
+              'border-b-2 px-3 py-2 text-sm transition whitespace-nowrap',
               isActive(group.href!)
-                ? 'bg-signal-100 font-medium text-signal-800 dark:bg-signal-900/40 dark:text-signal-200'
-                : 'text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800',
+                ? 'border-signal-600 font-medium text-signal-700 dark:text-signal-300'
+                : 'border-transparent text-ink-700 hover:border-ink-300 hover:text-ink-900 dark:text-ink-200 dark:hover:border-ink-600 dark:hover:text-ink-50',
             ]}
           >
             {group.label}
@@ -69,21 +73,22 @@ function isActive(href: string): boolean {
           <div class="nav-dropdown relative">
             <button
               class:list={[
-                'flex items-center gap-1 rounded-md px-3 py-1.5 text-sm transition whitespace-nowrap',
-                'text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800',
-                group.items!.some((it) => isActive(it.href)) ? 'bg-ink-100 dark:bg-ink-800' : '',
+                'flex items-center gap-1 border-b-2 px-3 py-2 text-sm transition whitespace-nowrap',
+                group.items!.some((it) => isActive(it.href))
+                  ? 'border-signal-600 font-medium text-signal-700 dark:text-signal-300'
+                  : 'border-transparent text-ink-700 hover:border-ink-300 hover:text-ink-900 dark:text-ink-200 dark:hover:border-ink-600 dark:hover:text-ink-50',
               ]}
               aria-expanded="false"
             >
               {group.label}
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-60"><path d="m6 9 6 6 6-6"/></svg>
             </button>
-            <div class="nav-dropdown-panel absolute left-0 top-full z-50 mt-1 hidden w-72 rounded-lg border p-2 shadow-xl" style="background-color: var(--color-card); border-color: var(--color-border);">
+            <div class="nav-dropdown-panel absolute left-0 top-full z-50 mt-1 hidden w-72 rounded-xl border p-2 shadow-lg" style="background-color: var(--color-card); border-color: var(--color-border);">
               {group.items!.map((item) => (
                 <a
                   href={item.href}
                   class:list={[
-                    'block rounded-md px-3 py-2 transition',
+                    'block rounded-lg px-3 py-2 transition',
                     isActive(item.href)
                       ? 'bg-signal-50 dark:bg-signal-900/30'
                       : 'hover:bg-ink-100 dark:hover:bg-ink-800',
@@ -106,9 +111,11 @@ function isActive(href: string): boolean {
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <kbd class="ml-1 rounded border border-ink-300 px-1.5 text-xs dark:border-ink-600">⌘K</kbd>
       </button>
-      <a href="/about" class="btn-ghost hidden md:inline-flex" aria-label="关于" title="关于本站">关于</a>
       <a href="/rss.xml" class="btn-ghost" aria-label="RSS" title="RSS 订阅">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+      </a>
+      <a href="https://github.com/keepwonder/jev-hub" target="_blank" rel="noopener" class="btn-ghost" aria-label="GitHub" title="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
       </a>
       <button id="theme-toggle" class="btn-ghost" aria-label="切换主题">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark:hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
@@ -122,30 +129,27 @@ function isActive(href: string): boolean {
 
   <!-- Mobile nav -->
   <div id="mobile-nav" class="container-wide hidden border-t pb-4 pt-2 lg:hidden" style="border-color: var(--color-border);">
-    <div class="grid grid-cols-2 gap-1">
-      <a href="/" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">首页</a>
-      <a href="/discussions" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">讨论墙</a>
-      <a href="/tutorials" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">入门教程</a>
-      <a href="/cookbooks" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">Cookbook</a>
-      <a href="/docs" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">官方文档</a>
-      <a href="/articles" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">文章归档</a>
-      <a href="/community" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">社区项目</a>
-      <a href="/tools/cheatsheet" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">速查表</a>
-      <a href="/tools/confidence-calculator" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">阈值计算器</a>
-      <a href="/compare" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">横向对比</a>
-      <a href="/glossary" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">术语表</a>
-      <a href="/faqs" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">FAQ</a>
-      <a href="/changelog" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">更新日志</a>
-      <a href="/about" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">关于</a>
+    <div class="grid grid-cols-2 gap-x-4 gap-y-1">
+      <a href="/" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">首页</a>
+      <a href="/discussions" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">讨论墙</a>
+      <a href="/tutorials" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">入门教程</a>
+      <a href="/cookbooks" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">Cookbook</a>
+      <a href="/docs" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">官方文档</a>
+      <a href="/articles" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">文章归档</a>
+      <a href="/community" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">社区项目</a>
+      <a href="/tools/cheatsheet" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">速查表</a>
+      <a href="/tools/confidence-calculator" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">阈值计算器</a>
+      <a href="/compare" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">横向对比</a>
+      <a href="/glossary" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">术语表</a>
+      <a href="/faqs" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">FAQ</a>
+      <a href="/changelog" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">更新日志</a>
+      <a href="/about" class="border-b-2 border-transparent px-1 py-1.5 text-sm text-ink-700 hover:border-signal-400 hover:text-ink-900 dark:text-ink-200 dark:hover:text-ink-50">关于</a>
     </div>
   </div>
 </header>
 
 <style>
-  .nav-dropdown:hover > .nav-dropdown-panel,
-  .nav-dropdown:focus-within > .nav-dropdown-panel {
-    display: block;
-  }
+  /* dropdowns 由下面 JS 管理开/关，以保证互斥与延迟关闭 */
 </style>
 
 <script is:inline>
@@ -168,14 +172,54 @@ function isActive(href: string): boolean {
   document.getElementById('cmd-k-trigger')?.addEventListener('click', () => {
     window.dispatchEvent(new CustomEvent('open-search'));
   });
-  // Click-outside to close dropdowns
+
+  // === Nav dropdowns — 互斥 + 延迟关闭 ===
+  // 只允许一个 dropdown 同时开。鼠标离开后延迟 140ms 再关，
+  // 留给光标在两个 dropdown 之间过渡的窗口期。
+  let ddCloseTimer = null;
+  const DD_CLOSE_DELAY = 140;
+
+  function ddSet(panel, visible) {
+    if (!(panel instanceof HTMLElement)) return;
+    panel.style.display = visible ? 'block' : 'none';
+  }
+
+  function ddOpen(dropdown) {
+    if (ddCloseTimer) { clearTimeout(ddCloseTimer); ddCloseTimer = null; }
+    document.querySelectorAll('.nav-dropdown-panel').forEach(p => ddSet(p, false));
+    const panel = dropdown.querySelector('.nav-dropdown-panel');
+    ddSet(panel, true);
+  }
+
+  function ddScheduleClose(dropdown) {
+    if (ddCloseTimer) clearTimeout(ddCloseTimer);
+    ddCloseTimer = window.setTimeout(() => {
+      const panel = dropdown.querySelector('.nav-dropdown-panel');
+      ddSet(panel, false);
+      ddCloseTimer = null;
+    }, DD_CLOSE_DELAY);
+  }
+
+  document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
+    const panel = dropdown.querySelector('.nav-dropdown-panel');
+    if (!panel) return;
+
+    dropdown.addEventListener('mouseenter', () => ddOpen(dropdown));
+    dropdown.addEventListener('mouseleave', () => ddScheduleClose(dropdown));
+
+    // 键盘可达性
+    dropdown.addEventListener('focusin', () => ddOpen(dropdown));
+    dropdown.addEventListener('focusout', (e) => {
+      if (!dropdown.contains(e.relatedTarget)) ddScheduleClose(dropdown);
+    });
+  });
+
+  // 点外部关闭（保留：用于鼠标用户点 nav 之外区域）
   document.addEventListener('click', (e) => {
-    const target = e.target;
-    if (!(target instanceof Element)) return;
-    if (!target.closest('.nav-dropdown')) {
-      document.querySelectorAll('.nav-dropdown-panel').forEach((p) => {
-        if (p instanceof HTMLElement) p.style.display = '';
-      });
+    if (!(e.target instanceof Element)) return;
+    if (!e.target.closest('.nav-dropdown')) {
+      if (ddCloseTimer) { clearTimeout(ddCloseTimer); ddCloseTimer = null; }
+      document.querySelectorAll('.nav-dropdown-panel').forEach(p => ddSet(p, false));
     }
   });
 </script>
