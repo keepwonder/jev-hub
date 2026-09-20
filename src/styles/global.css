@@ -13,7 +13,7 @@
     --color-muted: theme('colors.ink.500');
     --color-border: theme('colors.ink.200');
     --color-accent: theme('colors.signal.600');
-    --color-card: white;
+    --color-card: #ffffff;
   }
 
   .dark {
@@ -29,12 +29,18 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';  /* Geist stylistic alternates */
   }
 
   body {
     background-color: var(--color-bg);
     color: var(--color-fg);
     font-family: theme('fontFamily.sans');
+  }
+
+  /* 数字 tabular，避免抖动 */
+  .num, .font-mono {
+    font-variant-numeric: tabular-nums;
   }
 
   ::selection {
@@ -58,44 +64,96 @@
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
   }
 
+  /* 用 card 不用 .card (Tailwind 已注册 card 颜色)，改名 card-tile */
+  .card-tile {
+    background-color: var(--color-card);
+    @apply rounded-card border p-5 transition;
+    border-color: var(--color-border);
+    box-shadow:
+      0 1px 0 rgba(0,0,0,0.02),
+      0 4px 12px -6px rgba(20,15,5,0.04);
+  }
+  .card-tile:hover {
+    border-color: theme('colors.signal.400');
+    transform: translateY(-1px);
+    box-shadow:
+      0 1px 0 rgba(0,0,0,0.02),
+      0 8px 20px -8px rgba(20,15,5,0.08);
+  }
+  .card-tile:active {
+    transform: translateY(0);
+  }
+
+  /* 兼容旧代码的 .card 别名 */
   .card {
     background-color: var(--color-card);
-    @apply rounded-xl border p-5 transition;
+    @apply rounded-card border p-5 transition;
     border-color: var(--color-border);
+    box-shadow:
+      0 1px 0 rgba(0,0,0,0.02),
+      0 4px 12px -6px rgba(20,15,5,0.04);
   }
   .card:hover {
     border-color: theme('colors.signal.400');
+    transform: translateY(-1px);
   }
 
+  /* 徽章：胶囊形 + 内边距区分 */
   .badge {
-    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+    @apply inline-flex items-center gap-1 rounded-pill px-2.5 py-0.5 text-xs font-medium;
+    border: 1px solid transparent;
   }
-  .badge-primary { @apply badge bg-signal-100 text-signal-800 dark:bg-signal-900/40 dark:text-signal-200; }
-  .badge-green   { @apply badge bg-calibrated-500/10 text-calibrated-600 dark:text-calibrated-400; }
-  .badge-amber   { @apply badge bg-caution-500/10 text-caution-600 dark:text-caution-400; }
-  .badge-ink     { @apply badge bg-ink-100 text-ink-700 dark:bg-ink-800 dark:text-ink-200; }
+  .badge-primary { @apply badge bg-signal-100 text-signal-800 border-signal-200 dark:bg-signal-900/40 dark:text-signal-200 dark:border-signal-800; }
+  .badge-green   { @apply badge bg-calibrated-500/10 text-calibrated-600 border-calibrated-500/20 dark:text-calibrated-400; }
+  .badge-amber   { @apply badge bg-caution-500/10 text-caution-600 border-caution-500/20 dark:text-caution-400; }
+  .badge-ink     { @apply badge bg-ink-100 text-ink-700 border-ink-200 dark:bg-ink-800 dark:text-ink-200 dark:border-ink-700; }
 
+  /* 按钮：更小圆角 + 触觉反馈 */
   .btn {
-    @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition;
+    @apply inline-flex items-center gap-2 rounded-btn px-4 py-2 text-sm font-medium transition;
+    transition-duration: 160ms;
+    transition-timing-function: cubic-bezier(0.32, 0.72, 0.34, 1);
   }
   .btn-primary {
-    @apply btn bg-signal-600 text-white hover:bg-signal-700;
+    @apply btn bg-signal-600 text-white;
+  }
+  .btn-primary:hover {
+    @apply bg-signal-700;
+    box-shadow: 0 2px 6px -2px rgba(124, 45, 18, 0.35);
+  }
+  .btn-primary:active {
+    @apply bg-signal-700;
+    transform: translateY(0.5px);
+    box-shadow: 0 1px 2px rgba(124, 45, 18, 0.2);
   }
   .btn-ghost {
     @apply btn text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800;
   }
+  .btn-ghost:active {
+    transform: translateY(0.5px);
+  }
 
   .link {
     color: var(--color-accent);
-    @apply underline decoration-2 underline-offset-4 hover:decoration-signal-400;
+    @apply underline decoration-1 underline-offset-4 hover:decoration-signal-400 transition;
+  }
+
+  /* divider 1px 线 */
+  .hairline {
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* 标签：等宽小写 */
+  .tag-label {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-ink-500;
   }
 
   .prose-doc {
     @apply prose max-w-none dark:prose-invert;
   }
-  .prose-doc h1 { @apply mb-4 text-3xl font-bold; }
-  .prose-doc h2 { @apply mb-3 mt-10 border-b pb-2 text-2xl font-semibold; border-color: var(--color-border); }
-  .prose-doc h3 { @apply mb-2 mt-8 text-xl font-semibold; }
+  .prose-doc h1 { @apply mb-4 text-3xl font-bold tracking-tight; }
+  .prose-doc h2 { @apply mb-3 mt-10 border-b pb-2 text-2xl font-semibold tracking-tight; border-color: var(--color-border); }
+  .prose-doc h3 { @apply mb-2 mt-8 text-xl font-semibold tracking-tight; }
   .prose-doc p, .prose-doc li { @apply leading-7; }
   .prose-doc code:not(pre code) {
     @apply rounded bg-ink-100 px-1.5 py-0.5 font-mono text-sm;
@@ -105,9 +163,10 @@
     @apply bg-ink-800 text-signal-300;
   }
   .prose-doc pre {
-    @apply rounded-lg p-4 font-mono text-sm;
+    @apply rounded-card p-4 font-mono text-sm;
     background-color: theme('colors.ink.900');
     color: theme('colors.ink.100');
+    border: 1px solid theme('colors.ink.700');
   }
   .prose-doc table {
     @apply my-6 w-full text-sm;
@@ -121,8 +180,8 @@
     border-color: var(--color-border);
   }
   .prose-doc blockquote {
-    @apply border-l-4 pl-4 italic;
-    border-color: theme('colors.signal.400');
+    @apply border-l-2 pl-4 italic;
+    border-color: theme('colors.signal.500');
   }
 }
 

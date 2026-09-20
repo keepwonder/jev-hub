@@ -7,48 +7,75 @@ export default {
   theme: {
     extend: {
       colors: {
-        // "frontier" palette — inspired by TypeSafe's brand (purple + electric + ink)
+        // 中性墨 — 不偏冷不偏暖，跟暖橙搭
         ink: {
-          50:  '#f7f7f8',
-          100: '#eeeef1',
-          200: '#d8d8df',
-          300: '#b3b3bf',
-          400: '#85858f',
-          500: '#5e5e69',
-          600: '#42424c',
-          700: '#2e2e36',
-          800: '#1c1c22',
-          900: '#0f0f14',
+          50:  '#FAFAF5',  // 暖白底
+          100: '#F4F4ED',
+          200: '#E5E5DC',
+          300: '#C8C8BE',
+          400: '#9A9A8E',
+          500: '#6B6B5F',
+          600: '#48483E',
+          700: '#2D2D26',
+          800: '#1A1A15',
+          900: '#171717',
         },
-        // "Signal" — accent used for CTAs and highlights
+        // Signal — 暖橙，工具感主色
         signal: {
-          50:  '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
+          50:  '#FFF7ED',
+          100: '#FFEDD5',
+          200: '#FED7AA',
+          300: '#FDBA74',
+          400: '#FB923C',
+          500: '#F97316',
+          600: '#C2410C',  // PRIMARY 暖橙
+          700: '#9A3412',
+          800: '#7C2D12',
+          900: '#5C1D08',
         },
-        // "Calibrated" — green for confidence / good signals
+        // Moss — 置信/安全信号
         calibrated: {
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
+          400: '#84a766',
+          500: '#6f8854',
+          600: '#566a3f',
         },
-        // "Caution" — amber for warnings
+        // Rust — 警示
         caution: {
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
+          400: '#d4a058',
+          500: '#b8853f',
+          600: '#8e6431',
         },
       },
       fontFamily: {
-        sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        sans: [
+          '"Geist"',
+          '"Inter Fallback"',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          '"PingFang SC"',
+          '"Hiragino Sans GB"',
+          '"Microsoft YaHei"',
+          'sans-serif',
+        ],
+        mono: [
+          '"Geist Mono"',
+          '"JetBrains Mono"',
+          'ui-monospace',
+          'SFMono-Regular',
+          '"SF Mono"',
+          'monospace',
+        ],
+      },
+      fontSize: {
+        // 适中大小 — 不需要给 serif 留呼吸
+        'display': ['clamp(2.5rem, 5vw, 3.75rem)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
+        'title':   ['clamp(1.5rem, 2.5vw, 2rem)', { lineHeight: '1.2', letterSpacing: '-0.015em' }],
+      },
+      borderRadius: {
+        'card':  '14px',
+        'btn':   '8px',
+        'pill':  '999px',
       },
       typography: () => ({
         DEFAULT: { css: { maxWidth: '72ch' } },
