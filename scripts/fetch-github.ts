@@ -23,6 +23,27 @@ const MIN_STARS = 5;
 const PER_PAGE = 100;
 const MAX_PAGES = 3;  // up to 300 repos
 
+// Relevance check: require the description (not just topics) to mention
+// TypeSafe / Jev / System One. Topics are user-controlled and easily
+// spam-tagged to ride trending searches.
+const RELEVANCE_PATTERNS = [
+  /\bjev\b/i,
+  /\btypesafe\b/i,
+  /system[\s-]*one/i,
+  /\brlcd\b/i,
+];
+
+function isRelevant(p: { description?: string; name?: string }): boolean {
+  const blob = `${p.description ?? ''} ${p.name ?? ''}`;
+  return RELEVANCE_PATTERNS.some((re) => re.test(blob));
+}
+
+// Confirmed false positives — projects that match "typesafe jev" in search
+// but are unrelated. Add owner/name here to permanently exclude.
+const BLACKLIST = new Set([
+  'tinystruct/tinystruct',  // 2017 Java framework — spam-tagged with jev topics
+]);
+
 interface Project {
   name: string;
   owner: string;
@@ -100,7 +121,17 @@ async function main() {
     await new Promise((res) => setTimeout(res, 2500));
   }
 
-  const projects: Project[] = allRepos.map((repo: any) => {
+  // Filter out blacklisted and non-relevant repos (false positives
+  // with topic spam but no actual Jev mention in description)
+  const beforeFilter = allRepos.length;
+  const filtered = allRepos.filter((r) => {
+    if (BLACKLIST.has(r.full_name)) return false;
+    if (!isRelevant(r)) return false;
+    return true;
+  });
+  console.log(`  filtered: -${beforeFilter - filtered.length} (blacklist + non-relevant)`);
+
+  const projects: Project[] = filtered.map((repo: any) => {
     const desc = (repo.description ?? '').slice(0, 200);
     return {
       name: repo.full_name.split('/')[1],
