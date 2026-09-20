@@ -1,0 +1,47 @@
+---
+interface Props {
+  item: {
+    id: string;
+    title: string;
+    author: string;
+    url: string;
+    hnUrl: string;
+    points: number;
+    numComments: number;
+    createdAt: string;
+  };
+}
+const { item } = Astro.props;
+const dateLabel = new Date(item.createdAt).toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const ICON_UP = '<path d="M12 4l8 8h-5v8h-6v-8H4z"/>';
+const ICON_COMMENT = '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>';
+const ICON_EXTERNAL = '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>';
+---
+<article class="card flex flex-col gap-2.5">
+  <div class="flex items-start gap-3">
+    <div class="min-w-0 flex-1">
+      <h3 class="font-semibold leading-snug">
+        <a href={item.url || item.hnUrl} target="_blank" rel="noopener" class="hover:underline">{item.title}</a>
+      </h3>
+      <a href={item.hnUrl} target="_blank" rel="noopener" class="mt-1 inline-flex items-center gap-1 truncate text-xs text-signal-600 hover:underline dark:text-signal-400">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICON_EXTERNAL}></svg>
+        <span class="truncate">news.ycombinator.com</span>
+      </a>
+    </div>
+  </div>
+  <footer class="flex items-center justify-between font-mono text-xs text-ink-500 tabular-nums dark:text-ink-400">
+    <span class="truncate">@{item.author}</span>
+    <div class="flex flex-shrink-0 items-center gap-3">
+      <span class="inline-flex items-center gap-1" title="得分">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICON_UP}></svg>
+        {item.points}
+      </span>
+      <span class="inline-flex items-center gap-1" title="评论">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICON_COMMENT}></svg>
+        {item.numComments}
+      </span>
+      <time datetime={item.createdAt} class="tabular-nums">{dateLabel}</time>
+    </div>
+  </footer>
+</article>

@@ -31,16 +31,25 @@ const sourceBadge = {
   community:{ label: '社区', cls: 'badge-ink' },
   thirdparty: { label: '第三方', cls: 'badge-amber' },
 }[tweet.source ?? 'community'];
+
+// strokeWidth 1.5 — phosphor-ish，保持纤细
+const ICONS = {
+  reply:    '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  repost:   '<path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
+  like:     '<path d="M20.84 4.61a5.5  5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+  views:    '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+  external: '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>',
+};
 ---
 <article class="card flex flex-col gap-3">
   {showSource && (
     <div class="flex items-center justify-between text-xs">
       <span class={sourceBadge.cls}>{sourceBadge.label}</span>
-      <time datetime={tweet.datetime} class="text-ink-500 dark:text-ink-400">{dateLabel}</time>
+      <time datetime={tweet.datetime} class="font-mono text-ink-500 dark:text-ink-400 tabular-nums">{dateLabel}</time>
     </div>
   )}
   <header class="flex items-center gap-2">
-    <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-signal-100 font-semibold text-signal-700 dark:bg-signal-900/40 dark:text-signal-200">
+    <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-signal-100 font-mono text-sm font-semibold text-signal-700 dark:bg-signal-900/40 dark:text-signal-200">
       {tweet.authorName?.charAt(0).toUpperCase() || tweet.authorHandle.charAt(0).toUpperCase()}
     </div>
     <div class="min-w-0">
@@ -48,17 +57,43 @@ const sourceBadge = {
       <a href={`https://x.com/${tweet.authorHandle}`} target="_blank" rel="noopener" class="truncate text-xs text-ink-500 hover:underline dark:text-ink-400">@{tweet.authorHandle}</a>
     </div>
   </header>
-  <p class="whitespace-pre-wrap break-words text-sm leading-6 text-ink-800 dark:text-ink-200">{tweet.text}</p>
+  <p class="whitespace-pre-wrap break-words text-[14.5px] leading-[1.65] text-ink-800 dark:text-ink-200">{tweet.text}</p>
   {tweet.externalLink && (
-    <a href={tweet.externalLink} target="_blank" rel="noopener" class="truncate text-xs text-signal-600 hover:underline dark:text-signal-400">↗ {tweet.externalLink}</a>
+    <a href={tweet.externalLink} target="_blank" rel="noopener" class="inline-flex items-center gap-1 truncate text-xs text-signal-600 hover:underline dark:text-signal-400">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS.external}></svg>
+      <span class="truncate">{tweet.externalLink}</span>
+    </a>
   )}
-  <footer class="flex items-center justify-between border-t pt-3 text-xs text-ink-500 dark:text-ink-400" style="border-color: var(--color-border);">
-    <a href={tweet.url} target="_blank" rel="noopener" class="hover:underline">查看原帖 ↗</a>
-    <div class="flex items-center gap-3">
-      {tweet.metrics?.replies != null && <span title="回复">💬 {fmtMetric(tweet.metrics.replies)}</span>}
-      {tweet.metrics?.retweets != null && <span title="转帖">🔁 {fmtMetric(tweet.metrics.retweets)}</span>}
-      {tweet.metrics?.likes != null && <span title="喜欢">❤ {fmtMetric(tweet.metrics.likes)}</span>}
-      {tweet.metrics?.views != null && <span title="查看">👁 {fmtMetric(tweet.metrics.views)}</span>}
+  <footer class="mt-auto flex items-center justify-between border-t pt-3 font-mono text-xs text-ink-500 dark:text-ink-400" style="border-color: var(--color-border);">
+    <a href={tweet.url} target="_blank" rel="noopener" class="inline-flex items-center gap-1 hover:underline">
+      <span>查看原帖</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS.external}></svg>
+    </a>
+    <div class="flex items-center gap-3.5 tabular-nums">
+      {tweet.metrics?.replies != null && (
+        <span title="回复" class="inline-flex items-center gap-1">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS.reply}></svg>
+          {fmtMetric(tweet.metrics.replies)}
+        </span>
+      )}
+      {tweet.metrics?.retweets != null && (
+        <span title="转帖" class="inline-flex items-center gap-1">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS.repost}></svg>
+          {fmtMetric(tweet.metrics.retweets)}
+        </span>
+      )}
+      {tweet.metrics?.likes != null && (
+        <span title="喜欢" class="inline-flex items-center gap-1">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS.like}></svg>
+          {fmtMetric(tweet.metrics.likes)}
+        </span>
+      )}
+      {tweet.metrics?.views != null && (
+        <span title="查看" class="inline-flex items-center gap-1">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS.views}></svg>
+          {fmtMetric(tweet.metrics.views)}
+        </span>
+      )}
     </div>
   </footer>
 </article>

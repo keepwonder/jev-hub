@@ -16,13 +16,22 @@ const diffLabel = {
   intermediate: { label: '进阶', cls: 'badge-amber' },
   advanced: { label: '高阶', cls: 'badge-primary' },
 }[cookbook.difficulty ?? 'intermediate'];
+
+// 编号感：COOKBOOK / 03
+const idx = (cookbook.slug || '').replace(/[^a-z0-9]/gi, '').slice(0, 4).toUpperCase();
 ---
-<a href={`/cookbooks/${cookbook.slug}`} class="card flex h-full flex-col gap-3">
+<a href={`/cookbooks/${cookbook.slug}`} class="card flex h-full flex-col gap-3 group">
   <div class="flex items-center justify-between gap-2">
+    <span class="tag-label">Cookbook / {idx}</span>
     <span class={diffLabel.cls}>{diffLabel.label}</span>
-    {cookbook.tags?.slice(0, 2).map((t) => <span class="badge-ink">{t}</span>)}
   </div>
-  <h3 class="text-base font-semibold">{cookbook.title}</h3>
-  <p class="line-clamp-3 flex-1 text-sm text-ink-600 dark:text-ink-400">{cookbook.description}</p>
-  <div class="text-xs text-signal-600 dark:text-signal-400">查看详情 →</div>
+  <h3 class="text-base font-semibold leading-snug">{cookbook.title}</h3>
+  <p class="line-clamp-3 flex-1 text-sm leading-relaxed text-ink-600 dark:text-ink-400">{cookbook.description}</p>
+  <div class="flex flex-wrap gap-1">
+    {cookbook.tags?.slice(0, 3).map((t) => <span class="badge-ink">{t}</span>)}
+  </div>
+  <div class="mt-1 inline-flex items-center gap-1 font-mono text-xs text-signal-700 dark:text-signal-400 tabular-nums">
+    <span>查看详情</span>
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </div>
 </a>
