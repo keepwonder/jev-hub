@@ -1,9 +1,10 @@
 {
   "meta": {
-    "lastUpdated": "2026-09-20T13:59:36.479Z",
-    "totalFound": 1279,
+    "lastUpdated": "2026-09-20T14:12:58.444Z",
+    "totalFound": 1284,
     "featuredCount": 18,
-    "okCount": 18
+    "okCount": 18,
+    "trendingCount": 12
   },
   "projects": [
     {
@@ -11,7 +12,7 @@
       "owner": "typesafe-ai",
       "description": "Agent skills for building with TypeSafe's System One API",
       "url": "https://github.com/typesafe-ai/skills",
-      "stars": 955,
+      "stars": 960,
       "language": null,
       "tags": [
         "Agent"
@@ -37,7 +38,7 @@
       "owner": "yibie",
       "description": "A curated list of public projects, integrations, and discussions built on Jev — TypeSafe AI's System One model for typed decisions.",
       "url": "https://github.com/yibie/awesome-jev",
-      "stars": 510,
+      "stars": 513,
       "language": "Python",
       "tags": [
         "awesome-list"
@@ -50,7 +51,7 @@
       "owner": "v-modal",
       "description": "A curated list of tools  built for Jev — TypeSafe AI's System One model for typed decisions.",
       "url": "https://github.com/v-modal/awesome-jev-tools",
-      "stars": 479,
+      "stars": 480,
       "language": null,
       "tags": [
         "awesome-list"
@@ -116,7 +117,7 @@
       "owner": "realZachi",
       "description": "Ask your Postgres tables questions in plain language. A PostgreSQL extension powered by TypeSafe's Jev.",
       "url": "https://github.com/realZachi/pg-jev",
-      "stars": 233,
+      "stars": 234,
       "language": "Shell",
       "tags": [
         "Database"
@@ -168,7 +169,7 @@
       "owner": "jkudish",
       "description": "Fast, cheap, typed judgments from TypeSafe's Jev model, as MCP tools.",
       "url": "https://github.com/jkudish/jev-mcp",
-      "stars": 143,
+      "stars": 144,
       "language": "TypeScript",
       "tags": [
         "MCP"
@@ -181,7 +182,7 @@
       "owner": "typesafe-ai",
       "description": "The official Python library for the TypeSafe API",
       "url": "https://github.com/typesafe-ai/typesafe-sdk-python",
-      "stars": 142,
+      "stars": 144,
       "language": "Python",
       "tags": [
         "SDK"
@@ -240,6 +241,167 @@
       "tags": [
         "Agent",
         "Claude Code"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    }
+  ],
+  "trending": [
+    {
+      "name": "SemIf",
+      "owner": "TheoLeeCJ",
+      "description": "Semantic ifs from open models, on a 3090 at home. Independent; not affiliated with Jev or TypeSafe.",
+      "url": "https://github.com/TheoLeeCJ/SemIf",
+      "stars": 2215,
+      "language": "Python",
+      "tags": [
+        "Tool"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "jev-review",
+      "owner": "devagrawal09",
+      "description": "A staged code-review workflow and local dashboard built with TypeSafe Jev.",
+      "url": "https://github.com/devagrawal09/jev-review",
+      "stars": 392,
+      "language": "TypeScript",
+      "tags": [
+        "Tool"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "jev-search",
+      "owner": "superagents-lab",
+      "description": "Search the web with TypeSafe's Jev: source selection, query understanding and relevance ranking. Built with Search1API.",
+      "url": "https://github.com/superagents-lab/jev-search",
+      "stars": 276,
+      "language": "TypeScript",
+      "tags": [
+        "Agent",
+        "Search"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "jeff",
+      "owner": "logan-markewich",
+      "description": "A self-hosted drop-in replacement for TypeSafe's jev, powered by GliFormer.",
+      "url": "https://github.com/logan-markewich/jeff",
+      "stars": 150,
+      "language": "Python",
+      "tags": [
+        "Tool"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "openJev-verdict-2.0",
+      "owner": "Heman10x-NGU",
+      "description": "Calibrated 151M Non-Autoregressive Decision Engine beating TypeSafe Jev & Laya on LocalLLaMA/typed-decisions (77.10% acc, 0.0636 Brier, 0.0144 ECE)",
+      "url": "https://github.com/Heman10x-NGU/openJev-verdict-2.0",
+      "stars": 145,
+      "language": "Python",
+      "tags": [
+        "Tool"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "jev-voice-browser",
+      "owner": "moritzkremb",
+      "description": "Control a real browser by voice. Jev (TypeSafe System One) decides intent + target in ~300 ms per spoken word; Playwright acts — often before you finish the sentence.",
+      "url": "https://github.com/moritzkremb/jev-voice-browser",
+      "stars": 143,
+      "language": "JavaScript",
+      "tags": [
+        "Browser"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "jev-semgrep",
+      "owner": "uehaj",
+      "description": "grep by meaning, across languages. TypeSafe Jev scores every line against a meaning; combine meanings with AND/OR/NOT. 意味で探す grep。日本語で英語を、英語で日本語を検索できる",
+      "url": "https://github.com/uehaj/jev-semgrep",
+      "stars": 110,
+      "language": "JavaScript",
+      "tags": [
+        "Tool"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "awesome-jev-typesafe",
+      "owner": "valentynkit",
+      "description": "Typed decisions with TypeSafe's Jev, the first System One model",
+      "url": "https://github.com/valentynkit/awesome-jev-typesafe",
+      "stars": 106,
+      "language": "JavaScript",
+      "tags": [
+        "awesome-list"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "pi-warden",
+      "owner": "DevMortimer",
+      "description": "Guardrails for Pi built on pi-typesafe that steer the agent instead of interrupting you: Jev judges irreversible and off-task tool calls, detects stuck loops, checks unverified done claims, flags slop",
+      "url": "https://github.com/DevMortimer/pi-warden",
+      "stars": 101,
+      "language": "TypeScript",
+      "tags": [
+        "Agent",
+        "Claude Code",
+        "guardrail"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "awesome-jev",
+      "owner": "AnotiaWang",
+      "description": "A curated list of awesome Jev / TypeSafe System One applications, libraries, and resources.",
+      "url": "https://github.com/AnotiaWang/awesome-jev",
+      "stars": 98,
+      "language": null,
+      "tags": [
+        "awesome-list"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "von",
+      "owner": "wfzyx",
+      "description": "The open-source System One decision model. Sub-15ms, non-autoregressive, local drop-in alternative to TypeSafe Jev.",
+      "url": "https://github.com/wfzyx/von",
+      "stars": 92,
+      "language": "Python",
+      "tags": [
+        "Tool"
+      ],
+      "updatedAt": "2026-09-20",
+      "status": "ok"
+    },
+    {
+      "name": "stanley-code",
+      "owner": "devagrawal09",
+      "description": "Bounded TypeSafe Jev workflows for coding agents.",
+      "url": "https://github.com/devagrawal09/stanley-code",
+      "stars": 88,
+      "language": "TypeScript",
+      "tags": [
+        "Agent"
       ],
       "updatedAt": "2026-09-20",
       "status": "ok"

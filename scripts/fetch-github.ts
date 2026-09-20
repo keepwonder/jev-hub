@@ -1,17 +1,13 @@
 /**
- * Refresh awesome-typesafe project list with current GitHub star counts.
+ * Refresh awesome-typesafe project list with current GitHub star counts
+ * and auto-discover trending Jev-related repos.
  *
- * Strategy:
- *   - Use GitHub Search API to fetch top 100 jev-related repos in ONE request.
- *   - Filter to FEATURED whitelist.
- *   - Save meta.lastUpdated so the UI can show data freshness.
- *
- * Rate limits:
- *   - Anonymous: 30 requests/min for search
- *   - With GITHUB_TOKEN: 30/min search, 5000/hr for other endpoints
- *
- * To run locally with token:
- *   GITHUB_TOKEN=ghp_xxx npm run fetch:github
+ * Output shape:
+ *   {
+ *     meta: { lastUpdated, totalFound, featuredCount, okCount, trendingCount },
+ *     projects: [...],        // curated FEATURED set, with current stars
+ *     trending: [...],        // auto-discovered NEW repos (last 60 days, ≥10 stars)
+ *   }
  */
 import { writeFile, readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
@@ -20,6 +16,8 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = join(__dirname, '../src/data/awesome-typesafe.json');
 
+// Curated whitelist — high quality, manually picked. To add a new repo,
+// PR an edit here. Don't auto-add to this list.
 const FEATURED = new Set([
   'typesafe-ai/typesafe-sdk-python',
   'typesafe-ai/typesafe-sdk-js',
@@ -40,6 +38,11 @@ const FEATURED = new Set([
   'itsmostafa/typesafe-mcp',
   'fatwang2/awesome-jev',
 ]);
+
+// Thresholds for the auto-discovered "trending" section
+const TRENDING_DAYS = 60;
+const TRENDING_MIN_STARS = 10;
+const TRENDING_MAX_ITEMS = 12;
 
 interface Project {
   name: string;
@@ -66,72 +69,93 @@ function classify(fullName: string, desc: string): string[] {
   if (t.includes('postgres') || t.includes('sql') || t.includes('database')) tags.push('Database');
   if (t.includes('mario') || t.includes('doom') || t.includes('game')) tags.push('Games');
   if (t.includes('rerank') || t.includes('search') || t.includes('retrieval')) tags.push('Search');
+  if (t.includes('bot') || t.includes('discord') || t.includes('slack')) tags.push('Bot');
   if (tags.length === 0) tags.push('Tool');
   return tags;
 }
 
-async function loadExisting(): Promise<Record<string, Project>> {
+async function loadExisting(): Promise<{ projects: Record<string, Project>; trending: Record<string, Project> }> {
   try {
     const raw = await readFile(OUT, 'utf8');
     const data = JSON.parse(raw);
-    const projects: Project[] = data.projects ?? data ?? [];
     const map: Record<string, Project> = {};
-    for (const p of projects) {
-      map[`${p.owner}/${p.name}`] = p;
-    }
-    return map;
+    for (const p of data.projects ?? []) map[`${p.owner}/${p.name}`] = p;
+    const tmap: Record<string, Project> = {};
+    for (const p of data.trending ?? []) map[`${p.owner}/${p.name}`] = p;
+    return { projects: map, trending: tmap };
   } catch {
-    return {};
+    return { projects: {}, trending: {} };
+  }
+}
+
+async function fetchRepo(
+  fullName: string,
+  headers: Record<string, string>,
+): Promise<Project | null> {
+  const [owner, name] = fullName.split('/');
+  try {
+    let r = await fetch(`https://api.github.com/repos/${owner}/${name}`, { headers });
+    if (r.status === 401) {
+      delete headers.Authorization;
+      r = await fetch(`https://api.github.com/repos/${owner}/${name}`, { headers });
+    }
+    if (r.status === 404) return null;
+    if (!r.ok) return null;
+    const repo = await r.json() as any;
+    const desc = (repo.description ?? '').slice(0, 200);
+    return {
+      name, owner,
+      description: desc,
+      url: repo.html_url,
+      stars: repo.stargazers_count ?? 0,
+      language: repo.language ?? null,
+      tags: classify(fullName, desc),
+      updatedAt: (repo.updated_at ?? '').slice(0, 10),
+      status: 'ok',
+    };
+  } catch {
+    return null;
   }
 }
 
 async function main() {
   const existing = await loadExisting();
-
-  // Use GitHub Search API — returns up to 100 repos matching query
   const headers: Record<string, string> = {
     'Accept': 'application/vnd.github+json',
     'User-Agent': 'jev-hub-fetcher',
   };
-  if (process.env.GITHUB_TOKEN) {
-    headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
-  }
+  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
-  const url = 'https://api.github.com/search/repositories?q=typesafe+jev&per_page=100&sort=stars';
+  // 1) Search for top Jev-related repos
+  const searchUrl = `https://api.github.com/search/repositories?q=typesafe+jev&per_page=100&sort=stars`;
   console.log('[fetch-github] querying GitHub Search API…');
-  let r = await fetch(url, { headers });
-  // If 401 with token, fall back to anonymous
+  let r = await fetch(searchUrl, { headers });
   if (r.status === 401 && process.env.GITHUB_TOKEN) {
     console.warn('[fetch-github] 401 with token — falling back to anonymous');
     delete headers.Authorization;
-    r = await fetch(url, { headers });
+    r = await fetch(searchUrl, { headers });
   }
   if (!r.ok) {
-    console.error(`[fetch-github] GitHub API ${r.status}: ${await r.text()}`);
+    console.error(`[fetch-github] GitHub API ${r.status}`);
     process.exit(1);
   }
   const data = await r.json() as any;
-  const total = data.total_count ?? 0;
-  console.log(`[fetch-github] got ${data.items?.length ?? 0} of ${total} matching repos`);
+  const items = data.items ?? [];
+  console.log(`[fetch-github] got ${items.length} of ${data.total_count ?? 0} matching repos`);
 
-  // Build lookup from search results
+  // 2) Refresh FEATURED set
   const lookup: Record<string, any> = {};
-  for (const repo of data.items ?? []) {
-    lookup[repo.full_name] = repo;
-  }
+  for (const repo of items) lookup[repo.full_name] = repo;
 
-  // Update each featured repo
   const projects: Project[] = [];
   const missedFromSearch: string[] = [];
   for (const fullName of FEATURED) {
-    const [owner, name] = fullName.split('/');
     const repo = lookup[fullName];
-
     if (repo) {
       const desc = (repo.description ?? '').slice(0, 200);
       projects.push({
-        name,
-        owner,
+        name: fullName.split('/')[1],
+        owner: fullName.split('/')[0],
         description: desc,
         url: repo.html_url,
         stars: repo.stargazers_count ?? 0,
@@ -141,51 +165,59 @@ async function main() {
         status: 'ok',
       });
     } else {
-      // Not in search results — might still exist (e.g. official SDKs
-      // whose description doesn't mention "jev"). Queue for direct fetch.
       missedFromSearch.push(fullName);
     }
   }
-
-  // Direct fetch for repos missed by search — uses 1 request per repo
   for (const fullName of missedFromSearch) {
-    const [owner, name] = fullName.split('/');
-    const direct = await fetch(`https://api.github.com/repos/${owner}/${name}`, { headers });
-    let entry: Project;
-    if (direct.ok) {
-      const repo = await direct.json() as any;
-      const desc = (repo.description ?? '').slice(0, 200);
-      entry = {
-        name, owner,
-        description: desc,
-        url: repo.html_url,
-        stars: repo.stargazers_count ?? 0,
-        language: repo.language ?? null,
-        tags: classify(fullName, desc),
-        updatedAt: (repo.updated_at ?? '').slice(0, 10),
-        status: 'ok',
-      };
-    } else if (direct.status === 404) {
-      entry = {
-        name, owner, description: '',
-        url: `https://github.com/${owner}/${name}`,
-        stars: existing[fullName]?.stars ?? null,
-        language: null, tags: [],
-        updatedAt: null, status: 'not-found',
-      };
+    const fetched = await fetchRepo(fullName, { ...headers });
+    const previous = existing.projects[fullName];
+    if (fetched) {
+      projects.push(fetched);
+    } else if (previous) {
+      projects.push({ ...previous, status: 'not-found' });
     } else {
-      // 401/403/5xx — keep previous data
-      entry = existing[fullName] ?? {
+      const [owner, name] = fullName.split('/');
+      projects.push({
         name, owner, description: '',
         url: `https://github.com/${owner}/${name}`,
         stars: null, language: null, tags: [],
         updatedAt: null, status: 'not-found',
-      };
+      });
     }
-    projects.push(entry);
-    await new Promise((r) => setTimeout(r, 800));  // throttle
+    await new Promise((res) => setTimeout(res, 700));
   }
 
+  // 3) Discover trending — NEW repos (created in last N days, ≥ M stars)
+  //    that aren't already in FEATURED.
+  const cutoff = new Date(Date.now() - TRENDING_DAYS * 24 * 3600 * 1000);
+  const featuredNames = new Set(FEATURED);
+  const trendingCandidates = items.filter((repo: any) => {
+    if (featuredNames.has(repo.full_name)) return false;
+    if ((repo.stargazers_count ?? 0) < TRENDING_MIN_STARS) return false;
+    const created = new Date(repo.created_at);
+    return created > cutoff;
+  });
+  // Sort by stars desc, take top N
+  trendingCandidates.sort((a: any, b: any) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0));
+  const topTrending = trendingCandidates.slice(0, TRENDING_MAX_ITEMS);
+  console.log(`[fetch-github] discovered ${trendingCandidates.length} trending candidates (last ${TRENDING_DAYS} days, ≥${TRENDING_MIN_STARS}★), keeping top ${topTrending.length}`);
+
+  const trending: Project[] = topTrending.map((repo: any) => {
+    const desc = (repo.description ?? '').slice(0, 200);
+    return {
+      name: repo.full_name.split('/')[1],
+      owner: repo.full_name.split('/')[0],
+      description: desc,
+      url: repo.html_url,
+      stars: repo.stargazers_count ?? 0,
+      language: repo.language ?? null,
+      tags: classify(repo.full_name, desc),
+      updatedAt: (repo.updated_at ?? '').slice(0, 10),
+      status: 'ok',
+    };
+  });
+
+  // Sort featured by stars desc, trending already sorted
   projects.sort((a, b) => {
     if (a.status !== 'ok' && b.status === 'ok') return 1;
     if (b.status !== 'ok' && a.status === 'ok') return -1;
@@ -195,20 +227,27 @@ async function main() {
   const output = {
     meta: {
       lastUpdated: new Date().toISOString(),
-      totalFound: total,
+      totalFound: data.total_count ?? 0,
       featuredCount: projects.length,
       okCount: projects.filter((p) => p.status === 'ok').length,
+      trendingCount: trending.length,
     },
     projects,
+    trending,
   };
 
   await writeFile(OUT, JSON.stringify(output, null, 2) + '\n');
 
-  const ok = projects.filter((p) => p.status === 'ok').length;
-  console.log(`\n[fetch-github] saved ${ok}/${projects.length} projects (lastUpdated: ${output.meta.lastUpdated})`);
+  console.log(`\n[fetch-github] saved ${projects.filter((p) => p.status === 'ok').length} featured + ${trending.length} trending`);
+  console.log(`[fetch-github] lastUpdated: ${output.meta.lastUpdated}\n`);
+  console.log('Top featured:');
   for (const p of projects.slice(0, 5)) {
-    const starStr = p.stars != null ? `${p.stars}★` : 'N/A';
-    console.log(`  ${starStr.padStart(7)}  ${p.owner}/${p.name}`);
+    const s = p.stars != null ? `${p.stars}★` : 'N/A';
+    console.log(`  ${s.padStart(7)}  ${p.owner}/${p.name}`);
+  }
+  console.log('\nTrending (new):');
+  for (const p of trending.slice(0, 5)) {
+    console.log(`  ${`${p.stars}★`.padStart(7)}  ${p.owner}/${p.name}`);
   }
 }
 

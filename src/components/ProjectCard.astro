@@ -1,0 +1,49 @@
+---
+interface Props {
+  p: {
+    name: string;
+    owner: string;
+    description: string;
+    url: string;
+    stars: number | null;
+    language: string | null;
+    tags: string[];
+    updatedAt: string | null;
+    status: 'ok' | 'not-found';
+  };
+  compact?: boolean;
+}
+const { p, compact = false } = Astro.props;
+const isOk = p.status !== 'not-found' && p.stars != null;
+const starLabel = p.stars != null ? p.stars.toLocaleString() : 'N/A';
+---
+<a
+  href={p.url}
+  target="_blank"
+  rel="noopener"
+  class:list={['flex flex-col gap-2 rounded-xl border p-5 transition', isOk ? 'opacity-100' : 'opacity-60']}
+  style="background-color: var(--color-card); border-color: var(--color-border);"
+  data-status={p.status}
+>
+  <div class="flex items-start justify-between gap-3">
+    <div class="min-w-0 flex-1">
+      <h3 class:list={[compact ? 'text-base' : 'text-lg', 'font-semibold']}>{p.name}</h3>
+      <p class="text-xs text-ink-500">@{p.owner}</p>
+    </div>
+    <div class="flex flex-shrink-0 items-center gap-2">
+      {isOk
+        ? <span class="badge-amber" title="GitHub stars">⭐ {starLabel}</span>
+        : <span class="badge-ink" title="GitHub API 暂未找到">N/A</span>}
+      {p.language && <span class="badge-ink">{p.language}</span>}
+    </div>
+  </div>
+  <p class="text-sm text-ink-600 dark:text-ink-400 line-clamp-3">{p.description || '暂无描述'}</p>
+  <div class="mt-auto flex flex-wrap items-center gap-1 pt-2">
+    {(p.tags ?? []).slice(0, 4).map((t: string) => <span class="badge-ink">{t}</span>)}
+    {p.updatedAt && (
+      <span class="ml-auto text-xs text-ink-400" title={`GitHub 最后更新时间: ${p.updatedAt}`}>
+        上游更新于 {p.updatedAt}
+      </span>
+    )}
+  </div>
+</a>
