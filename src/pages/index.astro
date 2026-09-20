@@ -5,7 +5,9 @@ import Search from '@/components/Search.astro';
 import { getCollection } from 'astro:content';
 
 import tweetsData from '@/data/official-tweets.json';
+import founderTweets from '@/data/founder-tweets.json';
 import recentDiscussions from '@/data/recent-discussions.json';
+import awesomeProjects from '@/data/awesome-typesafe.json';
 
 const officialTweets = (tweetsData as any[]).slice(0, 3);
 const discussions = (recentDiscussions as any[]).slice(0, 6);
@@ -14,10 +16,28 @@ const latestTutorials = (await getCollection('tutorials', ({ data }) => !data.dr
   .sort((a, b) => +b.data.pubDate - +a.data.pubDate)
   .slice(0, 4);
 
+// Real content counts (not .slice'd lengths)
+const totalTweets =
+  (tweetsData as any[]).length +
+  (founderTweets as any[]).length +
+  (recentDiscussions as any[]).length;
+const allCookbooks = await getCollection('cookbooks');
+const allTutorials = await getCollection('tutorials', ({ data }) => !data.draft);
+const allDocs = await getCollection('docs');
+const allFaqs = await getCollection('faqs');
+const allGlossary = await getCollection('glossary');
+const allVersions = await getCollection('versions');
+const projectCount = (awesomeProjects as any).projects?.length ?? (awesomeProjects as any[]).length;
+
 const stats = {
-  tweets: officialTweets.length,
-  cookbooks: (await getCollection('cookbooks')).length,
-  tutorials: latestTutorials.length,
+  tweets: totalTweets,
+  cookbooks: allCookbooks.length,
+  tutorials: allTutorials.length,
+  docs: allDocs.length,
+  faqs: allFaqs.length,
+  glossary: allGlossary.length,
+  projects: projectCount,
+  versions: allVersions.length,
 };
 
 const lastUpdated = new Date().toISOString().slice(0, 10);
@@ -51,21 +71,29 @@ const lastUpdated = new Date().toISOString().slice(0, 10);
           </div>
           <dl class="mt-10 grid grid-cols-3 gap-4 text-sm">
             <div>
-              <dt class="text-ink-500">抓取推文</dt>
-              <dd class="mt-1 text-2xl font-semibold">{stats.tweets}+</dd>
+              <dt class="text-ink-500">社区讨论</dt>
+              <dd class="mt-1 text-2xl font-semibold">{stats.tweets}</dd>
             </div>
             <div>
-              <dt class="text-ink-500">收录 Cookbook</dt>
+              <dt class="text-ink-500">Cookbook</dt>
               <dd class="mt-1 text-2xl font-semibold">{stats.cookbooks}</dd>
             </div>
             <div>
-              <dt class="text-ink-500">首发教程</dt>
+              <dt class="text-ink-500">教程</dt>
               <dd class="mt-1 text-2xl font-semibold">{stats.tutorials}</dd>
             </div>
           </dl>
+          <dl class="mt-3 grid grid-cols-3 gap-4 text-xs text-ink-500">
+            <div><span>{stats.docs} 文档</span></div>
+            <div><span>{stats.faqs} FAQ</span></div>
+            <div><span>{stats.glossary} 术语</span></div>
+          </dl>
         </div>
         <div class="card relative overflow-hidden">
-          <div class="absolute right-3 top-3"><span class="badge-ink">demo · Jev Playground</span></div>
+          <div class="mb-2 flex items-center justify-between">
+            <span class="text-xs text-ink-500">Python SDK 示例</span>
+            <span class="badge-ink">demo · Jev Playground</span>
+          </div>
           <pre class="font-mono text-xs leading-relaxed text-ink-700 dark:text-ink-200"><code>{`from typesafe_sdk import Choice, Noul, TypeSafeClient
 
 client = TypeSafeClient()
