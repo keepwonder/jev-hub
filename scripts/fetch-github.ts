@@ -3,6 +3,8 @@
  *
  * Strategy:
  *   - Fetch pages 1-3 of top 100 (max 300 repos)
+ *   - Query uses OR (typesafe OR jev) so repos with only 'jev' in
+ *     name/description (e.g., awesome-jev-projects) are also picked up
  *   - Each repo carries full metadata (stars, language, created, updated, topics)
  *     so the UI can filter/sort client-side.
  *
@@ -79,7 +81,7 @@ function classify(fullName: string, desc: string, topics: string[]): string[] {
 }
 
 async function fetchPage(page: number, headers: Record<string, string>, attempt = 1): Promise<any> {
-  const url = `https://api.github.com/search/repositories?q=typesafe+jev+stars:%3E${MIN_STARS}&per_page=${PER_PAGE}&page=${page}&sort=stars&order=desc`;
+  const url = `https://api.github.com/search/repositories?q=typesafe+OR+jev+stars:%3E${MIN_STARS}&per_page=${PER_PAGE}&page=${page}&sort=stars&order=desc`;
   let r = await fetch(url, { headers });
   if (r.status === 401) {
     delete headers.Authorization;
