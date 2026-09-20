@@ -5,8 +5,8 @@ import ProjectCard from '@/components/ProjectCard.astro';
 import data from '@/data/awesome-typesafe.json';
 
 const projects: any[] = (data as any).projects ?? [];
-const trending: any[] = (data as any).trending ?? [];
 const meta = (data as any).meta ?? {};
+const languages: { name: string; count: number }[] = meta.languages ?? [];
 
 let lastUpdatedLabel = '从未刷新';
 let lastUpdatedRel = '';
@@ -21,14 +21,14 @@ if (meta.lastUpdated) {
   else lastUpdatedRel = `${Math.floor(diffH / 24)} 天前`;
 }
 ---
-<BaseLayout title="社区项目" description="awesome-typesafe:Jev 相关的开源项目和工具索引。">
+<BaseLayout title="社区项目" description="Jev 相关开源项目索引,自动从 GitHub 抓取,可按语言/时间/星数筛选。">
   <Search />
 
   <section class="container-wide py-10">
-    <header class="mb-8">
+    <header class="mb-6">
       <h1 class="text-3xl font-bold">社区项目</h1>
       <p class="mt-2 text-ink-600 dark:text-ink-400">
-        精选 {projects.length} 个高质量项目 + 自动发现近期活跃的 {trending.length} 个新项目。每 6 小时自动刷新一次。
+        GitHub 上所有 Jev 相关开源项目,自动每 6 小时从 GitHub Search API 抓取。可按时间、语言、星数筛选。
       </p>
       <div class="mt-3 flex flex-wrap items-center gap-3 text-sm">
         <span class="inline-flex items-center gap-2 rounded-full bg-calibrated-500/10 px-3 py-1 text-calibrated-700 dark:text-calibrated-400">
@@ -39,49 +39,273 @@ if (meta.lastUpdated) {
           数据已刷新
         </span>
         <span class="text-ink-500">
-          {meta.okCount ?? projects.length} 精选 + {trending.length} 新发现 · {lastUpdatedRel}
+          显示 <strong id="visible-count">{projects.length}</strong> / {projects.length} 个项目 · {lastUpdatedRel}
         </span>
         <span class="text-xs text-ink-400 font-mono" title={meta.lastUpdated}>{lastUpdatedLabel}</span>
       </div>
     </header>
 
-    <!-- Featured -->
-    <section class="mb-12">
-      <h2 class="mb-4 flex items-center gap-2 text-xl font-semibold">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="text-caution-500"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        精选项目
-        <span class="text-sm font-normal text-ink-500">— 人工白名单,质量优先</span>
-      </h2>
-      <div class="grid gap-4 md:grid-cols-2">
-        {projects.map((p) => <ProjectCard p={p} />)}
+    <!-- Filter bar -->
+    <div class="card mb-6 space-y-4">
+      <!-- Search box -->
+      <div class="relative">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 text-ink-400"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input
+          id="filter-search"
+          type="search"
+          placeholder="搜索项目名 / 描述 / 作者…"
+          class="w-full rounded-md border bg-transparent py-2 pl-9 pr-3 text-sm focus:border-signal-400 focus:outline-none"
+          style="border-color: var(--color-border);"
+        />
       </div>
-    </section>
 
-    <!-- Trending -->
-    {trending.length > 0 && (
-      <section class="mb-12">
-        <h2 class="mb-4 flex items-center gap-2 text-xl font-semibold">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-signal-500"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          近期发现
-          <span class="text-sm font-normal text-ink-500">— 最近 60 天创建、≥10★ 的 jev 相关项目(自动)</span>
-        </h2>
-        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {trending.map((p) => <ProjectCard p={p} compact />)}
+      <!-- Sort + Time row -->
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div>
+          <label class="mb-1.5 block text-xs font-medium uppercase text-ink-500">排序</label>
+          <select id="filter-sort" class="w-full rounded-md border bg-transparent px-3 py-1.5 text-sm" style="border-color: var(--color-border);">
+            <option value="stars-desc">⭐ 星数 (高→低)</option>
+            <option value="stars-asc">星数 (低→高)</option>
+            <option value="created-desc">🆕 最新创建</option>
+            <option value="updated-desc">最近活跃</option>
+            <option value="forks-desc">分叉数 (高→低)</option>
+            <option value="name-asc">名字 A→Z</option>
+          </select>
         </div>
-        <p class="mt-4 text-sm text-ink-500">
-          想被收录到精选列表?在 <a class="link" href="https://github.com/keepwonder/jev-hub/issues/new" target="_blank" rel="noopener">GitHub 提个 issue</a>,项目描述里说明用途即可。
-        </p>
-      </section>
-    )}
+        <div>
+          <label class="mb-1.5 block text-xs font-medium uppercase text-ink-500">创建时间</label>
+          <div class="flex flex-wrap gap-1">
+            {['all', '30d', '90d', '365d'].map((p, i) => (
+              <button data-time={p} class:list={['time-pill flex-1 rounded-md border px-2 py-1 text-xs transition', i === 0 ? 'active' : '']} style="border-color: var(--color-border);">
+                {p === 'all' ? '全部' : p === '30d' ? '30 天' : p === '90d' ? '90 天' : '1 年'}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div>
+          <label class="mb-1.5 block text-xs font-medium uppercase text-ink-500">最低星数</label>
+          <div class="flex flex-wrap gap-1">
+            {[0, 10, 50, 100, 500].map((n, i) => (
+              <button data-min-stars={n} class:list={['stars-pill flex-1 rounded-md border px-2 py-1 text-xs transition', i === 0 ? 'active' : '']} style="border-color: var(--color-border);">
+                {n === 0 ? '任意' : `${n}+`}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
-    <div class="rounded-lg border p-4 text-sm" style="border-color: var(--color-border); background-color: color-mix(in oklab, var(--color-bg) 50%, transparent);">
-      <h2 class="mb-2 font-semibold">数据来源与提交流程</h2>
+      <!-- Language chips -->
+      {languages.length > 0 && (
+        <div>
+          <label class="mb-1.5 block text-xs font-medium uppercase text-ink-500">语言(点击多选)</label>
+          <div class="flex flex-wrap gap-1.5" id="filter-langs">
+            {languages.map((l) => (
+              <button
+                data-lang={l.name}
+                class="lang-chip inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs transition"
+                style="border-color: var(--color-border);"
+              >
+                <span>{l.name}</span>
+                <span class="text-ink-400">{l.count}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Reset + active filter count -->
+      <div class="flex flex-wrap items-center gap-2 border-t pt-3 text-xs" style="border-color: var(--color-border);">
+        <button id="filter-reset" class="rounded-md border px-3 py-1 transition hover:bg-ink-100 dark:hover:bg-ink-800" style="border-color: var(--color-border);">
+          重置筛选
+        </button>
+        <span id="filter-summary" class="text-ink-500"></span>
+      </div>
+    </div>
+
+    <!-- Project grid -->
+    <div id="project-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {projects.map((p) => <ProjectCard p={p} compact />)}
+    </div>
+
+    <p id="no-results" class="hidden py-12 text-center text-ink-500">
+      没有匹配的项目。<button id="clear-filters" class="link">清除筛选条件</button>?
+    </p>
+
+    <div class="mt-10 rounded-lg border p-4 text-sm" style="border-color: var(--color-border); background-color: color-mix(in oklab, var(--color-bg) 50%, transparent);">
+      <h2 class="mb-2 font-semibold">数据来源与说明</h2>
       <ul class="space-y-1 text-ink-600 dark:text-ink-400">
-        <li>• 项目来自 <a class="link" href="https://api.github.com/search/repositories?q=typesafe+jev" target="_blank" rel="noopener">GitHub Search API</a>(每次拉取 100 个 jev 相关仓库)</li>
-        <li>• <strong>精选列表</strong>:PR 修改 <code class="text-xs">scripts/fetch-github.ts</code> 里的 <code class="text-xs">FEATURED</code> 白名单(质量优先,需评审)</li>
-        <li>• <strong>近期发现</strong>:全自动 — 最近 60 天创建、≥10★ 的 jev 项目,按星数排前 12</li>
-        <li>• 每 6 小时跑一次 <code class="text-xs">npm run fetch:github</code>(<a class="link" href="https://github.com/keepwonder/jev-hub/blob/main/.github/workflows/fetch-data.yml" target="_blank" rel="noopener">workflow</a>)</li>
+        <li>• 来自 <a class="link" href="https://api.github.com/search/repositories?q=typesafe+jev+stars:%3E5" target="_blank" rel="noopener">GitHub Search API</a>,筛选条件:关键词 "typesafe jev" + ≥5 stars</li>
+        <li>• 每 6 小时自动刷新(共 {meta.totalFound ?? projects.length} 个匹配项目,本页面显示 top {projects.length})</li>
+        <li>• 客户端筛选(语言/时间/星数/搜索)—— 数据全在浏览器,即时响应</li>
+        <li>• 想找更多?<a class="link" href="https://github.com/search?q=typesafe+jev&type=repositories" target="_blank" rel="noopener">在 GitHub 上搜索</a></li>
       </ul>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  type Card = HTMLElement & { dataset: DOMStringMap };
+  const grid = document.getElementById('project-grid')!;
+  const noResults = document.getElementById('no-results')!;
+  const visibleCount = document.getElementById('visible-count')!;
+  const summary = document.getElementById('filter-summary')!;
+  const cards: Card[] = Array.from(grid.querySelectorAll<HTMLElement>('.project-card')) as Card[];
+
+  // State
+  const state = {
+    q: '',
+    sort: 'stars-desc',
+    time: 'all',
+    minStars: 0,
+    langs: new Set<string>(),
+  };
+
+  function activePillButtons() {
+    document.querySelectorAll<HTMLButtonElement>('.time-pill').forEach((b) => {
+      const active = b.dataset.time === state.time;
+      b.classList.toggle('active', active);
+      b.style.backgroundColor = active ? 'var(--color-accent)' : '';
+      b.style.color = active ? 'white' : '';
+      b.style.borderColor = active ? 'var(--color-accent)' : '';
+    });
+    document.querySelectorAll<HTMLButtonElement>('.stars-pill').forEach((b) => {
+      const active = parseInt(b.dataset.minStars || '0', 10) === state.minStars;
+      b.classList.toggle('active', active);
+      b.style.backgroundColor = active ? 'var(--color-accent)' : '';
+      b.style.color = active ? 'white' : '';
+      b.style.borderColor = active ? 'var(--color-accent)' : '';
+    });
+  }
+
+  function passes(card: Card): boolean {
+    const data = card.dataset;
+
+    // search
+    if (state.q) {
+      const blob = `${data.name} ${data.owner} ${data.desc} ${data.tags}`;
+      if (!blob.includes(state.q)) return false;
+    }
+
+    // time
+    if (state.time !== 'all') {
+      const days = parseInt(state.time, 10);
+      const created = new Date(data.created || '1970-01-01').getTime();
+      if (Date.now() - created > days * 24 * 3600 * 1000) return false;
+    }
+
+    // min stars
+    if (state.minStars > 0) {
+      if (parseInt(data.stars || '0', 10) < state.minStars) return false;
+    }
+
+    // language
+    if (state.langs.size > 0 && !state.langs.has(data.language || 'unknown')) return false;
+
+    return true;
+  }
+
+  function sortCards(): void {
+    const sorted = [...cards].sort((a, b) => {
+      const da = a.dataset;
+      const db = b.dataset;
+      const starsA = parseInt(da.stars || '0', 10);
+      const starsB = parseInt(db.stars || '0', 10);
+      const forksA = parseInt(da.forks || '0', 10);
+      const forksB = parseInt(db.forks || '0', 10);
+      const createdA = da.created || '';
+      const createdB = db.created || '';
+      const updatedA = da.updated || '';
+      const updatedB = db.updated || '';
+      const nameA = da.name || '';
+      const nameB = db.name || '';
+      switch (state.sort) {
+        case 'stars-asc': return starsA - starsB;
+        case 'created-desc': return createdB.localeCompare(createdA);
+        case 'updated-desc': return updatedB.localeCompare(updatedA);
+        case 'forks-desc': return forksB - forksA;
+        case 'name-asc': return nameA.localeCompare(nameB);
+        case 'stars-desc':
+        default: return starsB - starsA;
+      }
+    });
+    for (const card of sorted) grid.appendChild(card);
+  }
+
+  function apply() {
+    sortCards();
+    let visible = 0;
+    for (const card of cards) {
+      const ok = passes(card);
+      card.style.display = ok ? '' : 'none';
+      if (ok) visible++;
+    }
+    visibleCount.textContent = String(visible);
+    noResults.classList.toggle('hidden', visible > 0);
+    grid.classList.toggle('hidden', visible === 0);
+
+    // active filter summary
+    const parts: string[] = [];
+    if (state.q) parts.push(`"${state.q}"`);
+    if (state.time !== 'all') parts.push(`${state.time} 内`);
+    if (state.minStars > 0) parts.push(`≥${state.minStars}★`);
+    if (state.langs.size > 0) parts.push(`语言: ${[...state.langs].join(', ')}`);
+    summary.textContent = parts.length ? `已应用: ${parts.join(' · ')}` : '';
+  }
+
+  // Wire up listeners
+  document.getElementById('filter-search')?.addEventListener('input', (e) => {
+    state.q = (e.target as HTMLInputElement).value.trim().toLowerCase();
+    apply();
+  });
+  document.getElementById('filter-sort')?.addEventListener('change', (e) => {
+    state.sort = (e.target as HTMLSelectElement).value;
+    apply();
+  });
+  document.querySelectorAll<HTMLButtonElement>('.time-pill').forEach((b) => {
+    b.addEventListener('click', () => {
+      state.time = b.dataset.time || 'all';
+      activePillButtons();
+      apply();
+    });
+  });
+  document.querySelectorAll<HTMLButtonElement>('.stars-pill').forEach((b) => {
+    b.addEventListener('click', () => {
+      state.minStars = parseInt(b.dataset.minStars || '0', 10);
+      activePillButtons();
+      apply();
+    });
+  });
+  document.querySelectorAll<HTMLButtonElement>('.lang-chip').forEach((b) => {
+    b.addEventListener('click', () => {
+      const lang = b.dataset.lang || '';
+      if (state.langs.has(lang)) state.langs.delete(lang);
+      else state.langs.add(lang);
+      b.style.backgroundColor = state.langs.has(lang) ? 'var(--color-accent)' : '';
+      b.style.color = state.langs.has(lang) ? 'white' : '';
+      b.style.borderColor = state.langs.has(lang) ? 'var(--color-accent)' : '';
+      apply();
+    });
+  });
+
+  function reset() {
+    state.q = '';
+    state.sort = 'stars-desc';
+    state.time = 'all';
+    state.minStars = 0;
+    state.langs.clear();
+    (document.getElementById('filter-search') as HTMLInputElement).value = '';
+    (document.getElementById('filter-sort') as HTMLSelectElement).value = 'stars-desc';
+    document.querySelectorAll<HTMLButtonElement>('.lang-chip').forEach((b) => {
+      b.style.backgroundColor = '';
+      b.style.color = '';
+      b.style.borderColor = '';
+    });
+    activePillButtons();
+    apply();
+  }
+  document.getElementById('filter-reset')?.addEventListener('click', reset);
+  document.getElementById('clear-filters')?.addEventListener('click', reset);
+
+  activePillButtons();
+  apply();
+</script>

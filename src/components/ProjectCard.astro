@@ -5,45 +5,53 @@ interface Props {
     owner: string;
     description: string;
     url: string;
-    stars: number | null;
+    stars: number;
+    forks?: number;
     language: string | null;
+    topics?: string[];
     tags: string[];
-    updatedAt: string | null;
-    status: 'ok' | 'not-found';
+    createdAt: string;
+    updatedAt: string;
+    pushedAt?: string | null;
   };
   compact?: boolean;
 }
 const { p, compact = false } = Astro.props;
-const isOk = p.status !== 'not-found' && p.stars != null;
-const starLabel = p.stars != null ? p.stars.toLocaleString() : 'N/A';
+const ageDays = Math.floor((Date.now() - new Date(p.createdAt).getTime()) / (24 * 3600 * 1000));
+const recentLabel = ageDays <= 30 ? '🆕 本月'
+                  : ageDays <= 90 ? '本季度'
+                  : ageDays <= 365 ? `${Math.floor(ageDays / 30)} 月前`
+                  : `${Math.floor(ageDays / 365)} 年前`;
 ---
-<a
-  href={p.url}
-  target="_blank"
-  rel="noopener"
-  class:list={['flex flex-col gap-2 rounded-xl border p-5 transition', isOk ? 'opacity-100' : 'opacity-60']}
-  style="background-color: var(--color-card); border-color: var(--color-border);"
-  data-status={p.status}
+<article
+  class="card project-card flex flex-col gap-2"
+  data-name={p.name.toLowerCase()}
+  data-owner={p.owner.toLowerCase()}
+  data-desc={(p.description || '').toLowerCase()}
+  data-language={p.language ?? 'unknown'}
+  data-stars={p.stars}
+  data-forks={p.forks ?? 0}
+  data-created={p.createdAt}
+  data-updated={p.updatedAt}
+  data-tags={(p.tags ?? []).join(',')}
 >
   <div class="flex items-start justify-between gap-3">
     <div class="min-w-0 flex-1">
-      <h3 class:list={[compact ? 'text-base' : 'text-lg', 'font-semibold']}>{p.name}</h3>
-      <p class="text-xs text-ink-500">@{p.owner}</p>
+      <h3 class:list={[compact ? 'text-base' : 'text-lg', 'font-semibold truncate']}>
+        <a href={p.url} target="_blank" rel="noopener" class="hover:underline">{p.name}</a>
+      </h3>
+      <p class="text-xs text-ink-500 truncate">@{p.owner}</p>
     </div>
     <div class="flex flex-shrink-0 items-center gap-2">
-      {isOk
-        ? <span class="badge-amber" title="GitHub stars">⭐ {starLabel}</span>
-        : <span class="badge-ink" title="GitHub API 暂未找到">N/A</span>}
+      <span class="badge-amber" title="GitHub stars">⭐ {p.stars.toLocaleString()}</span>
       {p.language && <span class="badge-ink">{p.language}</span>}
     </div>
   </div>
-  <p class="text-sm text-ink-600 dark:text-ink-400 line-clamp-3">{p.description || '暂无描述'}</p>
-  <div class="mt-auto flex flex-wrap items-center gap-1 pt-2">
-    {(p.tags ?? []).slice(0, 4).map((t: string) => <span class="badge-ink">{t}</span>)}
-    {p.updatedAt && (
-      <span class="ml-auto text-xs text-ink-400" title={`GitHub 最后更新时间: ${p.updatedAt}`}>
-        上游更新于 {p.updatedAt}
-      </span>
-    )}
+  <p class="text-sm text-ink-600 dark:text-ink-400 line-clamp-2">{p.description || '暂无描述'}</p>
+  <div class="mt-auto flex flex-wrap items-center gap-1 pt-2 text-xs">
+    {(p.tags ?? []).slice(0, 3).map((t) => <span class="badge-ink">{t}</span>)}
+    <span class="ml-auto text-ink-400" title={`创建于 ${p.createdAt} · 最后提交 ${p.pushedAt ?? p.updatedAt}`}>
+      {recentLabel}
+    </span>
   </div>
-</a>
+</article>
