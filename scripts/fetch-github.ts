@@ -1,5 +1,6 @@
 /**
- * Fetch / refresh awesome-typesafe project list with current star counts.
+ * Fetch awesome-typesafe project list from GitHub Search API.
+ * Pulls the top Jev-related repos by star count, then filters to a curated whitelist.
  */
 import { writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
@@ -16,50 +17,90 @@ interface Project {
   stars: number;
   language: string | null;
   tags: string[];
+  updatedAt: string;
 }
 
-// Seed list — update as new projects get added to the awesome-typesafe repo
-const PROJECTS: Omit<Project, 'stars' | 'language'>[] = [
-  { name: 'typesafe-sdk (Python)', owner: 'typesafe-ai', description: '官方 Python SDK,支持异步/同步客户端、retry policies、typed questions/responses。', url: 'https://github.com/typesafe-ai/typesafe-sdk-python', tags: ['SDK', '官方'] },
-  { name: 'typesafe-sdk (JavaScript)', owner: 'typesafe-ai', description: '官方 JavaScript/TypeScript SDK,完整 TypeScript 类型。', url: 'https://github.com/typesafe-ai/typesafe-sdk-js', tags: ['SDK', '官方'] },
-  { name: 'TypeSafe.AI.Sdk (.NET)', owner: 'hardkoded', description: '.NET 社区 SDK:dotnet add package TypeSafe.AI.Sdk', url: 'https://www.nuget.org/packages/TypeSafe.AI.Sdk', tags: ['SDK', '社区', '.NET'] },
-  { name: 'awesome-typesafe', owner: 'AbdelStark', description: '社区维护的项目 / 实验 / 工具列表。提交你 cool 的 Jev 项目。', url: 'https://github.com/typesafe-ai/awesome', tags: ['列表', '社区'] },
-  { name: 'skills (Agent skill)', owner: 'typesafe-ai', description: 'Drop-in skill for Claude Code / Codex,让 coding agent 直接用 Jev。', url: 'https://github.com/typesafe-ai/skills', tags: ['Agent', 'Claude Code', '官方'] },
-  { name: 'Browser Use · Jev Ultrafast', owner: 'browser-use', description: '把网页拆成编号元素清单,让 Jev 选'做什么、对哪个'。机票搜索从 9.5 分钟缩短到 < 1 分钟。', url: 'https://github.com/browser-use/jev-ultrafast', tags: ['Agent', 'Browser Use'] },
-  { name: 'pi-coding-agent bash guard', owner: 'gowthamgts', description: '用 Jev 给 pi coding agent 做 bash 命令安全检查。', url: 'https://github.com/gowthamgts/pi-jev-bash-guard', tags: ['Agent', '安全', 'guardrail'] },
-  { name: 'lgtm', owner: 'jennmueng', description: '用 Jev 检查测试是否'无用'(没断言、没边界、没失败路径)。', url: 'https://github.com/jennmueng/lgtm', tags: ['DevTools', '测试'] },
-  { name: 'cooksafe', owner: 'typesafe-ai', description: 'Cookbook 配套工具库:Playground 链接生成、缓存读取、可重现 notebook。', url: 'https://github.com/typesafe-ai/cooksafe', tags: ['官方', '工具'] },
-  { name: 'Jev Doom Bot', owner: 'typesafe-ai', description: '官方 Doom bot demo,用 Jev 每秒 10 次决策驱动 NPC。', url: 'https://github.com/typesafe-ai/jev-doom-bot', tags: ['官方', 'Demo', '实时'] },
-  { name: 'Jev Wikiracing', owner: 'typesafe-ai', description: 'Wikipedia 链接跳转游戏 demo,展示高 cardinality 决策。', url: 'https://github.com/typesafe-ai/jev-wikiracing', tags: ['官方', 'Demo'] },
-];
+// Curated whitelist — only include repos we want to feature on the site.
+// Add a repo here to feature it.
+const FEATURED = new Set([
+  'typesafe-ai/typesafe-sdk-python',
+  'typesafe-ai/typesafe-sdk-js',
+  'typesafe-ai/skills',
+  'Anil-matcha/awesome-jev-by-typesafe',
+  'yibie/awesome-jev',
+  'AbdelStark/awesome-typesafe',
+  'cobanov/awesome-jev',
+  'v-modal/awesome-jev-tools',
+  'jkudish/jev-browser',
+  'jkudish/jev-mcp',
+  'tamaratran/jev-pruner',
+  'y0usaf/pi-jev',
+  'realZachi/pg-jev',
+  'fhshaik/typesafe-mario',
+  'thruwire/foreman',
+  'dbreunig/building-with-jev-skill',
+  'itsmostafa/typesafe-mcp',
+  'fatwang2/awesome-jev',
+]);
 
-async function fetchStars(repo: string): Promise<{ stars: number; language: string | null }> {
-  try {
-    const r = await fetch(`https://api.github.com/repos/${repo}`, {
-      headers: { 'Accept': 'application/vnd.github+json', 'User-Agent': 'jev-hub-fetcher' },
-    });
-    if (!r.ok) return { stars: 0, language: null };
-    const data = await r.json() as any;
-    return { stars: data.stargazers_count ?? 0, language: data.language ?? null };
-  } catch {
-    return { stars: 0, language: null };
-  }
+function classify(fullName: string, desc: string): string[] {
+  const t = (fullName + ' ' + desc).toLowerCase();
+  const tags: string[] = [];
+  if (t.includes('awesome') || t.includes('curated')) tags.push('awesome-list');
+  if (t.includes('sdk') || t.includes('client') || t.includes('wrapper')) tags.push('SDK');
+  if (t.includes('mcp')) tags.push('MCP');
+  if (t.includes('agent')) tags.push('Agent');
+  if (t.includes('browser')) tags.push('Browser');
+  if (t.includes('claude code') || /\bpi\b/.test(t)) tags.push('Claude Code');
+  if (t.includes('guardrail') || t.includes('prune') || t.includes('warden')) tags.push('guardrail');
+  if (t.includes('postgres') || t.includes('sql') || t.includes('database')) tags.push('Database');
+  if (t.includes('mario') || t.includes('doom') || t.includes('game')) tags.push('Games');
+  if (t.includes('rerank') || t.includes('search') || t.includes('retrieval')) tags.push('Search');
+  if (t.includes('discord') || t.includes('bot')) tags.push('Bot');
+  if (tags.length === 0) tags.push('Tool');
+  return tags;
 }
 
 async function main() {
-  const results: Project[] = [];
-  for (const p of PROJECTS) {
-    const urlPath = new URL(p.url);
-    const isGithub = urlPath.hostname === 'github.com' || urlPath.hostname === 'www.github.com';
-    const isNuget = urlPath.hostname === 'www.nuget.org';
-    if (!isGithub && !isNuget) continue;
-    const repo = isGithub ? urlPath.pathname.replace(/^\//, '').replace(/\/$/, '') : null;
-    const meta = repo ? await fetchStars(repo) : { stars: 0, language: null };
-    results.push({ ...p, ...meta });
-    console.log(`[fetch-github] ${p.name}: ${meta.stars} ⭐`);
+  // Query GitHub Search API for top Jev-related repos
+  const url = 'https://api.github.com/search/repositories?q=typesafe+jev&per_page=100&sort=stars';
+  const headers: Record<string, string> = {
+    'Accept': 'application/vnd.github+json',
+    'User-Agent': 'jev-hub-fetcher',
+  };
+  if (process.env.GITHUB_TOKEN) {
+    headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
   }
-  await writeFile(OUT, JSON.stringify(results, null, 2));
-  console.log(`[fetch-github] saved ${results.length} projects`);
+
+  const r = await fetch(url, { headers });
+  if (!r.ok) {
+    throw new Error(`GitHub API ${r.status}: ${await r.text()}`);
+  }
+  const data = await r.json() as any;
+
+  const projects: Project[] = [];
+  for (const repo of data.items ?? []) {
+    const fullName: string = repo.full_name;
+    if (!FEATURED.has(fullName)) continue;
+    projects.push({
+      name: fullName.split('/')[1],
+      owner: fullName.split('/')[0],
+      description: (repo.description ?? '').slice(0, 200),
+      url: repo.html_url,
+      stars: repo.stargazers_count ?? 0,
+      language: repo.language ?? null,
+      tags: classify(fullName, repo.description ?? ''),
+      updatedAt: (repo.updated_at ?? '').slice(0, 10),
+    });
+  }
+
+  projects.sort((a, b) => b.stars - a.stars);
+
+  await writeFile(OUT, JSON.stringify(projects, null, 2) + '\n');
+  console.log(`[fetch-github] saved ${projects.length} featured projects (out of ${data.total_count} total matching)`);
+  for (const p of projects.slice(0, 5)) {
+    console.log(`  ${String(p.stars).padStart(5)}★  ${p.owner}/${p.name}`);
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

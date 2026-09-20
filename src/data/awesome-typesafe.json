@@ -1,110 +1,185 @@
 [
   {
-    "name": "typesafe-sdk (Python)",
-    "owner": "typesafe-ai",
-    "description": "官方 Python SDK,支持异步/同步客户端、retry policies、typed questions/responses。",
-    "url": "https://github.com/typesafe-ai/typesafe-sdk-python",
-    "stars": 234,
+    "name": "awesome-jev-by-typesafe",
+    "owner": "Anil-matcha",
+    "description": "Evidence-backed use cases, patterns, prompts, and starter code for TypeSafe Jev — a System One model for fast, typed, confidence-aware decisions in software.",
+    "url": "https://github.com/Anil-matcha/awesome-jev-by-typesafe",
+    "stars": 673,
     "language": "Python",
-    "tags": ["SDK", "官方"]
+    "tags": [
+      "awesome-list"
+    ],
+    "updatedAt": "2026-09-20"
   },
   {
-    "name": "typesafe-sdk (JavaScript)",
-    "owner": "typesafe-ai",
-    "description": "官方 JavaScript/TypeScript SDK,完整 TypeScript 类型。",
-    "url": "https://github.com/typesafe-ai/typesafe-sdk-js",
-    "stars": 187,
-    "language": "TypeScript",
-    "tags": ["SDK", "官方"]
+    "name": "awesome-jev",
+    "owner": "yibie",
+    "description": "A curated list of public projects, integrations, and discussions built on Jev — TypeSafe AI's System One model for typed decisions.",
+    "url": "https://github.com/yibie/awesome-jev",
+    "stars": 510,
+    "language": "Python",
+    "tags": [
+      "awesome-list"
+    ],
+    "updatedAt": "2026-09-20"
   },
   {
-    "name": "TypeSafe.AI.Sdk (.NET)",
-    "owner": "hardkoded",
-    "description": ".NET 社区 SDK:dotnet add package TypeSafe.AI.Sdk",
-    "url": "https://www.nuget.org/packages/TypeSafe.AI.Sdk",
-    "stars": 12,
-    "language": "C#",
-    "tags": ["SDK", "社区", ".NET"]
+    "name": "awesome-jev-tools",
+    "owner": "v-modal",
+    "description": "A curated list of tools  built for Jev — TypeSafe AI's System One model for typed decisions.",
+    "url": "https://github.com/v-modal/awesome-jev-tools",
+    "stars": 477,
+    "language": null,
+    "tags": [
+      "awesome-list"
+    ],
+    "updatedAt": "2026-09-20"
+  },
+  {
+    "name": "foreman",
+    "owner": "thruwire",
+    "description": "Software factory foreman based on TypeSafe's Jev model",
+    "url": "https://github.com/thruwire/foreman",
+    "stars": 419,
+    "language": "Python",
+    "tags": [
+      "Tool"
+    ],
+    "updatedAt": "2026-09-20"
   },
   {
     "name": "awesome-typesafe",
     "owner": "AbdelStark",
-    "description": "社区维护的项目 / 实验 / 工具列表。提交你 cool 的 Jev 项目。",
-    "url": "https://github.com/typesafe-ai/awesome",
-    "stars": 342,
-    "language": "Markdown",
-    "tags": ["列表", "社区"]
+    "description": "A curated list of official resources and community projects for TypeSafe, System One models, and Jev.",
+    "url": "https://github.com/AbdelStark/awesome-typesafe",
+    "stars": 374,
+    "language": "CSS",
+    "tags": [
+      "awesome-list"
+    ],
+    "updatedAt": "2026-09-20"
   },
   {
-    "name": "skills (Agent skill)",
-    "owner": "typesafe-ai",
-    "description": "Drop-in skill for Claude Code / Codex,让 coding agent 直接用 Jev。",
-    "url": "https://github.com/typesafe-ai/skills",
-    "stars": 421,
-    "language": "Markdown",
-    "tags": ["Agent", "Claude Code", "官方"]
-  },
-  {
-    "name": "Browser Use · Jev Ultrafast",
-    "owner": "browser-use",
-    "description": "把网页拆成编号元素清单,让 Jev 选'做什么、对哪个'。机票搜索从 9.5 分钟缩短到 < 1 分钟。",
-    "url": "https://github.com/browser-use/jev-ultrafast",
-    "stars": 856,
+    "name": "typesafe-mario",
+    "owner": "fhshaik",
+    "description": "A TypeSafe/Jev agent that plays Super Mario Bros. from structured emulator state.",
+    "url": "https://github.com/fhshaik/typesafe-mario",
+    "stars": 294,
     "language": "Python",
-    "tags": ["Agent", "Browser Use"]
+    "tags": [
+      "Agent",
+      "Games"
+    ],
+    "updatedAt": "2026-09-20"
   },
   {
-    "name": "pi-coding-agent bash guard",
-    "owner": "gowthamgts",
-    "description": "用 Jev 给 pi coding agent 做 bash 命令安全检查。",
-    "url": "https://github.com/gowthamgts/pi-jev-bash-guard",
-    "stars": 18,
-    "language": "Python",
-    "tags": ["Agent", "安全", "guardrail"]
+    "name": "awesome-jev",
+    "owner": "cobanov",
+    "description": "A curated, source-backed list of projects built with Jev, TypeSafe AI's System One model for typed decisions.",
+    "url": "https://github.com/cobanov/awesome-jev",
+    "stars": 244,
+    "language": null,
+    "tags": [
+      "awesome-list"
+    ],
+    "updatedAt": "2026-09-20"
   },
   {
-    "name": "lgtm",
-    "owner": "jennmueng",
-    "description": "用 Jev 检查测试是否'无用'(没断言、没边界、没失败路径)。",
-    "url": "https://github.com/jennmueng/lgtm",
-    "stars": 24,
+    "name": "pg-jev",
+    "owner": "realZachi",
+    "description": "Ask your Postgres tables questions in plain language. A PostgreSQL extension powered by TypeSafe's Jev.",
+    "url": "https://github.com/realZachi/pg-jev",
+    "stars": 233,
+    "language": "Shell",
+    "tags": [
+      "Database"
+    ],
+    "updatedAt": "2026-09-20"
+  },
+  {
+    "name": "awesome-jev",
+    "owner": "fatwang2",
+    "description": "A source-backed Jev project directory with a reusable Jev-only GitHub review workflow.",
+    "url": "https://github.com/fatwang2/awesome-jev",
+    "stars": 175,
+    "language": "JavaScript",
+    "tags": [
+      "awesome-list"
+    ],
+    "updatedAt": "2026-09-20"
+  },
+  {
+    "name": "jev-browser",
+    "owner": "jkudish",
+    "description": "Browser use using Typesafe's Jev model",
+    "url": "https://github.com/jkudish/jev-browser",
+    "stars": 171,
     "language": "TypeScript",
-    "tags": ["DevTools", "测试"]
+    "tags": [
+      "Browser"
+    ],
+    "updatedAt": "2026-09-20"
   },
   {
-    "name": "cooksafe",
-    "owner": "typesafe-ai",
-    "description": "Cookbook 配套工具库:Playground 链接生成、缓存读取、可重现 notebook。",
-    "url": "https://github.com/typesafe-ai/cooksafe",
-    "stars": 76,
-    "language": "Python",
-    "tags": ["官方", "工具"]
-  },
-  {
-    "name": "Jev Doom Bot",
-    "owner": "typesafe-ai",
-    "description": "官方 Doom bot demo,用 Jev 每秒 10 次决策驱动 NPC。",
-    "url": "https://github.com/typesafe-ai/jev-doom-bot",
-    "stars": 1240,
-    "language": "Python",
-    "tags": ["官方", "Demo", "实时"]
-  },
-  {
-    "name": "Jev Wikiracing",
-    "owner": "typesafe-ai",
-    "description": "Wikipedia 链接跳转游戏 demo,展示高 cardinality 决策。",
-    "url": "https://github.com/typesafe-ai/jev-wikiracing",
-    "stars": 387,
-    "language": "Python",
-    "tags": ["官方", "Demo"]
-  },
-  {
-    "name": "Jev Discord Bot",
-    "owner": "community",
-    "description": "用 Jev 做 Discord 消息审核、意图识别、自动回复模板。",
-    "url": "https://github.com/community/jev-discord-bot",
-    "stars": 56,
+    "name": "jev-mcp",
+    "owner": "jkudish",
+    "description": "Fast, cheap, typed judgments from TypeSafe's Jev model, as MCP tools.",
+    "url": "https://github.com/jkudish/jev-mcp",
+    "stars": 143,
     "language": "TypeScript",
-    "tags": ["Discord", "Bot"]
+    "tags": [
+      "Agent"
+    ],
+    "updatedAt": "2026-09-20"
+  },
+  {
+    "name": "typesafe-mcp",
+    "owner": "itsmostafa",
+    "description": "mcp connector to give your AI agent direct access to typesafe ai's jev model",
+    "url": "https://github.com/itsmostafa/typesafe-mcp",
+    "stars": 128,
+    "language": "Go",
+    "tags": [
+      "Agent"
+    ],
+    "updatedAt": "2026-09-20"
+  },
+  {
+    "name": "building-with-jev-skill",
+    "owner": "dbreunig",
+    "description": "A skill for writing and improving programs that call Jev, TypeSafe's System One model",
+    "url": "https://github.com/dbreunig/building-with-jev-skill",
+    "stars": 123,
+    "language": null,
+    "tags": [
+      "Tool"
+    ],
+    "updatedAt": "2026-09-20"
+  },
+  {
+    "name": "jev-pruner",
+    "owner": "tamaratran",
+    "description": "Claude Code plugin: trim long Bash output with TypeSafe Jev before the model sees it",
+    "url": "https://github.com/tamaratran/jev-pruner",
+    "stars": 122,
+    "language": "TypeScript",
+    "tags": [
+      "Claude Code",
+      "guardrail"
+    ],
+    "updatedAt": "2026-09-20"
+  },
+  {
+    "name": "pi-jev",
+    "owner": "y0usaf",
+    "description": "TypeSafe Jev as a decision layer for the Pi coding agent: a measured tool-call gate plus jev_ask for typed, calibrated answers",
+    "url": "https://github.com/y0usaf/pi-jev",
+    "stars": 107,
+    "language": "TypeScript",
+    "tags": [
+      "Agent",
+      "Claude Code"
+    ],
+    "updatedAt": "2026-09-20"
   }
 ]

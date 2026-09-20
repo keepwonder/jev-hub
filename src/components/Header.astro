@@ -1,71 +1,152 @@
 ---
-const navItems = [
-  { href: '/', label: '首页' },
-  { href: '/discussions', label: '讨论墙' },
-  { href: '/tutorials', label: '教程' },
-  { href: '/cookbooks', label: 'Cookbook' },
-  { href: '/docs', label: '官方文档' },
-  { href: '/articles', label: '文章归档' },
-  { href: '/community', label: '社区项目' },
-  { href: '/tools/cheatsheet', label: '速查' },
-  { href: '/tools/confidence-calculator', label: '工具' },
-  { href: '/compare', label: '对比' },
-  { href: '/glossary', label: '术语' },
-  { href: '/changelog', label: '更新' },
-  { href: '/about', label: '关于' },
+const navGroups = [
+  {
+    label: '首页',
+    href: '/',
+    single: true,
+  },
+  {
+    label: '讨论',
+    href: '/discussions',
+    single: true,
+  },
+  {
+    label: '学习',
+    items: [
+      { href: '/tutorials', label: '入门教程', desc: '9 篇从入门到实战' },
+      { href: '/cookbooks', label: 'Cookbook', desc: '20 个实战案例' },
+      { href: '/faqs', label: 'FAQ', desc: '常见问题' },
+    ],
+  },
+  {
+    label: '文档',
+    items: [
+      { href: '/docs', label: '官方文档', desc: '同步 docs.typesafe.ai' },
+      { href: '/articles', label: '文章归档', desc: '第三方深度文章' },
+      { href: '/glossary', label: '术语表', desc: '速查' },
+      { href: '/compare', label: '横向对比', desc: 'vs GPT / Claude / DeepSeek' },
+    ],
+  },
+  {
+    label: '工具',
+    items: [
+      { href: '/tools/cheatsheet', label: 'Cheatsheet', desc: 'Choice/Score/Noul 速查' },
+      { href: '/tools/confidence-calculator', label: '阈值计算器', desc: '自动算 confidence 阈值' },
+      { href: '/changelog', label: '更新日志', desc: 'Jev 版本 + SDK 发版' },
+      { href: '/community', label: '社区项目', desc: 'awesome-typesafe' },
+    ],
+  },
 ];
+
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+function isActive(href: string): boolean {
+  return href === '/' ? path === '/' : path.startsWith(href);
+}
 ---
 <header class="sticky top-0 z-40 border-b backdrop-blur" style="background-color: color-mix(in oklab, var(--color-bg) 80%, transparent); border-color: var(--color-border);">
   <div class="container-wide flex items-center justify-between gap-4 py-3">
-    <a href="/" class="flex items-center gap-2 font-semibold">
+    <a href="/" class="flex items-center gap-2 font-semibold flex-shrink-0">
       <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-signal-600 font-mono text-sm font-bold text-white">J</span>
       <span class="hidden sm:inline">Jev Hub</span>
     </a>
-    <nav class="hidden flex-1 items-center gap-1 overflow-x-auto px-3 lg:flex" aria-label="主导航">
-      {navItems.map(({ href, label }) => {
-        const active = href === '/' ? path === '/' : path.startsWith(href);
-        return (
+
+    <nav class="hidden flex-1 items-center gap-0.5 lg:flex" aria-label="主导航">
+      {navGroups.map((group) => (
+        group.single ? (
           <a
-            href={href}
+            href={group.href}
             class:list={[
-              'rounded-md px-2.5 py-1.5 text-sm transition whitespace-nowrap',
-              active
+              'rounded-md px-3 py-1.5 text-sm transition whitespace-nowrap',
+              isActive(group.href!)
                 ? 'bg-signal-100 font-medium text-signal-800 dark:bg-signal-900/40 dark:text-signal-200'
                 : 'text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800',
             ]}
           >
-            {label}
+            {group.label}
           </a>
-        );
-      })}
+        ) : (
+          <div class="nav-dropdown relative">
+            <button
+              class:list={[
+                'flex items-center gap-1 rounded-md px-3 py-1.5 text-sm transition whitespace-nowrap',
+                'text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800',
+                group.items!.some((it) => isActive(it.href)) ? 'bg-ink-100 dark:bg-ink-800' : '',
+              ]}
+              aria-expanded="false"
+            >
+              {group.label}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-60"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="nav-dropdown-panel absolute left-0 top-full z-50 mt-1 hidden w-72 rounded-lg border p-2 shadow-xl" style="background-color: var(--color-card); border-color: var(--color-border);">
+              {group.items!.map((item) => (
+                <a
+                  href={item.href}
+                  class:list={[
+                    'block rounded-md px-3 py-2 transition',
+                    isActive(item.href)
+                      ? 'bg-signal-50 dark:bg-signal-900/30'
+                      : 'hover:bg-ink-100 dark:hover:bg-ink-800',
+                  ]}
+                >
+                  <div class:list={['text-sm font-medium', isActive(item.href) ? 'text-signal-700 dark:text-signal-300' : 'text-ink-800 dark:text-ink-200']}>
+                    {item.label}
+                  </div>
+                  <div class="mt-0.5 text-xs text-ink-500 dark:text-ink-400">{item.desc}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      ))}
     </nav>
-    <div class="flex items-center gap-2">
+
+    <div class="flex items-center gap-1 flex-shrink-0">
       <button id="cmd-k-trigger" class="btn-ghost hidden md:inline-flex" aria-label="搜索">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <span class="text-sm">搜索</span>
-        <kbd class="ml-2 rounded border border-ink-300 px-1.5 text-xs dark:border-ink-600">⌘K</kbd>
+        <kbd class="ml-1 rounded border border-ink-300 px-1.5 text-xs dark:border-ink-600">⌘K</kbd>
       </button>
+      <a href="/about" class="btn-ghost hidden md:inline-flex" aria-label="关于" title="关于本站">关于</a>
+      <a href="/rss.xml" class="btn-ghost" aria-label="RSS" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+      </a>
       <button id="theme-toggle" class="btn-ghost" aria-label="切换主题">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark:hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:inline-block"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       </button>
-      <a href="/rss.xml" class="btn-ghost hidden md:inline-flex" aria-label="RSS" title="RSS 订阅">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
-      </a>
       <button id="mobile-menu" class="btn-ghost lg:hidden" aria-label="菜单">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
+
+  <!-- Mobile nav -->
   <div id="mobile-nav" class="container-wide hidden border-t pb-4 pt-2 lg:hidden" style="border-color: var(--color-border);">
-    <div class="grid grid-cols-2 gap-1 sm:grid-cols-3">
-      {navItems.map(({ href, label }) => (
-        <a href={href} class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">{label}</a>
-      ))}
+    <div class="grid grid-cols-2 gap-1">
+      <a href="/" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">首页</a>
+      <a href="/discussions" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">讨论墙</a>
+      <a href="/tutorials" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">入门教程</a>
+      <a href="/cookbooks" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">Cookbook</a>
+      <a href="/docs" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">官方文档</a>
+      <a href="/articles" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">文章归档</a>
+      <a href="/community" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">社区项目</a>
+      <a href="/tools/cheatsheet" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">速查表</a>
+      <a href="/tools/confidence-calculator" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">阈值计算器</a>
+      <a href="/compare" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">横向对比</a>
+      <a href="/glossary" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">术语表</a>
+      <a href="/faqs" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">FAQ</a>
+      <a href="/changelog" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">更新日志</a>
+      <a href="/about" class="rounded-md px-2 py-1.5 text-sm text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800">关于</a>
     </div>
   </div>
 </header>
+
+<style>
+  .nav-dropdown:hover > .nav-dropdown-panel,
+  .nav-dropdown:focus-within > .nav-dropdown-panel {
+    display: block;
+  }
+</style>
 
 <script is:inline>
   // theme toggle
@@ -86,5 +167,15 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
   });
   document.getElementById('cmd-k-trigger')?.addEventListener('click', () => {
     window.dispatchEvent(new CustomEvent('open-search'));
+  });
+  // Click-outside to close dropdowns
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (!target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown-panel').forEach((p) => {
+        if (p instanceof HTMLElement) p.style.display = '';
+      });
+    }
   });
 </script>
