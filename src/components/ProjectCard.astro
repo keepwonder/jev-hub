@@ -17,11 +17,16 @@ interface Props {
   compact?: boolean;
 }
 const { p, compact = false } = Astro.props;
-const ageDays = Math.floor((Date.now() - new Date(p.createdAt).getTime()) / (24 * 3600 * 1000));
-const recentLabel = ageDays <= 30 ? '🆕 本月'
-                  : ageDays <= 90 ? '本季度'
-                  : ageDays <= 365 ? `${Math.floor(ageDays / 30)} 月前`
-                  : `${Math.floor(ageDays / 365)} 年前`;
+// Show time since last commit (pushedAt), not creation date.
+// An old repo that's actively maintained is still relevant.
+const lastActivity = p.pushedAt ?? p.updatedAt ?? p.createdAt;
+const ageDays = Math.floor((Date.now() - new Date(lastActivity).getTime()) / (24 * 3600 * 1000));
+const recentLabel = ageDays <= 7 ? '🆕 本周活跃'
+                  : ageDays <= 30 ? '🆕 本月活跃'
+                  : ageDays <= 90 ? '本季度活跃'
+                  : ageDays <= 180 ? `${Math.floor(ageDays / 30)} 月前活跃`
+                  : ageDays <= 365 ? `${Math.floor(ageDays / 30)} 月前活跃`
+                  : `${Math.floor(ageDays / 365)} 年前活跃`;
 ---
 <article
   class="card project-card flex flex-col gap-2"
