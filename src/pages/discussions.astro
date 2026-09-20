@@ -1,0 +1,79 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TweetCard from '@/components/TweetCard.astro';
+import Search from '@/components/Search.astro';
+
+import officialTweets from '@/data/official-tweets.json';
+import founderTweets from '@/data/founder-tweets.json';
+import discussions from '@/data/recent-discussions.json';
+
+const all = [
+  ...(officialTweets as any[]).map((t) => ({ ...t, source: 'official' as const })),
+  ...(founderTweets as any[]).map((t) => ({ ...t, source: 'founder' as const })),
+  ...(discussions as any[]).map((t) => ({ ...t, source: (t.source ?? 'community') as 'community' | 'thirdparty' })),
+].sort((a, b) => +new Date(b.datetime) - +new Date(a.datetime));
+
+const sources = [
+  { id: 'all', label: '全部', count: all.length },
+  { id: 'official', label: '官方', count: (officialTweets as any[]).length },
+  { id: 'founder', label: '创始人', count: (founderTweets as any[]).length },
+  { id: 'community', label: '中文社区', count: all.filter((t) => t.source === 'community').length },
+  { id: 'thirdparty', label: '第三方', count: all.filter((t) => t.source === 'thirdparty').length },
+];
+---
+<BaseLayout title="讨论墙" description="X / Twitter 上关于 Jev 与 TypeSafe AI 的最新讨论聚合。">
+  <Search />
+
+  <section class="container-wide py-10">
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold">讨论墙</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">
+        官方账号、创始人 @CompleteSkeptic(Diogo Almeida)、以及社区 KOL 的最新推文聚合。每 6–12 小时自动抓取。
+      </p>
+    </header>
+
+    <!-- Source filters -->
+    <div class="mb-6 flex flex-wrap gap-2" id="source-filters">
+      {sources.map((s) => (
+        <button
+          data-source={s.id}
+          class="rounded-full border px-3 py-1 text-sm transition"
+          style="border-color: var(--color-border);"
+        >
+          {s.label} <span class="text-ink-400">({s.count})</span>
+        </button>
+      ))}
+    </div>
+
+    <!-- Tweet grid -->
+    <div id="tweet-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {all.map((t) => (
+        <div data-tweet-source={t.source}>
+          <TweetCard tweet={t} showSource={false} />
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-10 text-center text-xs text-ink-400">
+      抓不到想要的帖子?<a class="link" href="/about">通过 RSS / GitHub 提交</a>
+    </p>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('#source-filters button');
+    const cards = document.querySelectorAll<HTMLElement>('[data-tweet-source]');
+
+    function setActive(id: string) {
+      buttons.forEach((b) => {
+        const active = b.dataset.source === id;
+        b.style.backgroundColor = active ? 'var(--color-accent)' : '';
+        b.style.color = active ? 'white' : '';
+      });
+      cards.forEach((c) => {
+        c.style.display = id === 'all' || c.dataset.tweetSource === id ? '' : 'none';
+      });
+    }
+    buttons.forEach((b) => b.addEventListener('click', () => setActive(b.dataset.source!)));
+    setActive('all');
+  </script>
+</BaseLayout>

@@ -1,0 +1,47 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="mt-24 border-t py-10" style="border-color: var(--color-border);">
+  <div class="container-wide grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="flex items-center gap-2 font-semibold">
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-signal-600 font-mono text-sm font-bold text-white">J</span>
+        <span>Jev Hub</span>
+      </div>
+      <p class="mt-3 text-sm text-ink-500 dark:text-ink-400">
+        非官方聚合站,与 TypeSafe AI 无隶属关系。
+      </p>
+    </div>
+    <div>
+      <h3 class="mb-3 text-sm font-semibold">导航</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:underline" href="/tutorials">教程</a></li>
+        <li><a class="hover:underline" href="/cookbooks">Cookbook</a></li>
+        <li><a class="hover:underline" href="/docs">官方文档</a></li>
+        <li><a class="hover:underline" href="/discussions">讨论墙</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="mb-3 text-sm font-semibold">官方</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:underline" href="https://typesafe.ai" target="_blank" rel="noopener">typesafe.ai ↗</a></li>
+        <li><a class="hover:underline" href="https://docs.typesafe.ai" target="_blank" rel="noopener">docs.typesafe.ai ↗</a></li>
+        <li><a class="hover:underline" href="https://console.typesafe.ai" target="_blank" rel="noopener">Playground ↗</a></li>
+        <li><a class="hover:underline" href="https://evals.typesafe.ai" target="_blank" rel="noopener">Workflow Evals ↗</a></li>
+        <li><a class="hover:underline" href="https://discord.gg/typesafe" target="_blank" rel="noopener">Discord ↗</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="mb-3 text-sm font-semibold">订阅</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="hover:underline" href="/rss.xml">RSS</a></li>
+        <li><a class="hover:underline" href="https://x.com/typesafeai" target="_blank" rel="noopener">@typesafeai ↗</a></li>
+        <li><a class="hover:underline" href="https://x.com/CompleteSkeptic" target="_blank" rel="noopener">@CompleteSkeptic ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-wide mt-10 flex flex-col gap-2 border-t pt-6 text-xs text-ink-500 sm:flex-row sm:justify-between" style="border-color: var(--color-border);">
+    <div>© {year} Jev Hub · 内容遵循各源许可</div>
+    <div>本站不存储任何用户数据 · 仅在浏览器本地保存主题与收藏</div>
+  </div>
+</footer>

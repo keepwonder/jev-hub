@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import BookmarkButton from '@/components/BookmarkButton.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const cookbooks = await getCollection('cookbooks');
+  return cookbooks.map((cb) => ({ params: { slug: cb.slug }, props: { cookbook: cb } }));
+}
+
+interface Props { cookbook: CollectionEntry<'cookbooks'>; }
+const { cookbook } = Astro.props;
+const { Content } = await cookbook.render();
+---
+<BaseLayout title={cookbook.data.title} description={cookbook.data.description}>
+  <Search />
+  <article class="container-prose py-10">
+    <header class="mb-8 border-b pb-6" style="border-color: var(--color-border);">
+      <div class="mb-3 flex flex-wrap items-center gap-2 text-sm text-ink-500">
+        <a href="/cookbooks" class="hover:underline">← Cookbook 列表</a>
+        <span>·</span>
+        <span>难度:{cookbook.data.difficulty}</span>
+        <span>·</span>
+        <span>主要题型:{cookbook.data.primaryQuestion}</span>
+        <span class="ml-auto"><BookmarkButton id={`cookbook:${cookbook.slug}`} title={cookbook.data.title} kind="cookbook" /></span>
+      </div>
+      <h1 class="text-3xl font-bold">{cookbook.data.title}</h1>
+      <p class="mt-3 text-lg text-ink-600 dark:text-ink-300">{cookbook.data.description}</p>
+      <div class="mt-3 flex flex-wrap gap-1">
+        {cookbook.data.tags.map((tag) => <span class="badge-ink">{tag}</span>)}
+      </div>
+      <div class="mt-4 rounded-lg bg-ink-100 p-3 text-xs dark:bg-ink-800">
+        📄 原文:<a class="link" href={cookbook.data.source} target="_blank" rel="noopener">{cookbook.data.source}</a>
+        <span class="ml-2 text-ink-500">更新:{cookbook.data.sourceUpdated.toISOString().slice(0, 10)}</span>
+      </div>
+    </header>
+    <div class="prose-doc">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

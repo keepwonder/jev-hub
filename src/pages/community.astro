@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import awesomeProjects from '@/data/awesome-typesafe.json';
+---
+<BaseLayout title="社区项目" description="awesome-typesafe:Jev 相关的开源项目和工具索引。">
+  <Search />
+
+  <section class="container-wide py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">社区项目</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">
+        基于 <a class="link" href="https://github.com/typesafe-ai/awesome" target="_blank" rel="noopener">awesome-typesafe</a>(社区维护)的项目索引。
+        想收录你的项目?<a class="link" href="/about">联系我们</a>。
+      </p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {(awesomeProjects as any[]).map((p) => (
+        <a href={p.url} target="_blank" rel="noopener" class="card flex flex-col gap-2">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-semibold">{p.name}</h3>
+              <p class="text-xs text-ink-500">@{p.owner}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="badge-amber">⭐ {p.stars}</span>
+              <span class="badge-ink">{p.language ?? '—'}</span>
+            </div>
+          </div>
+          <p class="text-sm text-ink-600 dark:text-ink-400">{p.description}</p>
+          <div class="mt-auto flex flex-wrap gap-1 pt-2">
+            {(p.tags ?? []).map((t: string) => <span class="badge-ink">{t}</span>)}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,87 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CookbookCard from '@/components/CookbookCard.astro';
+import Search from '@/components/Search.astro';
+import { getCollection } from 'astro:content';
+
+const cookbooks = await getCollection('cookbooks');
+const allTags = [...new Set(cookbooks.flatMap((c) => c.data.tags))].sort();
+const difficulties = ['beginner', 'intermediate', 'advanced'] as const;
+---
+<BaseLayout title="Cookbook 实战" description="20 个 Jev 官方 Cookbook 实战案例索引。">
+  <Search />
+
+  <section class="container-wide py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">Cookbook 实战</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">
+        官方文档里收录的 20+ 个真实业务场景。点击查看完整代码、prompt、和评测数据。
+      </p>
+    </header>
+
+    <!-- Filters -->
+    <div class="mb-6 flex flex-wrap gap-3">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-sm text-ink-500">难度:</span>
+        <button data-filter="diff" data-value="all" class="rounded-full border px-3 py-1 text-sm" style="border-color: var(--color-border);">全部</button>
+        {difficulties.map((d) => (
+          <button data-filter="diff" data-value={d} class="rounded-full border px-3 py-1 text-sm" style="border-color: var(--color-border);">
+            {d === 'beginner' ? '入门' : d === 'intermediate' ? '进阶' : '高阶'}
+          </button>
+        ))}
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-sm text-ink-500">题型:</span>
+        <button data-filter="qtype" data-value="all" class="rounded-full border px-3 py-1 text-sm" style="border-color: var(--color-border);">全部</button>
+        {(['Choice','Score','Noul'] as const).map((q) => (
+          <button data-filter="qtype" data-value={q} class="rounded-full border px-3 py-1 text-sm" style="border-color: var(--color-border);">{q}</button>
+        ))}
+      </div>
+    </div>
+
+    <div id="cookbook-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {cookbooks.map((c) => (
+        <div data-diff={c.data.difficulty} data-qtype={c.data.primaryQuestion} data-tags={c.data.tags.join(',')}>
+          <CookbookCard cookbook={{
+            slug: c.slug,
+            title: c.data.title,
+            description: c.data.description,
+            url: `/cookbooks/${c.slug}`,
+            tags: c.data.tags,
+            difficulty: c.data.difficulty,
+          }} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <script>
+    function applyFilters() {
+      const diff = document.querySelector<HTMLButtonElement>('[data-filter="diff"].active')?.dataset.value ?? 'all';
+      const qtype = document.querySelector<HTMLButtonElement>('[data-filter="qtype"].active')?.dataset.value ?? 'all';
+      document.querySelectorAll<HTMLElement>('#cookbook-grid > div').forEach((el) => {
+        const d = el.dataset.diff;
+        const q = el.dataset.qtype;
+        const show = (diff === 'all' || d === diff) && (qtype === 'all' || q === qtype);
+        el.style.display = show ? '' : 'none';
+      });
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll(`[data-filter="${btn.dataset.filter}"]`).forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (btn.dataset.value === 'all') {
+          // make all others inactive in same group
+        }
+        // Visual feedback
+        document.querySelectorAll<HTMLButtonElement>(`[data-filter="${btn.dataset.filter}"]`).forEach((b) => {
+          const active = b === btn;
+          b.style.backgroundColor = active ? 'var(--color-accent)' : '';
+          b.style.color = active ? 'white' : '';
+        });
+        applyFilters();
+      });
+    });
+  </script>
+</BaseLayout>

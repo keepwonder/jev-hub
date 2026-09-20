@@ -1,0 +1,28 @@
+---
+interface Cookbook {
+  slug: string;
+  title: string;
+  description: string;
+  url: string;
+  tags?: string[];
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
+}
+
+interface Props { cookbook: Cookbook; }
+const { cookbook } = Astro.props;
+
+const diffLabel = {
+  beginner: { label: '入门', cls: 'badge-green' },
+  intermediate: { label: '进阶', cls: 'badge-amber' },
+  advanced: { label: '高阶', cls: 'badge-primary' },
+}[cookbook.difficulty ?? 'intermediate'];
+---
+<a href={`/cookbooks/${cookbook.slug}`} class="card flex h-full flex-col gap-3">
+  <div class="flex items-center justify-between gap-2">
+    <span class={diffLabel.cls}>{diffLabel.label}</span>
+    {cookbook.tags?.slice(0, 2).map((t) => <span class="badge-ink">{t}</span>)}
+  </div>
+  <h3 class="text-base font-semibold">{cookbook.title}</h3>
+  <p class="line-clamp-3 flex-1 text-sm text-ink-600 dark:text-ink-400">{cookbook.description}</p>
+  <div class="text-xs text-signal-600 dark:text-signal-400">查看详情 →</div>
+</a>

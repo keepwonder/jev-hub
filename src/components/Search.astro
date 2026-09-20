@@ -1,0 +1,33 @@
+---
+// Cmd+K modal search powered by astro-pagefind
+import PagefindSearch from 'astro-pagefind/components/Search.astro';
+---
+<div id="search-modal" class="fixed inset-0 z-50 hidden items-start justify-center bg-black/40 px-4 pt-[10vh] backdrop-blur-sm">
+  <div class="w-full max-w-2xl rounded-xl border shadow-2xl" style="background-color: var(--color-card); border-color: var(--color-border);">
+    <div class="border-b p-2" style="border-color: var(--color-border);">
+      <PagefindSearch className="pagefind-inline" />
+    </div>
+    <p class="px-4 py-2 text-xs text-ink-500">支持教程 / Cookbook / 文档 / 术语 / FAQ / 文章全文搜索</p>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('search-modal')!;
+
+  function open() {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    setTimeout(() => {
+      const input = modal.querySelector('input[type="search"], input[type="text"]') as HTMLInputElement | null;
+      input?.focus();
+    }, 100);
+  }
+  function close() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  window.addEventListener('open-search', open);
+  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+</script>

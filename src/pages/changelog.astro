@@ -1,0 +1,94 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import { getCollection } from 'astro:content';
+
+const versions = await getCollection('versions');
+versions.sort((a, b) => +new Date(b.data.releaseDate) - +new Date(a.data.releaseDate));
+
+// SDK versions (curated, manually updated)
+const sdkReleases = [
+  { name: 'typesafe-sdk (Python)', version: '0.5.7', date: '2026-09-18', notes: 'Async client, retry policies' },
+  { name: 'typesafe-sdk (JavaScript)', version: '0.4.2', date: '2026-09-17', notes: 'TypedQuestion/Response types' },
+  { name: 'TypeSafe.AI.Sdk (.NET)', version: '0.1.0-beta', date: '2026-09-20', notes: '首发 beta' },
+];
+---
+<BaseLayout title="更新日志" description="Jev 模型与 SDK 的版本历史。">
+  <Search />
+
+  <section class="container-wide py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">更新日志</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">Jev 模型版本 + SDK 发版记录。模型数据来自 [docs.typesafe.ai/model-jaggedness](https://docs.typesafe.ai/model-jaggedness)。</p>
+    </header>
+
+    <h2 class="mb-4 text-xl font-semibold">Jev 模型版本</h2>
+    <ol class="space-y-6">
+      {versions.map((v) => (
+        <li>
+          <article class="card">
+            <header class="mb-3 flex items-start justify-between">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="badge-primary font-mono">{v.data.version}</span>
+                  <time class="text-sm text-ink-500">{v.data.releaseDate.toISOString().slice(0, 10)}</time>
+                </div>
+                <h3 class="mt-2 text-xl font-semibold">{v.data.summary}</h3>
+              </div>
+            </header>
+            {v.data.highlights.length > 0 && (
+              <div class="mb-3">
+                <div class="mb-1 text-xs font-medium uppercase text-ink-500">Highlights</div>
+                <ul class="space-y-1 text-sm">
+                  {v.data.highlights.map((h) => (
+                    <li class="flex gap-2">
+                      <span class="text-calibrated-500">✓</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {v.data.knownIssues.length > 0 && (
+              <div>
+                <div class="mb-1 text-xs font-medium uppercase text-ink-500">Known issues</div>
+                <ul class="space-y-1 text-sm">
+                  {v.data.knownIssues.map((i) => (
+                    <li class="flex gap-2">
+                      <span class="text-caution-500">!</span>
+                      <span>{i}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </article>
+        </li>
+      ))}
+    </ol>
+
+    <h2 class="mb-4 mt-12 text-xl font-semibold">SDK 发版</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b" style="border-color: var(--color-border);">
+            <th class="px-3 py-2 text-left">包</th>
+            <th class="px-3 py-2 text-left">版本</th>
+            <th class="px-3 py-2 text-left">日期</th>
+            <th class="px-3 py-2 text-left">说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sdkReleases.map((s) => (
+            <tr class="border-b" style="border-color: var(--color-border);">
+              <td class="px-3 py-2 font-medium">{s.name}</td>
+              <td class="px-3 py-2 font-mono text-xs">{s.version}</td>
+              <td class="px-3 py-2 text-ink-500">{s.date}</td>
+              <td class="px-3 py-2 text-ink-600 dark:text-ink-400">{s.notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,163 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+
+const choicePython = `from typesafe_sdk import Choice
+
+Choice(
+    instructions="Which team handles this?",
+    options=["billing", "technical", "account", "shipping", "other"],
+)`;
+
+const choiceJson = `{
+  "choice": "billing",
+  "probabilities": { "billing": 0.92, "technical": 0.05, ... },
+  "confidence": 0.92
+}`;
+
+const scorePython = `from typesafe_sdk import Score
+
+Score(
+    instructions="How urgent?",
+    criteria=["not urgent", "slightly", "urgent", "very urgent"],
+)`;
+
+const scoreJson = `{
+  "score": 2.4,
+  "legend": { "0": "not urgent", "1": "slightly", "2": "urgent", "3": "very urgent" },
+  "probabilities": { "0": 0.05, "1": 0.10, "2": 0.55, "3": 0.30 },
+  "confidence": 0.55
+}`;
+
+const noulPython = `from typesafe_sdk import Noul
+
+Noul(
+    instructions="Does the customer request a refund?",
+    criteria={  # 可选
+        "true": "the customer explicitly asks for money back",
+        "false": "the customer does not request a refund",
+    },
+)`;
+
+const noulJson = `{
+  "noul": 0.95
+}`;
+
+const statePython = `state = "plain text"          # string
+
+state = {                     # object (推荐)
+    "message": "...",
+    "context": {...},
+}
+
+state = [                     # array
+    "msg 1", "msg 2", "msg 3",
+]`;
+
+const confidencePython = `HIGH = 0.85
+LOW  = 0.50
+
+if answer.confidence < LOW:
+    escalate_to_human()
+elif answer.confidence < HIGH:
+    ask_user_to_confirm()
+else:
+    act_automatically()`;
+---
+<BaseLayout title="Cheatsheet 速查" description="Choice / Score / Noul 的语法、用法、限制速查。">
+  <Search />
+
+  <section class="container-prose py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">Jev Cheatsheet</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">一屏搞懂 Choice / Score / Noul 的所有要点。</p>
+    </header>
+
+    <h2 id="choice">Choice — 单选题</h2>
+    <pre><code class="language-python">{choicePython}</code></pre>
+
+    <p><strong>返回</strong>:</p>
+    <pre><code class="language-json">{choiceJson}</code></pre>
+
+    <p><strong>要点</strong>:</p>
+    <ul>
+      <li>选项最多 <strong>255</strong> 个</li>
+      <li>每个选项的 key 必须是你想原样返回的字符串</li>
+      <li>无顺序关系(有序用 Score)</li>
+      <li>confidence = 最大概率值</li>
+    </ul>
+
+    <h2 id="score">Score — 评分题</h2>
+    <pre><code class="language-python">{scorePython}</code></pre>
+
+    <p><strong>返回</strong>:</p>
+    <pre><code class="language-json">{scoreJson}</code></pre>
+
+    <p><strong>要点</strong>:</p>
+    <ul>
+      <li>criteria <strong>2–10</strong> 级</li>
+      <li>有顺序关系(必须从低到高)</li>
+      <li>score 可落在级别之间(连续值)</li>
+      <li>别用 score 做精确插值(校准弱)</li>
+    </ul>
+
+    <h2 id="noul">Noul — 是非题</h2>
+    <pre><code class="language-python">{noulPython}</code></pre>
+
+    <p><strong>返回</strong>:</p>
+    <pre><code class="language-json">{noulJson}</code></pre>
+
+    <p><strong>要点</strong>:</p>
+    <ul>
+      <li>不返回 confidence(<code>noul</code> 本身就是答案)</li>
+      <li>0 = 100% 不是,1 = 100% 是</li>
+      <li><code>criteria</code> 不是必填,但强烈推荐(给模型明确语义)</li>
+    </ul>
+
+    <h2 id="state">State — 输入材料</h2>
+    <pre><code class="language-python">{statePython}</code></pre>
+
+    <ul>
+      <li>文本 / JSON 对象 / 数组均可</li>
+      <li>推荐用 object,字段语义清晰</li>
+      <li>当前只吃文本(图片/音频/视频不支持)</li>
+    </ul>
+
+    <h2 id="limits">硬限制速查</h2>
+    <table>
+      <thead><tr><th>限制</th><th>值</th></tr></thead>
+      <tbody>
+        <tr><td>单 request questions 数</td><td>无明确上限,实践 ≤ ~50</td></tr>
+        <tr><td>Choice options</td><td>≤ <strong>255</strong></td></tr>
+        <tr><td>Score criteria</td><td><strong>2–10</strong></td></tr>
+        <tr><td>总 context window</td><td>64K tokens</td></tr>
+        <tr><td>state + 最长 question</td><td>≤ ~32K tokens(~150K 字符)</td></tr>
+        <tr><td>延迟(端到端)</td><td>70–500ms</td></tr>
+        <tr><td>价格(输入)</td><td>$0.042 / MTok</td></tr>
+        <tr><td>价格(输出)</td><td>免费</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="confidence">Confidence 用法</h2>
+    <pre><code class="language-python">{confidencePython}</code></pre>
+
+    <h2 id="anti-patterns">反模式(不要做)</h2>
+    <ul>
+      <li>❌ 让 Jev 写文章 / 代码 / 解释</li>
+      <li>❌ 让 Jev 数数 / 做日期算术</li>
+      <li>❌ 让 Jev 处理图片 / 音频 / 视频</li>
+      <li>❌ 把无关内容塞进 state</li>
+      <li>❌ 用 score 在级别之间精确插值</li>
+      <li>❌ 让 Jev 自己"反问"或质疑前提</li>
+    </ul>
+
+    <h2 id="good-patterns">好模式</h2>
+    <ul>
+      <li>✅ 一个 question = 一个原子判断</li>
+      <li>✅ 一次 call 问多道题(并行)</li>
+      <li>✅ 候选选项在代码里枚举</li>
+      <li>✅ 算术在代码里算完,只把判断给 Jev</li>
+      <li>✅ 用 confidence 阈值 gate 高风险动作</li>
+    </ul>
+  </section>
+</BaseLayout>

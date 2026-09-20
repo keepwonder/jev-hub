@@ -1,0 +1,69 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  url?: string;
+  kind?: string;
+}
+const { id, title, url = '', kind = 'page' } = Astro.props;
+---
+<button
+  type="button"
+  data-bookmark
+  data-id={id}
+  data-title={title}
+  data-url={url}
+  data-kind={kind}
+  class="btn-ghost bookmark-btn"
+  aria-label="收藏"
+  title="收藏到本地"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bookmark-outline"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bookmark-filled hidden text-signal-500"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+  <span class="bookmark-label text-xs">收藏</span>
+</button>
+
+<script>
+  function readBookmarks(): Record<string, any> {
+    try { return JSON.parse(localStorage.getItem('jev:bookmarks') || '{}'); }
+    catch { return {}; }
+  }
+  function writeBookmarks(map: Record<string, any>) {
+    localStorage.setItem('jev:bookmarks', JSON.stringify(map));
+    window.dispatchEvent(new CustomEvent('bookmarks-updated'));
+  }
+
+  function paint(btn: HTMLButtonElement) {
+    const id = btn.dataset.id!;
+    const bookmarks = readBookmarks();
+    const on = !!bookmarks[id];
+    btn.classList.toggle('is-bookmarked', on);
+    btn.querySelector('.bookmark-outline')?.classList.toggle('hidden', on);
+    btn.querySelector('.bookmark-filled')?.classList.toggle('hidden', !on);
+    const lbl = btn.querySelector('.bookmark-label');
+    if (lbl) lbl.textContent = on ? '已收藏' : '收藏';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-bookmark]').forEach(paint);
+
+  document.addEventListener('click', (e) => {
+    const target = (e.target as HTMLElement).closest('[data-bookmark]') as HTMLButtonElement | null;
+    if (!target) return;
+    e.preventDefault();
+    const id = target.dataset.id!;
+    const map = readBookmarks();
+    if (map[id]) delete map[id];
+    else map[id] = {
+      title: target.dataset.title,
+      url: target.dataset.url || location.pathname,
+      kind: target.dataset.kind,
+      addedAt: new Date().toISOString(),
+    };
+    writeBookmarks(map);
+    paint(target);
+  });
+
+  window.addEventListener('bookmarks-updated', () => {
+    document.querySelectorAll<HTMLButtonElement>('[data-bookmark]').forEach(paint);
+  });
+</script>

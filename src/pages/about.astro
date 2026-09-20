@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+---
+<BaseLayout title="关于" description="关于 jev.kiang.website 这个站。">
+  <Search />
+
+  <section class="container-prose py-10">
+    <h1 class="text-3xl font-bold">关于本站</h1>
+
+    <div class="prose-doc mt-6">
+      <p>
+        <strong>jev.kiang.website</strong> 是一个非官方聚合站,跟踪 <a class="link" href="https://typesafe.ai" target="_blank" rel="noopener">TypeSafe AI</a> 发布的 <strong>Jev</strong>(第一个公开的 System One Model)。
+      </p>
+
+      <h2>本站做什么</h2>
+      <ul>
+        <li><strong>官方动态</strong>:抓取 @typesafeai 和创始人 @CompleteSkeptic 的最新推文</li>
+        <li><strong>X 讨论墙</strong>:聚合 "Jev typesafe" / "System One" / "RLCD" 等关键词的最新社区讨论</li>
+        <li><strong>官方文档镜像</strong>:同步 docs.typesafe.ai 内容,带中文导航</li>
+        <li><strong>Cookbook 索引</strong>:20+ 实战案例的难度 / 题型 / 标签筛选</li>
+        <li><strong>SDK 版本监控</strong>:Python / JavaScript / .NET 的发版记录</li>
+        <li><strong>工程工具</strong>:Confidence 阈值计算器、Cheatsheet 速查表</li>
+        <li><strong>横向对比</strong>:Jev vs OpenAI Structured Outputs / Inception / DeepSeek 等</li>
+        <li><strong>学习路径</strong>:9 篇从入门到实战的系列教程</li>
+      </ul>
+
+      <h2>本站不做什么</h2>
+      <ul>
+        <li>不存储任何用户数据(主题、收藏都在浏览器 localStorage)</li>
+        <li>不需要登录账号</li>
+        <li>不发布任何官方的、未授权的 Jev 信息</li>
+      </ul>
+
+      <h2>技术栈</h2>
+      <ul>
+        <li><a class="link" href="https://astro.build" target="_blank" rel="noopener">Astro 5</a> — 静态站框架</li>
+        <li>Tailwind CSS</li>
+        <li>MDX</li>
+        <li>Pagefind — 静态全文搜索</li>
+        <li>GitHub Actions — 定时抓数据</li>
+        <li>Cloudflare Pages — 部署</li>
+      </ul>
+
+      <h2>版权与归属</h2>
+      <ul>
+        <li>所有 Jev 相关的技术内容版权归 <a class="link" href="https://typesafe.ai" target="_blank" rel="noopener">TypeSafe AI</a> 所有,本站仅作中文索引</li>
+        <li>X 推文版权归原作者所有</li>
+        <li>教程内容采用 CC BY-NC-SA 4.0 许可</li>
+        <li>本站<strong>非官方</strong>,与 TypeSafe AI 无隶属关系</li>
+      </ul>
+
+      <h2>参与贡献</h2>
+      <p>
+        想收录你的项目或文章?有错误要反馈?
+      </p>
+      <ul>
+        <li>GitHub: <a class="link" href="https://github.com/" target="_blank" rel="noopener">github.com/your-repo</a> (TODO)</li>
+        <li>Twitter / X: <a class="link" href="https://x.com/" target="_blank" rel="noopener">@your-handle</a></li>
+        <li>邮件:your-email@example.com</li>
+      </ul>
+
+      <h2>Roadmap</h2>
+      <p>接下来要做:</p>
+      <ul>
+        <li>完善 Cookbook 镜像(把所有 20 个官方 cookbook 抓下来)</li>
+        <li>接入 HN / Reddit 跟踪</li>
+        <li>每天自动更新 X 抓取</li>
+        <li>添加英文版本</li>
+        <li>第三方项目 GitHub stars 自动更新</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

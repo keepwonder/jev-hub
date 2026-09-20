@@ -1,0 +1,62 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import { getCollection } from 'astro:content';
+
+const docs = await getCollection('docs');
+const grouped: Record<string, typeof docs> = {};
+for (const d of docs) {
+  grouped[d.data.category] = grouped[d.data.category] ?? [];
+  grouped[d.data.category].push(d);
+}
+for (const k of Object.keys(grouped)) {
+  grouped[k].sort((a, b) => a.data.order - b.data.order);
+}
+
+const categoryLabels: Record<string, string> = {
+  intro: '入门',
+  concepts: '核心概念',
+  primitives: '原语',
+  patterns: '架构模式',
+  sdk: 'SDK',
+  cookbook: 'Cookbook',
+  rules: '工程规范',
+  reference: '参考',
+};
+
+const categoryOrder = ['intro', 'concepts', 'primitives', 'patterns', 'sdk', 'cookbook', 'rules', 'reference'];
+---
+<BaseLayout title="官方文档" description="Jev 官方文档中文索引。">
+  <Search />
+
+  <section class="container-prose py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">官方文档</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">
+        同步自 <a class="link" href="https://docs.typesafe.ai" target="_blank" rel="noopener">docs.typesafe.ai</a>。
+        内容每周自动刷新,带原文链接,方便对照英文原版。
+      </p>
+    </header>
+
+    {categoryOrder.filter((k) => grouped[k]?.length).map((cat) => (
+      <div class="mb-8">
+        <h2 class="mb-3 text-xl font-semibold">{categoryLabels[cat]}</h2>
+        <ul class="divide-y" style="border-color: var(--color-border);">
+          {grouped[cat].map((d) => (
+            <li>
+              <a href={`/docs/${d.slug}`} class="block py-3 transition hover:bg-ink-50 dark:hover:bg-ink-800/50">
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                    <div class="font-medium">{d.data.title}</div>
+                    <div class="mt-0.5 line-clamp-1 text-sm text-ink-500">{d.data.description}</div>
+                  </div>
+                  <span class="text-xs text-ink-400">{d.data.sourceUpdated.toISOString().slice(0, 10)}</span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+</BaseLayout>

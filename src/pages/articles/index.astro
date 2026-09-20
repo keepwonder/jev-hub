@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles'))
+  .sort((a, b) => +b.data.pubDate - +a.data.pubDate);
+
+const categories = [
+  { id: 'tutorial', label: '教程', color: 'badge-green' },
+  { id: 'analysis', label: '分析', color: 'badge-primary' },
+  { id: 'benchmark', label: '基准', color: 'badge-amber' },
+  { id: 'experiment', label: '实验', color: 'badge-ink' },
+  { id: 'critique', label: '批评', color: 'badge-ink' },
+  { id: 'news', label: '新闻', color: 'badge-ink' },
+];
+---
+<BaseLayout title="文章归档" description="Jev 相关的第三方文章、博客、视频归档。">
+  <Search />
+
+  <section class="container-wide py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">文章归档</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">Medium / Substack / 公众号 / 个人博客上的 Jev 相关文章。</p>
+    </header>
+
+    <div class="space-y-4">
+      {articles.map((a) => {
+        const cat = categories.find((c) => c.id === a.data.category);
+        return (
+          <article class="card flex flex-col gap-2">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex-1">
+                <div class="mb-1 flex flex-wrap items-center gap-2 text-xs text-ink-500">
+                  {cat && <span class={cat.color}>{cat.label}</span>}
+                  <span>{a.data.publisher}</span>
+                  <span>·</span>
+                  <time datetime={a.data.pubDate.toISOString()}>{a.data.pubDate.toISOString().slice(0, 10)}</time>
+                  <span>·</span>
+                  <a href={a.data.authorUrl} target="_blank" rel="noopener" class="hover:underline">{a.data.author}</a>
+                    {a.data.language === 'zh' && <span class="badge-ink">中文</span>}
+                    {a.data.language === 'ja' && <span class="badge-ink">日本語</span>}
+                    {a.data.language === 'en' && <span class="badge-ink">EN</span>}
+                </div>
+                <h3 class="text-lg font-semibold">
+                  <a href={a.data.publisherUrl} target="_blank" rel="noopener" class="hover:underline">
+                    {a.data.title} ↗
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-ink-600 dark:text-ink-400">{a.data.description}</p>
+                <div class="mt-2 flex flex-wrap gap-1">
+                  {a.data.tags.map((tag) => <span class="badge-ink">{tag}</span>)}
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import BookmarkButton from '@/components/BookmarkButton.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const tutorials = await getCollection('tutorials');
+  return tutorials.map((tutorial) => ({
+    params: { slug: tutorial.slug },
+    props: { tutorial },
+  }));
+}
+
+interface Props { tutorial: CollectionEntry<'tutorials'>; }
+const { tutorial } = Astro.props;
+const { Content } = await tutorial.render();
+---
+<BaseLayout title={tutorial.data.title} description={tutorial.data.description}>
+  <Search />
+  <article class="container-prose py-10">
+    <header class="mb-8 border-b pb-6" style="border-color: var(--color-border);">
+      <div class="mb-3 flex flex-wrap items-center gap-2 text-sm text-ink-500">
+        <a href="/tutorials" class="hover:underline">← 所有教程</a>
+        <span>·</span>
+        <time datetime={tutorial.data.pubDate.toISOString()}>{tutorial.data.pubDate.toISOString().slice(0, 10)}</time>
+        <span>·</span>
+        <span>{tutorial.data.author}</span>
+        <span class="ml-auto"><BookmarkButton id={`tutorial:${tutorial.slug}`} title={tutorial.data.title} kind="tutorial" /></span>
+      </div>
+      <h1 class="text-4xl font-bold">{tutorial.data.title}</h1>
+      <p class="mt-3 text-lg text-ink-600 dark:text-ink-300">{tutorial.data.description}</p>
+      <div class="mt-4 flex flex-wrap gap-1">
+        {tutorial.data.tags.map((tag) => <span class="badge-ink">{tag}</span>)}
+      </div>
+    </header>
+    <div class="prose-doc">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

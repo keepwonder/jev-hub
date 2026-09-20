@@ -1,0 +1,64 @@
+---
+interface Tweet {
+  id: string;
+  authorHandle: string;
+  authorName: string;
+  datetime: string;
+  text: string;
+  url: string;
+  metrics?: { replies?: number; retweets?: number; likes?: number; views?: number };
+  externalLink?: string;
+  source?: 'official' | 'founder' | 'community' | 'thirdparty';
+}
+
+interface Props {
+  tweet: Tweet;
+  showSource?: boolean;
+}
+const { tweet, showSource = true } = Astro.props;
+
+function fmtMetric(n?: number) {
+  if (n == null) return '';
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, '') + 'K';
+  return String(n);
+}
+
+const dateLabel = new Date(tweet.datetime).toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+const sourceBadge = {
+  official: { label: '官方', cls: 'badge-primary' },
+  founder:  { label: '创始人', cls: 'badge-green' },
+  community:{ label: '社区', cls: 'badge-ink' },
+  thirdparty: { label: '第三方', cls: 'badge-amber' },
+}[tweet.source ?? 'community'];
+---
+<article class="card flex flex-col gap-3">
+  {showSource && (
+    <div class="flex items-center justify-between text-xs">
+      <span class={sourceBadge.cls}>{sourceBadge.label}</span>
+      <time datetime={tweet.datetime} class="text-ink-500 dark:text-ink-400">{dateLabel}</time>
+    </div>
+  )}
+  <header class="flex items-center gap-2">
+    <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-signal-100 font-semibold text-signal-700 dark:bg-signal-900/40 dark:text-signal-200">
+      {tweet.authorName?.charAt(0).toUpperCase() || tweet.authorHandle.charAt(0).toUpperCase()}
+    </div>
+    <div class="min-w-0">
+      <div class="truncate text-sm font-semibold">{tweet.authorName || `@${tweet.authorHandle}`}</div>
+      <a href={`https://x.com/${tweet.authorHandle}`} target="_blank" rel="noopener" class="truncate text-xs text-ink-500 hover:underline dark:text-ink-400">@{tweet.authorHandle}</a>
+    </div>
+  </header>
+  <p class="whitespace-pre-wrap break-words text-sm leading-6 text-ink-800 dark:text-ink-200">{tweet.text}</p>
+  {tweet.externalLink && (
+    <a href={tweet.externalLink} target="_blank" rel="noopener" class="truncate text-xs text-signal-600 hover:underline dark:text-signal-400">↗ {tweet.externalLink}</a>
+  )}
+  <footer class="flex items-center justify-between border-t pt-3 text-xs text-ink-500 dark:text-ink-400" style="border-color: var(--color-border);">
+    <a href={tweet.url} target="_blank" rel="noopener" class="hover:underline">查看原帖 ↗</a>
+    <div class="flex items-center gap-3">
+      {tweet.metrics?.replies != null && <span title="回复">💬 {fmtMetric(tweet.metrics.replies)}</span>}
+      {tweet.metrics?.retweets != null && <span title="转帖">🔁 {fmtMetric(tweet.metrics.retweets)}</span>}
+      {tweet.metrics?.likes != null && <span title="喜欢">❤ {fmtMetric(tweet.metrics.likes)}</span>}
+      {tweet.metrics?.views != null && <span title="查看">👁 {fmtMetric(tweet.metrics.views)}</span>}
+    </div>
+  </footer>
+</article>

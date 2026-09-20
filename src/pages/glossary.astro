@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import { getCollection } from 'astro:content';
+
+const items = await getCollection('glossary');
+items.sort((a, b) => a.data.term.localeCompare(b.data.term));
+---
+<BaseLayout title="术语表" description="Jev / TypeSafe AI 相关术语速查。">
+  <Search />
+
+  <section class="container-prose py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">术语表</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">点击跳转。</p>
+    </header>
+
+    <div class="prose-doc">
+      <ul>
+        {items.map((g) => (
+          <li id={g.slug}>
+            <h3>{g.data.term}</h3>
+            <p>{g.data.short}</p>
+            {g.data.aliases.length > 0 && (
+              <p class="text-sm text-ink-500">别名:{g.data.aliases.join(', ')}</p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

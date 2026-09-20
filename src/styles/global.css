@@ -1,0 +1,135 @@
+/* Global stylesheet for jev.kiang.website */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- base ---------- */
+
+@layer base {
+  :root {
+    --color-bg: theme('colors.ink.50');
+    --color-fg: theme('colors.ink.900');
+    --color-muted: theme('colors.ink.500');
+    --color-border: theme('colors.ink.200');
+    --color-accent: theme('colors.signal.600');
+    --color-card: white;
+  }
+
+  .dark {
+    --color-bg: theme('colors.ink.900');
+    --color-fg: theme('colors.ink.50');
+    --color-muted: theme('colors.ink.400');
+    --color-border: theme('colors.ink.700');
+    --color-accent: theme('colors.signal.400');
+    --color-card: theme('colors.ink.800');
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: theme('fontFamily.sans');
+  }
+
+  ::selection {
+    background-color: theme('colors.signal.200');
+    color: theme('colors.signal.900');
+  }
+  .dark ::selection {
+    background-color: theme('colors.signal.700');
+    color: theme('colors.signal.100');
+  }
+}
+
+/* ---------- components ---------- */
+
+@layer components {
+  .container-prose {
+    @apply mx-auto w-full max-w-3xl px-4 sm:px-6;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+
+  .card {
+    background-color: var(--color-card);
+    @apply rounded-xl border p-5 transition;
+    border-color: var(--color-border);
+  }
+  .card:hover {
+    border-color: theme('colors.signal.400');
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .badge-primary { @apply badge bg-signal-100 text-signal-800 dark:bg-signal-900/40 dark:text-signal-200; }
+  .badge-green   { @apply badge bg-calibrated-500/10 text-calibrated-600 dark:text-calibrated-400; }
+  .badge-amber   { @apply badge bg-caution-500/10 text-caution-600 dark:text-caution-400; }
+  .badge-ink     { @apply badge bg-ink-100 text-ink-700 dark:bg-ink-800 dark:text-ink-200; }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition;
+  }
+  .btn-primary {
+    @apply btn bg-signal-600 text-white hover:bg-signal-700;
+  }
+  .btn-ghost {
+    @apply btn text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800;
+  }
+
+  .link {
+    color: var(--color-accent);
+    @apply underline decoration-2 underline-offset-4 hover:decoration-signal-400;
+  }
+
+  .prose-doc {
+    @apply prose max-w-none dark:prose-invert;
+  }
+  .prose-doc h1 { @apply mb-4 text-3xl font-bold; }
+  .prose-doc h2 { @apply mb-3 mt-10 border-b pb-2 text-2xl font-semibold; border-color: var(--color-border); }
+  .prose-doc h3 { @apply mb-2 mt-8 text-xl font-semibold; }
+  .prose-doc p, .prose-doc li { @apply leading-7; }
+  .prose-doc code:not(pre code) {
+    @apply rounded bg-ink-100 px-1.5 py-0.5 font-mono text-sm;
+    color: theme('colors.signal.700');
+  }
+  .dark .prose-doc code:not(pre code) {
+    @apply bg-ink-800 text-signal-300;
+  }
+  .prose-doc pre {
+    @apply rounded-lg p-4 font-mono text-sm;
+    background-color: theme('colors.ink.900');
+    color: theme('colors.ink.100');
+  }
+  .prose-doc table {
+    @apply my-6 w-full text-sm;
+  }
+  .prose-doc th {
+    @apply border-b px-3 py-2 text-left font-semibold;
+    border-color: var(--color-border);
+  }
+  .prose-doc td {
+    @apply border-b px-3 py-2 align-top;
+    border-color: var(--color-border);
+  }
+  .prose-doc blockquote {
+    @apply border-l-4 pl-4 italic;
+    border-color: theme('colors.signal.400');
+  }
+}
+
+/* ---------- pagefind overrides ---------- */
+
+.dark #pagefind-ui .dark\:prose-invert,
+.dark #pagefind-ui__search-input {
+  background-color: var(--color-card) !important;
+  color: var(--color-fg) !important;
+}

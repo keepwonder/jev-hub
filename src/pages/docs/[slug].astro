@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import BookmarkButton from '@/components/BookmarkButton.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map((d) => ({ params: { slug: d.slug }, props: { doc: d } }));
+}
+
+interface Props { doc: CollectionEntry<'docs'>; }
+const { doc } = Astro.props;
+const { Content } = await doc.render();
+---
+<BaseLayout title={doc.data.title} description={doc.data.description}>
+  <Search />
+  <article class="container-prose py-10">
+    <header class="mb-8 border-b pb-6" style="border-color: var(--color-border);">
+      <div class="mb-3 flex flex-wrap items-center gap-2 text-sm text-ink-500">
+        <a href="/docs" class="hover:underline">← 所有文档</a>
+        <span>·</span>
+        <span>分类:{doc.data.category}</span>
+        <span class="ml-auto"><BookmarkButton id={`doc:${doc.slug}`} title={doc.data.title} kind="doc" /></span>
+      </div>
+      <h1 class="text-3xl font-bold">{doc.data.title}</h1>
+      <p class="mt-3 text-lg text-ink-600 dark:text-ink-300">{doc.data.description}</p>
+      <div class="mt-4 rounded-lg bg-ink-100 p-3 text-xs dark:bg-ink-800">
+        📄 原文:<a class="link" href={doc.data.source} target="_blank" rel="noopener">{doc.data.source}</a>
+        <span class="ml-2 text-ink-500">原文更新:{doc.data.sourceUpdated.toISOString().slice(0, 10)}</span>
+      </div>
+    </header>
+    <div class="prose-doc">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

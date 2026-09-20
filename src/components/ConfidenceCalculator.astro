@@ -1,0 +1,132 @@
+---
+// Interactive confidence threshold calculator (client-side, no JS framework)
+---
+<div class="card space-y-4">
+  <div>
+    <label class="block text-sm font-medium">动作可逆性</label>
+    <select id="irreversibility" class="mt-1 w-full rounded-md border bg-transparent px-3 py-2 text-sm" style="border-color: var(--color-border);">
+      <option value="0.55">完全可逆(信息展示、自动回复)</option>
+      <option value="0.70" selected>部分可逆(创建记录、发送通知)</option>
+      <option value="0.85">难以撤回(扣款、删除、关闭账户)</option>
+      <option value="0.95">不可逆 / 高风险(财务转账、合同签署)</option>
+    </select>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium">错误成本(单次)</label>
+    <select id="cost" class="mt-1 w-full rounded-md border bg-transparent px-3 py-2 text-sm" style="border-color: var(--color-border);">
+      <option value="0">~$0(纯展示)</option>
+      <option value="0.1" selected>~$1(轻微损失)</option>
+      <option value="0.3">~$10(中等损失)</option>
+      <option value="1.0">~$100+(重大损失)</option>
+    </select>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium">人类复核成本(单次)</label>
+    <select id="humanCost" class="mt-1 w-full rounded-md border bg-transparent px-3 py-2 text-sm" style="border-color: var(--color-border);">
+      <option value="0.5">~$0.05(几秒自动分流)</option>
+      <option value="2" selected>~$2(团队成员快速看)</option>
+      <option value="20">~$20(资深工程师介入)</option>
+      <option value="100">~$100+(专家级审查)</option>
+    </select>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium">调用频率(每天)</label>
+    <input id="frequency" type="number" value="1000" min="1" class="mt-1 w-full rounded-md border bg-transparent px-3 py-2 text-sm" style="border-color: var(--color-border);" />
+  </div>
+
+  <div class="border-t pt-4" style="border-color: var(--color-border);">
+    <div class="grid grid-cols-2 gap-4 text-center">
+      <div class="rounded-lg bg-calibrated-500/10 p-4">
+        <div class="text-xs text-ink-500">建议自动阈值</div>
+        <div id="autoThreshold" class="mt-1 text-3xl font-bold text-calibrated-600 dark:text-calibrated-400">0.85</div>
+        <div class="mt-1 text-xs text-ink-500">≥ 此值可自动执行</div>
+      </div>
+      <div class="rounded-lg bg-caution-500/10 p-4">
+        <div class="text-xs text-ink-500">建议复核阈值</div>
+        <div id="reviewThreshold" class="mt-1 text-3xl font-bold text-caution-600 dark:text-caution-400">0.50</div>
+        <div class="mt-1 text-xs text-ink-500">低于此值转人工</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t pt-4 text-sm" style="border-color: var(--color-border);">
+    <div class="mb-2 text-ink-500">粗略年化成本估算:</div>
+    <div class="grid grid-cols-3 gap-2 text-center text-xs">
+      <div>
+        <div class="text-ink-500">Jev 调用</div>
+        <div id="cost-jev" class="mt-1 font-mono">$0</div>
+      </div>
+      <div>
+        <div class="text-ink-500">人工复核</div>
+        <div id="cost-human" class="mt-1 font-mono">$0</div>
+      </div>
+      <div>
+        <div class="text-ink-500">错误损失</div>
+        <div id="cost-error" class="mt-1 font-mono">$0</div>
+      </div>
+    </div>
+    <div class="mt-3 rounded bg-signal-50 p-3 text-xs dark:bg-signal-900/20">
+      <div class="font-medium text-signal-700 dark:text-signal-300">推荐配置</div>
+      <pre id="code-snippet" class="mt-1 overflow-x-auto text-ink-700 dark:text-ink-300"></pre>
+    </div>
+  </div>
+</div>
+
+<script>
+  const baseRate = 0.85; // 假设 Jev 在这个 confidence 下的准确率(粗略假设)
+
+  function update() {
+    const irrevers = parseFloat((document.getElementById('irreversibility') as HTMLSelectElement).value);
+    const cost = parseFloat((document.getElementById('cost') as HTMLSelectElement).value);
+    const humanCost = parseFloat((document.getElementById('humanCost') as HTMLSelectElement).value);
+    const freq = parseInt((document.getElementById('frequency') as HTMLInputElement).value) || 0;
+
+    // 自动阈值:基于可逆性
+    const auto = Math.max(irrevers, 0.55);
+    // 复核阈值:自动阈值 - 0.35,下限 0.30
+    const review = Math.max(auto - 0.35, 0.30);
+
+    (document.getElementById('autoThreshold') as HTMLElement).textContent = auto.toFixed(2);
+    (document.getElementById('reviewThreshold') as HTMLElement).textContent = review.toFixed(2);
+
+    // 估算年化成本
+    const daysPerYear = 250;
+    const callsPerYear = freq * daysPerYear;
+    // 假设 confidence 分布大致均匀,平均 confidence 0.5
+    // 自动执行比例:confidence ≥ auto 的概率
+    // 粗略:用 baseRate 当作"准确率 = confidence"的假设
+    const autoRate = auto;
+    const reviewRate = review;
+    const humanRate = 1 - review;
+    // 每千次复核率
+    const jevCost = callsPerYear * 0.00005; // Jev ~$0.00005/调用(1K token 输入)
+    const humanCalls = callsPerYear * humanRate;
+    const humanTotal = humanCalls * humanCost;
+    const errorCalls = callsPerYear * humanRate * 0.05; // 假设 5% 错误逃过复核
+    const errorTotal = errorCalls * cost * 1000; // 单次损失放大到千
+
+    (document.getElementById('cost-jev') as HTMLElement).textContent = '$' + jevCost.toFixed(2);
+    (document.getElementById('cost-human') as HTMLElement).textContent = '$' + humanTotal.toFixed(2);
+    (document.getElementById('cost-error') as HTMLElement).textContent = '$' + errorTotal.toFixed(2);
+
+    const snippet = `AUTO_THRESHOLD = ${auto.toFixed(2)}
+REVIEW_THRESHOLD = ${review.toFixed(2)}
+
+if answer.confidence < REVIEW_THRESHOLD:
+    escalate_to_human()
+elif answer.confidence < AUTO_THRESHOLD:
+    ask_user_to_confirm()
+else:
+    act_automatically()`;
+    (document.getElementById('code-snippet') as HTMLElement).textContent = snippet;
+  }
+
+  document.querySelectorAll('#irreversibility, #cost, #humanCost, #frequency').forEach((el) => {
+    el.addEventListener('input', update);
+    el.addEventListener('change', update);
+  });
+  update();
+</script>

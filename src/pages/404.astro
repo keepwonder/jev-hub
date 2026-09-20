@@ -1,0 +1,16 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+---
+<BaseLayout title="404 · 找不到页面" noindex>
+  <Search />
+  <section class="container-prose py-20 text-center">
+    <div class="text-7xl font-bold text-signal-500">404</div>
+    <h1 class="mt-4 text-2xl font-semibold">这个页面不存在</h1>
+    <p class="mt-2 text-ink-500">试试搜索框,或者回到首页。</p>
+    <div class="mt-6 flex justify-center gap-2">
+      <a href="/" class="btn-primary">回到首页</a>
+      <button class="btn-ghost" onclick="window.dispatchEvent(new CustomEvent('open-search'))">搜索</button>
+    </div>
+  </section>
+</BaseLayout>

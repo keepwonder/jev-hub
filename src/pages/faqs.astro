@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Search from '@/components/Search.astro';
+import { getCollection } from 'astro:content';
+
+const faqs = await getCollection('faqs');
+faqs.sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="FAQ" description="关于 Jev 和 TypeSafe AI 的常见问题。">
+  <Search />
+
+  <section class="container-prose py-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">FAQ</h1>
+      <p class="mt-2 text-ink-600 dark:text-ink-400">从 X、Discord、HN 汇总的高频问题。</p>
+    </header>
+
+    <div class="space-y-4">
+      {faqs.map((f) => (
+        <details class="card group" open={f.data.order <= 3}>
+          <summary class="cursor-pointer text-lg font-semibold marker:hidden">
+            <span class="text-signal-600 dark:text-signal-400">Q.</span> {f.data.question}
+          </summary>
+          <div class="prose-doc mt-4">
+            <p>{f.data.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <p class="mt-10 text-sm text-ink-500">
+      没找到答案?<a class="link" href="https://discord.gg/typesafe" target="_blank" rel="noopener">去 Discord 问</a> 或 <a class="link" href="/about">联系我们</a>。
+    </p>
+  </section>
+</BaseLayout>
