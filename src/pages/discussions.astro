@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import TweetCard from '@/components/TweetCard.astro';
+import HNCard from '@/components/HNCard.astro';
 import Search from '@/components/Search.astro';
 
 import officialTweets from '@/data/official-tweets.json';
 import founderTweets from '@/data/founder-tweets.json';
 import discussions from '@/data/recent-discussions.json';
+import hnDiscussions from '@/data/hn-discussions.json';
 
 const all = [
   ...(officialTweets as any[]).map((t) => ({ ...t, source: 'official' as const })),
@@ -28,35 +30,87 @@ const sources = [
     <header class="mb-6">
       <h1 class="text-3xl font-bold">讨论墙</h1>
       <p class="mt-2 text-ink-600 dark:text-ink-400">
-        官方账号、创始人 @CompleteSkeptic(Diogo Almeida)、以及社区 KOL 的最新推文聚合。每 6–12 小时自动抓取。
+        官方账号、创始人 @CompleteSkeptic(Diogo Almeida)、以及社区 KOL 的最新推文聚合。
       </p>
     </header>
 
-    <!-- Source filters -->
-    <div class="mb-6 flex flex-wrap gap-2" id="source-filters">
-      {sources.map((s) => (
+    <!-- Source filters + sort -->
+    <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-wrap gap-2" id="source-filters">
+        {sources.map((s) => (
+          <button
+            data-source={s.id}
+            class="rounded-full border px-3 py-1 text-sm transition"
+            style="border-color: var(--color-border);"
+          >
+            {s.label}
+            <span class="ml-1.5 inline-flex min-w-[1.5rem] items-center justify-center rounded-full bg-black/10 px-1.5 py-0.5 font-mono text-[11px] tabular-nums leading-none dark:bg-white/15">{s.count}</span>
+          </button>
+        ))}
+      </div>
+
+      <!-- Sort toggle: 最新 vs 最旧 -->
+      <div class="inline-flex items-center rounded-full border p-0.5" style="border-color: var(--color-border);" id="sort-toggle">
         <button
-          data-source={s.id}
-          class="rounded-full border px-3 py-1 text-sm transition"
-          style="border-color: var(--color-border);"
+          data-sort="newest"
+          class="sort-btn rounded-full px-3 py-1 text-xs font-medium text-ink-500 hover:text-ink-800 dark:text-ink-400 dark:hover:text-ink-100"
+          style="background-color: var(--color-accent); color: white;"
+          aria-pressed="true"
         >
-          {s.label} <span class="text-ink-400">({s.count})</span>
+          <span class="mr-1 opacity-70">↓</span>最新
         </button>
-      ))}
+        <button
+          data-sort="oldest"
+          class="sort-btn rounded-full px-3 py-1 text-xs font-medium text-ink-500 hover:text-ink-800 dark:text-ink-400 dark:hover:text-ink-100"
+          aria-pressed="false"
+        >
+          <span class="mr-1 opacity-70">↑</span>最旧
+        </button>
+      </div>
     </div>
 
-    <!-- Tweet grid -->
-    <div id="tweet-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <!-- Tweet grid — CSS columns 做瀑布流，短卡片不再被撑高 -->
+    <div id="tweet-grid" class="columns-1 gap-6 md:columns-2 lg:columns-3">
       {all.map((t) => (
-        <div data-tweet-source={t.source}>
+        <div data-tweet-source={t.source} data-datetime={t.datetime} class="mb-6 break-inside-avoid">
           <TweetCard tweet={t} showSource={false} />
         </div>
       ))}
     </div>
 
-    <p class="mt-10 text-center text-xs text-ink-400">
-      抓不到想要的帖子?<a class="link" href="/about">通过 RSS / GitHub 提交</a>
-    </p>
+    <!-- HN discussions — 不加 header，跟 X 区域统一靠「分隔线 + 卡片样式差异」区分 -->
+    <section class="mt-16 border-t pt-8" style="border-color: var(--color-border);">
+      <div class="mb-6 flex flex-wrap items-center justify-end gap-3">
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-500">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-signal-500"></span>
+          <span>Hacker News</span>
+        </div>
+        <div class="inline-flex items-center rounded-full border p-0.5" style="border-color: var(--color-border);" id="hn-sort-toggle">
+          <button
+            data-sort="newest"
+            class="sort-btn rounded-full px-3 py-1 text-xs font-medium text-ink-500 hover:text-ink-800 dark:text-ink-400 dark:hover:text-ink-100"
+            style="background-color: var(--color-accent); color: white;"
+            aria-pressed="true"
+          >
+            <span class="mr-1 opacity-70">↓</span>最新
+          </button>
+          <button
+            data-sort="oldest"
+            class="sort-btn rounded-full px-3 py-1 text-xs font-medium text-ink-500 hover:text-ink-800 dark:text-ink-400 dark:hover:text-ink-100"
+            aria-pressed="false"
+          >
+            <span class="mr-1 opacity-70">↑</span>最旧
+          </button>
+        </div>
+      </div>
+      <div id="hn-grid" class="columns-1 gap-6 md:columns-2 lg:columns-3">
+        {(hnDiscussions as any[]).map((h) => (
+          <div data-hn-id={h.id} data-datetime={h.createdAt} class="mb-6 break-inside-avoid">
+            <HNCard item={h} />
+          </div>
+        ))}
+      </div>
+    </section>
   </section>
 
   <script>
@@ -75,5 +129,36 @@ const sources = [
     }
     buttons.forEach((b) => b.addEventListener('click', () => setActive(b.dataset.source!)));
     setActive('all');
+
+    // === Sort: 最新 vs 最旧（X / HN 两个 section 共享逻辑） ===
+    function wireSort(gridId: string, toggleId: string) {
+      const grid = document.getElementById(gridId);
+      const buttons = document.querySelectorAll<HTMLButtonElement>(`#${toggleId} .sort-btn`);
+      if (!grid || !buttons.length) return;
+
+      function applySort(direction: 'newest' | 'oldest') {
+        const cardsArr = Array.from(grid.children) as HTMLElement[];
+        cardsArr.sort((a, b) => {
+          const ta = new Date(a.dataset.datetime || 0).getTime();
+          const tb = new Date(b.dataset.datetime || 0).getTime();
+          return direction === 'newest' ? tb - ta : ta - tb;
+        });
+        // 重排 DOM — CSS columns 会随 DOM 顺序重新分列
+        cardsArr.forEach((c) => grid.appendChild(c));
+        void grid.offsetHeight; // 触发 reflow，让 CSS columns 重新平衡
+
+        buttons.forEach((b) => {
+          const isActive = b.dataset.sort === direction;
+          b.style.backgroundColor = isActive ? 'var(--color-accent)' : 'transparent';
+          b.style.color = isActive ? 'white' : '';
+          b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+      }
+
+      buttons.forEach((b) => b.addEventListener('click', () => applySort(b.dataset.sort as 'newest' | 'oldest')));
+    }
+
+    wireSort('tweet-grid', 'sort-toggle');     // X 讨论
+    wireSort('hn-grid', 'hn-sort-toggle');      // HN 讨论
   </script>
 </BaseLayout>

@@ -6,12 +6,11 @@ import Search from '@/components/Search.astro';
 <BaseLayout title="Confidence 阈值计算器" description="根据可逆性、错误成本、复核成本和调用频率,自动计算 confidence 阈值和年化成本估算。">
   <Search />
 
-  <section class="container-prose py-10">
-    <header class="mb-8">
-      <a href="/tools/cheatsheet" class="text-sm text-ink-500 hover:underline">← 所有工具</a>
-      <h1 class="mt-2 text-3xl font-bold">Confidence 阈值计算器</h1>
-      <p class="mt-2 text-ink-600 dark:text-ink-400">
-        confidence 不是"准不准"的绝对指标,而是"行动门控"。这个工具根据你的<strong>风险偏好</strong>和<strong>成本结构</strong>,自动算出建议的自动执行阈值和人工复核阈值,以及粗略的年化成本估算。
+  <section class="container-wide py-10">
+    <header class="mb-10">
+      <h1 class="text-3xl font-bold">Confidence 阈值计算器</h1>
+      <p class="mt-2 max-w-3xl text-ink-600 dark:text-ink-400">
+        confidence 不是"准不准"的绝对指标，而是"行动门控"。这个工具根据你的<strong>风险偏好</strong>和<strong>成本结构</strong>，自动算出建议的自动执行阈值和人工复核阈值，以及粗略的年化成本估算。
       </p>
     </header>
 

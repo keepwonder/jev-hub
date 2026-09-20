@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Search from '@/components/Search.astro';
 import { getCollection } from 'astro:content';
+import { marked } from 'marked';
 
 const faqs = await getCollection('faqs');
 faqs.sort((a, b) => a.data.order - b.data.order);
@@ -9,27 +10,54 @@ faqs.sort((a, b) => a.data.order - b.data.order);
 <BaseLayout title="FAQ" description="关于 Jev 和 TypeSafe AI 的常见问题。">
   <Search />
 
-  <section class="container-prose py-10">
-    <header class="mb-8">
+  <section class="container-wide py-10">
+    <header class="mb-10">
       <h1 class="text-3xl font-bold">FAQ</h1>
       <p class="mt-2 text-ink-600 dark:text-ink-400">从 X、Discord、HN 汇总的高频问题。</p>
     </header>
 
-    <div class="space-y-4">
-      {faqs.map((f) => (
-        <details class="card group" open={f.data.order <= 3}>
-          <summary class="cursor-pointer text-lg font-semibold marker:hidden">
-            <span class="text-signal-600 dark:text-signal-400">Q.</span> {f.data.question}
-          </summary>
-          <div class="prose-doc mt-4">
-            <p>{f.data.answer}</p>
-          </div>
-        </details>
-      ))}
-    </div>
+    <div class="space-y-3">
+        {faqs.map((f) => (
+          <details class="card group">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-base font-medium">
+              <span class="flex items-baseline gap-2">
+                <span class="font-mono text-sm text-signal-600 dark:text-signal-400">Q.</span>
+                <span>{f.data.question}</span>
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4 flex-shrink-0 text-ink-400 transition-transform duration-200 group-open:rotate-90"
+              >
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </summary>
+            <div
+              class="prose-doc mt-4 border-t pt-4"
+              style="border-color: var(--color-border);"
+              set:html={marked.parse(f.data.answer)}
+            />
+          </details>
+        ))}
+      </div>
 
-    <p class="mt-10 text-sm text-ink-500">
-      没找到答案?<a class="link" href="https://discord.gg/typesafe" target="_blank" rel="noopener">去 Discord 问</a> 或 <a class="link" href="/about">联系我们</a>。
-    </p>
+      <p class="mt-10 text-sm text-ink-500">
+        没找到答案?<a class="link" href="https://discord.gg/typesafe" target="_blank" rel="noopener">去 Discord 问</a> 或 <a class="link" href="/about">联系我们</a>。
+      </p>
+    </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* 杀掉浏览器默认 disclosure 三角（Tailwind marker:hidden 在 Safari 对 <details><summary> 不稳定） */
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

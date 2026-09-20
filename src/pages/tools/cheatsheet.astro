@@ -67,11 +67,13 @@ else:
 <BaseLayout title="Cheatsheet 速查" description="Choice / Score / Noul 的语法、用法、限制速查。">
   <Search />
 
-  <section class="container-prose py-10">
-    <header class="mb-8">
+  <section class="container-wide py-10">
+    <header class="mb-10">
       <h1 class="text-3xl font-bold">Jev Cheatsheet</h1>
       <p class="mt-2 text-ink-600 dark:text-ink-400">一屏搞懂 Choice / Score / Noul 的所有要点。</p>
     </header>
+
+    <div class="prose-doc">
 
     <h2 id="choice">Choice — 单选题</h2>
     <pre><code class="language-python">{choicePython}</code></pre>
@@ -159,5 +161,6 @@ else:
       <li>✅ 算术在代码里算完,只把判断给 Jev</li>
       <li>✅ 用 confidence 阈值 gate 高风险动作</li>
     </ul>
+    </div>
   </section>
 </BaseLayout>
