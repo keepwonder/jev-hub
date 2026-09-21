@@ -57,7 +57,10 @@ const ICONS = {
       <a href={`https://x.com/${tweet.authorHandle}`} target="_blank" rel="noopener" class="truncate text-xs text-ink-500 hover:underline dark:text-ink-400">@{tweet.authorHandle}</a>
     </div>
   </header>
-  <p class="whitespace-pre-wrap break-words text-[14.5px] leading-[1.65] text-ink-800 dark:text-ink-200">{tweet.text}</p>
+  <div class="min-w-0">
+    <p class="tweet-text line-clamp-5 whitespace-pre-wrap break-words text-[14.5px] leading-[1.65] text-ink-800 dark:text-ink-200">{tweet.text}</p>
+    <button type="button" class="expand-btn hidden mt-1.5 self-start text-xs font-medium text-signal-600 hover:underline dark:text-signal-400">展开</button>
+  </div>
   {tweet.externalLink && (
     <a href={tweet.externalLink} target="_blank" rel="noopener" class="inline-flex items-center gap-1 truncate text-xs text-signal-600 hover:underline dark:text-signal-400">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS.external}></svg>
@@ -97,3 +100,19 @@ const ICONS = {
     </div>
   </footer>
 </article>
+
+<script>
+  // 长推文默认折叠到 5 行，超出时显示「展开/收起」按钮，避免卡片被撑开
+  document.querySelectorAll<HTMLElement>('.tweet-text').forEach((text) => {
+    const btn = text.parentElement?.querySelector<HTMLButtonElement>('.expand-btn');
+    if (!btn) return;
+    // line-clamp 时 scrollHeight 仍包含被隐藏的内容，据此判断是否溢出
+    if (text.scrollHeight > text.clientHeight + 1) {
+      btn.classList.remove('hidden');
+    }
+    btn.addEventListener('click', () => {
+      const clamped = text.classList.toggle('line-clamp-5');
+      btn.textContent = clamped ? '展开' : '收起';
+    });
+  });
+</script>
