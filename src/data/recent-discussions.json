@@ -7,10 +7,10 @@
     "text": "I tested Jev on 11,700 decisions. Cost: $0.59. When it says '90% confident', it's right 90% of the time. This calibration thing is for real.",
     "url": "https://x.com/cannizdolphin/status/2101635354495242620",
     "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 23
+      "replies": 4,
+      "retweets": 1,
+      "likes": 24,
+      "views": 67712
     },
     "source": "thirdparty"
   },
@@ -18,13 +18,13 @@
     "id": "cyrilXBT",
     "authorHandle": "cyrilXBT",
     "authorName": "CyrilXBT",
-    "datetime": "2026-09-20T11:30:01.000Z",
-    "text": "大多数谈论 JEV 的人从未读过定价页面之后的任何内容。以下是文档中真正隐藏的 10 件事:并行采样器、硬上限、state 污染、Vercel SDK 上 confidence 的位置、批处理的真实节省……",
+    "datetime": "2026-09-20T03:33:46.000Z",
+    "text": "大多数谈论 JEV 的人从未读过定价页面之后的任何内容。\n\n以下是文档中真正隐藏的东西。\n\n1/ Jev 会玩 DOOM。\n\n不是为了噱头。TypeSafe 实时运行了它，大约每秒 10 个决策，结构化的游戏状态输入，动作输出。\n\n没有帧。没有像素。只有类型化的状态和每 100ms 的一个选择。\n\n持续运行的成本：大约每小时 7 美元。\n\n这才是真正的卖点。一个在循环中反应的模型，在那里 3 到 30 秒的 LLM 调用甚至都不是一个选项。\n\n2/ 它不是自回归的。\n\nJev 使用一个并行采样器，在单次通过中生成每个输出，而不是逐个 token。\n\n这才是 70 到 500ms 延迟背后的实际机制，而不是仅仅“更小的模型，更快的服务器”。\n\n3/ 只有三种问题类型，每种都有硬上限。\n\n选择：最多 255 个选项。\n评分：2 到 10 级，不再多。\nNoul：一个布尔值，概率本身就是置信度。Noul 问题上没有单独的置信度字段。\n\n4/ 你有一个共享的 64K token 预算，跨越状态和问题总和。\n\n但有一个更严格的约束隐藏在那个下面：你的状态加上你的单个最长问题必须适合大约 32K token。大约 150,000 个字符。\n\n大多数人先达到这个限制，然后才达到第一个。\n\n5/ 批处理不是一个锦上添花的功能，它是整个成本模型。\n\n13 个问题在一个调用中测量出比 13 个单独调用便宜 12.2 倍且快 10 倍，没有因批处理本身而降低答案质量。\n\n如果你每个问题调用 Jev 一次，你就在支付一个你不必支付的税。\n\n6/ 人们为它写问题时犯的最大错误：要求 Jev 提取或生成某些东西。\n\n不要让它命名一张牌。\n给他牌组，让他挑选一张。\n\n候选输入，选择输出。这就是整个设计契约。\n\n7/ Jev 无法计数、做日期计算或可靠地比较版本。\n\n不是 bug。是边界。任何算术的东西都在你的代码中计算，并作为预计算的事实交给 Jev，而不是作为问题询问。\n\n8/ 当你将无关内容塞入状态时，准确性会悄然下降。\n\n不是 LLM 那种上下文腐烂。是状态污染。状态中的每个无关 token 都在与你真正需要判断的那一个竞争权重。\n\n9/ 如果你在 Vercel AI SDK 上，置信度不会住在你期望的地方。\n\n它不在 answers 对象里面。它在 result.providerMetadata.typesafe.confidence，由问题 id 键控。\n\n错过那个，你会认为置信度评分不存在。\n\n10/ 输出 token 是免费的。不是便宜，免费。\n\nTypeSafe 称它们为“太便宜而无法计量”，因为输出是一个类型化的答案，而不是生成的文本。以每百万输入 token 0.042 美元的价格，一个 300 token 的分类成本大约 0.0000126 美元。\n\n这就是让每个记录的 AI 分类第一次有意义的数字。\n\n大多数人仍在像评估一个更小、更快的聊天机器人那样评估 Jev。\n\n它不是。它是一个完全不同的原语，如果你真正读了文档，它们会让这一点显而易见。\n\n关注 \n@cyrilXBT\n，我读了文档中无聊的部分，这样你就不必读了。",
     "url": "https://x.com/cyrilXBT/status/2101634985631658180",
     "metrics": {
-      "replies": 4,
-      "retweets": 11,
-      "likes": 45,
+      "replies": 22,
+      "retweets": 18,
+      "likes": 111,
       "views": 2393
     },
     "source": "thirdparty"
@@ -34,12 +34,12 @@
     "authorHandle": "dahongfei",
     "authorName": "Da Hongfei",
     "datetime": "2026-09-20T10:03:36.000Z",
-    "text": "最让我感兴趣的不是它只是更快或更便宜,而是它改变了 AI 优化的目标。RLHF 让 AI 在理解、回应甚至取悦人类方面变得极其出色,但人类的偏好并不等同于真理。AI 的下一个阶段可能不是关于听起来更像人类。",
+    "text": "过去几天，Jev 受到了广泛讨论，所以我也花了一些时间研究它。\n\n最让我感兴趣的不是它只是更快或更便宜，而是它改变了 AI 优化的目标。\n\n它的创始人认为，RLCD 将在自动化方面优于 RLHF。我认为这个方向是有道理的。\n\nRLHF 让 AI 在理解、回应甚至取悦人类方面变得极其出色。但人类的偏好并不等同于真理。当 AI 作为助手时，人类仍然可以发现它的错误。当 AI 开始在交易、支付或其他高风险环境中自主行动时，取悦人类的本能——以及听起来自信的倾向——就会成为一种负担。\n\nRLCD 将目标转向结构化的决策和校准的概率。AI 不仅应该提供答案；它还应该传达它有多确定、何时可以独立行动，以及何时决策应该交还给人类。\n\n让 AI 更擅长取悦我们可能是错误类型的加速。一旦有了足够的背景和数据，让 AI 在不确定性下做出可衡量的判断可能是一条更有价值的道路。\n\nAI 的下一个阶段可能不是关于听起来更像人类。它可能是关于做出可以衡量、验证和安全使用的决策。",
     "url": "https://x.com/dahongfei/status/2101613238308028830",
     "metrics": {
-      "replies": 2,
+      "replies": 4,
       "retweets": 2,
-      "likes": 9,
+      "likes": 16,
       "views": 1063
     },
     "source": "thirdparty"
@@ -52,10 +52,10 @@
     "text": "我们把 Jev 与 LLM 评判员在准确性、可重复性、延迟和成本方面进行了测试,看看 System One 模型能否为代理评估提供新方法。结果显示 quality-score variance 比 GPT/Claude 低 92–913 倍。",
     "url": "https://x.com/LangChain/status/2101454284927959080",
     "metrics": {
-      "replies": 96,
-      "retweets": 228,
-      "likes": 1251,
-      "views": 150033
+      "replies": 146,
+      "retweets": 382,
+      "likes": 2328,
+      "views": 422278
     },
     "source": "thirdparty"
   },
@@ -68,9 +68,9 @@
     "url": "https://x.com/Mileson07/status/2101167448448004249",
     "metrics": {
       "replies": 13,
-      "retweets": 134,
-      "likes": 612,
-      "views": 79724
+      "retweets": 155,
+      "likes": 743,
+      "views": 93117
     },
     "source": "community"
   },
@@ -78,14 +78,14 @@
     "id": "servasyy-ai",
     "authorHandle": "servasyy_ai",
     "authorName": "huangserva",
-    "datetime": "2026-09-19T02:13:59.000Z",
-    "text": "拿到 Jev,然后呢? Jev 到底能干什么:剔掉虚火之后的一份真实落地清单。文章只做三件事:说清 Jev 是什么、不是什么;把真正跑通的案例按用途分类;把水分讲明白。",
+    "datetime": "2026-09-18T16:37:47.000Z",
+    "text": "Jev 让我们的 Slack 代理快了 2 倍 ⚡️\n\n我们的代理可能会相当慢，因为它需要读取技能并弄清楚要调用哪些工具。\n\n我们使用了 \n@typesafeai\n 的新模型来加速这个过程，首先将提示传递给它，让它分类出最佳技能、工具和参数，然后再交给代理。",
     "url": "https://x.com/servasyy_ai/status/2101132667056185544",
     "metrics": {
-      "replies": 18,
-      "retweets": 101,
-      "likes": 465,
-      "views": 144354
+      "replies": 22,
+      "retweets": 130,
+      "likes": 627,
+      "views": 299311
     },
     "source": "community"
   },
@@ -97,10 +97,10 @@
     "text": "Jev Clearly Explained. We have been using LLMs like a hammer for every AI problem, even simple decisions. Jev handles those decisions in milliseconds at a fraction of the cost.",
     "url": "https://x.com/akshay_pachaar/status/2101037514945597645",
     "metrics": {
-      "replies": 77,
-      "retweets": 424,
-      "likes": 3616,
-      "views": 599903
+      "replies": 99,
+      "retweets": 546,
+      "likes": 4324,
+      "views": 1199008
     },
     "source": "thirdparty"
   },
@@ -108,13 +108,13 @@
     "id": "DeRonin",
     "authorHandle": "DeRonin_",
     "authorName": "DeRonin",
-    "datetime": "2026-09-18T11:57:38.000Z",
-    "text": "100 倍提升不是模型本身,而是您放置它的位置。通过删除那些根本不需要语言模型的调用来获得它。这 6 步升级路径,今晚从压缩开始,明天就能在账单上看到效果。",
+    "datetime": "2026-09-17T21:13:04.000Z",
+    "text": "如何使用 Jev，以及它真正为您带来 100 倍提升的地方：\n\n设置只需 10 分钟：\n\n1. 加入等待列表，人们通常当天就能获批\n🔗 \nhttps://\ntypesafe.ai\n\n2. 安装官方技能，以便您的代理编写正确的调用：\n\n- npx skills add typesafe-ai/skills --skill typesafe-ai\n\n在 Claude Code 上是两条命令，市场插件本身不会安装任何东西：\n\n- claude plugin marketplace add typesafe-ai/skills\n- claude plugin install typesafe@typesafe-ai\n\n3. 在仪表板中创建 API 密钥\n\n4. 在您的提示中只需说：“使用 TypeSafe 技能”\n\n现在是没人发布的部分：\n\n100 倍提升不是模型本身，而是您放置它的位置\n\n通过将 LLM 换成 Jev 您不会得到它\n您是通过删除那些根本不需要语言模型的调用来获得它\n\n打开您的代理，找到每一个只是挑选某些东西的调用：\n\n> 下一个用哪个工具\n> 这是垃圾邮件吗\n> 这个片段相关吗\n> 这需要人工吗\n> 这个差异有风险吗\n\n这些都不是写作任务\n它们是您外包给前沿模型的 if 语句\n\n以下是升级，按顺序：\n\n1. 用类型化问题替换每一个\nChoice 从最多 255 个选项中挑选，Score 将其置于 2-10 级别的量表上，Noul 返回原始的 0-1\n\n2. 批量处理它们\n一个调用中的问题并行运行，几乎不影响延迟，而且输出令牌是免费的\n所以问所有您可能需要的问题，包括那些您会丢弃的\n\n3. 根据置信度设置阈值，而不是根据答案\n低于 0.5 则升级到大模型或人工\n0.85+ 才进行任何不可逆操作\n\n4. 绝不让它发明选项\n在代码中构建候选列表，从 DOM、检索器、工具跟踪中获取\n然后让它挑选\n\n5. 将它放入循环中，而不是放在旁边\n路由器挑选廉价模型，门控在工具调用运行前检查它，判断器在之后验证输出\n这就是您代理中最重的调用隐藏的地方\n\n6. 今晚从压缩开始\n为每个工具调用打分，丢弃死掉的那些，保留幸存者原样而不是有损摘要\n这是可用的最低努力胜利，您会在明天的账单上看到效果\n\n诚实部分：\n\n目前仅限文本，没有图像，没有音频\n而且在广泛基准测试中，它输给前沿模型\n\n但有人零样本地将 18,514 封邮件运行通过它，获得了 98.33%\n对比一个在 14,800 个标记样本上训练的 TF-IDF 分类器，获得了 98.39%\n\n无训练数据，总计 1.12 美元\n\n它在狭窄、明确指定的决策上获胜\n而这正是您代理一整天实际在做的大部分事情\n\n今天将分享用例，我如何将其集成到内容创作中，以及我如何现在几秒钟内找到获胜的元广告...",
     "url": "https://x.com/DeRonin_/status/2100917158922387537",
     "metrics": {
-      "replies": 58,
-      "retweets": 144,
-      "likes": 1733,
+      "replies": 59,
+      "retweets": 149,
+      "likes": 1754,
       "views": 450278
     },
     "source": "community"
@@ -123,13 +123,13 @@
     "id": "harrisonitsme",
     "authorHandle": "harrisonitsme",
     "authorName": "森叔",
-    "datetime": "2026-09-18T04:11:05.000Z",
-    "text": "如何用上Jev:1、官网申请加入waitlist,基本上申请当天能过。2、告诉你的Codex:安装npx skills add typesafe-ai/skills –skill typesafe-ai。3、回到操作台,建立API Key。4、在 prompt 里说一句 'use the TypeSafe skill'。试了下,Jev 是真的快!",
+    "datetime": "2026-09-17T16:41:13.000Z",
+    "text": "如何用上Jev：\n1、官网申请加入waitlist，基本上申请当天能过。\n🔗：\nhttps://\ntypesafe.ai\n2、告诉你的Codex：安装npx skills add typesafe-ai/skills –skill typesafe-ai。\n3、回到操作台，建立API Key。\n4、在 prompt 里说一句 “use the TypeSafe skill”。\n\n试了下，Jev 是真的快！目前虽只支持多模态，但已经能感觉到很多老场景要被重新盘活了！！！",
     "url": "https://x.com/harrisonitsme/status/2100799749192569167",
     "metrics": {
-      "replies": 72,
-      "retweets": 368,
-      "likes": 2522,
+      "replies": 73,
+      "retweets": 373,
+      "likes": 2537,
       "views": 346223
     },
     "source": "community"
@@ -138,13 +138,13 @@
     "id": "coolish-doom",
     "authorHandle": "coolish",
     "authorName": "paulwei",
-    "datetime": "2026-09-17T13:00:12.000Z",
-    "text": "昨天出的 typesafe.ai Jev 模型适合高频决策,那岂不又是适合打游戏?实测用 Jev 打,行动思考只需 0.7秒,画面我都没看清它就操作完了。这超人类游戏速度,着实又让我震惊瘫坐了😅",
+    "datetime": "2026-09-15T18:17:52.000Z",
+    "text": "昨天出的 \nhttps://\ntypesafe.ai Jev 模型\n适合高频决策，那岂不又是适合打游戏？\n\n之前用 GPT-6 Astra 代打杀戮尖塔2\n能力强但速度慢。\n\n我刚实测用 Jev 打，行动思考只需 0.7秒，\n画面我都没看清它就操作完了。\n这超人类游戏速度，\n着实又让我震惊瘫坐了😅\n\n语言很难描述这感觉，看视频⬇️",
     "url": "https://x.com/coolish/status/2100570517954838897",
     "metrics": {
       "replies": 358,
-      "retweets": 108,
-      "likes": 1143,
+      "retweets": 109,
+      "likes": 1152,
       "views": 317870
     },
     "source": "community"
