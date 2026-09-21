@@ -321,6 +321,22 @@ async function main() {
     }
     console.log(`[fetch-x] refreshed ${refreshed}/${refreshPool.length}`);
 
+    // Likely cookie-expiry guard: if the scrape returned almost nothing, or
+    // every tweet lacks engagement metrics, the session is probably dead.
+    // Warn loudly instead of silently writing an empty/stale file.
+    const freshTotal = allDiscussions.length + officialTweets.length + founderTweets.length;
+    if (freshTotal === 0) {
+      console.warn('[fetch-x] ⚠️ 抓取到 0 条推文 —— X_COOKIES_JSON 可能已过期或无效，请重新导出 auth_token/ct0 并更新 secret。');
+    } else {
+      const withMetrics = [...allDiscussions, ...officialTweets, ...founderTweets]
+        .filter((t) => t.metrics && (t.metrics.likes != null || t.metrics.views != null)).length;
+      if (withMetrics === 0) {
+        console.warn('[fetch-x] ⚠️ 抓到推文但所有卡片都无指标(喜欢/查看) —— 疑似未登录，X_COOKIES_JSON 需重新导出。');
+      } else {
+        console.log(`[fetch-x] scraped ${freshTotal} fresh tweets (${withMetrics} with metrics)`);
+      }
+    }
+
     await writeFile(join(OUT, 'official-tweets.json'), JSON.stringify(official, null, 2));
     await writeFile(join(OUT, 'founder-tweets.json'), JSON.stringify(founder, null, 2));
     await writeFile(join(OUT, 'recent-discussions.json'), JSON.stringify(discussions, null, 2));
