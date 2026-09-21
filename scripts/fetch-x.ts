@@ -342,6 +342,13 @@ function toTweets(raw: any[], source: Tweet['source']): Tweet[] {
     }));
 }
 
+// 数据保护：CI 里 X 可能限制抓取，只抓到少量推文。合并逻辑本身会保留已有推文，
+// 这里再加一道保险：若合并结果比已有数据还少(极端情况)，就保留已有数据，
+// 避免用受限抓取覆盖掉更完整的数据。指标仍会由后面的 refresh 通道更新。
+function protectCount(existing: Tweet[], merged: Tweet[]): Tweet[] {
+  return merged.length < existing.length ? existing : merged;
+}
+
 async function main() {
   console.log('[fetch-x] launching browser…');
   const browser = await chromium.launch({ headless: true });
@@ -400,9 +407,10 @@ async function main() {
     console.log(`[fetch-x] scraped: ${officialTweets.length} official, ${founderTweets.length} founder, ${allDiscussions.length} discussions`);
 
     // 3. Merge with existing (keeps all, updates metrics, appends new).
-    const official = mergeTweets(existingOfficial, officialTweets, MAX_OFFICIAL);
-    const founder = mergeTweets(existingFounder, founderTweets, MAX_FOUNDER);
-    const discussions = mergeTweets(existingDiscussions, allDiscussions, MAX_DISCUSSIONS);
+    //    数据保护：若合并后数量反而比已有数据少，保留已有数据。
+    const official = protectCount(existingOfficial, mergeTweets(existingOfficial, officialTweets, MAX_OFFICIAL));
+    const founder = protectCount(existingFounder, mergeTweets(existingFounder, founderTweets, MAX_FOUNDER));
+    const discussions = protectCount(existingDiscussions, mergeTweets(existingDiscussions, allDiscussions, MAX_DISCUSSIONS));
 
     // 4. Refresh pass — re-visit existing statuses NOT seen in this scrape,
     //    so their engagement numbers stay current even if they fell out of
