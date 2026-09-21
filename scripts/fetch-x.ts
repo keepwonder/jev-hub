@@ -345,7 +345,13 @@ function toTweets(raw: any[], source: Tweet['source']): Tweet[] {
 async function main() {
   console.log('[fetch-x] launching browser…');
   const browser = await chromium.launch({ headless: true });
-  const ctx = await browser.newContext({ userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36' });
+  // 用完整 user-agent + 视口 + 语言，尽量模拟真实浏览器，降低被 X 识别为
+  // 机器人而只展示部分/旧推文的风险。
+  const ctx = await browser.newContext({
+    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    viewport: { width: 1280, height: 900 },
+    locale: 'zh-CN',
+  });
   const page = await ctx.newPage();
 
   // load saved cookies if any
