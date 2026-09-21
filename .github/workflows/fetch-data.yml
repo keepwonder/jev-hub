@@ -16,14 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Repo root IS the site directory (git was initialized inside site/),
       # so package.json etc. live at the repo root — no `site/` prefix.
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'   # Node 22 LTS (Node 20 已 EOL)
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
