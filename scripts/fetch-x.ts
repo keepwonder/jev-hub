@@ -115,6 +115,9 @@ async function scrapeStatusMetrics(page: any, url: string): Promise<Partial<Twee
       const ariaLabels: string[] = [];
       const group = a.querySelector('[role="group"]');
       if (group) {
+        // 汇总 aria-label(含 views)在 group 自身，按钮级标签在子元素里
+        const own = group.getAttribute('aria-label');
+        if (own) ariaLabels.push(own);
         for (const lab of group.querySelectorAll('[aria-label]')) {
           ariaLabels.push(lab.getAttribute('aria-label') || '');
         }
@@ -127,21 +130,22 @@ async function scrapeStatusMetrics(page: any, url: string): Promise<Partial<Twee
         let likes: number | undefined;
         let views: number | undefined;
         for (const l of ariaLabels) {
-          // 解析形如 "24.2万 查看" / "2,643 喜欢" / "105,731 查看" 的指标，
-          // 正确处理 万/亿/K/M 单位，避免 "24.2万" 被解析成 242 而非 242000。
-          const m = l.match(/([\d.,]+)\s*([万亿KkMm]?)/);
-          let val: number | undefined;
-          if (m) {
-            const num = parseFloat(m[1].replace(/,/g, ''));
-            const u = m[2];
-            val = isNaN(num)
-              ? undefined
-              : Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+          // 匹配「数字 + 单位 + 关键词」，兼容按钮级("65 回复。回复")和
+          // 汇总级("65 回复、147 次转帖、2734 喜欢、709 书签、252164 次观看")，
+          // 只有汇总标签里才有 views，且数字可能带 万/亿/K/M 单位。
+          const re = /([\d.,]+)\s*([万亿KkMm]?)\s*[次]?\s*(回复|转帖|喜欢|书签|观看|查看|repl|repost|like|view)/g;
+          let mm: RegExpExecArray | null;
+          while ((mm = re.exec(l)) !== null) {
+            const num = parseFloat(mm[1].replace(/,/g, ''));
+            if (isNaN(num)) continue;
+            const u = mm[2];
+            const kw = mm[3];
+            const val = Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+            if (kw === '回复' || kw === 'repl') { if (replies === undefined) replies = val; }
+            else if (kw === '转帖' || kw === 'repost') { if (retweets === undefined) retweets = val; }
+            else if (kw === '喜欢' || kw === 'like') { if (likes === undefined) likes = val; }
+            else if (kw === '观看' || kw === '查看' || kw === 'view') { if (views === undefined) views = val; }
           }
-          if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
-          if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
-          if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
-          if (views === undefined && (l.includes('查看') || l.includes('view'))) views = val;
         }
         return { replies, retweets, likes, views };
       })();
@@ -189,6 +193,9 @@ async function scrapeQuery(page: any, query: string, sort: string): Promise<Twee
       const ariaLabels: string[] = [];
       const group = a.querySelector('[role="group"]');
       if (group) {
+        // 汇总 aria-label(含 views)在 group 自身，按钮级标签在子元素里
+        const own = group.getAttribute('aria-label');
+        if (own) ariaLabels.push(own);
         for (const lab of group.querySelectorAll('[aria-label]')) {
           ariaLabels.push(lab.getAttribute('aria-label') || '');
         }
@@ -199,21 +206,22 @@ async function scrapeQuery(page: any, query: string, sort: string): Promise<Twee
         let likes: number | undefined;
         let views: number | undefined;
         for (const l of ariaLabels) {
-          // 解析形如 "24.2万 查看" / "2,643 喜欢" / "105,731 查看" 的指标，
-          // 正确处理 万/亿/K/M 单位，避免 "24.2万" 被解析成 242 而非 242000。
-          const m = l.match(/([\d.,]+)\s*([万亿KkMm]?)/);
-          let val: number | undefined;
-          if (m) {
-            const num = parseFloat(m[1].replace(/,/g, ''));
-            const u = m[2];
-            val = isNaN(num)
-              ? undefined
-              : Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+          // 匹配「数字 + 单位 + 关键词」，兼容按钮级("65 回复。回复")和
+          // 汇总级("65 回复、147 次转帖、2734 喜欢、709 书签、252164 次观看")，
+          // 只有汇总标签里才有 views，且数字可能带 万/亿/K/M 单位。
+          const re = /([\d.,]+)\s*([万亿KkMm]?)\s*[次]?\s*(回复|转帖|喜欢|书签|观看|查看|repl|repost|like|view)/g;
+          let mm: RegExpExecArray | null;
+          while ((mm = re.exec(l)) !== null) {
+            const num = parseFloat(mm[1].replace(/,/g, ''));
+            if (isNaN(num)) continue;
+            const u = mm[2];
+            const kw = mm[3];
+            const val = Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+            if (kw === '回复' || kw === 'repl') { if (replies === undefined) replies = val; }
+            else if (kw === '转帖' || kw === 'repost') { if (retweets === undefined) retweets = val; }
+            else if (kw === '喜欢' || kw === 'like') { if (likes === undefined) likes = val; }
+            else if (kw === '观看' || kw === '查看' || kw === 'view') { if (views === undefined) views = val; }
           }
-          if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
-          if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
-          if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
-          if (views === undefined && (l.includes('查看') || l.includes('view'))) views = val;
         }
         return { replies, retweets, likes, views };
       })();
@@ -251,28 +259,34 @@ async function scrapeProfile(page: any, handle: string): Promise<Tweet[]> {
       const datetime = timeEl ? timeEl.getAttribute('datetime') || '' : '';
       const ariaLabels: string[] = [];
       const group = a.querySelector('[role="group"]');
-      if (group) for (const lab of group.querySelectorAll('[aria-label]')) ariaLabels.push(lab.getAttribute('aria-label') || '');
+      if (group) {
+        // 汇总 aria-label(含 views)在 group 自身，按钮级标签在子元素里
+        const own = group.getAttribute('aria-label');
+        if (own) ariaLabels.push(own);
+        for (const lab of group.querySelectorAll('[aria-label]')) ariaLabels.push(lab.getAttribute('aria-label') || '');
+      }
       const metrics = (() => {
         let replies: number | undefined;
         let retweets: number | undefined;
         let likes: number | undefined;
         let views: number | undefined;
         for (const l of ariaLabels) {
-          // 解析形如 "24.2万 查看" / "2,643 喜欢" / "105,731 查看" 的指标，
-          // 正确处理 万/亿/K/M 单位，避免 "24.2万" 被解析成 242 而非 242000。
-          const m = l.match(/([\d.,]+)\s*([万亿KkMm]?)/);
-          let val: number | undefined;
-          if (m) {
-            const num = parseFloat(m[1].replace(/,/g, ''));
-            const u = m[2];
-            val = isNaN(num)
-              ? undefined
-              : Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+          // 匹配「数字 + 单位 + 关键词」，兼容按钮级("65 回复。回复")和
+          // 汇总级("65 回复、147 次转帖、2734 喜欢、709 书签、252164 次观看")，
+          // 只有汇总标签里才有 views，且数字可能带 万/亿/K/M 单位。
+          const re = /([\d.,]+)\s*([万亿KkMm]?)\s*[次]?\s*(回复|转帖|喜欢|书签|观看|查看|repl|repost|like|view)/g;
+          let mm: RegExpExecArray | null;
+          while ((mm = re.exec(l)) !== null) {
+            const num = parseFloat(mm[1].replace(/,/g, ''));
+            if (isNaN(num)) continue;
+            const u = mm[2];
+            const kw = mm[3];
+            const val = Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+            if (kw === '回复' || kw === 'repl') { if (replies === undefined) replies = val; }
+            else if (kw === '转帖' || kw === 'repost') { if (retweets === undefined) retweets = val; }
+            else if (kw === '喜欢' || kw === 'like') { if (likes === undefined) likes = val; }
+            else if (kw === '观看' || kw === '查看' || kw === 'view') { if (views === undefined) views = val; }
           }
-          if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
-          if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
-          if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
-          if (views === undefined && (l.includes('查看') || l.includes('view'))) views = val;
         }
         return { replies, retweets, likes, views };
       })();
