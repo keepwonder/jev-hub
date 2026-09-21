@@ -119,23 +119,29 @@ async function scrapeStatusMetrics(page: any, url: string): Promise<Partial<Twee
           ariaLabels.push(lab.getAttribute('aria-label') || '');
         }
       }
-      const parseMetric = (label: string): number | undefined => {
-        const m = ariaLabels.find((l) => l.includes(label));
-        if (!m) return undefined;
-        const n = parseInt(m.replace(/[^\d]/g, ''), 10);
-        return isNaN(n) ? undefined : n;
-      };
+      // 用匿名 IIFE 解析指标，避免 esbuild keepNames 注入 __name 导致
+      // page.evaluate 序列化后在浏览器里报 ReferenceError: __name is not defined
+      const metrics = (() => {
+        let replies: number | undefined;
+        let retweets: number | undefined;
+        let likes: number | undefined;
+        let views: number | undefined;
+        for (const l of ariaLabels) {
+          const n = parseInt(l.replace(/[^\d]/g, ''), 10);
+          const val = isNaN(n) ? undefined : n;
+          if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
+          if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
+          if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
+          if (views === undefined && (l.includes('查看') || l.includes('view'))) views = val;
+        }
+        return { replies, retweets, likes, views };
+      })();
       const textEl = a.querySelector('[data-testid="tweetText"]');
       const timeEl = a.querySelector('time');
       return {
         text: textEl ? textEl.innerText : '',
         datetime: timeEl ? timeEl.getAttribute('datetime') || '' : '',
-        metrics: {
-          replies: parseMetric('回复') ?? parseMetric('repl'),
-          retweets: parseMetric('转帖') ?? parseMetric('repost'),
-          likes: parseMetric('喜欢') ?? parseMetric('like'),
-          views: parseMetric('查看') ?? parseMetric('view'),
-        },
+        metrics,
       };
     });
   } catch (e) {
@@ -178,24 +184,28 @@ async function scrapeQuery(page: any, query: string, sort: string): Promise<Twee
           ariaLabels.push(lab.getAttribute('aria-label') || '');
         }
       }
-      function parseMetric(label: string): number | undefined {
-        const m = ariaLabels.find((l) => l.includes(label));
-        if (!m) return undefined;
-        const n = parseInt(m.replace(/[^\d]/g, ''), 10);
-        return isNaN(n) ? undefined : n;
-      }
+      const metrics = (() => {
+        let replies: number | undefined;
+        let retweets: number | undefined;
+        let likes: number | undefined;
+        let views: number | undefined;
+        for (const l of ariaLabels) {
+          const n = parseInt(l.replace(/[^\d]/g, ''), 10);
+          const val = isNaN(n) ? undefined : n;
+          if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
+          if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
+          if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
+          if (views === undefined && (l.includes('查看') || l.includes('view'))) views = val;
+        }
+        return { replies, retweets, likes, views };
+      })();
       results.push({
         handle,
         displayName,
         statusUrl,
         datetime,
         text: text.slice(0, 800),
-        metrics: {
-          replies: parseMetric('回复') ?? parseMetric('repl'),
-          retweets: parseMetric('转帖') ?? parseMetric('repost'),
-          likes: parseMetric('喜欢') ?? parseMetric('like'),
-          views: parseMetric('查看') ?? parseMetric('view'),
-        },
+        metrics,
       });
     }
     return results;
@@ -224,22 +234,26 @@ async function scrapeProfile(page: any, handle: string): Promise<Tweet[]> {
       const ariaLabels: string[] = [];
       const group = a.querySelector('[role="group"]');
       if (group) for (const lab of group.querySelectorAll('[aria-label]')) ariaLabels.push(lab.getAttribute('aria-label') || '');
-      function parseMetric(label: string): number | undefined {
-        const m = ariaLabels.find((l) => l.includes(label));
-        if (!m) return undefined;
-        const n = parseInt(m.replace(/[^\d]/g, ''), 10);
-        return isNaN(n) ? undefined : n;
-      }
+      const metrics = (() => {
+        let replies: number | undefined;
+        let retweets: number | undefined;
+        let likes: number | undefined;
+        let views: number | undefined;
+        for (const l of ariaLabels) {
+          const n = parseInt(l.replace(/[^\d]/g, ''), 10);
+          const val = isNaN(n) ? undefined : n;
+          if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
+          if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
+          if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
+          if (views === undefined && (l.includes('查看') || l.includes('view'))) views = val;
+        }
+        return { replies, retweets, likes, views };
+      })();
       results.push({
         handle: location.pathname.split('/').filter(Boolean)[0],
         displayName: (document.querySelector('[data-testid="UserName"]')?.textContent || '').trim(),
         statusUrl, datetime, text: text.slice(0, 800),
-        metrics: {
-          replies: parseMetric('回复') ?? parseMetric('repl'),
-          retweets: parseMetric('转帖') ?? parseMetric('repost'),
-          likes: parseMetric('喜欢') ?? parseMetric('like'),
-          views: parseMetric('查看') ?? parseMetric('view'),
-        },
+        metrics,
       });
     }
     return results;
