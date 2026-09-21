@@ -163,10 +163,19 @@ async function scrapeStatusMetrics(page: any, url: string): Promise<Partial<Twee
   }
 }
 
+// X 懒加载推文，多滚几次才能加载出最新推文（否则只抓到已缓存的旧推文）。
+async function scrollToLoad(page: any, times = 3): Promise<void> {
+  for (let i = 0; i < times; i++) {
+    await page.evaluate(() => window.scrollBy(0, 1200));
+    await page.waitForTimeout(1800);
+  }
+}
+
 async function scrapeQuery(page: any, query: string, sort: string): Promise<Tweet[]> {
   const url = `https://x.com/search?q=${encodeURIComponent(query)}&src=typed_query&f=${sort}`;
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
   await page.waitForTimeout(3500);
+  await scrollToLoad(page);
 
   return await page.evaluate(() => {
     const results: any[] = [];
@@ -242,8 +251,7 @@ async function scrapeProfile(page: any, handle: string): Promise<Tweet[]> {
   const url = `https://x.com/${handle}`;
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
   await page.waitForTimeout(3500);
-  await page.evaluate(() => window.scrollBy(0, 1500));
-  await page.waitForTimeout(2000);
+  await scrollToLoad(page);
 
   return await page.evaluate(() => {
     const results: any[] = [];
@@ -366,6 +374,7 @@ async function main() {
     const founderRaw = await scrapeProfile(page, 'CompleteSkeptic');
     const officialTweets = toTweets(officialRaw, 'official');
     const founderTweets = toTweets(founderRaw, 'founder');
+    console.log(`[fetch-x] scraped: ${officialTweets.length} official, ${founderTweets.length} founder, ${allDiscussions.length} discussions`);
 
     // 3. Merge with existing (keeps all, updates metrics, appends new).
     const official = mergeTweets(existingOfficial, officialTweets, MAX_OFFICIAL);
