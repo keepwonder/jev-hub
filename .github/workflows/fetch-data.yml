@@ -29,7 +29,19 @@ jobs:
         working-directory: site
         run: npm ci
 
-      # Install Playwright only when X cookies are configured
+      # Detect cookie presence at job START so the steps below can use it
+      - name: Detect X cookies
+        id: cookies
+        run: |
+          if [ -n "${{ secrets.X_COOKIES_JSON }}" ]; then
+            echo "HAS_X_COOKIES=true" >> $GITHUB_ENV
+            echo "✅ X_COOKIES_JSON set — X scraper will run"
+          else
+            echo "HAS_X_COOKIES=false" >> $GITHUB_ENV
+            echo "⚠️ X_COOKIES_JSON not set — skipping X scraper (X data won't auto-update)"
+          fi
+
+      # Install Playwright + Chromium only when X cookies are configured
       - name: Install Playwright (for X scraper)
         working-directory: site
         if: ${{ env.HAS_X_COOKIES == 'true' }}
@@ -47,7 +59,9 @@ jobs:
         working-directory: site
         run: npm run fetch:hn
 
-      # Fetch X discussions (skipped if no cookies)
+      # Fetch X discussions (skipped if no cookies) — incremental merge +
+      # metric refresh, so existing posts keep their engagement numbers fresh
+      # and new posts are appended (instead of overwriting the file).
       - name: Fetch X discussions
         working-directory: site
         if: ${{ env.HAS_X_COOKIES == 'true' }}
@@ -55,17 +69,6 @@ jobs:
           X_COOKIES_JSON: ${{ secrets.X_COOKIES_JSON }}
         run: npm run fetch:x
         continue-on-error: true
-
-      # Detect cookie presence at job start
-      - name: Detect X cookies
-        id: cookies
-        run: |
-          if [ -n "${{ secrets.X_COOKIES_JSON }}" ]; then
-            echo "HAS_X_COOKIES=true" >> $GITHUB_ENV
-          else
-            echo "HAS_X_COOKIES=false" >> $GITHUB_ENV
-            echo "⚠️ X_COOKIES_JSON not set — skipping X scraper (X data won't auto-update)"
-          fi
 
       - name: Commit & push
         run: |

@@ -2,7 +2,10 @@
  * Fetch all jev-related repos from GitHub Search API.
  *
  * Strategy:
- *   - Fetch pages 1-3 of top 100 (max 300 repos)
+ *   - Fetch all matching repos up to GitHub's 1000-result search cap
+ *     (10 pages × 100). This keeps the set comprehensive and stable —
+ *     previously capping at 300 meant lower-starred Jev projects fell out
+ *     of the top-300 window as stars shifted, so the count shrank.
  *   - Query uses OR (typesafe OR jev) so repos with only 'jev' in
  *     name/description (e.g., awesome-jev-projects) are also picked up
  *   - Each repo carries full metadata (stars, language, created, updated, topics)
@@ -10,7 +13,7 @@
  *
  * Thresholds:
  *   - Min 5 stars (filters out forks/abandoned experiments)
- *   - Max 300 repos total (3 pages × 100)
+ *   - Up to 1000 repos total (GitHub search API result cap)
  *
  * Runs every 6 hours via GitHub Actions.
  */
@@ -23,7 +26,7 @@ const OUT = join(__dirname, '../src/data/awesome-typesafe.json');
 
 const MIN_STARS = 5;
 const PER_PAGE = 100;
-const MAX_PAGES = 3;  // up to 300 repos
+const MAX_PAGES = 10;  // up to 1000 repos (GitHub search API result cap)
 
 // Relevance check — Jev-specific signal required (not just 'typesafe'):
 //   Tier 1: Jev-specific keyword in description
@@ -112,12 +115,18 @@ async function fetchPage(page: number, headers: Record<string, string>, attempt 
     r = await fetch(url, { headers });
   }
   if (r.status === 403 || r.status === 429) {
-    if (attempt > 3) throw new Error(`GitHub API ${r.status} after ${attempt} retries`);
-    const wait = Math.pow(2, attempt) * 3000;  // 6s, 12s, 24s
+    if (attempt > 4) throw new Error(`GitHub API ${r.status} after ${attempt} retries`);
+    // Prefer Retry-After, then x-ratelimit-reset, then exponential backoff.
+    // GitHub secondary rate limits (403 without a useful reset header) require
+    // a long, minimum backoff — otherwise we re-hit the limit instantly.
+    const retryAfter = r.headers.get('retry-after');
     const resetHeader = r.headers.get('x-ratelimit-reset');
-    const resetTime = resetHeader ? Math.max(0, parseInt(resetHeader, 10) * 1000 - Date.now()) : wait;
-    console.warn(`[fetch-github] page ${page}: ${r.status} — waiting ${Math.ceil(resetTime / 1000)}s`);
-    await new Promise((res) => setTimeout(res, resetTime));
+    let wait = Math.pow(2, attempt) * 15000;  // 30s, 60s, 120s, 240s…
+    if (retryAfter) wait = Math.max(wait, parseInt(retryAfter, 10) * 1000);
+    else if (resetHeader) wait = Math.max(wait, parseInt(resetHeader, 10) * 1000 - Date.now());
+    wait = Math.max(wait, 15000);
+    console.warn(`[fetch-github] page ${page}: ${r.status} — waiting ${Math.ceil(wait / 1000)}s`);
+    await new Promise((res) => setTimeout(res, wait));
     return fetchPage(page, headers, attempt + 1);
   }
   if (!r.ok) throw new Error(`GitHub API ${r.status}: ${await r.text()}`);
@@ -129,7 +138,8 @@ async function main() {
     'Accept': 'application/vnd.github+json',
     'User-Agent': 'jev-hub-fetcher',
   };
-  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const hasToken = !!process.env.GITHUB_TOKEN;
+  if (hasToken) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
   console.log(`[fetch-github] fetching up to ${MAX_PAGES * PER_PAGE} jev repos (≥${MIN_STARS}★)...`);
 
@@ -143,8 +153,10 @@ async function main() {
     allRepos.push(...items);
     console.log(`  page ${page}: +${items.length} (total ${allRepos.length}/${totalFound})`);
     if (items.length < PER_PAGE) break;  // last page
-    // Throttle: 2.5s between pages (under 30/min anonymous rate limit)
-    await new Promise((res) => setTimeout(res, 2500));
+    // Throttle: with token 30 req/min → 2.5s is fine; anonymous is 10 req/min,
+    // so wait longer (6.5s) to avoid hammering the limit. Retry logic handles
+    // any residual 403/429 by waiting for the reset header.
+    await new Promise((res) => setTimeout(res, hasToken ? 2500 : 6500));
   }
 
   // Filter out blacklisted and non-relevant repos (false positives

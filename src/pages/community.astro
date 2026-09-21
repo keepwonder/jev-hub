@@ -7,6 +7,8 @@ import data from '@/data/awesome-typesafe.json';
 const projects: any[] = (data as any).projects ?? [];
 const meta = (data as any).meta ?? {};
 const languages: { name: string; count: number }[] = meta.languages ?? [];
+// 初始显示 30，每点一次“显示更多”再加 15
+const INITIAL_LIMIT = 30;
 
 let lastUpdatedLabel = '从未刷新';
 let lastUpdatedRel = '';
@@ -127,13 +129,13 @@ if (meta.lastUpdated) {
     <!-- Project grid -->
     <div id="project-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((p, i) => (
-        <div class:list={['project-item', i >= 24 ? 'hidden-more' : '']}>
+        <div class:list={['project-item', i >= INITIAL_LIMIT ? 'hidden-more' : '']}>
           <ProjectCard p={p} compact />
         </div>
       ))}
     </div>
 
-    <!-- Show more -->
+    <!-- Show more: 每次点击 +15 -->
     <div class="mt-8 text-center">
       <button
         id="show-more-btn"
@@ -158,7 +160,7 @@ if (meta.lastUpdated) {
   </section>
 
   <style>
-    /* Show-more: 默认隐藏 INITIAL_LIMIT 之后的卡片 */
+    /* Show-more: 默认隐藏当前 loadCount 之后的卡片 */
     .project-item.hidden-more {
       display: none;
     }
@@ -166,16 +168,23 @@ if (meta.lastUpdated) {
 </BaseLayout>
 
 <script>
-  type Card = HTMLElement & { dataset: DOMStringMap };
   const grid = document.getElementById('project-grid')!;
   const noResults = document.getElementById('no-results')!;
   const visibleCount = document.getElementById('visible-count')!;
   const summary = document.getElementById('filter-summary')!;
-  const cards: Card[] = Array.from(grid.querySelectorAll<HTMLElement>('.project-card')) as Card[];
-  const INITIAL_LIMIT = 24;
+  // items are the .project-item wrappers; each wraps exactly one .project-card
+  const items: HTMLElement[] = Array.from(grid.children) as HTMLElement[];
+
+  // 分页：初始显示 30，每点一次“显示更多”再加 15
+  const INITIAL_LIMIT = 30;
+  const STEP = 15;
+  let loadCount = INITIAL_LIMIT;
   const showMoreBtn = document.getElementById('show-more-btn')!;
   const hiddenCountEl = document.getElementById('hidden-count')!;
-  let showingAll = false;
+
+  function cardOf(item: HTMLElement): HTMLElement {
+    return item.querySelector('.project-card') as HTMLElement;
+  }
 
   // State
   const state = {
@@ -203,8 +212,8 @@ if (meta.lastUpdated) {
     });
   }
 
-  function passes(card: Card): boolean {
-    const data = card.dataset;
+  function passes(item: HTMLElement): boolean {
+    const data = cardOf(item).dataset;
 
     // search
     if (state.q) {
@@ -230,10 +239,10 @@ if (meta.lastUpdated) {
     return true;
   }
 
-  function sortCards(): void {
-    const sorted = [...cards].sort((a, b) => {
-      const da = a.dataset;
-      const db = b.dataset;
+  function sortItems(): void {
+    const sorted = [...items].sort((a, b) => {
+      const da = cardOf(a).dataset;
+      const db = cardOf(b).dataset;
       const starsA = parseInt(da.stars || '0', 10);
       const starsB = parseInt(db.stars || '0', 10);
       const forksA = parseInt(da.forks || '0', 10);
@@ -254,69 +263,44 @@ if (meta.lastUpdated) {
         default: return starsB - starsA;
       }
     });
-    for (const card of sorted) grid.appendChild(card);
+    for (const item of sorted) grid.appendChild(item);
   }
 
   function updateShowMore() {
-    if (showingAll) {
+    const hiddenCount = document.querySelectorAll<HTMLElement>('.project-item.hidden-more').length;
+    if (hiddenCount === 0) {
       showMoreBtn.style.display = 'none';
       return;
     }
-    const hasActiveFilter = state.q || state.time !== 'all' || state.minStars > 0 || state.langs.size > 0;
-    const hiddenCount = document.querySelectorAll<HTMLElement>('.project-item.hidden-more').length;
-    const visibleNow = Array.from(cards).filter(c => c.style.display !== 'none').length;
-
-    // Always show button if hidden cards exist OR filter is active.
-    // (Old behavior: hide when visibleNow <= INITIAL_LIMIT, which made the
-    // button invisible when filters reduce count to 5 — users had no way
-    // to "expand".)
-    if (hiddenCount > 0 || hasActiveFilter) {
-      showMoreBtn.style.display = '';
-      if (hasActiveFilter) {
-        hiddenCountEl.textContent = `清除筛选 · 查看全部 (${cards.length})`;
-      } else {
-        hiddenCountEl.textContent = String(hiddenCount);
-      }
-    } else {
-      showMoreBtn.style.display = 'none';
-    }
+    showMoreBtn.style.display = '';
+    hiddenCountEl.textContent = String(hiddenCount);
   }
 
   function apply() {
-    sortCards();
+    sortItems();
     let filterPass = 0;
-    for (const card of cards) {
-      const ok = passes(card);
-      card.style.display = ok ? '' : 'none';
+    for (const item of items) {
+      const ok = passes(item);
+      item.style.display = ok ? '' : 'none';
       if (ok) filterPass++;
     }
 
-    // Reset all wrappers' hidden-more state, then re-apply based on
-    // VISIBLE ORDER (not DOM index).
-    Array.from(grid.children).forEach((w) => {
-      if (w instanceof HTMLElement) w.classList.remove('hidden-more');
-    });
-
-    let actuallyVisible = 0;
-    if (!showingAll) {
-      let count = 0;
-      Array.from(grid.children).forEach((w) => {
-        if (!(w instanceof HTMLElement)) return;
-        const card = w.querySelector('.project-card') as HTMLElement;
-        if (!card || card.style.display === 'none') return;
-        count++;
-        if (count > INITIAL_LIMIT) {
-          w.classList.add('hidden-more');
-        } else {
-          actuallyVisible++;
-        }
-      });
-    } else {
-      actuallyVisible = filterPass;
+    // 清空 hidden-more，再按当前可见顺序 + loadCount 重新标记
+    items.forEach((w) => w.classList.remove('hidden-more'));
+    let shown = 0;
+    let visible = 0;
+    for (const item of items) {
+      if (item.style.display === 'none') continue;
+      visible++;
+      if (visible > loadCount) {
+        item.classList.add('hidden-more');
+      } else {
+        shown++;
+      }
     }
 
-    // 更新计数：X / Y 中 X = 实际可见，Y = 总数
-    visibleCount.textContent = String(actuallyVisible);
+    // 更新计数：X / Y 中 X = 当前显示，Y = 匹配总数
+    visibleCount.textContent = String(shown);
     noResults.classList.toggle('hidden', filterPass > 0);
     grid.classList.toggle('hidden', filterPass === 0);
 
@@ -331,33 +315,16 @@ if (meta.lastUpdated) {
     summary.textContent = parts.length ? `已应用: ${parts.join(' · ')}` : '';
   }
 
+  // “显示更多”：每次点击 +STEP
   showMoreBtn.addEventListener('click', () => {
-    showingAll = true;
-    // Also clear all filters so users actually see the full list.
-    // Without this, clicking "show more" with ≥500★ filter would still
-    // show only 5 cards — the user's exact complaint.
-    state.q = '';
-    state.time = 'all';
-    state.minStars = 0;
-    state.langs.clear();
-    state.sort = 'stars-desc';
-    (document.getElementById('filter-search') as HTMLInputElement).value = '';
-    (document.getElementById('filter-sort') as HTMLSelectElement).value = 'stars-desc';
-    document.querySelectorAll<HTMLButtonElement>('.lang-chip').forEach((b) => {
-      b.style.backgroundColor = '';
-      b.style.color = '';
-      b.style.borderColor = '';
-    });
-    activePillButtons();
-    document.querySelectorAll<HTMLElement>('.project-item.hidden-more').forEach((el) => {
-      el.classList.remove('hidden-more');
-    });
+    loadCount += STEP;
     apply();
   });
 
   // Wire up listeners
   document.getElementById('filter-search')?.addEventListener('input', (e) => {
     state.q = (e.target as HTMLInputElement).value.trim().toLowerCase();
+    loadCount = INITIAL_LIMIT;  // 新筛选回到默认 30
     apply();
   });
   document.getElementById('filter-sort')?.addEventListener('change', (e) => {
@@ -367,6 +334,7 @@ if (meta.lastUpdated) {
   document.querySelectorAll<HTMLButtonElement>('.time-pill').forEach((b) => {
     b.addEventListener('click', () => {
       state.time = b.dataset.time || 'all';
+      loadCount = INITIAL_LIMIT;
       activePillButtons();
       apply();
     });
@@ -374,6 +342,7 @@ if (meta.lastUpdated) {
   document.querySelectorAll<HTMLButtonElement>('.stars-pill').forEach((b) => {
     b.addEventListener('click', () => {
       state.minStars = parseInt(b.dataset.minStars || '0', 10);
+      loadCount = INITIAL_LIMIT;
       activePillButtons();
       apply();
     });
@@ -386,6 +355,7 @@ if (meta.lastUpdated) {
       b.style.backgroundColor = state.langs.has(lang) ? 'var(--color-accent)' : '';
       b.style.color = state.langs.has(lang) ? 'white' : '';
       b.style.borderColor = state.langs.has(lang) ? 'var(--color-accent)' : '';
+      loadCount = INITIAL_LIMIT;
       apply();
     });
   });
@@ -396,6 +366,7 @@ if (meta.lastUpdated) {
     state.time = 'all';
     state.minStars = 0;
     state.langs.clear();
+    loadCount = INITIAL_LIMIT;
     (document.getElementById('filter-search') as HTMLInputElement).value = '';
     (document.getElementById('filter-sort') as HTMLSelectElement).value = 'stars-desc';
     document.querySelectorAll<HTMLButtonElement>('.lang-chip').forEach((b) => {

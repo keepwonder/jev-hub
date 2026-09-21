@@ -2,7 +2,7 @@
  * Fetch Hacker News discussions about Jev.
  * Uses Algolia HN Search API (no auth required, generous rate limits).
  */
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -55,12 +55,27 @@ async function main() {
     }
   }
 
-  const dedup = [...new Map(all.map((h) => [h.hnUrl, h])).values()]
+  const fresh = [...new Map(all.map((h) => [h.hnUrl, h])).values()];
+
+  // Merge with existing so discussions that drop out of the top-N window are
+  // kept (refreshed when re-seen) instead of being deleted on every run.
+  let existing: HNItem[] = [];
+  try {
+    existing = JSON.parse(await readFile(OUT, 'utf8')) as HNItem[];
+  } catch {}
+
+  const map = new Map<string, HNItem>();
+  for (const h of existing) if (h.hnUrl) map.set(h.hnUrl, { ...h });
+  for (const h of fresh) {
+    const prev = map.get(h.hnUrl);
+    map.set(h.hnUrl, prev ? { ...prev, ...h } : h);
+  }
+  const merged = [...map.values()]
     .sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt))
     .slice(0, 30);
 
-  await writeFile(OUT, JSON.stringify(dedup, null, 2));
-  console.log(`[fetch-hn] saved ${dedup.length} discussions`);
+  await writeFile(OUT, JSON.stringify(merged, null, 2));
+  console.log(`[fetch-hn] saved ${merged.length} discussions (${fresh.length} fresh, merged with ${existing.length} existing)`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
