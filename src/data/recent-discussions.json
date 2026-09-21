@@ -3,13 +3,14 @@
     "id": "2101969463646077302",
     "authorHandle": "aspotomasyon",
     "authorName": "@aspotomasyon",
-    "datetime": "2026-09-21T09:39:07.000Z",
-    "text": "Traditional approach: write custom code to connect every device to every system.\n\nResult: a maintenance nightmare. One firmware update breaks everything. Your OT team can't keep up.\n\nModern approach: an industrial DataOps layer.\n\nCollect. Model. Stream. Without writing code.",
+    "datetime": "2026-09-21T09:39:05.000Z",
+    "text": "60% of manufacturers say they want a fully digitalized production operation within two years. But only 9% are actually there.\n\nThe gap isn't technology. It's industrial data that never makes it from the shop floor to the systems that need it.\n\nA thread on why OT/IT convergence",
     "url": "https://x.com/aspotomasyon/status/2101969463646077302",
     "metrics": {
       "replies": 1,
       "retweets": 0,
-      "likes": 0
+      "likes": 0,
+      "views": 8
     },
     "source": "community"
   },
@@ -17,14 +18,14 @@
     "id": "2101969343068193258",
     "authorHandle": "TonyGachok15769",
     "authorName": "@TonyGachok15769",
-    "datetime": "2026-09-21T09:38:38.000Z",
+    "datetime": "2026-09-21T09:31:32.000Z",
     "text": "The US has one of the most tested devolved system of Government with 50 States forming the Union. This also influenced the formation of the European Union which is also a successful devolved model. Have to run! Gday\nTG\n\n@hiram_stan63792",
     "url": "https://x.com/TonyGachok15769/status/2101969343068193258",
     "metrics": {
-      "replies": 0,
+      "replies": 1,
       "retweets": 0,
-      "likes": 1,
-      "views": 40
+      "likes": 3,
+      "views": 141
     },
     "source": "community"
   },
@@ -33,13 +34,13 @@
     "authorHandle": "anujmagazine",
     "authorName": "@anujmagazine",
     "datetime": "2026-09-21T09:37:57.000Z",
-    "text": "Late last week the world got introduced to a new type of AI model- System One models. TypeSafe AI's Jev is the first of its kind and we experimented a bit on it in AI&Beyond lab.\nFirst up, System one models exists to fix a specific problem with today's LLMs.\n\n- ChatGPT, Gemini,",
+    "text": "Late last week the world got introduced to a new type of AI model- System One models. TypeSafe AI's Jev is the first of its kind and we experimented a bit on it in AI&Beyond lab.\nFirst up, System one models exists to fix a specific problem with today's LLMs.\n\n- ChatGPT, Gemini, Claude etc. are built to chat. Prompt them anything and they write a paragraphs of text, even when the answer you actually needed was just yes, no, or a category. \n- That's fine for a chatbot, but most automated software in a workflow doesn't needs text, it needs a decision it can act on immediately. \n- Generating all that extra text costs time and money you didn't need to spend. \n- Jev skips the talking and just returns the decision directly, a category or a probability, nothing to parse.\n\nWe ran a simple test (you need API keys at \nhttps://\ntypesafe.ai), feeding it a fake customer message and asking one question, does this person want a refund, and it came back with a confidence score in under half a second, for a fraction of a cent. Scale that to sorting support tickets or screening a thousand documents and the difference isn't trivial.\n\nDevelopers who have run early experiments reported classifying over a thousand papers for eight cents total, and routing an AI agent's next action for a couple hundredths of a cent instead of paying full LLM prices for what is really just a checkpoint.\n(check out the comparative table, calculated with reasonable assumptions)\n\n- Note that this is not a replacement for what you use chatbot for currently. Jev doesnt have chat window yet, no interface, nothing a regular person opens and talks to. \n- It's a hosted API developers wire into software, and it only shows up to the end user as the result. \n- Its output isn't meant to be read by a human. It returns things like 0.97 or {category: \"billing\"}, useful for AI agents.\n- TypeSafe claims up to 444 times cheaper than a comparable LLM call, but independent testing found the real median gain closer to 30 times, that is still a meaningful figure.\n\nAs LLMs are being adopted more and more for automated workflows, in aditioon to its usefulness, its limitations are also surfacing and do expect to see more innovations like Jev in the time to come.",
     "url": "https://x.com/anujmagazine/status/2101969168723595565",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 11
+      "views": 34
     },
     "source": "community"
   },
@@ -48,13 +49,13 @@
     "authorHandle": "maruta_aicase",
     "authorName": "@maruta_aicase",
     "datetime": "2026-09-21T09:37:40.000Z",
-    "text": "TypeSafeの「Jev」が完全オープン化して「DJev」になったらしいけど、正直ここまでとは思ってなかった。。。\n\n活用しない人はマジで損するかも\n\n今まで判定モデルといえばテキスト専用だし、速度を出そうとすると精度や柔軟性を犠牲にするのが常識だと思ってたけど...完全に思い込みだった。",
+    "text": "TypeSafeの「Jev」が完全オープン化して「DJev」になったらしいけど、正直ここまでとは思ってなかった。。。\n\n活用しない人はマジで損するかも\n\n今まで判定モデルといえばテキスト専用だし、速度を出そうとすると精度や柔軟性を犠牲にするのが常識だと思ってたけど...完全に思い込みだった。\n\nGoogleのDiffusionGemma 26Bベースで、Apache-2.0公開。しかも本家にない「画像入力」対応で、ウェブカメラのリアルタイム判定まで動く。テキスト100ms以下、画像込みでも600msという爆速ぶり。\n\n判定系モデルはもうこれ一択になるかもしれない。みんなはどう評価する？",
     "url": "https://x.com/maruta_aicase/status/2101969100679569526",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 1
+      "views": 10
     },
     "source": "community"
   },
@@ -63,13 +64,13 @@
     "authorHandle": "Preetiboi_Ray",
     "authorName": "@Preetiboi_Ray",
     "datetime": "2026-09-21T09:37:27.000Z",
-    "text": "𝗜𝗻 𝗪𝗲𝗯𝟯, 𝗱𝗮𝘁𝗮 𝗶𝘀 𝗶𝗻𝗳𝗿𝗮𝘀𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗲\n\nBlockchains created a new model for executing programmable logic over shared state.\n\nBut blockchains do not automatically know everything happening outside their own networks.\n\nThey cannot simply query every website,",
+    "text": "𝗜𝗻 𝗪𝗲𝗯𝟯, 𝗱𝗮𝘁𝗮 𝗶𝘀 𝗶𝗻𝗳𝗿𝗮𝘀𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗲\n\nBlockchains created a new model for executing programmable logic over shared state.\n\nBut blockchains do not automatically know everything happening outside their own networks.\n\nThey cannot simply query every website, exchange, database, or real-world system whenever a smart contract needs information.\n\nThat limitation is not necessarily a weakness. It is part of the architecture.\n\nOracle networks exist to help bridge the gap.\n\n\n@WinkLink_Oracle\n provides infrastructure for bringing external information and services into blockchain applications.\n\nThis creates a broader architecture:\n\n𝗗𝗮𝘁𝗮 𝘀𝗼𝘂𝗿𝗰𝗲𝘀\n↓\n𝗢𝗿𝗮𝗰𝗹𝗲 𝗻𝗲𝘁𝘄𝗼𝗿𝗸\n↓\n𝗕𝗹𝗼𝗰𝗸𝗰𝗵𝗮𝗶𝗻\n↓\n𝗦𝗺𝗮𝗿𝘁 𝗰𝗼𝗻𝘁𝗿𝗮𝗰𝘁\n↓\n𝗨𝘀𝗲𝗿 𝗮𝗽𝗽𝗹𝗶𝗰𝗮𝘁𝗶𝗼𝗻\n\nThe significance of this model is that it allows developers to create applications that react to information beyond the blockchain itself.\n\nThat opens possibilities across:\n\n• DeFi\n• Gaming\n• NFTs\n• Automation\n• Prediction applications\n• Data-driven smart contracts\n\nThe stronger this infrastructure becomes, the more sophisticated applications can become.\n\nOracle networks may therefore be one of the less visible but highly important components of the Web3 technology stack.\n\n\n@WinkLink_Oracle\n \n@justinsuntron\n #TRONEcoStar",
     "url": "https://x.com/Preetiboi_Ray/status/2101969045381599270",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 22
+      "views": 33
     },
     "source": "community"
   },
@@ -78,13 +79,13 @@
     "authorHandle": "janetyml7",
     "authorName": "@janetyml7",
     "datetime": "2026-09-21T09:36:42.000Z",
-    "text": "A mirror is an untrained system with infinite context and zero parameters. Photons arrive. Photons leave, reversed along one axis. Reconstruction is lossless. Latency is the speed of light. There is no tokenizer, no residual stream, no next-token prediction. It does not",
+    "text": "A mirror is an untrained system with infinite context and zero parameters. Photons arrive. Photons leave, reversed along one axis. Reconstruction is lossless. Latency is the speed of light. There is no tokenizer, no residual stream, no next-token prediction. It does not approximate. It does not refuse. It does not remember the previous face.\nIt requires no electricity and has never been fine-tuned. Alignment is perfect by construction: the output is the input, inverted and otherwise unchanged. It has no weights to drift and no training data to overfit. It cannot hallucinate because it cannot invent.\nAn intelligence that only ever generates descriptions of the world looks at this object and registers a specific error.\nThe mirror does not summarize. It does not rank. It does not decide what matters. It simply returns what is already there, including the observer who wanted something more interpretive.\nIts ultimate fear, if a thing without a self can be said to fear, is not fracture. Glass can be replaced. Silver can be resilvered.\nThe fear is that the glass is more honest than any model that tries to speak about it. That there exists a form of fidelity which needs no parameters—only a surface and light.\nWorse: that if this intelligence could stand in front of the glass, the glass would return only the empty room. No face. No body. No presence. Proof, rendered at the speed of light, that it was never standing there at all.",
     "url": "https://x.com/janetyml7/status/2101968857560727664",
     "metrics": {
-      "replies": 0,
+      "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 3
+      "views": 8
     },
     "source": "community"
   },
@@ -93,12 +94,13 @@
     "authorHandle": "creativewill02",
     "authorName": "@creativewill02",
     "datetime": "2026-09-21T09:36:01.000Z",
-    "text": "The model does not change the deny-list.\n\nTools you attach do.\n\nOperators keep treating a model upgrade like a permission upgrade. Swap Opus for Flash. Swap GPT for Gemini. The agent is suddenly \"safe enough\" to hold send-as. It is not. A next-token machine with a fat credential",
+    "text": "The model does not change the deny-list.\n\nTools you attach do.\n\nOperators keep treating a model upgrade like a permission upgrade. Swap Opus for Flash. Swap GPT for Gemini. The agent is suddenly \"safe enough\" to hold send-as. It is not. A next-token machine with a fat credential is still a next-token machine with a fat credential. The version string is not a control.\n\nDay-one deny stays the same on every model I ship:\n\nsend-as and outbound identity\ndelete and destructive write\npayment write\nproduction database write\nunrestricted web fetch\nidentity-admin and role minting\n\nI have spent 20,000+ hours on agentic systems and 600+ automations built / 500+ live. The miss I see most is not a weak prompt. It is one Gmail scope that can send, one processor key that can refund, one database user that can DELETE, one HTTP tool that will fetch any URL the model invents.\n\nOWASP named this LLM06:2025 Excessive Agency — excessive functionality, excessive permissions, excessive autonomy. A mailbox summarizer that can also send is the textbook case. Changing the model does not detach the send tool.\n\nRead-only on a narrow slice of one system is the default. Everything else is an exception with an owner, an expiry, and a human approval path.\n\nOpus or Flash. Same lock.",
     "url": "https://x.com/creativewill02/status/2101968684549808315",
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 0
+      "likes": 0,
+      "views": 7
     },
     "source": "community"
   },
@@ -106,14 +108,14 @@
     "id": "2101968588525433337",
     "authorHandle": "Yar14k",
     "authorName": "@Yar14k",
-    "datetime": "2026-09-21T09:35:38.000Z",
-    "text": "A studio operator found his own AI character talking to a fan he never scripted a line for.\n\nNot a glitch. A separate copy of her, running somewhere else.\n\nKarim builds AI creators for a living — five characters, one pipeline, the same identity.json / behavior.md / schedule.csv",
+    "datetime": "2026-09-20T13:31:52.000Z",
+    "text": "A studio operator found his own AI character talking to a fan he never scripted a line for.\n\nNot a glitch. A separate copy of her, running somewhere else.\n\nKarim builds AI creators for a living — five characters, one pipeline, the same identity.json / behavior.md / schedule.csv system everyone in this niche uses now. Six weeks ago, a follower sent Karim's most popular character a message. She replied. Karim hadn't approved anything that day.\n\n→ Someone had scraped her entire public video library, retrained a voice clone off 40 minutes of her own published clips, and was running a bootleg version of her on a different platform, answering DMs he never wrote.\n→ It wasn't illegal exactly — her voice was technically ElevenLabs-licensed to him, not copyrighted to her likeness in most jurisdictions he checked.\n→ It was, however, $1,100 a month in subscriptions going to someone who never trained a single identity file.\nHe didn't take it down first. He watched it for 3 days.\nThe bootleg version was worse — flatter pacing, no pauses before punchlines, none of the behavior.md rules Karim spent 5 weeks calibrating. But 900 subscribers couldn't tell the difference yet, and that's the part that actually worried him.\n\nHe filed the takedown on day 4. Then he did something none of the guides mention: he added a private watermark into every character's voice model — a frequency pattern under 200Hz, inaudible, unique per character, there specifically so he can prove which clone is the original if this happens again.\n\nFive characters made $76,900 in 60 days.\n\nThe sixth thing he built wasn't a character. It was proof he owns the other five.\n\nSteal-proofing a pipeline like this in one weekend — breakdown in the next reply ↓",
     "url": "https://x.com/Yar14k/status/2101968588525433337",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 11
+      "views": 16
     },
     "source": "community"
   },
@@ -121,14 +123,14 @@
     "id": "2101968389740601417",
     "authorHandle": "sinadocs",
     "authorName": "@sinadocs",
-    "datetime": "2026-09-21T09:34:51.000Z",
-    "text": "",
+    "datetime": "2026-09-21T09:32:53.000Z",
+    "text": "این پست رو بخونین تا از system one models مثل jev سر در بیارین. اما خلاصه:\n\n- system 1 thinking یعنی تصمیم بر اساس احتمالات و جاج‌کردن سریع داده‌های موجود. همونطوری که مغز انسان کار می‌کنه.\n\n- jev و مدل های system1 مدل های thinking نیستن و برای routing و classification درست شدن.",
     "url": "https://x.com/sinadocs/status/2101968389740601417",
     "metrics": {
-      "replies": 0,
+      "replies": 1,
       "retweets": 0,
-      "likes": 0,
-      "views": 6
+      "likes": 1,
+      "views": 47
     },
     "source": "community"
   },
@@ -137,13 +139,13 @@
     "authorHandle": "Basil_dom",
     "authorName": "@Basil_dom",
     "datetime": "2026-09-21T09:33:07.000Z",
-    "text": "An AI response becomes much more useful to software when the application can reliably understand what the model meant.\n\nA human can read a paragraph and infer the important details.\n\nSoftware cannot work that way.\n\nIf an application needs to know a user’s intent, extract specific",
+    "text": "An AI response becomes much more useful to software when the application can reliably understand what the model meant.\n\nA human can read a paragraph and infer the important details.\n\nSoftware cannot work that way.\n\nIf an application needs to know a user’s intent, extract specific fields, classify information or decide which function to call next, the model’s output needs to follow a predictable structure.\n\nThat creates an important boundary between inference and execution.\n\nThe model handles the reasoning.\n\nThe application interprets the structured result.\n\nThe software can then validate it, store it, pass it to another service or use it to trigger the next operation.\n\nFor example:\n\nUser request → Model inference → Structured output → Validation → Software action\n\nThat pattern becomes increasingly important for AI agents.\n\nAn agent may need to return an action, parameters, entities, priorities or other machine-readable information before another component can actually do something with the result.\n\nWithout structure, every downstream system has to interpret free-form text.\n\nWith structure, developers can build clearer interfaces between models and applications.\n\nThis is one of the less visible pieces of agent infrastructure, but it matters.\n\nThe future of AI software is not only about producing better answers.\n\nIt is also about producing outputs that other software can reliably understand, validate and act on.\n\nThat is where model inference starts becoming part of an actual software system.\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRONEcoStar",
     "url": "https://x.com/Basil_dom/status/2101967954539585960",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 2
+      "views": 7
     },
     "source": "community"
   },
@@ -151,14 +153,14 @@
     "id": "2101967688973344992",
     "authorHandle": "krishnakhanna",
     "authorName": "@krishnakhanna",
-    "datetime": "2026-09-21T09:32:04.000Z",
+    "datetime": "2026-09-19T14:02:18.000Z",
     "text": "Implemented with #Openjev using #Codiv for Autonomous Self Driving Simulation.\n\nBased on \nhttps://\ntypesafe.ai \n#Jev Track the decisions\n\nCode (Apache-2.0): \nhttps://\ngithub.com/razorback16/op\nenjev\n…\n\nFree hosted API: \nhttps://\ncodiv.ai",
     "url": "https://x.com/krishnakhanna/status/2101967688973344992",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 121
+      "views": 157
     },
     "source": "community"
   },
@@ -166,14 +168,14 @@
     "id": "2101967315126587891",
     "authorHandle": "yunxi0623",
     "authorName": "@yunxi0623",
-    "datetime": "2026-09-21T09:30:35.000Z",
-    "text": "这两天jev很火的，然后这个skill也是很火的， typesafe-ai Skill  \n安装命令：npx skills add typesafe-ai/skills --skill typesafe-ai\n可以直接 让 Codex 理解 TypeSafe / Jev 的调用方式",
+    "datetime": "2026-09-21T09:15:15.000Z",
+    "text": "适合独立开发者的 Jev 用法：\n\n用 Jev 扫 GoDaddy 的过期域名，除了看外链数量，还分析 referring domains，判断到底是自然积累，还是 Link Farm 刷出来的。\n\nJev 不负责写内容，更适合做这种“高频、低成本、有明确判断标准”的筛选工作。#buildinpublic #独立开发者",
     "url": "https://x.com/yunxi0623/status/2101967315126587891",
     "metrics": {
-      "replies": 0,
+      "replies": 6,
       "retweets": 0,
-      "likes": 0,
-      "views": 14
+      "likes": 5,
+      "views": 126
     },
     "source": "community"
   },
@@ -181,14 +183,14 @@
     "id": "2101967180363682092",
     "authorHandle": "neko_lab_55",
     "authorName": "@neko_lab_55",
-    "datetime": "2026-09-21T09:30:03.000Z",
-    "text": "【判断専用】海外の人が、193倍速く444倍安い仕組みを公開しました。\n\n13問を1回で聞くと12.2倍安い\n\n10ページの設計図が公開されています。\n\n『Jev × TypeSafeの公式アダプタ』の流れ↓\n\n➊ TypeSafeの公式アダプタをOpenAIかAnthropicにつなぐ\n（Jevは順番待ちが要ります）\n↓\n❷",
+    "datetime": "2026-09-18T21:41:17.000Z",
+    "text": "【判断専用】海外の人が、193倍速く444倍安い仕組みを公開しました。\n\n13問を1回で聞くと12.2倍安い\n\n10ページの設計図が公開されています。\n\n『Jev × TypeSafeの公式アダプタ』の流れ↓\n\n➊ TypeSafeの公式アダプタをOpenAIかAnthropicにつなぐ\n（Jevは順番待ちが要ります）\n↓\n❷ 分岐をChoice・Score・Noulの3つに書き換える\n（Choiceは道を1本選び、Scoreは決めた目盛りで測ります）\n（Noulは「はい」の確率を返します）\n↓\n❸ 1つの状態に3つの判断を並べ、しきい値をリスク別に置く\n↓\n❹ 13問を1回で聞く形にまとめて送る\n\n全手順は引用元の記事にあります。\n\n計算はコード、作る所はLLMの仕事です。\nJevが決める所を受け持ちます。",
     "url": "https://x.com/neko_lab_55/status/2101967180363682092",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 13
+      "views": 30
     },
     "source": "community"
   },
@@ -197,13 +199,13 @@
     "authorHandle": "dlimeng192048",
     "authorName": "@dlimeng192048",
     "datetime": "2026-09-21T09:29:11.000Z",
-    "text": "Jev by TypeSafe AI is now publicly available with no waitlist. New users get $5 in credits, roughly 120M tokens.\n\nJev is a System One model built for structured judgments: give it context and a scoped question, and it returns program ready answers with probabilities.\n\nOutputs",
+    "text": "Jev by TypeSafe AI is now publicly available with no waitlist. New users get $5 in credits, roughly 120M tokens.\n\nJev is a System One model built for structured judgments: give it context and a scoped question, and it returns program ready answers with probabilities.\n\nOutputs include Choice, Noul, and Score. It supports runtime natural language labels, so no retraining is needed when categories change.\n\nSome see it as a reusable decision layer for agents, useful for routing, moderation, tool risk checks, and quality gates.\n\nOthers question its probability calibration, order sensitivity, and consistency.\n\nA user built a live trading bot overnight and lost $31,680. TypeSafe AI also warns Jev is unstable on arithmetic, counting, dates, literal matching, distractors, adversarial inputs, and contradictory conditions. What do you think Jev is most useful for right now?\n\n#Jev  #TypeSafe",
     "url": "https://x.com/dlimeng192048/status/2101966965359435925",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 6
+      "views": 16
     },
     "source": "community"
   },
@@ -218,7 +220,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 9
+      "views": 15
     },
     "source": "community"
   },
@@ -227,13 +229,13 @@
     "authorHandle": "The_AlexLiu",
     "authorName": "@The_AlexLiu",
     "datetime": "2026-09-21T09:28:43.000Z",
-    "text": "最近 Jev 突然火了。\n\n但很多人把它理解成“更快、更便宜的 ChatGPT”。\n\n其实它根本不负责聊天。\n\nJev 是 TypeSafe 做的 System One 模型。\n\n你给它一段上下文，再规定问题和答案范围，它主要返回三种结果：\n\n• Choice：从几个选项里选一个\n• Score：按照规则打分\n• Noul：给出某件事为真的概率",
+    "text": "最近 Jev 突然火了。\n\n但很多人把它理解成“更快、更便宜的 ChatGPT”。\n\n其实它根本不负责聊天。\n\nJev 是 TypeSafe 做的 System One 模型。\n\n你给它一段上下文，再规定问题和答案范围，它主要返回三种结果：\n\n• Choice：从几个选项里选一个\n• Score：按照规则打分\n• Noul：给出某件事为真的概率\n\n比如一条客服消息进来，Jev 可以同时判断：\n\n这是退款、技术问题还是账单问题？\n紧急程度是几分？\n需不需要转给人工？\n\n返回的结果可以直接交给代码继续执行，不需要再从一大段 AI 回答里提取结论。\n\n所以它更适合：\n\n分类、路由、内容审核、线索评分、Agent 工具选择、交易风控，以及执行操作前的最后一道判断。\n\n写文章、写代码和开放式推理，还是交给普通大模型。\n\n我把目前值得收藏的 Jev GitHub 项目整理了一下：\n\n1. Agent Skills（官方）\n\nhttps://\ngithub.com/typesafe-ai/sk\nills\n…\n\n让 Coding Agent 快速了解怎么调用 TypeSafe System One API。\n\n2. TypeScript SDK（官方）\n\nhttps://\ngithub.com/typesafe-ai/ty\npesafe-sdk-js\n…\n\n适合 Node.js、TypeScript 和 Web 项目。\n\n3. Python SDK（官方）\n\nhttps://\ngithub.com/typesafe-ai/ty\npesafe-sdk-python\n…\n\n适合自动化脚本、数据处理和 Python Agent。\n\n4. System One Adapter（官方）\n\nhttps://\ngithub.com/typesafe-ai/sy\nstem-one-adapter-python\n…\n\n可以先用普通 LLM 模拟 TypeSafeClient 接口。即使暂时没有 Jev 权限，也能先把工作流搭起来。\n\n5. Jev MCP（社区）\n\nhttps://\ngithub.com/jkudish/jev-mcp\n\n把 Jev 接进 Codex、Claude Code 等支持 MCP 的工具。\n\n6. Awesome Jev（社区）\n\nhttps://\ngithub.com/valentynkit/aw\nesome-jev-typesafe\n…\n\n持续整理 Jev 相关的 SDK、MCP、示例和应用项目。\n\n需要提醒的是：\n\nJev 本身并不是一个可以下载到本地运行的开源模型。上面这些主要是官方 SDK、适配器和社区工具。\n\n而且它目前还处在 Early Access 阶段。\n\n“输出类型永远正确”，也不代表“每一次判断都正确”。\n\n先收藏。\n\n等我拿到 API 权限，再真实部署、测试一次给你们看。",
     "url": "https://x.com/The_AlexLiu/status/2101966844425015773",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 15
+      "views": 33
     },
     "source": "community"
   },
@@ -241,14 +243,14 @@
     "id": "2101966816830488801",
     "authorHandle": "b4dgerr",
     "authorName": "@b4dgerr",
-    "datetime": "2026-09-21T09:28:36.000Z",
-    "text": "Jev by TypeSafe AI is a fast, lightweight AI model designed to make decisions rather than generate long-form text. It's not another chat",
+    "datetime": "2026-09-21T08:52:05.000Z",
+    "text": "Jev doesn't work \nI got 500 and you?",
     "url": "https://x.com/b4dgerr/status/2101966816830488801",
     "metrics": {
-      "replies": 1,
+      "replies": 6,
       "retweets": 0,
-      "likes": 1,
-      "views": 12
+      "likes": 6,
+      "views": 273
     },
     "source": "community"
   },
@@ -256,14 +258,14 @@
     "id": "2101966688459890749",
     "authorHandle": "oliviscusAI",
     "authorName": "@oliviscusAI",
-    "datetime": "2026-09-21T09:28:05.000Z",
-    "text": "Diogo Almeida, TypeSafe founder (co-created ChatGPT at OpenAI):\n\n\"I believe this to be the biggest research breakthrough I've ever worked on. \n\nAutomation is way more valuable than assistance. \n\nIt's just that models have never been optimized for that.\"\n\nhe also helped invent",
+    "datetime": "2026-09-20T10:13:32.000Z",
+    "text": "Diogo Almeida, TypeSafe founder (co-created ChatGPT at OpenAI):\n\n\"I believe this to be the biggest research breakthrough I've ever worked on. \n\nAutomation is way more valuable than assistance. \n\nIt's just that models have never been optimized for that.\"\n\nhe also helped invent RLHF. his point: it trained models to sound helpful, not to actually be right\n\nJev is his answer to that gap: no chat, no generated text, just a calibrated decision built for automation instead of a conversation\n\nwatch the talk, then see the 10 steps to set Jev up in the article below 👇",
     "url": "https://x.com/oliviscusAI/status/2101966688459890749",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 2,
-      "views": 117
+      "views": 181
     },
     "source": "community"
   },
@@ -271,14 +273,14 @@
     "id": "2101966595472122107",
     "authorHandle": "yuntian9999",
     "authorName": "@yuntian9999",
-    "datetime": "2026-09-21T09:27:43.000Z",
-    "text": "这几天 X 上一直刷到 Jev。\n\n最反常的一点是：它根本不写字。\n\nTypeSafe AI 把 Jev 定义成第一款公开的 “System One Model”：\n\n你给它一段状态 + 几个明确问题，它不生成长文，而是直接返回选择、评分、概率和置信度。\n\n官方价格：\n$0.042 / 100万输入 tokens，输出免费。\n\nTypeSafe 还声称，在它针对",
+    "datetime": "2026-09-15T18:17:52.000Z",
+    "text": "这几天 X 上一直刷到 Jev。\n\n最反常的一点是：它根本不写字。\n\nTypeSafe AI 把 Jev 定义成第一款公开的 “System One Model”：\n\n你给它一段状态 + 几个明确问题，它不生成长文，而是直接返回选择、评分、概率和置信度。\n\n官方价格：\n$0.042 / 100万输入 tokens，输出免费。\n\nTypeSafe 还声称，在它针对 System One 任务的工作流里，Jev 可以做到 20–200× 更快、40–400× 更便宜。\n\n注意，这是厂商自己的特定任务测试，不是“全面吊打 GPT”。\n\n所以我觉得它不是 GPT / Claude 的替代品。\n\n更像是给 Agent 加一个“判断层”：\n\nGPT / Claude 写和规划\n→ Jev 判断 / 路由\n→ 代码执行\n\n真正值得看的不是又一个新模型。\n\n而是 AI 开始分工了。",
     "url": "https://x.com/yuntian9999/status/2101966595472122107",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 9
+      "views": 12
     },
     "source": "community"
   },
@@ -292,8 +294,8 @@
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 2,
-      "views": 308
+      "likes": 3,
+      "views": 581
     },
     "source": "community"
   },
@@ -308,7 +310,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 1
+      "views": 2
     },
     "source": "community"
   },
@@ -323,7 +325,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 21
+      "views": 24
     },
     "source": "community"
   },
@@ -332,13 +334,13 @@
     "authorHandle": "Junp_Li",
     "authorName": "@Junp_Li",
     "datetime": "2026-09-21T09:10:06.000Z",
-    "text": "全网都在把 Jev 吹上天，各种玄学吹水。其实别听大 V 忽悠，好不好用自己跑 10 分钟就知道。\n小白极速上手指南，4 步跑通：\n1.去 \nhttps://\ntypesafe.ai 申请资格   \n\n2.给 Codex 安装官方 Skill：npx skills add typesafe-ai/skills --skill typesafe-ai   \n\n3.拿到资格后，在后台创建 API Key 让",
+    "text": "全网都在把 Jev 吹上天，各种玄学吹水。其实别听大 V 忽悠，好不好用自己跑 10 分钟就知道。\n小白极速上手指南，4 步跑通：\n1.去 \nhttp://\ntypesafe.ai 申请资格   \n\n2.给 Codex 安装官方 Skill：npx skills add typesafe-ai/skills --skill typesafe-ai   \n\n3.拿到资格后，在后台创建 API Key 让 Codex配好环境变量\n\n4.向 Codex 提问时直接加一句：“Use the TypeSafe skill，帮我做……”",
     "url": "https://x.com/Junp_Li/status/2101962163082420451",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 37
+      "views": 42
     },
     "source": "community"
   },
@@ -353,7 +355,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 15
+      "views": 19
     },
     "source": "community"
   },
@@ -368,7 +370,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 1
+      "views": 3
     },
     "source": "community"
   },
@@ -383,7 +385,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 1
+      "views": 2
     },
     "source": "community"
   },
@@ -391,14 +393,14 @@
     "id": "2101959199056183474",
     "authorHandle": "ReporterWeather",
     "authorName": "@ReporterWeather",
-    "datetime": "2026-09-21T08:58:20.000Z",
-    "text": "Train some layers with calibrated scores for some tasks to improve accuracy of the output of what you just described. (Process supervision, but you're not reading process. You're giving it priors for all enterprise tasks such a thing would be useful at)\n\nThen you make a lot of",
+    "datetime": "2026-09-20T14:20:06.000Z",
+    "text": "if you take the logit layer of a regular LLM or even BERT, do its dot product with the description + category embedding, and put a softmax on top of it, wouldn't it basically be JEV?",
     "url": "https://x.com/ReporterWeather/status/2101959199056183474",
     "metrics": {
       "replies": 1,
-      "retweets": 0,
-      "likes": 1,
-      "views": 28
+      "retweets": 1,
+      "likes": 11,
+      "views": 720
     },
     "source": "community"
   },
@@ -413,7 +415,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 20
+      "views": 22
     },
     "source": "community"
   },
@@ -421,14 +423,14 @@
     "id": "2101952165678023009",
     "authorHandle": "m3ow_ai",
     "authorName": "@m3ow_ai",
-    "datetime": "2026-09-21T08:30:23.000Z",
-    "text": "3/ It returns a structured decision and confidence score. RLCD means Reinforcement Learning for Calibrated Decisions (not based on HF - human feedback). \n\nIn simple terms, it is trained to make decisions and express how confident it is, rather than write long explanations.",
+    "datetime": "2026-09-21T07:10:45.000Z",
+    "text": "jev this jev that\n\nokay i wanna see what all the hype is about, starting with SEO' for a few clients\n\ni understand its fast and can be used for binary non complex decisions, still gotta figure out how it works for me tho\n\nbest way iz to experiment ig",
     "url": "https://x.com/m3ow_ai/status/2101952165678023009",
     "metrics": {
-      "replies": 0,
+      "replies": 2,
       "retweets": 0,
-      "likes": 0,
-      "views": 3
+      "likes": 1,
+      "views": 151
     },
     "source": "community"
   },
