@@ -21,6 +21,7 @@ interface HNItem {
   source: 'hn';
 }
 
+// Search queries for HN stories about Jev / TypeSafe.
 const QUERIES = [
   'Jev TypeSafe',
   'Jev AI model',
