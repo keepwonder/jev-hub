@@ -127,8 +127,17 @@ async function scrapeStatusMetrics(page: any, url: string): Promise<Partial<Twee
         let likes: number | undefined;
         let views: number | undefined;
         for (const l of ariaLabels) {
-          const n = parseInt(l.replace(/[^\d]/g, ''), 10);
-          const val = isNaN(n) ? undefined : n;
+          // 解析形如 "24.2万 查看" / "2,643 喜欢" / "105,731 查看" 的指标，
+          // 正确处理 万/亿/K/M 单位，避免 "24.2万" 被解析成 242 而非 242000。
+          const m = l.match(/([\d.,]+)\s*([万亿KkMm]?)/);
+          let val: number | undefined;
+          if (m) {
+            const num = parseFloat(m[1].replace(/,/g, ''));
+            const u = m[2];
+            val = isNaN(num)
+              ? undefined
+              : Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+          }
           if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
           if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
           if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
@@ -190,8 +199,17 @@ async function scrapeQuery(page: any, query: string, sort: string): Promise<Twee
         let likes: number | undefined;
         let views: number | undefined;
         for (const l of ariaLabels) {
-          const n = parseInt(l.replace(/[^\d]/g, ''), 10);
-          const val = isNaN(n) ? undefined : n;
+          // 解析形如 "24.2万 查看" / "2,643 喜欢" / "105,731 查看" 的指标，
+          // 正确处理 万/亿/K/M 单位，避免 "24.2万" 被解析成 242 而非 242000。
+          const m = l.match(/([\d.,]+)\s*([万亿KkMm]?)/);
+          let val: number | undefined;
+          if (m) {
+            const num = parseFloat(m[1].replace(/,/g, ''));
+            const u = m[2];
+            val = isNaN(num)
+              ? undefined
+              : Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+          }
           if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
           if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
           if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
@@ -240,8 +258,17 @@ async function scrapeProfile(page: any, handle: string): Promise<Tweet[]> {
         let likes: number | undefined;
         let views: number | undefined;
         for (const l of ariaLabels) {
-          const n = parseInt(l.replace(/[^\d]/g, ''), 10);
-          const val = isNaN(n) ? undefined : n;
+          // 解析形如 "24.2万 查看" / "2,643 喜欢" / "105,731 查看" 的指标，
+          // 正确处理 万/亿/K/M 单位，避免 "24.2万" 被解析成 242 而非 242000。
+          const m = l.match(/([\d.,]+)\s*([万亿KkMm]?)/);
+          let val: number | undefined;
+          if (m) {
+            const num = parseFloat(m[1].replace(/,/g, ''));
+            const u = m[2];
+            val = isNaN(num)
+              ? undefined
+              : Math.round(num * (u === '万' ? 10000 : u === '亿' ? 100000000 : (u === 'K' || u === 'k') ? 1000 : (u === 'M' || u === 'm') ? 1000000 : 1));
+          }
           if (replies === undefined && (l.includes('回复') || l.includes('repl'))) replies = val;
           if (retweets === undefined && (l.includes('转帖') || l.includes('repost'))) retweets = val;
           if (likes === undefined && (l.includes('喜欢') || l.includes('like'))) likes = val;
