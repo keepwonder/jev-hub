@@ -126,7 +126,22 @@ if (meta.lastUpdated) {
 
     <!-- Project grid -->
     <div id="project-grid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {projects.map((p) => <ProjectCard p={p} compact />)}
+      {projects.map((p, i) => (
+        <div class:list={['project-item', i >= 24 ? 'hidden-more' : '']}>
+          <ProjectCard p={p} compact />
+        </div>
+      ))}
+    </div>
+
+    <!-- Show more -->
+    <div class="mt-8 text-center">
+      <button
+        id="show-more-btn"
+        class="rounded-md border px-6 py-2 text-sm transition hover:bg-ink-100 dark:hover:bg-ink-800"
+        style="border-color: var(--color-border);"
+      >
+        显示更多 (<span id="hidden-count">0</span>)
+      </button>
     </div>
 
     <p id="no-results" class="hidden py-12 text-center text-ink-500">
@@ -141,6 +156,13 @@ if (meta.lastUpdated) {
       </ul>
     </div>
   </section>
+
+  <style>
+    /* Show-more: 默认隐藏 INITIAL_LIMIT 之后的卡片 */
+    .project-item.hidden-more {
+      display: none;
+    }
+  </style>
 </BaseLayout>
 
 <script>
@@ -150,6 +172,10 @@ if (meta.lastUpdated) {
   const visibleCount = document.getElementById('visible-count')!;
   const summary = document.getElementById('filter-summary')!;
   const cards: Card[] = Array.from(grid.querySelectorAll<HTMLElement>('.project-card')) as Card[];
+  const INITIAL_LIMIT = 24;
+  const showMoreBtn = document.getElementById('show-more-btn')!;
+  const hiddenCountEl = document.getElementById('hidden-count')!;
+  let showingAll = false;
 
   // State
   const state = {
@@ -231,6 +257,22 @@ if (meta.lastUpdated) {
     for (const card of sorted) grid.appendChild(card);
   }
 
+  function updateShowMore() {
+    if (showingAll) {
+      showMoreBtn.style.display = 'none';
+      return;
+    }
+    const hidden = document.querySelectorAll<HTMLElement>('.project-item.hidden-more').length;
+    // If filter results are fewer than initial limit, no need to show button
+    const visibleNow = Array.from(cards).filter(c => c.style.display !== 'none').length;
+    if (visibleNow <= INITIAL_LIMIT) {
+      showMoreBtn.style.display = 'none';
+      return;
+    }
+    hiddenCountEl.textContent = String(visibleNow - INITIAL_LIMIT);
+    showMoreBtn.style.display = '';
+  }
+
   function apply() {
     sortCards();
     let visible = 0;
@@ -243,6 +285,23 @@ if (meta.lastUpdated) {
     noResults.classList.toggle('hidden', visible > 0);
     grid.classList.toggle('hidden', visible === 0);
 
+    // If user is filtering and showingAll is true, keep showing all (filter still works)
+    // If collapsed (initial state), reset to first INITIAL_LIMIT
+    if (!showingAll) {
+      // Mark cards beyond INITIAL_LIMIT as hidden-more (regardless of filter)
+      Array.from(grid.children).forEach((wrapper, i) => {
+        if (i >= INITIAL_LIMIT && wrapper instanceof HTMLElement) {
+          wrapper.classList.add('hidden-more');
+        }
+      });
+    } else {
+      Array.from(grid.children).forEach((wrapper) => {
+        if (wrapper instanceof HTMLElement) wrapper.classList.remove('hidden-more');
+      });
+    }
+
+    updateShowMore();
+
     // active filter summary
     const parts: string[] = [];
     if (state.q) parts.push(`"${state.q}"`);
@@ -251,6 +310,14 @@ if (meta.lastUpdated) {
     if (state.langs.size > 0) parts.push(`语言: ${[...state.langs].join(', ')}`);
     summary.textContent = parts.length ? `已应用: ${parts.join(' · ')}` : '';
   }
+
+  showMoreBtn.addEventListener('click', () => {
+    showingAll = true;
+    document.querySelectorAll<HTMLElement>('.project-item.hidden-more').forEach((el) => {
+      el.classList.remove('hidden-more');
+    });
+    updateShowMore();
+  });
 
   // Wire up listeners
   document.getElementById('filter-search')?.addEventListener('input', (e) => {
