@@ -174,10 +174,9 @@ async function scrollToLoad(page: any, times = 3): Promise<void> {
 async function scrapeQuery(page: any, query: string, sort: string): Promise<Tweet[]> {
   const url = `https://x.com/search?q=${encodeURIComponent(query)}&src=typed_query&f=${sort}`;
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-  await page.waitForTimeout(3500);
-  await scrollToLoad(page);
-
-  return await page.evaluate(() => {
+  await page.waitForTimeout(4000);
+  // 先抓初始(最新)结果，再滚动抓更多，避免虚拟化移除顶部结果。
+  const grab = async () => page.evaluate(() => {
     const results: any[] = [];
     for (const a of document.querySelectorAll('article')) {
       let handle = '';
@@ -245,15 +244,24 @@ async function scrapeQuery(page: any, query: string, sort: string): Promise<Twee
     }
     return results;
   });
+  const initial = await grab();
+  await scrollToLoad(page);
+  const more = await grab();
+  const seen = new Set<string>();
+  const out: any[] = [];
+  for (const t of [...initial, ...more]) {
+    if (t.statusUrl && !seen.has(t.statusUrl)) { seen.add(t.statusUrl); out.push(t); }
+  }
+  return out;
 }
 
 async function scrapeProfile(page: any, handle: string): Promise<Tweet[]> {
   const url = `https://x.com/${handle}`;
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-  await page.waitForTimeout(3500);
-  await scrollToLoad(page);
-
-  return await page.evaluate(() => {
+  await page.waitForTimeout(4000);
+  // X 用虚拟化时间线，滚动会把顶部(最新)推文从 DOM 移除。
+  // 所以先抓初始(最新)推文，再滚动抓更多，最后合并去重。
+  const grab = async () => page.evaluate(() => {
     const results: any[] = [];
     for (const a of document.querySelectorAll('article')) {
       let statusUrl = '';
@@ -307,6 +315,15 @@ async function scrapeProfile(page: any, handle: string): Promise<Tweet[]> {
     }
     return results;
   });
+  const initial = await grab();
+  await scrollToLoad(page);
+  const more = await grab();
+  const seen = new Set<string>();
+  const out: any[] = [];
+  for (const t of [...initial, ...more]) {
+    if (t.statusUrl && !seen.has(t.statusUrl)) { seen.add(t.statusUrl); out.push(t); }
+  }
+  return out;
 }
 
 // Normalize raw scraped articles into the Tweet shape.
