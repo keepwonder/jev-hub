@@ -262,15 +262,24 @@ if (meta.lastUpdated) {
       showMoreBtn.style.display = 'none';
       return;
     }
-    const hidden = document.querySelectorAll<HTMLElement>('.project-item.hidden-more').length;
-    // If filter results are fewer than initial limit, no need to show button
+    const hasActiveFilter = state.q || state.time !== 'all' || state.minStars > 0 || state.langs.size > 0;
+    const hiddenCount = document.querySelectorAll<HTMLElement>('.project-item.hidden-more').length;
     const visibleNow = Array.from(cards).filter(c => c.style.display !== 'none').length;
-    if (visibleNow <= INITIAL_LIMIT) {
+
+    // Always show button if hidden cards exist OR filter is active.
+    // (Old behavior: hide when visibleNow <= INITIAL_LIMIT, which made the
+    // button invisible when filters reduce count to 5 — users had no way
+    // to "expand".)
+    if (hiddenCount > 0 || hasActiveFilter) {
+      showMoreBtn.style.display = '';
+      if (hasActiveFilter) {
+        hiddenCountEl.textContent = `清除筛选 · 查看全部 (${cards.length})`;
+      } else {
+        hiddenCountEl.textContent = String(hiddenCount);
+      }
+    } else {
       showMoreBtn.style.display = 'none';
-      return;
     }
-    hiddenCountEl.textContent = String(visibleNow - INITIAL_LIMIT);
-    showMoreBtn.style.display = '';
   }
 
   function apply() {
@@ -285,18 +294,24 @@ if (meta.lastUpdated) {
     noResults.classList.toggle('hidden', visible > 0);
     grid.classList.toggle('hidden', visible === 0);
 
-    // If user is filtering and showingAll is true, keep showing all (filter still works)
-    // If collapsed (initial state), reset to first INITIAL_LIMIT
+    // Reset all wrappers' hidden-more state, then re-apply based on
+    // VISIBLE ORDER (not DOM index). The old version used `grid.children`
+    // index, which broke when sorting changed and when filters hid cards
+    // interleaved with visible ones.
+    Array.from(grid.children).forEach((w) => {
+      if (w instanceof HTMLElement) w.classList.remove('hidden-more');
+    });
+
     if (!showingAll) {
-      // Mark cards beyond INITIAL_LIMIT as hidden-more (regardless of filter)
-      Array.from(grid.children).forEach((wrapper, i) => {
-        if (i >= INITIAL_LIMIT && wrapper instanceof HTMLElement) {
-          wrapper.classList.add('hidden-more');
+      let count = 0;
+      Array.from(grid.children).forEach((w) => {
+        if (!(w instanceof HTMLElement)) return;
+        const card = w.querySelector('.project-card') as HTMLElement;
+        if (!card || card.style.display === 'none') return;
+        count++;
+        if (count > INITIAL_LIMIT) {
+          w.classList.add('hidden-more');
         }
-      });
-    } else {
-      Array.from(grid.children).forEach((wrapper) => {
-        if (wrapper instanceof HTMLElement) wrapper.classList.remove('hidden-more');
       });
     }
 
@@ -313,10 +328,26 @@ if (meta.lastUpdated) {
 
   showMoreBtn.addEventListener('click', () => {
     showingAll = true;
+    // Also clear all filters so users actually see the full list.
+    // Without this, clicking "show more" with ≥500★ filter would still
+    // show only 5 cards — the user's exact complaint.
+    state.q = '';
+    state.time = 'all';
+    state.minStars = 0;
+    state.langs.clear();
+    state.sort = 'stars-desc';
+    (document.getElementById('filter-search') as HTMLInputElement).value = '';
+    (document.getElementById('filter-sort') as HTMLSelectElement).value = 'stars-desc';
+    document.querySelectorAll<HTMLButtonElement>('.lang-chip').forEach((b) => {
+      b.style.backgroundColor = '';
+      b.style.color = '';
+      b.style.borderColor = '';
+    });
+    activePillButtons();
     document.querySelectorAll<HTMLElement>('.project-item.hidden-more').forEach((el) => {
       el.classList.remove('hidden-more');
     });
-    updateShowMore();
+    apply();
   });
 
   // Wire up listeners
