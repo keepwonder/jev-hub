@@ -25,40 +25,41 @@ const MIN_STARS = 5;
 const PER_PAGE = 100;
 const MAX_PAGES = 3;  // up to 300 repos
 
-// Relevance check — require Jev-specific signal (not just 'typesafe'):
-//   Tier 1: Jev-specific keyword in BOTH name AND description
-//     (covers awesome-jev-projects, typesafe-ai/jev-python, etc.)
-//   Tier 2: 'typesafe' in name/desc AND Jev-specific in topics
-//     (catches repos that tag themselves jev but don't repeat it in description)
-//   Tier 3: blacklist (manual exceptions like tinystruct/tinystruct)
+// Relevance check — Jev-specific signal required (not just 'typesafe'):
+//   Tier 1: Jev-specific keyword in description
+//     (most reliable — a project whose description says 'Jev' is Jev-related)
+//   Tier 2: Jev-specific keyword in BOTH name AND topics
+//     (catches 'awesome-jev-*' repos and similar — named with jev AND tagged)
+//   Tier 3: 'typesafe-ai' OR 'system-one' in topics AND Jev-specific in topics
+//     (catches official typesafe-ai/jev-* repos and similar — tagged as Jev-related)
+//   Tier 4: blacklist (manual exceptions like tinystruct/tinystruct)
 //
-// 'typesafe' alone is too permissive — TypeSafe was also the name of
-// the old Lightbend company (Akka, Play, Slick, Lagom era), so any
-// keyword match would let unrelated Java/Scala/Next.js projects slip through.
+// 'typesafe' alone (without any Jev-specific signal) is too permissive —
+// TypeSafe was also the old name of Lightbend (Akka, Play, Slick, Lagom era),
+// so any keyword match would let unrelated Java/Scala/Next.js projects slip through.
 const JEV_PATTERNS = [
   /\bjev\b/i,
   /system[\s-]*one/i,
   /\brlcd\b/i,
 ];
-const TYPESAFE_PATTERN = /\btypesafe\b/i;
+const TYPESAFE_TOPIC = /\btypesafe(-ai)?\b/i;
+const SYSTEM_ONE_TOPIC = /\bsystem[\s-]*one\b/i;
 
 function isRelevant(p: { description?: string; name?: string; topics?: string[] }): boolean {
   const name = p.name ?? '';
   const desc = p.description ?? '';
-  const blob = `${desc} ${name}`;
   const topics = (p.topics ?? []).join(' ');
 
-  // Tier 1: Jev-specific keyword in both name AND description
-  if (JEV_PATTERNS.some((re) => re.test(name)) &&
-      JEV_PATTERNS.some((re) => re.test(desc))) {
-    return true;
-  }
+  // Tier 1: Jev-specific keyword in description (most common case for legit Jev projects)
+  if (JEV_PATTERNS.some((re) => re.test(desc))) return true;
 
-  // Tier 2: 'typesafe' in name/desc AND Jev-specific in topics
-  if (TYPESAFE_PATTERN.test(blob) &&
-      JEV_PATTERNS.some((re) => re.test(topics))) {
-    return true;
-  }
+  // Tier 2: Jev-specific in BOTH name AND topics
+  if (JEV_PATTERNS.some((re) => re.test(name)) &&
+      JEV_PATTERNS.some((re) => re.test(topics))) return true;
+
+  // Tier 3: 'typesafe-ai' or 'system-one' topic AND Jev-specific in topics
+  if ((TYPESAFE_TOPIC.test(topics) || SYSTEM_ONE_TOPIC.test(topics)) &&
+      JEV_PATTERNS.some((re) => re.test(topics))) return true;
 
   return false;
 }
