@@ -9,23 +9,8 @@
     "metrics": {
       "replies": 4,
       "retweets": 1,
-      "likes": 24,
-      "views": 67712
-    },
-    "source": "thirdparty"
-  },
-  {
-    "id": "cyrilXBT",
-    "authorHandle": "cyrilXBT",
-    "authorName": "CyrilXBT",
-    "datetime": "2026-09-20T03:33:46.000Z",
-    "text": "大多数谈论 JEV 的人从未读过定价页面之后的任何内容。\n\n以下是文档中真正隐藏的东西。\n\n1/ Jev 会玩 DOOM。\n\n不是为了噱头。TypeSafe 实时运行了它，大约每秒 10 个决策，结构化的游戏状态输入，动作输出。\n\n没有帧。没有像素。只有类型化的状态和每 100ms 的一个选择。\n\n持续运行的成本：大约每小时 7 美元。\n\n这才是真正的卖点。一个在循环中反应的模型，在那里 3 到 30 秒的 LLM 调用甚至都不是一个选项。\n\n2/ 它不是自回归的。\n\nJev 使用一个并行采样器，在单次通过中生成每个输出，而不是逐个 token。\n\n这才是 70 到 500ms 延迟背后的实际机制，而不是仅仅“更小的模型，更快的服务器”。\n\n3/ 只有三种问题类型，每种都有硬上限。\n\n选择：最多 255 个选项。\n评分：2 到 10 级，不再多。\nNoul：一个布尔值，概率本身就是置信度。Noul 问题上没有单独的置信度字段。\n\n4/ 你有一个共享的 64K token 预算，跨越状态和问题总和。\n\n但有一个更严格的约束隐藏在那个下面：你的状态加上你的单个最长问题必须适合大约 32K token。大约 150,000 个字符。\n\n大多数人先达到这个限制，然后才达到第一个。\n\n5/ 批处理不是一个锦上添花的功能，它是整个成本模型。\n\n13 个问题在一个调用中测量出比 13 个单独调用便宜 12.2 倍且快 10 倍，没有因批处理本身而降低答案质量。\n\n如果你每个问题调用 Jev 一次，你就在支付一个你不必支付的税。\n\n6/ 人们为它写问题时犯的最大错误：要求 Jev 提取或生成某些东西。\n\n不要让它命名一张牌。\n给他牌组，让他挑选一张。\n\n候选输入，选择输出。这就是整个设计契约。\n\n7/ Jev 无法计数、做日期计算或可靠地比较版本。\n\n不是 bug。是边界。任何算术的东西都在你的代码中计算，并作为预计算的事实交给 Jev，而不是作为问题询问。\n\n8/ 当你将无关内容塞入状态时，准确性会悄然下降。\n\n不是 LLM 那种上下文腐烂。是状态污染。状态中的每个无关 token 都在与你真正需要判断的那一个竞争权重。\n\n9/ 如果你在 Vercel AI SDK 上，置信度不会住在你期望的地方。\n\n它不在 answers 对象里面。它在 result.providerMetadata.typesafe.confidence，由问题 id 键控。\n\n错过那个，你会认为置信度评分不存在。\n\n10/ 输出 token 是免费的。不是便宜，免费。\n\nTypeSafe 称它们为“太便宜而无法计量”，因为输出是一个类型化的答案，而不是生成的文本。以每百万输入 token 0.042 美元的价格，一个 300 token 的分类成本大约 0.0000126 美元。\n\n这就是让每个记录的 AI 分类第一次有意义的数字。\n\n大多数人仍在像评估一个更小、更快的聊天机器人那样评估 Jev。\n\n它不是。它是一个完全不同的原语，如果你真正读了文档，它们会让这一点显而易见。\n\n关注 \n@cyrilXBT\n，我读了文档中无聊的部分，这样你就不必读了。",
-    "url": "https://x.com/cyrilXBT/status/2101634985631658180",
-    "metrics": {
-      "replies": 22,
-      "retweets": 18,
-      "likes": 111,
-      "views": 2393
+      "likes": 27,
+      "views": 70786
     },
     "source": "thirdparty"
   },
@@ -45,6 +30,21 @@
     "source": "thirdparty"
   },
   {
+    "id": "cyrilXBT",
+    "authorHandle": "cyrilXBT",
+    "authorName": "CyrilXBT",
+    "datetime": "2026-09-20T03:33:46.000Z",
+    "text": "大多数谈论 JEV 的人从未读过定价页面之后的任何内容。\n\n以下是文档中真正隐藏的东西。\n\n1/ Jev 会玩 DOOM。\n\n不是为了噱头。TypeSafe 实时运行了它，大约每秒 10 个决策，结构化的游戏状态输入，动作输出。\n\n没有帧。没有像素。只有类型化的状态和每 100ms 的一个选择。\n\n持续运行的成本：大约每小时 7 美元。\n\n这才是真正的卖点。一个在循环中反应的模型，在那里 3 到 30 秒的 LLM 调用甚至都不是一个选项。\n\n2/ 它不是自回归的。\n\nJev 使用一个并行采样器，在单次通过中生成每个输出，而不是逐个 token。\n\n这才是 70 到 500ms 延迟背后的实际机制，而不是仅仅“更小的模型，更快的服务器”。\n\n3/ 只有三种问题类型，每种都有硬上限。\n\n选择：最多 255 个选项。\n评分：2 到 10 级，不再多。\nNoul：一个布尔值，概率本身就是置信度。Noul 问题上没有单独的置信度字段。\n\n4/ 你有一个共享的 64K token 预算，跨越状态和问题总和。\n\n但有一个更严格的约束隐藏在那个下面：你的状态加上你的单个最长问题必须适合大约 32K token。大约 150,000 个字符。\n\n大多数人先达到这个限制，然后才达到第一个。\n\n5/ 批处理不是一个锦上添花的功能，它是整个成本模型。\n\n13 个问题在一个调用中测量出比 13 个单独调用便宜 12.2 倍且快 10 倍，没有因批处理本身而降低答案质量。\n\n如果你每个问题调用 Jev 一次，你就在支付一个你不必支付的税。\n\n6/ 人们为它写问题时犯的最大错误：要求 Jev 提取或生成某些东西。\n\n不要让它命名一张牌。\n给他牌组，让他挑选一张。\n\n候选输入，选择输出。这就是整个设计契约。\n\n7/ Jev 无法计数、做日期计算或可靠地比较版本。\n\n不是 bug。是边界。任何算术的东西都在你的代码中计算，并作为预计算的事实交给 Jev，而不是作为问题询问。\n\n8/ 当你将无关内容塞入状态时，准确性会悄然下降。\n\n不是 LLM 那种上下文腐烂。是状态污染。状态中的每个无关 token 都在与你真正需要判断的那一个竞争权重。\n\n9/ 如果你在 Vercel AI SDK 上，置信度不会住在你期望的地方。\n\n它不在 answers 对象里面。它在 result.providerMetadata.typesafe.confidence，由问题 id 键控。\n\n错过那个，你会认为置信度评分不存在。\n\n10/ 输出 token 是免费的。不是便宜，免费。\n\nTypeSafe 称它们为“太便宜而无法计量”，因为输出是一个类型化的答案，而不是生成的文本。以每百万输入 token 0.042 美元的价格，一个 300 token 的分类成本大约 0.0000126 美元。\n\n这就是让每个记录的 AI 分类第一次有意义的数字。\n\n大多数人仍在像评估一个更小、更快的聊天机器人那样评估 Jev。\n\n它不是。它是一个完全不同的原语，如果你真正读了文档，它们会让这一点显而易见。\n\n关注 \n@cyrilXBT\n，我读了文档中无聊的部分，这样你就不必读了。",
+    "url": "https://x.com/cyrilXBT/status/2101634985631658180",
+    "metrics": {
+      "replies": 23,
+      "retweets": 21,
+      "likes": 117,
+      "views": 2393
+    },
+    "source": "thirdparty"
+  },
+  {
     "id": "LangChain",
     "authorHandle": "LangChain",
     "authorName": "LangChain",
@@ -52,10 +52,10 @@
     "text": "我们把 Jev 与 LLM 评判员在准确性、可重复性、延迟和成本方面进行了测试,看看 System One 模型能否为代理评估提供新方法。结果显示 quality-score variance 比 GPT/Claude 低 92–913 倍。",
     "url": "https://x.com/LangChain/status/2101454284927959080",
     "metrics": {
-      "replies": 146,
-      "retweets": 382,
-      "likes": 2328,
-      "views": 422278
+      "replies": 155,
+      "retweets": 390,
+      "likes": 2388,
+      "views": 440732
     },
     "source": "thirdparty"
   },
@@ -69,23 +69,8 @@
     "metrics": {
       "replies": 13,
       "retweets": 155,
-      "likes": 743,
-      "views": 93117
-    },
-    "source": "community"
-  },
-  {
-    "id": "servasyy-ai",
-    "authorHandle": "servasyy_ai",
-    "authorName": "huangserva",
-    "datetime": "2026-09-18T16:37:47.000Z",
-    "text": "Jev 让我们的 Slack 代理快了 2 倍 ⚡️\n\n我们的代理可能会相当慢，因为它需要读取技能并弄清楚要调用哪些工具。\n\n我们使用了 \n@typesafeai\n 的新模型来加速这个过程，首先将提示传递给它，让它分类出最佳技能、工具和参数，然后再交给代理。",
-    "url": "https://x.com/servasyy_ai/status/2101132667056185544",
-    "metrics": {
-      "replies": 22,
-      "retweets": 130,
-      "likes": 627,
-      "views": 299311
+      "likes": 757,
+      "views": 94304
     },
     "source": "community"
   },
@@ -97,12 +82,27 @@
     "text": "Jev Clearly Explained. We have been using LLMs like a hammer for every AI problem, even simple decisions. Jev handles those decisions in milliseconds at a fraction of the cost.",
     "url": "https://x.com/akshay_pachaar/status/2101037514945597645",
     "metrics": {
-      "replies": 99,
-      "retweets": 546,
-      "likes": 4324,
-      "views": 1199008
+      "replies": 100,
+      "retweets": 559,
+      "likes": 4405,
+      "views": 1257672
     },
     "source": "thirdparty"
+  },
+  {
+    "id": "servasyy-ai",
+    "authorHandle": "servasyy_ai",
+    "authorName": "huangserva",
+    "datetime": "2026-09-18T16:37:47.000Z",
+    "text": "Jev 让我们的 Slack 代理快了 2 倍 ⚡️\n\n我们的代理可能会相当慢，因为它需要读取技能并弄清楚要调用哪些工具。\n\n我们使用了 \n@typesafeai\n 的新模型来加速这个过程，首先将提示传递给它，让它分类出最佳技能、工具和参数，然后再交给代理。",
+    "url": "https://x.com/servasyy_ai/status/2101132667056185544",
+    "metrics": {
+      "replies": 23,
+      "retweets": 131,
+      "likes": 645,
+      "views": 326469
+    },
+    "source": "community"
   },
   {
     "id": "DeRonin",
@@ -113,7 +113,7 @@
     "url": "https://x.com/DeRonin_/status/2100917158922387537",
     "metrics": {
       "replies": 59,
-      "retweets": 149,
+      "retweets": 150,
       "likes": 1754,
       "views": 450278
     },
@@ -128,8 +128,8 @@
     "url": "https://x.com/harrisonitsme/status/2100799749192569167",
     "metrics": {
       "replies": 73,
-      "retweets": 373,
-      "likes": 2537,
+      "retweets": 372,
+      "likes": 2540,
       "views": 346223
     },
     "source": "community"
@@ -144,7 +144,7 @@
     "metrics": {
       "replies": 358,
       "retweets": 109,
-      "likes": 1152,
+      "likes": 1153,
       "views": 317870
     },
     "source": "community"
