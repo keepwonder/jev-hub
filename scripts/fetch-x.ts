@@ -269,10 +269,29 @@ async function main() {
   const page = await ctx.newPage();
 
   // load saved cookies if any
+  // Accept both formats:
+  //   - Playwright array: [{name, value, domain, path}, ...]
+  //   - object shorthand (per DEPLOY.md): { auth_token, ct0 }
   try {
-    const cookies = JSON.parse(process.env.X_COOKIES_JSON || '[]');
-    await ctx.addCookies(cookies);
-  } catch {}
+    const raw = process.env.X_COOKIES_JSON || '[]';
+    const parsed = JSON.parse(raw);
+    let cookies: any[];
+    if (Array.isArray(parsed)) {
+      cookies = parsed;
+    } else {
+      cookies = Object.entries(parsed)
+        .filter(([, v]) => typeof v === 'string')
+        .map(([name, value]) => ({ name, value, domain: '.x.com', path: '/' }));
+    }
+    if (cookies.length) {
+      await ctx.addCookies(cookies);
+      console.log(`[fetch-x] loaded ${cookies.length} cookies`);
+    } else {
+      console.warn('[fetch-x] ⚠️ X_COOKIES_JSON 解析后为空 —— 抓取将以未登录状态运行');
+    }
+  } catch (e) {
+    console.warn(`[fetch-x] ⚠️ 解析 X_COOKIES_JSON 失败: ${e}`);
+  }
 
   try {
     // 1. Load existing data so we can merge (instead of overwrite).
