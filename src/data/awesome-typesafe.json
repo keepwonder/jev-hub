@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-10-01T03:07:46.494Z",
-    "totalFound": 1633,
-    "shownCount": 446,
+    "lastUpdated": "2026-10-01T12:05:05.016Z",
+    "totalFound": 1638,
+    "shownCount": 449,
     "languages": [
       {
         "name": "Python",
@@ -14,7 +14,7 @@
       },
       {
         "name": "JavaScript",
-        "count": 61
+        "count": 62
       },
       {
         "name": "Unknown",
@@ -26,11 +26,11 @@
       },
       {
         "name": "HTML",
-        "count": 10
+        "count": 11
       },
       {
         "name": "Go",
-        "count": 8
+        "count": 9
       },
       {
         "name": "Swift",
@@ -100,7 +100,7 @@
       "owner": "OpenByteInc",
       "description": "Open-source AI Trading OS, agent trading, and vibe trading, with Jev System One integration. Research, build Python strategies, backtest, and paper/live trade across crypto, stocks, and forex. Launch ",
       "url": "https://github.com/OpenByteInc/QuantDinger",
-      "stars": 12347,
+      "stars": 12349,
       "forks": 2525,
       "language": "Python",
       "topics": [
@@ -131,15 +131,15 @@
       ],
       "createdAt": "2025-12-28",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "kev",
       "owner": "jaredpalmer",
       "description": "Jev-like family of decision models built on top of Qwen3.5/3.8 you can train and run on your own",
       "url": "https://github.com/jaredpalmer/kev",
-      "stars": 8078,
-      "forks": 512,
+      "stars": 8128,
+      "forks": 518,
       "language": "Python",
       "topics": [
         "decision-model",
@@ -158,8 +158,8 @@
       "owner": "tamaratran",
       "description": "Claude Code plugin that replaces the compaction summary with Jev decisions: every tool call and result is scored in one fast request, stale ones are dropped or truncated, everything kept stays verbati",
       "url": "https://github.com/tamaratran/fast-jev-compaction",
-      "stars": 7262,
-      "forks": 470,
+      "stars": 7277,
+      "forks": 475,
       "language": "TypeScript",
       "topics": [],
       "tags": [
@@ -174,8 +174,8 @@
       "owner": "TheoLeeCJ",
       "description": "Semantic ifs from open models, on a 3090 at home. Independent; not affiliated with Jev or TypeSafe.",
       "url": "https://github.com/TheoLeeCJ/SemIf-OpenJev",
-      "stars": 4624,
-      "forks": 322,
+      "stars": 4638,
+      "forks": 325,
       "language": "Python",
       "topics": [],
       "tags": [
@@ -190,15 +190,15 @@
       "owner": "jarrodwatts",
       "description": "One AI trade decision every Monad block. Jev on Kuru MON-USDC.",
       "url": "https://github.com/jarrodwatts/jev-trader",
-      "stars": 2709,
-      "forks": 510,
+      "stars": 2720,
+      "forks": 512,
       "language": "TypeScript",
       "topics": [],
       "tags": [
         "Tool"
       ],
       "createdAt": "2026-09-16",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-17"
     },
     {
@@ -206,8 +206,8 @@
       "owner": "typesafe-ai",
       "description": "Agent skills for building with TypeSafe's System One API",
       "url": "https://github.com/typesafe-ai/skills",
-      "stars": 2496,
-      "forks": 148,
+      "stars": 2509,
+      "forks": 150,
       "language": null,
       "topics": [],
       "tags": [
@@ -222,7 +222,7 @@
       "owner": "TianyuCodings",
       "description": "A nano replica of Jev: parallel decisions, dynamic candidates, and an end-to-end training pipeline.",
       "url": "https://github.com/TianyuCodings/NanoJev",
-      "stars": 2454,
+      "stars": 2461,
       "forks": 252,
       "language": "Python",
       "topics": [],
@@ -238,8 +238,8 @@
       "owner": "yibie",
       "description": "A curated list of public projects, integrations, and discussions built on Jev — TypeSafe AI's System One model for typed decisions.",
       "url": "https://github.com/yibie/awesome-jev",
-      "stars": 2035,
-      "forks": 303,
+      "stars": 2045,
+      "forks": 304,
       "language": "Python",
       "topics": [
         "awesome",
@@ -259,8 +259,8 @@
       "owner": "dzhng",
       "description": "Find code by asking what it does. A CLI for coding agents that uses Jev to discover relevant files and source context.",
       "url": "https://github.com/dzhng/jevgrep",
-      "stars": 1909,
-      "forks": 127,
+      "stars": 1943,
+      "forks": 129,
       "language": "TypeScript",
       "topics": [
         "ai-sdk",
@@ -290,7 +290,7 @@
       "owner": "feder-cr",
       "description": "jevos is an open-source alternative to Jev for yes/no decisions that runs on your laptop.",
       "url": "https://github.com/feder-cr/jev",
-      "stars": 1140,
+      "stars": 1149,
       "forks": 129,
       "language": "C++",
       "topics": [
@@ -327,8 +327,8 @@
       "owner": "ollaya-dev",
       "description": "Run open decision models locally: pull and serve Laya, decider, NLI and GLiClass behind a TypeSafe-compatible API. Ollama for decision models.",
       "url": "https://github.com/ollaya-dev/ollaya",
-      "stars": 1038,
-      "forks": 52,
+      "stars": 1057,
+      "forks": 54,
       "language": "Rust",
       "topics": [
         "calibration",
@@ -352,15 +352,15 @@
       ],
       "createdAt": "2026-09-23",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "reticle",
       "owner": "reticlehq",
       "description": "AI agents can generate code, but still struggle to understand what they build. Reticle brings Jev-style machine-native runtime perception to web & desktop applications.",
       "url": "https://github.com/reticlehq/reticle",
-      "stars": 1020,
-      "forks": 162,
+      "stars": 1026,
+      "forks": 163,
       "language": "TypeScript",
       "topics": [
         "agent-skill",
@@ -392,8 +392,8 @@
       "owner": "nokia-applied-research",
       "description": "Turn any LLM into a Jev-style decision model: typed decisions, real probabilities, no training. (continue updating, welcome any issue and PR request)",
       "url": "https://github.com/nokia-applied-research/AnyJev",
-      "stars": 991,
-      "forks": 127,
+      "stars": 995,
+      "forks": 128,
       "language": "Python",
       "topics": [
         "calibration",
@@ -417,8 +417,8 @@
       "owner": "kerpopule",
       "description": "Jev-powered model routing, memory, compaction, skill selection, computer and browser use for Hermes agents (also Claude Code and Codex)",
       "url": "https://github.com/kerpopule/hermes-jev-skills",
-      "stars": 941,
-      "forks": 92,
+      "stars": 956,
+      "forks": 94,
       "language": "Python",
       "topics": [],
       "tags": [
@@ -435,7 +435,7 @@
       "owner": "heyjunpenn",
       "description": "A verified, community-maintained catalog of 962 open-source projects built with Jev.",
       "url": "https://github.com/heyjunpenn/awesome-jev",
-      "stars": 909,
+      "stars": 911,
       "forks": 71,
       "language": "Astro",
       "topics": [
@@ -458,8 +458,8 @@
       "owner": "Anil-matcha",
       "description": "Evidence-backed use cases, patterns, prompts, and starter code for TypeSafe Jev — a System One model for fast, typed, confidence-aware decisions in software.",
       "url": "https://github.com/Anil-matcha/awesome-jev-by-typesafe",
-      "stars": 887,
-      "forks": 193,
+      "stars": 890,
+      "forks": 194,
       "language": "Python",
       "topics": [
         "agent-workflows",
@@ -490,7 +490,7 @@
         "Search"
       ],
       "createdAt": "2023-05-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-23"
     },
     {
@@ -498,8 +498,8 @@
       "owner": "wfzyx",
       "description": "The open-source System One decision model. Sub-15ms, non-autoregressive, local drop-in alternative to TypeSafe Jev.",
       "url": "https://github.com/wfzyx/von",
-      "stars": 796,
-      "forks": 59,
+      "stars": 797,
+      "forks": 60,
       "language": "Python",
       "topics": [
         "decision-model",
@@ -515,14 +515,14 @@
       ],
       "createdAt": "2026-09-18",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "rizzo-flow",
       "owner": "Rizzo-AI-Academy",
       "description": "The open, local take on Jev: typed decisions from an LLM, without generating a single token",
       "url": "https://github.com/Rizzo-AI-Academy/rizzo-flow",
-      "stars": 772,
+      "stars": 780,
       "forks": 52,
       "language": "Python",
       "topics": [],
@@ -530,7 +530,7 @@
         "Tool"
       ],
       "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-25"
     },
     {
@@ -538,7 +538,7 @@
       "owner": "kitfunso",
       "description": "Memory for AI agents that learns what is wrong and stops repeating it. Mark a memory wrong and it stops coming back; newer facts replace old ones. Local SQLite store and MCP server, persistent across ",
       "url": "https://github.com/kitfunso/hippo-memory",
-      "stars": 768,
+      "stars": 769,
       "forks": 44,
       "language": "TypeScript",
       "topics": [
@@ -570,22 +570,38 @@
       ],
       "createdAt": "2026-03-15",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "shapeshift",
       "owner": "anishfn",
       "description": "An input that becomes what you mean: one text box that morphs into the right UI as you type. Powered by TypeSafe Jev, works offline.",
       "url": "https://github.com/anishfn/shapeshift",
-      "stars": 757,
-      "forks": 84,
+      "stars": 765,
+      "forks": 85,
       "language": "TypeScript",
       "topics": [],
       "tags": [
         "Tool"
       ],
       "createdAt": "2026-09-22",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-23"
+    },
+    {
+      "name": "jev-browser-use",
+      "owner": "wy-coliney",
+      "description": "5–10x faster browser operations: Jev clicks, Codex thinks and verifies. Built at EZCollegeApp.",
+      "url": "https://github.com/wy-coliney/jev-browser-use",
+      "stars": 746,
+      "forks": 34,
+      "language": "JavaScript",
+      "topics": [],
+      "tags": [
+        "Browser"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-23"
     },
     {
@@ -593,8 +609,8 @@
       "owner": "v-modal",
       "description": "A curated list of tools  built for Jev — TypeSafe AI's System One model for typed decisions.",
       "url": "https://github.com/v-modal/awesome-jev-tools",
-      "stars": 739,
-      "forks": 42,
+      "stars": 735,
+      "forks": 43,
       "language": null,
       "topics": [
         "awesome",
@@ -627,28 +643,12 @@
       "pushedAt": "2026-10-01"
     },
     {
-      "name": "jev-browser-use",
-      "owner": "wy-coliney",
-      "description": "5–10x faster browser operations: Jev clicks, Codex thinks and verifies. Built at EZCollegeApp.",
-      "url": "https://github.com/wy-coliney/jev-browser-use",
-      "stars": 726,
-      "forks": 34,
-      "language": "JavaScript",
-      "topics": [],
-      "tags": [
-        "Browser"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-23"
-    },
-    {
       "name": "jev-chat-windows",
       "owner": "jev-chat",
       "description": "JevChat-Windows：聊天窗口旁挂的回复辅助。窗口截图 + 本地离线 OCR 读对方消息 → Jev 判断意图 → 3 条候选一键填入，发送永远手动",
       "url": "https://github.com/jev-chat/jev-chat-windows",
-      "stars": 705,
-      "forks": 155,
+      "stars": 710,
+      "forks": 157,
       "language": "Python",
       "topics": [
         "chat-assistant",
@@ -666,7 +666,7 @@
         "Tool"
       ],
       "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-28"
     },
     {
@@ -694,7 +694,7 @@
       "owner": "receptron",
       "description": "Run Laya, the open-source Jev-compatible System-1 decision model, from Node.js / TypeScript via ONNX Runtime",
       "url": "https://github.com/receptron/laya",
-      "stars": 665,
+      "stars": 673,
       "forks": 62,
       "language": "TypeScript",
       "topics": [],
@@ -710,7 +710,7 @@
       "owner": "devagrawal09",
       "description": "A staged code-review workflow and local dashboard built with TypeSafe Jev.",
       "url": "https://github.com/devagrawal09/jev-review",
-      "stars": 647,
+      "stars": 652,
       "forks": 43,
       "language": "TypeScript",
       "topics": [
@@ -732,7 +732,7 @@
       "owner": "AgentiLoop",
       "description": "Agent! now supports macOS 14.6 or later, Apple Silicon and Intel (see latest pre-release). The Best AI agent for Mac: drives any app via Accessibility, codes/builds in Xcode, automates AppleScript, JX",
       "url": "https://github.com/AgentiLoop/Agent",
-      "stars": 639,
+      "stars": 640,
       "forks": 70,
       "language": "Swift",
       "topics": [
@@ -768,7 +768,7 @@
       "owner": "logicrw",
       "description": "Awesome Jev: source-backed open-source ecosystem radar, plain-language project discovery, and automatic GitHub sync",
       "url": "https://github.com/logicrw/awesome-jev-projects",
-      "stars": 637,
+      "stars": 636,
       "forks": 56,
       "language": "JavaScript",
       "topics": [
@@ -795,7 +795,7 @@
       "owner": "thruwire",
       "description": "An agent supervisor and software factory foreman powered by TypeSafe’s Jev model",
       "url": "https://github.com/thruwire/foreman",
-      "stars": 618,
+      "stars": 621,
       "forks": 48,
       "language": "Python",
       "topics": [],
@@ -803,15 +803,31 @@
         "Agent"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-28"
+    },
+    {
+      "name": "Valen",
+      "owner": "Liuziyu77",
+      "description": "Train a Jev-like multimodal model by yourself. System One Model, now with vision.",
+      "url": "https://github.com/Liuziyu77/Valen",
+      "stars": 604,
+      "forks": 61,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-23",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-30"
     },
     {
       "name": "awesome-jev",
       "owner": "AnotiaWang",
       "description": "A curated list of awesome Jev / TypeSafe System One applications, libraries, and resources.",
       "url": "https://github.com/AnotiaWang/awesome-jev",
-      "stars": 590,
+      "stars": 591,
       "forks": 123,
       "language": null,
       "topics": [
@@ -862,27 +878,11 @@
       "pushedAt": "2026-09-30"
     },
     {
-      "name": "Valen",
-      "owner": "Liuziyu77",
-      "description": "Train a Jev-like multimodal model by yourself. System One Model, now with vision.",
-      "url": "https://github.com/Liuziyu77/Valen",
-      "stars": 583,
-      "forks": 59,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-23",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
-    },
-    {
       "name": "simple-jev",
       "owner": "featherless-ai",
       "description": "Turn any open model into a classifier/jev endpoint",
       "url": "https://github.com/featherless-ai/simple-jev",
-      "stars": 575,
+      "stars": 577,
       "forks": 66,
       "language": "Python",
       "topics": [],
@@ -890,7 +890,7 @@
         "Tool"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
     },
     {
@@ -898,7 +898,7 @@
       "owner": "rmalde",
       "description": "Astra planner and JEV controller for Minecraft, with native recording, tested routes, and run verification.",
       "url": "https://github.com/rmalde/minecraft-agent",
-      "stars": 570,
+      "stars": 571,
       "forks": 61,
       "language": "JavaScript",
       "topics": [],
@@ -908,6 +908,22 @@
       "createdAt": "2026-09-20",
       "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-20"
+    },
+    {
+      "name": "openjev",
+      "owner": "razorback16",
+      "description": "Open, Jev-compatible System One decision server on DiffusionGemma",
+      "url": "https://github.com/razorback16/openjev",
+      "stars": 559,
+      "forks": 45,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-29"
     },
     {
       "name": "jev-skill",
@@ -965,28 +981,12 @@
       "pushedAt": "2026-09-30"
     },
     {
-      "name": "openjev",
-      "owner": "razorback16",
-      "description": "Open, Jev-compatible System One decision server on DiffusionGemma",
-      "url": "https://github.com/razorback16/openjev",
-      "stars": 550,
-      "forks": 44,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-29"
-    },
-    {
       "name": "jev-router",
       "owner": "gargpratyush",
       "description": "Route to the cheapest model in claude code for your task using jev-router",
       "url": "https://github.com/gargpratyush/jev-router",
-      "stars": 506,
-      "forks": 66,
+      "stars": 513,
+      "forks": 68,
       "language": "JavaScript",
       "topics": [],
       "tags": [
@@ -1026,7 +1026,7 @@
         "Tool"
       ],
       "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-26"
     },
     {
@@ -1034,7 +1034,7 @@
       "owner": "kyotofin",
       "description": "Tax document page classifier built on Jev decisions. 100% strict accuracy across 261 IRS forms, ~$0.001 per page.",
       "url": "https://github.com/kyotofin/tax-doc-classifier",
-      "stars": 483,
+      "stars": 485,
       "forks": 59,
       "language": "TypeScript",
       "topics": [],
@@ -1042,7 +1042,7 @@
         "Tool"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-29"
     },
     {
@@ -1050,7 +1050,7 @@
       "owner": "OmniJev",
       "description": "🔥🔥 Awesome Jev:  open-source models, projects, benchmarks, and independent evaluations for Jev and System One models.",
       "url": "https://github.com/OmniJev/awesome-jev-gallery",
-      "stars": 481,
+      "stars": 484,
       "forks": 29,
       "language": "JavaScript",
       "topics": [
@@ -1077,16 +1077,16 @@
         "awesome-list"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "awesome-jev",
       "owner": "cobanov",
       "description": "A curated, source-backed list of projects built with Jev, TypeSafe AI's System One model for typed decisions.",
       "url": "https://github.com/cobanov/awesome-jev",
-      "stars": 473,
-      "forks": 112,
+      "stars": 477,
+      "forks": 113,
       "language": null,
       "topics": [
         "ai-agents",
@@ -1108,23 +1108,7 @@
         "guardrail"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "jev-mcp",
-      "owner": "jkudish",
-      "description": "Fast, cheap, typed judgments from TypeSafe's Jev model, as MCP tools.",
-      "url": "https://github.com/jkudish/jev-mcp",
-      "stars": 471,
-      "forks": 54,
-      "language": "JavaScript",
-      "topics": [],
-      "tags": [
-        "MCP"
-      ],
-      "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-10-01"
     },
     {
@@ -1132,8 +1116,8 @@
       "owner": "angel291592",
       "description": "Intent compiler for AI agents — converges vague requests into typed IntentSpec contracts (probe, ask, or halt before routing), the input layer for routers and typed-decision models like Jev & Laya",
       "url": "https://github.com/angel291592/Intent-Router",
-      "stars": 447,
-      "forks": 50,
+      "stars": 475,
+      "forks": 54,
       "language": "Python",
       "topics": [
         "agent-skills",
@@ -1159,11 +1143,43 @@
       "pushedAt": "2026-09-28"
     },
     {
+      "name": "jev-mcp",
+      "owner": "jkudish",
+      "description": "Fast, cheap, typed judgments from TypeSafe's Jev model, as MCP tools.",
+      "url": "https://github.com/jkudish/jev-mcp",
+      "stars": 472,
+      "forks": 54,
+      "language": "JavaScript",
+      "topics": [],
+      "tags": [
+        "MCP"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
+      "name": "JevHarness",
+      "owner": "TianyuCodings",
+      "description": "LLM-authored task-specific Jev harnesses with optional full-trajectory reward reflection and GEPA evolution.",
+      "url": "https://github.com/TianyuCodings/JevHarness",
+      "stars": 435,
+      "forks": 17,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-21",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-21"
+    },
+    {
       "name": "vexjoy-agent",
       "owner": "notque",
       "description": "VexJoy AI Agent with Jev Intelligent Routing - /do routes plain-English requests to the right specialist agent and gates the work with reviews, tests, and a learning loop.",
       "url": "https://github.com/notque/vexjoy-agent",
-      "stars": 425,
+      "stars": 424,
       "forks": 48,
       "language": "Python",
       "topics": [
@@ -1185,7 +1201,7 @@
         "Agent"
       ],
       "createdAt": "2026-03-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
     },
     {
@@ -1193,7 +1209,7 @@
       "owner": "fhshaik",
       "description": "A TypeSafe/Jev agent that plays Super Mario Bros. from structured emulator state.",
       "url": "https://github.com/fhshaik/typesafe-mario",
-      "stars": 422,
+      "stars": 423,
       "forks": 48,
       "language": "Python",
       "topics": [],
@@ -1202,24 +1218,24 @@
         "Games"
       ],
       "createdAt": "2026-09-16",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-16"
     },
     {
-      "name": "JevHarness",
-      "owner": "TianyuCodings",
-      "description": "LLM-authored task-specific Jev harnesses with optional full-trajectory reward reflection and GEPA evolution.",
-      "url": "https://github.com/TianyuCodings/JevHarness",
-      "stars": 421,
-      "forks": 17,
+      "name": "jev-seo",
+      "owner": "AgriciDaniel",
+      "description": "Live SEO audit for any website from one homepage URL, judged by Jev. PDF, XLSX and Markdown reports.",
+      "url": "https://github.com/AgriciDaniel/jev-seo",
+      "stars": 406,
+      "forks": 69,
       "language": "Python",
       "topics": [],
       "tags": [
         "Tool"
       ],
-      "createdAt": "2026-09-21",
+      "createdAt": "2026-09-22",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-21"
+      "pushedAt": "2026-09-22"
     },
     {
       "name": "pg-jev",
@@ -1238,27 +1254,11 @@
       "pushedAt": "2026-09-18"
     },
     {
-      "name": "jev-seo",
-      "owner": "AgriciDaniel",
-      "description": "Live SEO audit for any website from one homepage URL, judged by Jev. PDF, XLSX and Markdown reports.",
-      "url": "https://github.com/AgriciDaniel/jev-seo",
-      "stars": 379,
-      "forks": 66,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-22",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-22"
-    },
-    {
       "name": "LLM2Jev",
       "owner": "Yinsongxu",
       "description": "Turn local language models into Jev-style structured decision models. Get results from text and images with prefill alone—no token-by-token decoding required.",
       "url": "https://github.com/Yinsongxu/LLM2Jev",
-      "stars": 379,
+      "stars": 381,
       "forks": 38,
       "language": "Python",
       "topics": [
@@ -1279,7 +1279,7 @@
       "description": "Control a real browser by voice. Jev (TypeSafe System One) decides intent + target in ~300 ms per spoken word; Playwright acts — often before you finish the sentence.",
       "url": "https://github.com/moritzkremb/jev-voice-browser",
       "stars": 374,
-      "forks": 61,
+      "forks": 62,
       "language": "JavaScript",
       "topics": [],
       "tags": [
@@ -1290,12 +1290,28 @@
       "pushedAt": "2026-09-21"
     },
     {
+      "name": "jeeves",
+      "owner": "PostHog",
+      "description": "Jeeves – Reasoning improves Jev-like decision models",
+      "url": "https://github.com/PostHog/jeeves",
+      "stars": 362,
+      "forks": 17,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-29",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
       "name": "awesome-jev-use-cases",
       "owner": "walidboulanouar",
       "description": "Awesome list of TypeSafe AI Jev use cases: 74 demos ranked by likes, 150+ GitHub repos, limits, cost and API examples. CC0",
       "url": "https://github.com/walidboulanouar/awesome-jev-use-cases",
-      "stars": 357,
-      "forks": 50,
+      "stars": 359,
+      "forks": 51,
       "language": null,
       "topics": [
         "ai-guardrails",
@@ -1330,27 +1346,11 @@
       "pushedAt": "2026-09-26"
     },
     {
-      "name": "jeeves",
-      "owner": "PostHog",
-      "description": "Jeeves – Reasoning improves Jev-like decision models",
-      "url": "https://github.com/PostHog/jeeves",
-      "stars": 346,
-      "forks": 16,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-29",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
-    },
-    {
       "name": "unclutter",
       "owner": "kitze",
       "description": "WXT browser extension: Jev-powered page clutter removal with reusable template rules.",
       "url": "https://github.com/kitze/unclutter",
-      "stars": 343,
+      "stars": 344,
       "forks": 35,
       "language": "TypeScript",
       "topics": [],
@@ -1358,8 +1358,28 @@
         "Browser"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-18"
+    },
+    {
+      "name": "system-one-connector",
+      "owner": "itsmostafa",
+      "description": "System One MCP connector to evaluate anything fast and cheap. Give your AI agent direct access to models like: Jev, D1, CLM and Laya",
+      "url": "https://github.com/itsmostafa/system-one-connector",
+      "stars": 339,
+      "forks": 38,
+      "language": "Go",
+      "topics": [
+        "mcp",
+        "mcp-tools"
+      ],
+      "tags": [
+        "MCP",
+        "Agent"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-30"
     },
     {
       "name": "jev-dsh-decision",
@@ -1399,26 +1419,6 @@
       "pushedAt": "2026-09-20"
     },
     {
-      "name": "system-one-connector",
-      "owner": "itsmostafa",
-      "description": "System One MCP connector to evaluate anything fast and cheap. Give your AI agent direct access to models like: Jev, D1, CLM and Laya",
-      "url": "https://github.com/itsmostafa/system-one-connector",
-      "stars": 337,
-      "forks": 38,
-      "language": "Go",
-      "topics": [
-        "mcp",
-        "mcp-tools"
-      ],
-      "tags": [
-        "MCP",
-        "Agent"
-      ],
-      "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
       "name": "openjev-sglang",
       "owner": "ekzhang",
       "description": "Jev-compatible API endpoint based on open models (prefill-only)",
@@ -1444,7 +1444,7 @@
       "owner": "malevrigns",
       "description": "AgentJev-0.6B - a fast 'System One' decision model for AI Agents: feed it any unstructured state (diffs, traces, logs) and structured questions, get calibrated probability distributions back in one ~5",
       "url": "https://github.com/malevrigns/agent-jev",
-      "stars": 331,
+      "stars": 333,
       "forks": 30,
       "language": "Python",
       "topics": [],
@@ -1452,31 +1452,15 @@
         "Agent"
       ],
       "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-23"
-    },
-    {
-      "name": "keel",
-      "owner": "codejunkie99",
-      "description": "Local-first macOS coding workspace with local Laya and optional Jev decision selection",
-      "url": "https://github.com/codejunkie99/keel",
-      "stars": 319,
-      "forks": 42,
-      "language": "Rust",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-22",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-25"
+      "pushedAt": "2026-09-23"
     },
     {
       "name": "JevRouter",
       "owner": "BillionsBobby",
       "description": "A lightweight Jev-powered router for models, tools, and subagents",
       "url": "https://github.com/BillionsBobby/JevRouter",
-      "stars": 314,
+      "stars": 329,
       "forks": 19,
       "language": "TypeScript",
       "topics": [],
@@ -1488,11 +1472,27 @@
       "pushedAt": "2026-09-26"
     },
     {
+      "name": "keel",
+      "owner": "codejunkie99",
+      "description": "Local-first macOS coding workspace with local Laya and optional Jev decision selection",
+      "url": "https://github.com/codejunkie99/keel",
+      "stars": 318,
+      "forks": 42,
+      "language": "Rust",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-22",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-25"
+    },
+    {
       "name": "jev-visual",
       "owner": "hr98w",
       "description": "An educational Jev-like visual inference experiment on Apple Silicon: shared context, direct candidate scoring, and local visual demos.",
       "url": "https://github.com/hr98w/jev-visual",
-      "stars": 302,
+      "stars": 303,
       "forks": 27,
       "language": "Python",
       "topics": [],
@@ -1533,7 +1533,7 @@
       "owner": "jkudish",
       "description": "Browser use using Typesafe's Jev model",
       "url": "https://github.com/jkudish/jev-browser",
-      "stars": 298,
+      "stars": 299,
       "forks": 27,
       "language": "JavaScript",
       "topics": [],
@@ -1543,6 +1543,22 @@
       "createdAt": "2026-09-17",
       "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
+    },
+    {
+      "name": "Astra-Ares",
+      "owner": "miuuyy",
+      "description": "Adaptive reasoning effort for GPT-6 during Codex tasks, powered by Jev to reduce token usage.",
+      "url": "https://github.com/miuuyy/Astra-Ares",
+      "stars": 294,
+      "forks": 20,
+      "language": "JavaScript",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-22",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-23"
     },
     {
       "name": "openJev-verdict-2.0",
@@ -1582,28 +1598,12 @@
       "pushedAt": "2026-09-20"
     },
     {
-      "name": "Astra-Ares",
-      "owner": "miuuyy",
-      "description": "Adaptive reasoning effort for GPT-6 during Codex tasks, powered by Jev to reduce token usage.",
-      "url": "https://github.com/miuuyy/Astra-Ares",
-      "stars": 293,
-      "forks": 20,
-      "language": "JavaScript",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-22",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-23"
-    },
-    {
       "name": "jev-codex-router",
       "owner": "0xNatoshi",
       "description": "Per-turn model & reasoning routing for Codex, driven by Jev (TypeSafe System One): picks the model, thinking depth and speed mode for every turn.",
       "url": "https://github.com/0xNatoshi/jev-codex-router",
       "stars": 277,
-      "forks": 42,
+      "forks": 43,
       "language": "JavaScript",
       "topics": [
         "ai",
@@ -1626,8 +1626,8 @@
       "owner": "logan-markewich",
       "description": "A self-hosted drop-in replacement for TypeSafe's jev, powered by GliFormer.",
       "url": "https://github.com/logan-markewich/jeff",
-      "stars": 275,
-      "forks": 20,
+      "stars": 276,
+      "forks": 21,
       "language": "Python",
       "topics": [
         "classification",
@@ -1648,15 +1648,15 @@
       "owner": "vinilana",
       "description": "An easy way to use jev with your coding agent for tool calling reasoning",
       "url": "https://github.com/vinilana/jev-gateway",
-      "stars": 268,
-      "forks": 36,
+      "stars": 272,
+      "forks": 37,
       "language": "TypeScript",
       "topics": [],
       "tags": [
         "Agent"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-25"
     },
     {
@@ -1664,7 +1664,7 @@
       "owner": "FerryCorleone",
       "description": "Crush 好感监控器：用 Jev 分析微信聊天的情绪、意图和回复表现。本机部署，使用自己的 API Key。",
       "url": "https://github.com/FerryCorleone/crush-monitor",
-      "stars": 265,
+      "stars": 267,
       "forks": 26,
       "language": "TypeScript",
       "topics": [],
@@ -1698,7 +1698,7 @@
       "owner": "FBddcz",
       "description": "EmbodiedJev: MuJoCo robot decision workbench with MiniCPM5-2B, Jev and compatible model APIs",
       "url": "https://github.com/FBddcz/embodied-jev",
-      "stars": 249,
+      "stars": 251,
       "forks": 9,
       "language": "Python",
       "topics": [],
@@ -1706,31 +1706,15 @@
         "Bot"
       ],
       "createdAt": "2026-09-20",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-22"
-    },
-    {
-      "name": "killmyidea",
-      "owner": "monteduro",
-      "description": "Describe your startup idea. Jev decides: kill it, fix it or ship it.",
-      "url": "https://github.com/monteduro/killmyidea",
-      "stars": 245,
-      "forks": 32,
-      "language": "TypeScript",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-17",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-24"
+      "pushedAt": "2026-09-22"
     },
     {
       "name": "quackd",
       "owner": "rokbenko",
       "description": "One CLI for all your robots. Connect them, command them, and let them work together, each with an LLM for a brain (Claude, OpenAI, Gemini, Grok, or local via Ollama or vLLM), VLAs for arms and decisio",
       "url": "https://github.com/rokbenko/quackd",
-      "stars": 244,
+      "stars": 246,
       "forks": 26,
       "language": "Python",
       "topics": [
@@ -1761,23 +1745,39 @@
         "Bot"
       ],
       "createdAt": "2026-08-28",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
+    },
+    {
+      "name": "killmyidea",
+      "owner": "monteduro",
+      "description": "Describe your startup idea. Jev decides: kill it, fix it or ship it.",
+      "url": "https://github.com/monteduro/killmyidea",
+      "stars": 245,
+      "forks": 32,
+      "language": "TypeScript",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-24"
     },
     {
       "name": "laya-ultrafast",
       "owner": "ipenywis",
       "description": "Same as jev-ultrafast but using Laya",
       "url": "https://github.com/ipenywis/laya-ultrafast",
-      "stars": 235,
-      "forks": 38,
+      "stars": 237,
+      "forks": 39,
       "language": "Python",
       "topics": [],
       "tags": [
         "Tool"
       ],
       "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-22"
     },
     {
@@ -1868,7 +1868,7 @@
       ],
       "createdAt": "2026-09-18",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "awesome-jev",
@@ -1898,7 +1898,7 @@
       "owner": "hellogumbo",
       "description": "A community directory of projects built on Jev, TypeSafe AI's System One model.",
       "url": "https://github.com/hellogumbo/awesome-jev",
-      "stars": 209,
+      "stars": 210,
       "forks": 68,
       "language": "JavaScript",
       "topics": [
@@ -1913,7 +1913,7 @@
         "awesome-list"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-24"
     },
     {
@@ -1937,7 +1937,7 @@
       "owner": "standardagents",
       "description": "A playable Three.js driving simulator with Jev-powered autopilot",
       "url": "https://github.com/standardagents/jevpilot",
-      "stars": 204,
+      "stars": 206,
       "forks": 37,
       "language": "JavaScript",
       "topics": [],
@@ -1945,31 +1945,15 @@
         "Agent"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-17"
-    },
-    {
-      "name": "jevify",
-      "owner": "ryana",
-      "description": "Prompts to jev-ify your projects",
-      "url": "https://github.com/ryana/jevify",
-      "stars": 193,
-      "forks": 5,
-      "language": null,
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-19"
     },
     {
       "name": "jevbench",
       "owner": "fstandhartinger",
       "description": "JevBench v1 - a benchmark for Jev-class typed decision models: smart, cheap, fast, reliable, open.",
       "url": "https://github.com/fstandhartinger/jevbench",
-      "stars": 190,
+      "stars": 192,
       "forks": 22,
       "language": "Python",
       "topics": [
@@ -1981,8 +1965,56 @@
         "Tool"
       ],
       "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-29"
+    },
+    {
+      "name": "jevify",
+      "owner": "ryana",
+      "description": "Prompts to jev-ify your projects",
+      "url": "https://github.com/ryana/jevify",
+      "stars": 192,
+      "forks": 5,
+      "language": null,
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-19"
+    },
+    {
+      "name": "tev1",
+      "owner": "togethercomputer",
+      "description": "Open-weight, Jev-inspired decision model finetuned on top of Qwen3.5 4B",
+      "url": "https://github.com/togethercomputer/tev1",
+      "stars": 191,
+      "forks": 22,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-23",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-24"
+    },
+    {
+      "name": "beebots",
+      "owner": "imikerussell",
+      "description": "Three AI trading bees on OKX, every decision by Jev. Paper trading by default. Not financial advice.",
+      "url": "https://github.com/imikerussell/beebots",
+      "stars": 190,
+      "forks": 97,
+      "language": "TypeScript",
+      "topics": [],
+      "tags": [
+        "Bot"
+      ],
+      "createdAt": "2026-09-25",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-27"
     },
     {
       "name": "SystemOneHarness",
@@ -2006,27 +2038,11 @@
       "pushedAt": "2026-09-21"
     },
     {
-      "name": "tev1",
-      "owner": "togethercomputer",
-      "description": "Open-weight, Jev-inspired decision model finetuned on top of Qwen3.5 4B",
-      "url": "https://github.com/togethercomputer/tev1",
-      "stars": 188,
-      "forks": 22,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-23",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-24"
-    },
-    {
       "name": "awesome-jev-typesafe",
       "owner": "valentynkit",
       "description": "Typed decisions with TypeSafe's Jev, the first System One model",
       "url": "https://github.com/valentynkit/awesome-jev-typesafe",
-      "stars": 186,
+      "stars": 188,
       "forks": 50,
       "language": "JavaScript",
       "topics": [
@@ -2047,32 +2063,16 @@
         "Agent"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "beebots",
-      "owner": "imikerussell",
-      "description": "Three AI trading bees on OKX, every decision by Jev. Paper trading by default. Not financial advice.",
-      "url": "https://github.com/imikerussell/beebots",
-      "stars": 185,
-      "forks": 95,
-      "language": "TypeScript",
-      "topics": [],
-      "tags": [
-        "Bot"
-      ],
-      "createdAt": "2026-09-25",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-27"
     },
     {
       "name": "imajev",
       "owner": "mohit67890",
       "description": "Open Jev-style typed-decision model that also takes images: photo + app state + typed questions in, calibrated probabilities out, locally.",
       "url": "https://github.com/mohit67890/imajev",
-      "stars": 173,
-      "forks": 21,
+      "stars": 185,
+      "forks": 22,
       "language": "Python",
       "topics": [],
       "tags": [
@@ -2080,7 +2080,7 @@
       ],
       "createdAt": "2026-09-23",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-29"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jev-trade",
@@ -2102,6 +2102,22 @@
       "createdAt": "2026-09-17",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-21"
+    },
+    {
+      "name": "vllm-jev",
+      "owner": "mode-io",
+      "description": "Native vLLM serving for Jev decision models",
+      "url": "https://github.com/mode-io/vllm-jev",
+      "stars": 171,
+      "forks": 6,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-24",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-29"
     },
     {
       "name": "awesome-jev",
@@ -2148,40 +2164,24 @@
       "owner": "Liyucheng1997",
       "description": "Jev Chat Assistant for Windows - 电脑版微信意图判断与 DeepSeek 建议回复",
       "url": "https://github.com/Liyucheng1997/332_lab-jev-chat",
-      "stars": 161,
-      "forks": 17,
+      "stars": 163,
+      "forks": 18,
       "language": "Kotlin",
       "topics": [],
       "tags": [
         "Tool"
       ],
       "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-21"
-    },
-    {
-      "name": "vllm-jev",
-      "owner": "mode-io",
-      "description": "Native vLLM serving for Jev decision models",
-      "url": "https://github.com/mode-io/vllm-jev",
-      "stars": 161,
-      "forks": 6,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-24",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-29"
+      "pushedAt": "2026-09-21"
     },
     {
       "name": "OpenJev",
       "owner": "SiliconLabAI",
       "description": "OpenSource Jev",
       "url": "https://github.com/SiliconLabAI/OpenJev",
-      "stars": 159,
-      "forks": 37,
+      "stars": 160,
+      "forks": 38,
       "language": "TypeScript",
       "topics": [
         "jev",
@@ -2200,7 +2200,7 @@
       "owner": "kshetrajna12",
       "description": "A small open decision model: state + typed questions -> calibrated probabilities. A Jev / System One re-creation on Qwen3.5.",
       "url": "https://github.com/kshetrajna12/reflex",
-      "stars": 159,
+      "stars": 160,
       "forks": 18,
       "language": "Python",
       "topics": [],
@@ -2208,7 +2208,7 @@
         "Tool"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-27"
     },
     {
@@ -2232,7 +2232,7 @@
       "owner": "tamaratran",
       "description": "Claude Code plugin: trim long Bash output with TypeSafe Jev before the model sees it",
       "url": "https://github.com/tamaratran/jev-pruner",
-      "stars": 153,
+      "stars": 154,
       "forks": 10,
       "language": "TypeScript",
       "topics": [],
@@ -2241,7 +2241,7 @@
         "guardrail"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
     },
     {
@@ -2249,7 +2249,7 @@
       "owner": "y0usaf",
       "description": "TypeSafe Jev as a decision layer for the Pi coding agent: a measured tool-call gate plus jev_ask for typed, calibrated answers",
       "url": "https://github.com/y0usaf/pi-jev",
-      "stars": 150,
+      "stars": 152,
       "forks": 13,
       "language": "TypeScript",
       "topics": [
@@ -2265,7 +2265,7 @@
         "guardrail"
       ],
       "createdAt": "2026-09-16",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-10-01"
     },
     {
@@ -2273,7 +2273,7 @@
       "owner": "dorkitude",
       "description": "Smart web search CLI for agents, backed by Jev. Saves a lot of tokens.",
       "url": "https://github.com/dorkitude/webctl",
-      "stars": 149,
+      "stars": 148,
       "forks": 16,
       "language": "Go",
       "topics": [],
@@ -2282,7 +2282,7 @@
         "Search"
       ],
       "createdAt": "2026-09-20",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-23"
     },
     {
@@ -2290,7 +2290,7 @@
       "owner": "dbreunig",
       "description": "A skill for writing and improving programs that call Jev, TypeSafe's System One model",
       "url": "https://github.com/dbreunig/building-with-jev-skill",
-      "stars": 146,
+      "stars": 147,
       "forks": 11,
       "language": null,
       "topics": [],
@@ -2370,14 +2370,14 @@
       ],
       "createdAt": "2025-05-31",
       "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "supercov",
       "owner": "supercorp-ai",
       "description": "Coverage, security and code quality for coding agents",
       "url": "https://github.com/supercorp-ai/supercov",
-      "stars": 142,
+      "stars": 143,
       "forks": 5,
       "language": "Rust",
       "topics": [
@@ -2414,7 +2414,7 @@
       "owner": "libingzheren",
       "description": "Jev-Mem: System-One Controlled Agentic Memory",
       "url": "https://github.com/libingzheren/Jev-Mem",
-      "stars": 138,
+      "stars": 139,
       "forks": 13,
       "language": "Python",
       "topics": [
@@ -2469,8 +2469,8 @@
       "owner": "ThinkFlowLab",
       "description": "System 1 decision models (Jev, Laya, Cua-S1) as brain for agents: Browser use, computer use, games and robotics",
       "url": "https://github.com/ThinkFlowLab/system1-agents",
-      "stars": 135,
-      "forks": 15,
+      "stars": 136,
+      "forks": 16,
       "language": "Python",
       "topics": [
         "ai-agents",
@@ -2494,7 +2494,7 @@
         "Bot"
       ],
       "createdAt": "2026-09-22",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-29"
     },
     {
@@ -2512,6 +2512,22 @@
       "createdAt": "2026-09-21",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-21"
+    },
+    {
+      "name": "ten-levels-of-jev",
+      "owner": "disler",
+      "description": "Ten levels of Jev, from one smart if statement to a coding agent that reaches for Jev on its own",
+      "url": "https://github.com/disler/ten-levels-of-jev",
+      "stars": 133,
+      "forks": 43,
+      "language": "TypeScript",
+      "topics": [],
+      "tags": [
+        "Agent"
+      ],
+      "createdAt": "2026-09-27",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-27"
     },
     {
       "name": "jev-social",
@@ -2614,43 +2630,11 @@
       "pushedAt": "2026-09-20"
     },
     {
-      "name": "ten-levels-of-jev",
-      "owner": "disler",
-      "description": "Ten levels of Jev, from one smart if statement to a coding agent that reaches for Jev on its own",
-      "url": "https://github.com/disler/ten-levels-of-jev",
-      "stars": 128,
-      "forks": 41,
-      "language": "TypeScript",
-      "topics": [],
-      "tags": [
-        "Agent"
-      ],
-      "createdAt": "2026-09-27",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-27"
-    },
-    {
-      "name": "jev-engineering-zh",
-      "owner": "yibie",
-      "description": "《Jev 工程学：为 coding agent 而作》完整中文翻译 — 保留原结构与 7 张插图",
-      "url": "https://github.com/yibie/jev-engineering-zh",
-      "stars": 128,
-      "forks": 18,
-      "language": null,
-      "topics": [],
-      "tags": [
-        "Agent"
-      ],
-      "createdAt": "2026-09-22",
-      "updatedAt": "2026-09-29",
-      "pushedAt": "2026-09-22"
-    },
-    {
       "name": "jevk5",
       "owner": "allebee",
       "description": "JevK5: open-weight alternative to TypeSafe Jev. Typed decisions with probabilities in one forward pass; Apache-2.0 weights and code.",
       "url": "https://github.com/allebee/jevk5",
-      "stars": 127,
+      "stars": 128,
       "forks": 10,
       "language": "Python",
       "topics": [
@@ -2670,6 +2654,22 @@
       "createdAt": "2026-09-22",
       "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-28"
+    },
+    {
+      "name": "jev-engineering-zh",
+      "owner": "yibie",
+      "description": "《Jev 工程学：为 coding agent 而作》完整中文翻译 — 保留原结构与 7 张插图",
+      "url": "https://github.com/yibie/jev-engineering-zh",
+      "stars": 128,
+      "forks": 18,
+      "language": null,
+      "topics": [],
+      "tags": [
+        "Agent"
+      ],
+      "createdAt": "2026-09-22",
+      "updatedAt": "2026-09-29",
+      "pushedAt": "2026-09-22"
     },
     {
       "name": "building-with-typesafe-jev",
@@ -2765,15 +2765,15 @@
       "owner": "daseinlabs",
       "description": "Open Jev implementation with custom finetuning",
       "url": "https://github.com/daseinlabs/open-jev",
-      "stars": 120,
-      "forks": 24,
+      "stars": 121,
+      "forks": 25,
       "language": "Python",
       "topics": [],
       "tags": [
         "Tool"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
     },
     {
@@ -2797,7 +2797,7 @@
       "owner": "mrnugget",
       "description": "Fish-style zsh history autosuggestions ranked by Jev (TypeSafe)",
       "url": "https://github.com/mrnugget/jev-shell-history",
-      "stars": 115,
+      "stars": 117,
       "forks": 10,
       "language": "TypeScript",
       "topics": [],
@@ -2805,15 +2805,31 @@
         "Tool"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-18"
+    },
+    {
+      "name": "jev-pokemon",
+      "owner": "christianmat",
+      "description": "Jev, an AI decision model, plays Pokémon Red. It beat the game in 37h 40m.",
+      "url": "https://github.com/christianmat/jev-pokemon",
+      "stars": 116,
+      "forks": 7,
+      "language": "TypeScript",
+      "topics": [],
+      "tags": [
+        "Games"
+      ],
+      "createdAt": "2026-09-25",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-28"
     },
     {
       "name": "agentic-rl",
       "owner": "cookiespiggy",
       "description": "Agentic RL 中文零基础教程（33 章）：从概念到 GRPO 实战，含 TRL 最小可跑示例；26–33 章附一套可运行的三方判别模型实证工程（encoder vs LLM-LoRA vs 规则基线）。第 25 章讲清 Jev / TypeSafe System One 与 RL 的能力边界 | Chinese Agentic RL tutorial (33 chapters) + a r",
       "url": "https://github.com/cookiespiggy/agentic-rl",
-      "stars": 115,
+      "stars": 116,
       "forks": 13,
       "language": "Python",
       "topics": [
@@ -2843,50 +2859,31 @@
         "Tutorial"
       ],
       "createdAt": "2026-06-03",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-27"
     },
     {
-      "name": "jev-pokemon",
-      "owner": "christianmat",
-      "description": "Jev, an AI decision model, plays Pokémon Red. It beat the game in 37h 40m.",
-      "url": "https://github.com/christianmat/jev-pokemon",
+      "name": "jev-arena",
+      "owner": "NanmiCoder",
+      "description": "Jev 模型介绍与实测：通过 Choice / Score / Noul 将自然语言转为带类型的判断与概率，用于分类、评分和路由；支持与 DeepSeek 等模型对比评论打标、速度与结果，含 CSV/Excel 导入、原速回放与离线报告。",
+      "url": "https://github.com/NanmiCoder/jev-arena",
       "stars": 114,
-      "forks": 7,
-      "language": "TypeScript",
+      "forks": 12,
+      "language": "JavaScript",
       "topics": [],
-      "tags": [
-        "Games"
-      ],
-      "createdAt": "2026-09-25",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-28"
-    },
-    {
-      "name": "jev-lint",
-      "owner": "mizchi",
-      "description": "lint text in code by jev scorerer",
-      "url": "https://github.com/mizchi/jev-lint",
-      "stars": 113,
-      "forks": 1,
-      "language": "TypeScript",
-      "topics": [
-        "ai",
-        "jev"
-      ],
       "tags": [
         "Tool"
       ],
       "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-24"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-20"
     },
     {
       "name": "jev-use",
       "owner": "savka777",
       "description": "Say it, and your Mac does it. A computer-use harness on Jev that reads the screen through Accessibility. Fast, no vision model",
       "url": "https://github.com/savka777/jev-use",
-      "stars": 112,
+      "stars": 113,
       "forks": 17,
       "language": "Swift",
       "topics": [
@@ -2911,20 +2908,23 @@
       "pushedAt": "2026-09-21"
     },
     {
-      "name": "jev-arena",
-      "owner": "NanmiCoder",
-      "description": "Jev 模型介绍与实测：通过 Choice / Score / Noul 将自然语言转为带类型的判断与概率，用于分类、评分和路由；支持与 DeepSeek 等模型对比评论打标、速度与结果，含 CSV/Excel 导入、原速回放与离线报告。",
-      "url": "https://github.com/NanmiCoder/jev-arena",
-      "stars": 112,
-      "forks": 12,
-      "language": "JavaScript",
-      "topics": [],
+      "name": "jev-lint",
+      "owner": "mizchi",
+      "description": "lint text in code by jev scorerer",
+      "url": "https://github.com/mizchi/jev-lint",
+      "stars": 113,
+      "forks": 1,
+      "language": "TypeScript",
+      "topics": [
+        "ai",
+        "jev"
+      ],
       "tags": [
         "Tool"
       ],
       "createdAt": "2026-09-19",
       "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-20"
+      "pushedAt": "2026-09-24"
     },
     {
       "name": "fastbrowse",
@@ -2947,7 +2947,23 @@
       ],
       "createdAt": "2026-09-17",
       "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-29"
+      "pushedAt": "2026-10-01"
+    },
+    {
+      "name": "laya-vs-jev",
+      "owner": "virajbhartiya",
+      "description": "Laya vs Jev: local MLX and hosted AI decisions playing T-Rex side by side, with live metrics and replay recording",
+      "url": "https://github.com/virajbhartiya/laya-vs-jev",
+      "stars": 111,
+      "forks": 11,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-21",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-21"
     },
     {
       "name": "djev",
@@ -2997,22 +3013,6 @@
       "pushedAt": "2026-09-28"
     },
     {
-      "name": "laya-vs-jev",
-      "owner": "virajbhartiya",
-      "description": "Laya vs Jev: local MLX and hosted AI decisions playing T-Rex side by side, with live metrics and replay recording",
-      "url": "https://github.com/virajbhartiya/laya-vs-jev",
-      "stars": 109,
-      "forks": 11,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-21"
-    },
-    {
       "name": "youtube-sponsor-detection",
       "owner": "trungdq88",
       "description": "Detect youtube sponsor segment with live audio and transcript powered by Jev",
@@ -3033,7 +3033,7 @@
       "owner": "artemnovitckii",
       "description": "Research Instagram Reel scripts with Apify, Jev, and Fireworks or Groq. Bring your own keys, compare hooks, and record the patterns.",
       "url": "https://github.com/artemnovitckii/creator-lab",
-      "stars": 108,
+      "stars": 109,
       "forks": 26,
       "language": "JavaScript",
       "topics": [],
@@ -3041,7 +3041,7 @@
         "Search"
       ],
       "createdAt": "2026-09-23",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-24"
     },
     {
@@ -3057,7 +3057,7 @@
         "Agent"
       ],
       "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-25"
     },
     {
@@ -3065,7 +3065,7 @@
       "owner": "kevinbadi",
       "description": "Talk to your Mac. Local whisper.cpp + one Jev (TypeSafe) call per command + macOS automation.",
       "url": "https://github.com/kevinbadi/jev-voice",
-      "stars": 106,
+      "stars": 107,
       "forks": 20,
       "language": "Python",
       "topics": [],
@@ -3073,8 +3073,24 @@
         "Tool"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-23"
+    },
+    {
+      "name": "jev-chat",
+      "owner": "w3cj",
+      "description": "A tool calling chat bot built with Jev and no LLM.",
+      "url": "https://github.com/w3cj/jev-chat",
+      "stars": 106,
+      "forks": 23,
+      "language": "TypeScript",
+      "topics": [],
+      "tags": [
+        "Bot"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-18"
     },
     {
       "name": "Canny",
@@ -3105,20 +3121,20 @@
       "pushedAt": "2026-09-22"
     },
     {
-      "name": "jev-chat",
-      "owner": "w3cj",
-      "description": "A tool calling chat bot built with Jev and no LLM.",
-      "url": "https://github.com/w3cj/jev-chat",
+      "name": "jev-forge",
+      "owner": "zwliJay",
+      "description": "An open training and inference stack for Jev-style decision models.  Train models to score dynamic candidate branches from a shared prefix, with support for high-cardinality choice, calibration, and f",
+      "url": "https://github.com/zwliJay/jev-forge",
       "stars": 105,
-      "forks": 23,
-      "language": "TypeScript",
+      "forks": 9,
+      "language": "Python",
       "topics": [],
       "tags": [
-        "Bot"
+        "Tool"
       ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-18"
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-23"
     },
     {
       "name": "jevmem",
@@ -3203,22 +3219,6 @@
       "pushedAt": "2026-09-17"
     },
     {
-      "name": "jev-forge",
-      "owner": "zwliJay",
-      "description": "An open training and inference stack for Jev-style decision models.  Train models to score dynamic candidate branches from a shared prefix, with support for high-cardinality choice, calibration, and f",
-      "url": "https://github.com/zwliJay/jev-forge",
-      "stars": 102,
-      "forks": 8,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-23"
-    },
-    {
       "name": "winnow",
       "owner": "GhalebDweikat",
       "description": "A calibrated context sieve for Claude Code: every tool result is judged by a System One model before it enters context.",
@@ -3283,6 +3283,32 @@
       "pushedAt": "2026-09-29"
     },
     {
+      "name": "jevals",
+      "owner": "openlayer-ai",
+      "description": "Agent evals and guardrails as Jev decisions: one request per trace, a fraction of a cent, fast enough for the agent loop. Runs locally with Kev or Laya.",
+      "url": "https://github.com/openlayer-ai/jevals",
+      "stars": 99,
+      "forks": 9,
+      "language": "Python",
+      "topics": [
+        "agents",
+        "evals",
+        "guardrails",
+        "jev",
+        "llm",
+        "llm-evaluation",
+        "ragas",
+        "typesafe"
+      ],
+      "tags": [
+        "Agent",
+        "guardrail"
+      ],
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-24"
+    },
+    {
       "name": "agent-router",
       "owner": "nidhi-singh02",
       "description": "CLI that picks Cursor, Claude Code, Codex, or OpenCode + model/effort for a task, then launches it. Powered by Jev and Herdr",
@@ -3312,30 +3338,36 @@
       "pushedAt": "2026-09-27"
     },
     {
-      "name": "jevals",
-      "owner": "openlayer-ai",
-      "description": "Agent evals and guardrails as Jev decisions: one request per trace, a fraction of a cent, fast enough for the agent loop. Runs locally with Kev or Laya.",
-      "url": "https://github.com/openlayer-ai/jevals",
+      "name": "OneJev",
+      "owner": "OmniJev",
+      "description": "🚀🚀 A multimodal System One decision model that gives calibrated answers to typed questions about screens, photos, video and text in one forward pass.",
+      "url": "https://github.com/OmniJev/OneJev",
       "stars": 98,
-      "forks": 9,
+      "forks": 11,
       "language": "Python",
       "topics": [
-        "agents",
-        "evals",
-        "guardrails",
+        "calibration",
+        "computer-use",
+        "decision-model",
+        "gui-agent",
+        "huggingface",
         "jev",
         "llm",
-        "llm-evaluation",
-        "ragas",
-        "typesafe"
+        "multimodal",
+        "pytorch",
+        "qwen",
+        "system-one",
+        "typesafe",
+        "video-understanding",
+        "vision-language-model",
+        "vlm"
       ],
       "tags": [
-        "Agent",
-        "guardrail"
+        "Agent"
       ],
-      "createdAt": "2026-09-20",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-24"
+      "createdAt": "2026-09-27",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-30"
     },
     {
       "name": "jev-as-a-judge",
@@ -3368,6 +3400,40 @@
       "createdAt": "2026-09-16",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-18"
+    },
+    {
+      "name": "awesome-jev-live",
+      "owner": "wh000wh000",
+      "description": "Awesome Jev — evidence-graded index of TypeSafe System One: SDKs, MCP tools, agents, apps and open models. 20 languages, rebuilt every 2 hours.",
+      "url": "https://github.com/wh000wh000/awesome-jev-live",
+      "stars": 95,
+      "forks": 5,
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "artificial-intelligence",
+        "awesome",
+        "awesome-jev",
+        "awesome-list",
+        "calibration",
+        "curated-list",
+        "decision-making",
+        "developer-tools",
+        "jev",
+        "llm-tools",
+        "mcp",
+        "system-one",
+        "typesafe"
+      ],
+      "tags": [
+        "awesome-list",
+        "SDK",
+        "MCP",
+        "Agent"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jevchat",
@@ -3531,6 +3597,31 @@
       "pushedAt": "2026-09-19"
     },
     {
+      "name": "awesome-jev",
+      "owner": "AppitStudio",
+      "description": "Curated Jev resources and runnable examples for typed AI decisions.",
+      "url": "https://github.com/AppitStudio/awesome-jev",
+      "stars": 92,
+      "forks": 19,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "awesome",
+        "awesome-list",
+        "decision-making",
+        "jev",
+        "system-one",
+        "typesafe-ai"
+      ],
+      "tags": [
+        "awesome-list",
+        "Tutorial"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
       "name": "jevgrep",
       "owner": "nassim-arifette",
       "description": "Jev-powered semantic code search for coding agents — find behavior across repositories via CLI or MCP, with exact source excerpts and line numbers.",
@@ -3559,40 +3650,15 @@
         "Search"
       ],
       "createdAt": "2026-09-20",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-27"
-    },
-    {
-      "name": "awesome-jev",
-      "owner": "AppitStudio",
-      "description": "Curated Jev resources and runnable examples for typed AI decisions.",
-      "url": "https://github.com/AppitStudio/awesome-jev",
-      "stars": 91,
-      "forks": 19,
-      "language": "Python",
-      "topics": [
-        "ai",
-        "awesome",
-        "awesome-list",
-        "decision-making",
-        "jev",
-        "system-one",
-        "typesafe-ai"
-      ],
-      "tags": [
-        "awesome-list",
-        "Tutorial"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
     },
     {
       "name": "quicksilver",
       "owner": "UditAkhourii",
       "description": "Claude Code skill: hand bulk judgment calls to Jev. 86% fewer Claude tokens on a 12-task benchmark, up to 20x faster. One-line npx install.",
       "url": "https://github.com/UditAkhourii/quicksilver",
-      "stars": 91,
+      "stars": 92,
       "forks": 4,
       "language": "JavaScript",
       "topics": [
@@ -3615,35 +3681,11 @@
       "pushedAt": "2026-09-25"
     },
     {
-      "name": "grok-bot-jev",
-      "owner": "Bodila51",
-      "description": "Connect TypeSafe Jev to Grok Bot as a cheap decision layer - usage gates, skill template, examples",
-      "url": "https://github.com/Bodila51/grok-bot-jev",
-      "stars": 89,
-      "forks": 9,
-      "language": "Python",
-      "topics": [
-        "cursor",
-        "decision-layer",
-        "grok-bot",
-        "jev",
-        "python",
-        "typesafe"
-      ],
-      "tags": [
-        "Bot",
-        "Tutorial"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-28"
-    },
-    {
       "name": "jev-seo",
       "owner": "AkashPriyadarshii",
       "description": "Free Rust SEO and GEO toolkit powered by TypeSafe Jev: 58-rule audits, site crawls, AI citation checks, rank drift, CI gates, 15-tool MCP. Zero cost.",
       "url": "https://github.com/AkashPriyadarshii/jev-seo",
-      "stars": 89,
+      "stars": 91,
       "forks": 9,
       "language": "Rust",
       "topics": [
@@ -3674,8 +3716,66 @@
         "Search"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
+    },
+    {
+      "name": "grok-bot-jev",
+      "owner": "Bodila51",
+      "description": "Connect TypeSafe Jev to Grok Bot as a cheap decision layer - usage gates, skill template, examples",
+      "url": "https://github.com/Bodila51/grok-bot-jev",
+      "stars": 89,
+      "forks": 9,
+      "language": "Python",
+      "topics": [
+        "cursor",
+        "decision-layer",
+        "grok-bot",
+        "jev",
+        "python",
+        "typesafe"
+      ],
+      "tags": [
+        "Bot",
+        "Tutorial"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-09-30",
+      "pushedAt": "2026-09-28"
+    },
+    {
+      "name": "jevcore",
+      "owner": "PerryLink",
+      "description": "TypeSafe Jev for DeepSeek Harness, the Model Context Protocol, and plain Node: typed judgments instead of prose, offline by default.",
+      "url": "https://github.com/PerryLink/jevcore",
+      "stars": 89,
+      "forks": 0,
+      "language": "TypeScript",
+      "topics": [
+        "ai-agents",
+        "cordis",
+        "decision-model",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "jev",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "system-one",
+        "typesafe",
+        "typesafe-jev",
+        "typescript"
+      ],
+      "tags": [
+        "MCP",
+        "Agent"
+      ],
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-24"
     },
     {
       "name": "open-jev-fast",
@@ -3726,38 +3826,27 @@
       "pushedAt": "2026-09-24"
     },
     {
-      "name": "jevcore",
-      "owner": "PerryLink",
-      "description": "TypeSafe Jev for DeepSeek Harness, the Model Context Protocol, and plain Node: typed judgments instead of prose, offline by default.",
-      "url": "https://github.com/PerryLink/jevcore",
+      "name": "laya-server",
+      "owner": "1Panel-dev",
+      "description": "A self-hosted API and web interface for Laya’s structured decision models, compatible with the TypeSafe Jev API format.",
+      "url": "https://github.com/1Panel-dev/laya-server",
       "stars": 85,
-      "forks": 0,
+      "forks": 53,
       "language": "TypeScript",
       "topics": [
-        "ai-agents",
-        "cordis",
         "decision-model",
-        "deepseek",
-        "deepseek-harness",
-        "dsh",
-        "dsh-plugin",
         "jev",
-        "llm",
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "system-one",
-        "typesafe",
-        "typesafe-jev",
-        "typescript"
+        "jev-ai",
+        "jev-api",
+        "laya",
+        "typesafe"
       ],
       "tags": [
-        "MCP",
-        "Agent"
+        "Tool"
       ],
-      "createdAt": "2026-09-20",
+      "createdAt": "2026-09-23",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-24"
+      "pushedAt": "2026-09-30"
     },
     {
       "name": "jev-leftpad",
@@ -3776,68 +3865,11 @@
       "pushedAt": "2026-09-21"
     },
     {
-      "name": "awesome-jev-live",
-      "owner": "wh000wh000",
-      "description": "Awesome Jev — evidence-graded index of TypeSafe System One: SDKs, MCP tools, agents, apps and open models. 20 languages, rebuilt every 2 hours.",
-      "url": "https://github.com/wh000wh000/awesome-jev-live",
-      "stars": 84,
-      "forks": 4,
-      "language": "Python",
-      "topics": [
-        "ai-agents",
-        "artificial-intelligence",
-        "awesome",
-        "awesome-jev",
-        "awesome-list",
-        "calibration",
-        "curated-list",
-        "decision-making",
-        "developer-tools",
-        "jev",
-        "llm-tools",
-        "mcp",
-        "system-one",
-        "typesafe"
-      ],
-      "tags": [
-        "awesome-list",
-        "SDK",
-        "MCP",
-        "Agent"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-10-01"
-    },
-    {
-      "name": "laya-server",
-      "owner": "1Panel-dev",
-      "description": "A self-hosted API and web interface for Laya’s structured decision models, compatible with the TypeSafe Jev API format.",
-      "url": "https://github.com/1Panel-dev/laya-server",
-      "stars": 82,
-      "forks": 53,
-      "language": "TypeScript",
-      "topics": [
-        "decision-model",
-        "jev",
-        "jev-ai",
-        "jev-api",
-        "laya",
-        "typesafe"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-23",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
       "name": "QwenJev",
       "owner": "RJMSWD",
       "description": "对Qwen-3.5-4B这个视觉语言模型进行jev般改造，识别速度达到0.169秒/帧。切换其余Qwen模型直接可以按这个逻辑加速。",
       "url": "https://github.com/RJMSWD/QwenJev",
-      "stars": 81,
+      "stars": 84,
       "forks": 2,
       "language": "Python",
       "topics": [],
@@ -3845,40 +3877,30 @@
         "Tool"
       ],
       "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-21"
     },
     {
-      "name": "OneJev",
-      "owner": "OmniJev",
-      "description": "🚀🚀 A multimodal System One decision model that gives calibrated answers to typed questions about screens, photos, video and text in one forward pass.",
-      "url": "https://github.com/OmniJev/OneJev",
-      "stars": 79,
-      "forks": 9,
+      "name": "JevGym",
+      "owner": "ruyianry",
+      "description": "JevGym is an open-source platform designed to benchmark and facilitate better probabilistic estimation in Jev-alike models",
+      "url": "https://github.com/ruyianry/JevGym",
+      "stars": 84,
+      "forks": 0,
       "language": "Python",
       "topics": [
-        "calibration",
-        "computer-use",
-        "decision-model",
-        "gui-agent",
-        "huggingface",
+        "ai-trader",
+        "benchmark",
         "jev",
-        "llm",
-        "multimodal",
-        "pytorch",
-        "qwen",
-        "system-one",
-        "typesafe",
-        "video-understanding",
-        "vision-language-model",
-        "vlm"
+        "kalshi",
+        "polymarket-bot-free"
       ],
       "tags": [
-        "Agent"
+        "Bot"
       ],
-      "createdAt": "2026-09-27",
+      "createdAt": "2026-09-22",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
+      "pushedAt": "2026-09-23"
     },
     {
       "name": "jev-libero",
@@ -3907,130 +3929,11 @@
       "pushedAt": "2026-09-21"
     },
     {
-      "name": "JevGym",
-      "owner": "ruyianry",
-      "description": "JevGym is an open-source platform designed to benchmark and facilitate better probabilistic estimation in Jev-alike models",
-      "url": "https://github.com/ruyianry/JevGym",
-      "stars": 78,
-      "forks": 0,
-      "language": "Python",
-      "topics": [
-        "ai-trader",
-        "benchmark",
-        "jev",
-        "kalshi",
-        "polymarket-bot-free"
-      ],
-      "tags": [
-        "Bot"
-      ],
-      "createdAt": "2026-09-22",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-23"
-    },
-    {
-      "name": "awesome-jev-zh",
-      "owner": "yzfly",
-      "description": "Jev / TypeSafe System One 中文精选列表：官方资料、SDK、爆款应用、Agent 工具、开源复现与独立评测，附中文上手指南，每日自动收录 GitHub 热门项目。",
-      "url": "https://github.com/yzfly/awesome-jev-zh",
-      "stars": 77,
-      "forks": 23,
-      "language": "HTML",
-      "topics": [
-        "ai-agent",
-        "awesome",
-        "awesome-list",
-        "chinese",
-        "jev",
-        "llm",
-        "structured-output",
-        "system-one",
-        "typesafe",
-        "typesafe-ai"
-      ],
-      "tags": [
-        "awesome-list",
-        "SDK",
-        "Agent"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-10-01"
-    },
-    {
-      "name": "jevcache",
-      "owner": "hyperspaceai",
-      "description": "A decision cache for TypeSafe Jev-class models — memoize decisions so repeats are free, deterministic, and shareable. One 2 MB binary.",
-      "url": "https://github.com/hyperspaceai/jevcache",
-      "stars": 76,
-      "forks": 3,
-      "language": null,
-      "topics": [
-        "cache",
-        "jev",
-        "llm",
-        "memoization",
-        "rust",
-        "typesafe"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-19"
-    },
-    {
-      "name": "semdecide",
-      "owner": "sharziki",
-      "description": "Typed semantic decisions for Unix pipelines and CI, powered by TypeSafe AI Jev.",
-      "url": "https://github.com/sharziki/semdecide",
-      "stars": 75,
-      "forks": 10,
-      "language": "Python",
-      "topics": [
-        "ai",
-        "ci",
-        "cli",
-        "jev",
-        "semantic",
-        "unix"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-16",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-16"
-    },
-    {
-      "name": "jev-desktop",
-      "owner": "yikangy873-gif",
-      "description": "TypeSafe Jev action selection inside Codex Computer Use",
-      "url": "https://github.com/yikangy873-gif/jev-desktop",
-      "stars": 74,
-      "forks": 2,
-      "language": "JavaScript",
-      "topics": [
-        "codex",
-        "computer-use",
-        "desktop-automation",
-        "jev",
-        "macos"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-19"
-    },
-    {
       "name": "jev-judge-mcp",
       "owner": "PyModel",
       "description": "Typed judgment tools for MCP agents. TypeSafe's Jev model as verify, screen, find, classify, rerank, decide, compare, extract, review, gate, and score: the model judges, policy decides auto, review, o",
       "url": "https://github.com/PyModel/jev-judge-mcp",
-      "stars": 72,
+      "stars": 78,
       "forks": 4,
       "language": "Python",
       "topics": [
@@ -4063,7 +3966,104 @@
       ],
       "createdAt": "2026-09-23",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-29"
+      "pushedAt": "2026-10-01"
+    },
+    {
+      "name": "awesome-jev-zh",
+      "owner": "yzfly",
+      "description": "Jev / TypeSafe System One 中文精选列表：官方资料、SDK、爆款应用、Agent 工具、开源复现与独立评测，附中文上手指南，每日自动收录 GitHub 热门项目。",
+      "url": "https://github.com/yzfly/awesome-jev-zh",
+      "stars": 77,
+      "forks": 24,
+      "language": "HTML",
+      "topics": [
+        "ai-agent",
+        "awesome",
+        "awesome-list",
+        "chinese",
+        "jev",
+        "llm",
+        "structured-output",
+        "system-one",
+        "typesafe",
+        "typesafe-ai"
+      ],
+      "tags": [
+        "awesome-list",
+        "SDK",
+        "Agent"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
+      "name": "semdecide",
+      "owner": "sharziki",
+      "description": "Typed semantic decisions for Unix pipelines and CI, powered by TypeSafe AI Jev.",
+      "url": "https://github.com/sharziki/semdecide",
+      "stars": 75,
+      "forks": 10,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "ci",
+        "cli",
+        "jev",
+        "semantic",
+        "unix"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-16",
+      "updatedAt": "2026-09-30",
+      "pushedAt": "2026-09-16"
+    },
+    {
+      "name": "jevcache",
+      "owner": "hyperspaceai",
+      "description": "A decision cache for TypeSafe Jev-class models — memoize decisions so repeats are free, deterministic, and shareable. One 2 MB binary.",
+      "url": "https://github.com/hyperspaceai/jevcache",
+      "stars": 75,
+      "forks": 3,
+      "language": null,
+      "topics": [
+        "cache",
+        "jev",
+        "llm",
+        "memoization",
+        "rust",
+        "typesafe"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-19"
+    },
+    {
+      "name": "jev-desktop",
+      "owner": "yikangy873-gif",
+      "description": "TypeSafe Jev action selection inside Codex Computer Use",
+      "url": "https://github.com/yikangy873-gif/jev-desktop",
+      "stars": 74,
+      "forks": 2,
+      "language": "JavaScript",
+      "topics": [
+        "codex",
+        "computer-use",
+        "desktop-automation",
+        "jev",
+        "macos"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-09-30",
+      "pushedAt": "2026-09-19"
     },
     {
       "name": "jevfire",
@@ -4148,6 +4148,35 @@
       "pushedAt": "2026-09-30"
     },
     {
+      "name": "JEV_sees",
+      "owner": "CharlesFeng0314",
+      "description": "Eyes are All JEV Needs - real time visual devisions from RGB, video and RGB-D cameras.",
+      "url": "https://github.com/CharlesFeng0314/JEV_sees",
+      "stars": 67,
+      "forks": 5,
+      "language": "Python",
+      "topics": [
+        "computer-vision",
+        "jev",
+        "multimodal-ai",
+        "object-detection",
+        "object-tracking",
+        "python",
+        "real-time-ai",
+        "rgbd",
+        "robotics",
+        "typesafe-ai",
+        "visual-reasoning",
+        "yolo"
+      ],
+      "tags": [
+        "Bot"
+      ],
+      "createdAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
       "name": "system-one",
       "owner": "iamaamir",
       "description": "Provider-neutral System One runtime for TypeScript and Pi",
@@ -4177,6 +4206,29 @@
       "pushedAt": "2026-09-30"
     },
     {
+      "name": "awesome-jev",
+      "owner": "BeatAPI",
+      "description": "A source-reviewed gallery of JEV-related projects with 50+ GitHub stars — integrations, tools, open models, experiments, and ecosystem resources. Live gallery: beatapi.io/awesome-jev",
+      "url": "https://github.com/BeatAPI/awesome-jev",
+      "stars": 64,
+      "forks": 8,
+      "language": "JavaScript",
+      "topics": [
+        "ai-agents",
+        "awesome-list",
+        "decision-models",
+        "jev",
+        "open-source"
+      ],
+      "tags": [
+        "awesome-list",
+        "Agent"
+      ],
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-28"
+    },
+    {
       "name": "JevIntent",
       "owner": "Nisaka520",
       "description": "微信（FkWeChat 插件）：长按消息分析意图 / 情绪 / 回复姿态，只在本机弹提示，对方无感知",
@@ -4204,27 +4256,20 @@
       "pushedAt": "2026-09-23"
     },
     {
-      "name": "awesome-jev",
-      "owner": "BeatAPI",
-      "description": "A source-reviewed gallery of JEV-related projects with 50+ GitHub stars — integrations, tools, open models, experiments, and ecosystem resources. Live gallery: beatapi.io/awesome-jev",
-      "url": "https://github.com/BeatAPI/awesome-jev",
+      "name": "jev-paint",
+      "owner": "achimala",
+      "description": "Use Jev to make art!",
+      "url": "https://github.com/achimala/jev-paint",
       "stars": 63,
-      "forks": 8,
+      "forks": 7,
       "language": "JavaScript",
-      "topics": [
-        "ai-agents",
-        "awesome-list",
-        "decision-models",
-        "jev",
-        "open-source"
-      ],
+      "topics": [],
       "tags": [
-        "awesome-list",
-        "Agent"
+        "Tool"
       ],
-      "createdAt": "2026-09-20",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-28"
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-19"
     },
     {
       "name": "jev-rules",
@@ -4243,20 +4288,28 @@
       "pushedAt": "2026-09-27"
     },
     {
-      "name": "jev-paint",
-      "owner": "achimala",
-      "description": "Use Jev to make art!",
-      "url": "https://github.com/achimala/jev-paint",
+      "name": "JevEmbed",
+      "owner": "HITsz-TMG",
+      "description": "Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model.",
+      "url": "https://github.com/HITsz-TMG/JevEmbed",
       "stars": 62,
-      "forks": 7,
-      "language": "JavaScript",
-      "topics": [],
+      "forks": 2,
+      "language": "Python",
+      "topics": [
+        "embeddings",
+        "jev",
+        "jev-api",
+        "llm",
+        "structured-decisions",
+        "system-one",
+        "typed-decisions"
+      ],
       "tags": [
         "Tool"
       ],
-      "createdAt": "2026-09-18",
+      "createdAt": "2026-09-22",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-19"
+      "pushedAt": "2026-09-30"
     },
     {
       "name": "jeview",
@@ -4310,6 +4363,36 @@
       "pushedAt": "2026-09-21"
     },
     {
+      "name": "SelfJev",
+      "owner": "Jwuthri",
+      "description": "Open decisions model with Jev's API: typed answers (yes/no, choice, score, multi) with probabilities from forward passes, no generation. Qwen3.5-4B + LoRA, one GPU.",
+      "url": "https://github.com/Jwuthri/SelfJev",
+      "stars": 60,
+      "forks": 15,
+      "language": "Python",
+      "topics": [
+        "classification",
+        "decision-making",
+        "evaluation",
+        "fine-tuning",
+        "inference",
+        "llm",
+        "lora",
+        "nextjs",
+        "nlp",
+        "python",
+        "qwen",
+        "structured-output",
+        "vllm"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-23",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
       "name": "jev-dataops",
       "owner": "RenaGao",
       "description": "An open-source JEV-powered workbench for streaming data selection, quality evaluation, automatic LoRA training and held-out model evaluation.",
@@ -4326,28 +4409,29 @@
       "pushedAt": "2026-09-23"
     },
     {
-      "name": "JevEmbed",
-      "owner": "HITsz-TMG",
-      "description": "Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model.",
-      "url": "https://github.com/HITsz-TMG/JevEmbed",
-      "stars": 60,
-      "forks": 2,
+      "name": "open-jev",
+      "owner": "kyegomez",
+      "description": "an open-source, from-first-principles reconstruction of the ideas behind TypeSafe AI's Jev, written in pytorch",
+      "url": "https://github.com/kyegomez/open-jev",
+      "stars": 59,
+      "forks": 16,
       "language": "Python",
       "topics": [
-        "embeddings",
+        "ai",
+        "anthropic",
+        "attention",
+        "chatgpt",
+        "claude",
+        "gpt",
         "jev",
-        "jev-api",
-        "llm",
-        "structured-decisions",
-        "system-one",
-        "typed-decisions"
+        "transformers"
       ],
       "tags": [
         "Tool"
       ],
-      "createdAt": "2026-09-22",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
+      "createdAt": "2026-09-21",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-21"
     },
     {
       "name": "pi-jev",
@@ -4375,41 +4459,11 @@
       "pushedAt": "2026-09-24"
     },
     {
-      "name": "SelfJev",
-      "owner": "Jwuthri",
-      "description": "Open decisions model with Jev's API: typed answers (yes/no, choice, score, multi) with probabilities from forward passes, no generation. Qwen3.5-4B + LoRA, one GPU.",
-      "url": "https://github.com/Jwuthri/SelfJev",
-      "stars": 59,
-      "forks": 15,
-      "language": "Python",
-      "topics": [
-        "classification",
-        "decision-making",
-        "evaluation",
-        "fine-tuning",
-        "inference",
-        "llm",
-        "lora",
-        "nextjs",
-        "nlp",
-        "python",
-        "qwen",
-        "structured-output",
-        "vllm"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-23",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
-    },
-    {
       "name": "jgrep",
       "owner": "kyu1204",
       "description": "grep for what code does, not what it's called. Semantic code search powered by TypeSafe Jev.",
       "url": "https://github.com/kyu1204/jgrep",
-      "stars": 58,
+      "stars": 59,
       "forks": 5,
       "language": "TypeScript",
       "topics": [],
@@ -4417,8 +4471,44 @@
         "Search"
       ],
       "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-30"
+    },
+    {
+      "name": "open-alternative-jev",
+      "owner": "ikermoel",
+      "description": "Open-source alternative to TypeSafe's Jev: a System One style model layer that gives typed, calibrated decisions from any open-weights LLM in one forward pass (HF + vLLM), with honest benchmarks",
+      "url": "https://github.com/ikermoel/open-alternative-jev",
+      "stars": 58,
+      "forks": 12,
+      "language": "Python",
+      "topics": [
+        "calibration",
+        "classification",
+        "jev",
+        "jev-alternative",
+        "llm",
+        "logprobs",
+        "open-jev",
+        "open-source-jev",
+        "open-weights",
+        "qwen",
+        "structured-decisions",
+        "structured-output",
+        "system-one",
+        "system-one-model",
+        "transformers",
+        "typed-decisions",
+        "typesafe",
+        "typesafe-jev",
+        "vllm"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-25"
     },
     {
       "name": "sarvam-jev",
@@ -4436,22 +4526,6 @@
       "createdAt": "2026-09-18",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-18"
-    },
-    {
-      "name": "jev-design",
-      "owner": "bilune",
-      "description": "Can a model design a dashboard? A console whose whole design system is generated at runtime by Jev from a one-sentence brief.",
-      "url": "https://github.com/bilune/jev-design",
-      "stars": 58,
-      "forks": 4,
-      "language": "TypeScript",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-20",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-21"
     },
     {
       "name": "OpenDecision",
@@ -4509,40 +4583,36 @@
       "pushedAt": "2026-09-18"
     },
     {
-      "name": "open-alternative-jev",
-      "owner": "ikermoel",
-      "description": "Open-source alternative to TypeSafe's Jev: a System One style model layer that gives typed, calibrated decisions from any open-weights LLM in one forward pass (HF + vLLM), with honest benchmarks",
-      "url": "https://github.com/ikermoel/open-alternative-jev",
-      "stars": 56,
-      "forks": 11,
-      "language": "Python",
-      "topics": [
-        "calibration",
-        "classification",
-        "jev",
-        "jev-alternative",
-        "llm",
-        "logprobs",
-        "open-jev",
-        "open-source-jev",
-        "open-weights",
-        "qwen",
-        "structured-decisions",
-        "structured-output",
-        "system-one",
-        "system-one-model",
-        "transformers",
-        "typed-decisions",
-        "typesafe",
-        "typesafe-jev",
-        "vllm"
-      ],
+      "name": "jev-design",
+      "owner": "bilune",
+      "description": "Can a model design a dashboard? A console whose whole design system is generated at runtime by Jev from a one-sentence brief.",
+      "url": "https://github.com/bilune/jev-design",
+      "stars": 57,
+      "forks": 4,
+      "language": "TypeScript",
+      "topics": [],
       "tags": [
         "Tool"
       ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-25"
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-21"
+    },
+    {
+      "name": "JevSDSQL",
+      "owner": "Sheltercosmo",
+      "description": "A self-developing SQL database with JEV based semantic operators and natural language queries.",
+      "url": "https://github.com/Sheltercosmo/JevSDSQL",
+      "stars": 57,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Database"
+      ],
+      "createdAt": "2026-09-23",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-23"
     },
     {
       "name": "Awesome-Robot-Use-Agent",
@@ -4559,33 +4629,8 @@
         "Bot"
       ],
       "createdAt": "2026-09-11",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "open-jev",
-      "owner": "kyegomez",
-      "description": "an open-source, from-first-principles reconstruction of the ideas behind TypeSafe AI's Jev, written in pytorch",
-      "url": "https://github.com/kyegomez/open-jev",
-      "stars": 55,
-      "forks": 15,
-      "language": "Python",
-      "topics": [
-        "ai",
-        "anthropic",
-        "attention",
-        "chatgpt",
-        "claude",
-        "gpt",
-        "jev",
-        "transformers"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-21",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-21"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jev-kit",
@@ -4603,8 +4648,8 @@
         "Search"
       ],
       "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-28"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "system-one-foundation-models",
@@ -4646,6 +4691,75 @@
       "pushedAt": "2026-09-29"
     },
     {
+      "name": "dsh-jev-plugin",
+      "owner": "luobosibing2",
+      "description": "Native DeepSeek Harness (DSH) plugin integrating TypeSafe Jev as a System One decision layer for agent selection, supervision, corrections, and approvals.",
+      "url": "https://github.com/luobosibing2/dsh-jev-plugin",
+      "stars": 53,
+      "forks": 6,
+      "language": "JavaScript",
+      "topics": [
+        "agent-harness",
+        "ai-agents",
+        "cordis",
+        "deepseek-harness",
+        "dsh",
+        "dsh-jev",
+        "dsh-plugin",
+        "jev",
+        "plugins",
+        "typesafe-ai"
+      ],
+      "tags": [
+        "Agent"
+      ],
+      "createdAt": "2026-09-27",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
+      "name": "RoboJEV",
+      "owner": "lykycy123",
+      "description": "Two-stage JEV control of a Franka Panda in MuJoCo",
+      "url": "https://github.com/lykycy123/RoboJEV",
+      "stars": 52,
+      "forks": 3,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-27"
+    },
+    {
+      "name": "Jevstiller",
+      "owner": "tomerglick57",
+      "description": "Distill a repeated Jev classification task into a local model, on the fly — same answers, your hardware.",
+      "url": "https://github.com/tomerglick57/Jevstiller",
+      "stars": 51,
+      "forks": 5,
+      "language": "Python",
+      "topics": [
+        "classification",
+        "distillation",
+        "jev",
+        "knowledge-distillation",
+        "llm",
+        "mlops",
+        "model-cascade",
+        "python",
+        "typesafe"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-21",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-29"
+    },
+    {
       "name": "ruby_decision_model",
       "owner": "obie",
       "description": "Ruby client for decision models such as Typesafe Jev",
@@ -4678,22 +4792,6 @@
       "pushedAt": "2026-09-19"
     },
     {
-      "name": "RoboJEV",
-      "owner": "lykycy123",
-      "description": "Two-stage JEV control of a Franka Panda in MuJoCo",
-      "url": "https://github.com/lykycy123/RoboJEV",
-      "stars": 51,
-      "forks": 3,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-20",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-27"
-    },
-    {
       "name": "hono-jev-router",
       "owner": "yusukebe",
       "description": "Route HTTP requests by meaning. A semantic router for Hono powered by Jev.",
@@ -4708,6 +4806,35 @@
       "createdAt": "2026-09-18",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-18"
+    },
+    {
+      "name": "stuntd",
+      "owner": "bladedevoff",
+      "description": "Local proxy that learns your app's typed LLM decisions and answers them with a Laya head. Jev and OpenAI compatible.",
+      "url": "https://github.com/bladedevoff/stuntd",
+      "stars": 51,
+      "forks": 1,
+      "language": "Python",
+      "topics": [
+        "claude-code",
+        "distillation",
+        "jev",
+        "laya",
+        "llm",
+        "llm-proxy",
+        "local-inference",
+        "openai-compatible",
+        "self-hosted",
+        "system-one",
+        "typed-decisions",
+        "typesafe"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-23",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-30"
     },
     {
       "name": "jevify",
@@ -4742,113 +4869,11 @@
       "pushedAt": "2026-09-25"
     },
     {
-      "name": "JevSDSQL",
-      "owner": "Sheltercosmo",
-      "description": "A self-developing SQL database with JEV based semantic operators and natural language queries.",
-      "url": "https://github.com/Sheltercosmo/JevSDSQL",
-      "stars": 49,
-      "forks": 0,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Database"
-      ],
-      "createdAt": "2026-09-23",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-23"
-    },
-    {
-      "name": "Vue3_WUT_RAG",
-      "owner": "L123121",
-      "description": "武理小精灵是一个面向武汉理工大学校园场景的全栈agent，基于 Vue 3 + Pinia + Express + Qdrant + SQLite 构建。系统通过JEV 决策模型双引擎路由（影子/灰度/强制三模式）自动识别用户意图，在普通对话、知识库检索（RAG）和 Agent 工具调用三种模式间智能路由，并以 SSE 流式返回回答、来源引用与执行轨迹。",
-      "url": "https://github.com/L123121/Vue3_WUT_RAG",
-      "stars": 49,
-      "forks": 1,
-      "language": "JavaScript",
-      "topics": [],
-      "tags": [
-        "Agent",
-        "Database"
-      ],
-      "createdAt": "2026-02-02",
-      "updatedAt": "2026-09-29",
-      "pushedAt": "2026-09-29"
-    },
-    {
-      "name": "Jevstiller",
-      "owner": "tomerglick57",
-      "description": "Distill a repeated Jev classification task into a local model, on the fly — same answers, your hardware.",
-      "url": "https://github.com/tomerglick57/Jevstiller",
-      "stars": 48,
-      "forks": 5,
-      "language": "Python",
-      "topics": [
-        "classification",
-        "distillation",
-        "jev",
-        "knowledge-distillation",
-        "llm",
-        "mlops",
-        "model-cascade",
-        "python",
-        "typesafe"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-29"
-    },
-    {
-      "name": "dsh-jev-plugin",
-      "owner": "luobosibing2",
-      "description": "Native DeepSeek Harness (DSH) plugin integrating TypeSafe Jev as a System One decision layer for agent selection, supervision, corrections, and approvals.",
-      "url": "https://github.com/luobosibing2/dsh-jev-plugin",
-      "stars": 48,
-      "forks": 4,
-      "language": "JavaScript",
-      "topics": [
-        "agent-harness",
-        "ai-agents",
-        "cordis",
-        "deepseek-harness",
-        "dsh",
-        "dsh-jev",
-        "dsh-plugin",
-        "jev",
-        "plugins",
-        "typesafe-ai"
-      ],
-      "tags": [
-        "Agent"
-      ],
-      "createdAt": "2026-09-27",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "vibecheck",
-      "owner": "RafalWilinski",
-      "description": "Chrome extension: vibe-check your X posts with TypeSafe's Jev before you hit Post",
-      "url": "https://github.com/RafalWilinski/vibecheck",
-      "stars": 48,
-      "forks": 5,
-      "language": "JavaScript",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-20"
-    },
-    {
       "name": "jev-guard",
       "owner": "leepokai",
       "description": "Auto mode for every coding agent, built on Jev: risk-scores every tool call with session context (deny / ask / allow), flags prompt injection in results, checks skills and plugins. Claude Code, Codex,",
       "url": "https://github.com/leepokai/jev-guard",
-      "stars": 48,
+      "stars": 49,
       "forks": 7,
       "language": "JavaScript",
       "topics": [
@@ -4868,8 +4893,41 @@
         "Claude Code"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-28"
+    },
+    {
+      "name": "Vue3_WUT_RAG",
+      "owner": "L123121",
+      "description": "武理小精灵是一个面向武汉理工大学校园场景的全栈agent，基于 Vue 3 + Pinia + Express + Qdrant + SQLite 构建。系统通过JEV 决策模型双引擎路由（影子/灰度/强制三模式）自动识别用户意图，在普通对话、知识库检索（RAG）和 Agent 工具调用三种模式间智能路由，并以 SSE 流式返回回答、来源引用与执行轨迹。",
+      "url": "https://github.com/L123121/Vue3_WUT_RAG",
+      "stars": 49,
+      "forks": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "tags": [
+        "Agent",
+        "Database"
+      ],
+      "createdAt": "2026-02-02",
+      "updatedAt": "2026-09-29",
+      "pushedAt": "2026-09-29"
+    },
+    {
+      "name": "vibecheck",
+      "owner": "RafalWilinski",
+      "description": "Chrome extension: vibe-check your X posts with TypeSafe's Jev before you hit Post",
+      "url": "https://github.com/RafalWilinski/vibecheck",
+      "stars": 48,
+      "forks": 5,
+      "language": "JavaScript",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-09-30",
+      "pushedAt": "2026-09-20"
     },
     {
       "name": "sys1",
@@ -4896,6 +4954,38 @@
       "createdAt": "2026-09-22",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-30"
+    },
+    {
+      "name": "social-monitor",
+      "owner": "777genius",
+      "description": "Tired of scrolling through hundreds of near-identical posts across every social network just to find the few that actually matter. Instead of drowning in duplicate takes, reposts, and filler from X, R",
+      "url": "https://github.com/777genius/social-monitor",
+      "stars": 48,
+      "forks": 8,
+      "language": "TypeScript",
+      "topics": [
+        "ai",
+        "api",
+        "backend",
+        "jev",
+        "media-monitoring",
+        "nestjs",
+        "news-monitoring",
+        "observability",
+        "open-source-intelligence",
+        "osint",
+        "reputation-monitoring",
+        "social-listening",
+        "social-monitoring",
+        "threat-intelligence",
+        "typescript"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-06-07",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jev-cookbook",
@@ -4935,7 +5025,7 @@
       "description": "A database-agnostic Agentic GraphRAG framework using swappable System One models (local Laya / cloud Jev). A plug-and-play intelligence layer featuring a complete 4-phase pipeline, continuous evaluati",
       "url": "https://github.com/bodepudimuneendra-netizen/laya-jev-GraphRAG",
       "stars": 47,
-      "forks": 1,
+      "forks": 2,
       "language": "Python",
       "topics": [
         "astar-algorithm",
@@ -4958,36 +5048,42 @@
       "pushedAt": "2026-09-29"
     },
     {
-      "name": "social-monitor",
-      "owner": "777genius",
-      "description": "Tired of scrolling through hundreds of near-identical posts across every social network just to find the few that actually matter. Instead of drowning in duplicate takes, reposts, and filler from X, R",
-      "url": "https://github.com/777genius/social-monitor",
-      "stars": 47,
-      "forks": 8,
-      "language": "TypeScript",
+      "name": "rikkahub-sillytavern-android",
+      "owner": "MiaoWuNYA",
+      "description": "安卓AI聊天端:开箱即聊，无损导入酒馆卡，缓存强省用量，Jev 决策，防空回，多维记忆，前端卡支持，高定制主题，QQbot，AI群聊，插件系统，强兼容中转站。手机移动端原生支持，求 Star 收藏⭐Android AI Chatbox: lossless SillyTavern card import, aggressive cache optimization, Jev decisions, m",
+      "url": "https://github.com/MiaoWuNYA/rikkahub-sillytavern-android",
+      "stars": 46,
+      "forks": 6,
+      "language": "Kotlin",
       "topics": [
-        "ai",
-        "api",
-        "backend",
-        "jev",
-        "media-monitoring",
-        "nestjs",
-        "news-monitoring",
-        "observability",
-        "open-source-intelligence",
-        "osint",
-        "reputation-monitoring",
-        "social-listening",
-        "social-monitoring",
-        "threat-intelligence",
-        "typescript"
+        "ai-chat",
+        "ai-client",
+        "android",
+        "character-card",
+        "claude",
+        "gemini",
+        "jetpack-compose",
+        "kotlin",
+        "llm",
+        "lorebook",
+        "memory",
+        "openai",
+        "plugin-system",
+        "prompt-cache",
+        "rag",
+        "roleplay",
+        "sillytavern",
+        "sillytavern-android",
+        "tavern",
+        "worldbook"
       ],
       "tags": [
-        "Tool"
+        "SDK",
+        "Bot"
       ],
-      "createdAt": "2026-06-07",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "NylonME",
@@ -5045,8 +5141,8 @@
         "Tool"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-21"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "PlayJev",
@@ -5083,6 +5179,22 @@
       "pushedAt": "2026-09-24"
     },
     {
+      "name": "spring-ai-typesafe",
+      "owner": "spring-ai-community",
+      "description": "A Java SDK for the TypeSafe AI JEV API, & Spring AI TypeSafe integrations.",
+      "url": "https://github.com/spring-ai-community/spring-ai-typesafe",
+      "stars": 44,
+      "forks": 12,
+      "language": "Java",
+      "topics": [],
+      "tags": [
+        "SDK"
+      ],
+      "createdAt": "2026-09-20",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
       "name": "open-jev-typed-decision-engine",
       "owner": "intikhab49",
       "description": "Open reproduction of TypeSafe Jev: a 150M typed decision engine (noul/choice/score in one non-autoregressive pass, calibrated confidence). 0.697 vs Jev's 0.727, 2.5x better calibrated, 4x faster, free",
@@ -5116,35 +5228,6 @@
       "createdAt": "2026-09-19",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-21"
-    },
-    {
-      "name": "stuntd",
-      "owner": "bladedevoff",
-      "description": "Local proxy that learns your app's typed LLM decisions and answers them with a Laya head. Jev and OpenAI compatible.",
-      "url": "https://github.com/bladedevoff/stuntd",
-      "stars": 44,
-      "forks": 1,
-      "language": "Python",
-      "topics": [
-        "claude-code",
-        "distillation",
-        "jev",
-        "laya",
-        "llm",
-        "llm-proxy",
-        "local-inference",
-        "openai-compatible",
-        "self-hosted",
-        "system-one",
-        "typed-decisions",
-        "typesafe"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-23",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
     },
     {
       "name": "call-coach-ai",
@@ -5183,22 +5266,6 @@
       "pushedAt": "2026-09-25"
     },
     {
-      "name": "spring-ai-typesafe",
-      "owner": "spring-ai-community",
-      "description": "A Java SDK for the TypeSafe AI JEV API, & Spring AI TypeSafe integrations.",
-      "url": "https://github.com/spring-ai-community/spring-ai-typesafe",
-      "stars": 42,
-      "forks": 12,
-      "language": "Java",
-      "topics": [],
-      "tags": [
-        "SDK"
-      ],
-      "createdAt": "2026-09-20",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
-    },
-    {
       "name": "jev-tree",
       "owner": "Chuf-H",
       "description": "Jev-native probability tree and graph runtime for verifiable multi-step decision making.",
@@ -5213,6 +5280,32 @@
       "createdAt": "2026-09-22",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-23"
+    },
+    {
+      "name": "RSI-Jev",
+      "owner": "Shanghua-Gao",
+      "description": "Typed-decision models (noul / choice / score) trained by a self-improving loop of AI agents — checkpoints, the code that produced them, and every version that failed.",
+      "url": "https://github.com/Shanghua-Gao/RSI-Jev",
+      "stars": 42,
+      "forks": 4,
+      "language": "HTML",
+      "topics": [
+        "ai-agents",
+        "autonomous-research",
+        "decision-model",
+        "jev",
+        "llm",
+        "recursive-self-improvement",
+        "system-one",
+        "typed-decisions"
+      ],
+      "tags": [
+        "Agent",
+        "Search"
+      ],
+      "createdAt": "2026-09-22",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "JevTown",
@@ -5272,32 +5365,6 @@
       "createdAt": "2026-09-21",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "RSI-Jev",
-      "owner": "Shanghua-Gao",
-      "description": "Typed-decision models (noul / choice / score) trained by a self-improving loop of AI agents — checkpoints, the code that produced them, and every version that failed.",
-      "url": "https://github.com/Shanghua-Gao/RSI-Jev",
-      "stars": 41,
-      "forks": 3,
-      "language": "Python",
-      "topics": [
-        "ai-agents",
-        "autonomous-research",
-        "decision-model",
-        "jev",
-        "llm",
-        "recursive-self-improvement",
-        "system-one",
-        "typed-decisions"
-      ],
-      "tags": [
-        "Agent",
-        "Search"
-      ],
-      "createdAt": "2026-09-22",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-10-01"
     },
     {
       "name": "open-jev",
@@ -5384,6 +5451,22 @@
       "pushedAt": "2026-09-20"
     },
     {
+      "name": "OpenSourceJev",
+      "owner": "sabeel111",
+      "description": "Turning an LLM model into a Jev like System. ",
+      "url": "https://github.com/sabeel111/OpenSourceJev",
+      "stars": 40,
+      "forks": 9,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-23"
+    },
+    {
       "name": "typesafe-ai-benchmark",
       "owner": "iammrduncan",
       "description": "This is a LLM Gateway that mimics typesafe ai structured output. Like an imposter Jev.",
@@ -5442,44 +5525,6 @@
       "pushedAt": "2026-09-24"
     },
     {
-      "name": "rikkahub-sillytavern-android",
-      "owner": "MiaoWuNYA",
-      "description": "安卓AI聊天端:开箱即聊，无损导入酒馆卡，缓存强省用量，Jev 决策，防空回，多维记忆，前端卡支持，高定制主题，QQbot，AI群聊，插件系统，强兼容中转站。手机移动端原生支持，求 Star 收藏⭐Android AI Chatbox: lossless SillyTavern card import, aggressive cache optimization, Jev decisions, m",
-      "url": "https://github.com/MiaoWuNYA/rikkahub-sillytavern-android",
-      "stars": 39,
-      "forks": 6,
-      "language": "Kotlin",
-      "topics": [
-        "ai-chat",
-        "ai-client",
-        "android",
-        "character-card",
-        "claude",
-        "gemini",
-        "jetpack-compose",
-        "kotlin",
-        "llm",
-        "lorebook",
-        "memory",
-        "openai",
-        "plugin-system",
-        "prompt-cache",
-        "rag",
-        "roleplay",
-        "sillytavern",
-        "sillytavern-android",
-        "tavern",
-        "worldbook"
-      ],
-      "tags": [
-        "SDK",
-        "Bot"
-      ],
-      "createdAt": "2026-09-20",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
       "name": "Jev-Trades",
       "owner": "zadescoxp",
       "description": "Trading bot with the all new TypeSafe AI's first system one model named as Jev",
@@ -5499,6 +5544,40 @@
       "createdAt": "2026-09-17",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-25"
+    },
+    {
+      "name": "jev-use",
+      "owner": "shitianfang",
+      "description": "Claude Code / Codex / pi plugin that hands agent steps needing no text output to Jev (TypeSafe's judgment model) — measured p50 ~230 ms and ~$0.02 per 1,000 judgments, with typed escalation back to th",
+      "url": "https://github.com/shitianfang/jev-use",
+      "stars": 38,
+      "forks": 8,
+      "language": "JavaScript",
+      "topics": [
+        "agent",
+        "agent-skills",
+        "ai-agents",
+        "claude-code",
+        "claude-code-hooks",
+        "claude-code-plugin",
+        "claude-skills",
+        "codex",
+        "jev",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "mcp-tools",
+        "model-context-protocol",
+        "typesafe-ai"
+      ],
+      "tags": [
+        "MCP",
+        "Agent",
+        "Claude Code"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-22"
     },
     {
       "name": "system-one-open",
@@ -5531,22 +5610,6 @@
       "createdAt": "2026-09-20",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-21"
-    },
-    {
-      "name": "OpenSourceJev",
-      "owner": "sabeel111",
-      "description": "Turning an LLM model into a Jev like System. ",
-      "url": "https://github.com/sabeel111/OpenSourceJev",
-      "stars": 38,
-      "forks": 9,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-23"
     },
     {
       "name": "jev-cua",
@@ -5713,6 +5776,22 @@
       "pushedAt": "2026-09-21"
     },
     {
+      "name": "bev-train",
+      "owner": "avbiswas",
+      "description": "Training Jev-like decision models using Qwen3 with choice-order invariance",
+      "url": "https://github.com/avbiswas/bev-train",
+      "stars": 37,
+      "forks": 2,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-27",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-27"
+    },
+    {
       "name": "pi-jev-skill-picker",
       "owner": "safzanpirani",
       "description": "Rank Pi Agent Skills for the current task with TypeSafe Jev",
@@ -5757,7 +5836,7 @@
       "description": "Self-evolving cognitive decision engine & TypeSafe Jev alternative. Deliberative decision flywheel ('explore first, crystallize later' System 2→1) with 100% option-order invariance. Typed probabilisti",
       "url": "https://github.com/zhangcy122/OpenJev",
       "stars": 36,
-      "forks": 4,
+      "forks": 5,
       "language": "Python",
       "topics": [],
       "tags": [
@@ -5800,6 +5879,22 @@
       "pushedAt": "2026-09-21"
     },
     {
+      "name": "commit-miner",
+      "owner": "devanshbatham",
+      "description": "Classify Git commit diffs and messages with Jev. Bug fixes, security fixes/CWEs, and change types.",
+      "url": "https://github.com/devanshbatham/commit-miner",
+      "stars": 36,
+      "forks": 6,
+      "language": "Rust",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-17"
+    },
+    {
       "name": "clash-jev",
       "owner": "bytelabs-oss",
       "description": "A Clash Royale bot with no trained policy: Jev (TypeSafe System One) makes every decision from the live game state",
@@ -5833,77 +5928,39 @@
       "pushedAt": "2026-09-19"
     },
     {
-      "name": "jev-use",
-      "owner": "shitianfang",
-      "description": "Claude Code / Codex / pi plugin that hands agent steps needing no text output to Jev (TypeSafe's judgment model) — measured p50 ~230 ms and ~$0.02 per 1,000 judgments, with typed escalation back to th",
-      "url": "https://github.com/shitianfang/jev-use",
-      "stars": 35,
-      "forks": 7,
-      "language": "JavaScript",
-      "topics": [
-        "agent",
-        "agent-skills",
-        "ai-agents",
-        "claude-code",
-        "claude-code-hooks",
-        "claude-code-plugin",
-        "claude-skills",
-        "codex",
-        "jev",
-        "llm",
-        "mcp",
-        "mcp-server",
-        "mcp-tools",
-        "model-context-protocol",
-        "typesafe-ai"
-      ],
-      "tags": [
-        "MCP",
-        "Agent",
-        "Claude Code"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-22"
-    },
-    {
-      "name": "commit-miner",
-      "owner": "devanshbatham",
-      "description": "Classify Git commit diffs and messages with Jev. Bug fixes, security fixes/CWEs, and change types.",
-      "url": "https://github.com/devanshbatham/commit-miner",
+      "name": "jev-for-chrome",
+      "owner": "chy4pro",
+      "description": "Jev for Chrome: drives the tab you are looking at with TypeSafe Jev, a sub-second decision model. Community port of browser-use/jev-ultrafast, not affiliated with TypeSafe.",
+      "url": "https://github.com/chy4pro/jev-for-chrome",
       "stars": 35,
       "forks": 6,
-      "language": "Rust",
-      "topics": [],
-      "tags": [
-        "Tool"
+      "language": "TypeScript",
+      "topics": [
+        "ai-agent",
+        "browser-agent",
+        "browser-automation",
+        "browser-use",
+        "chrome-extension",
+        "jev",
+        "manifest-v3",
+        "openrouter",
+        "typesafe",
+        "web-agent"
       ],
-      "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-17"
-    },
-    {
-      "name": "jev",
-      "owner": "dannote",
-      "description": "TypeSafe Jev for OTP: reply to Jev from a GenServer and pattern match on its answer",
-      "url": "https://github.com/dannote/jev",
-      "stars": 34,
-      "forks": 5,
-      "language": "Elixir",
-      "topics": [],
       "tags": [
-        "Tool"
+        "Agent",
+        "Browser"
       ],
-      "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-26"
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jev-superpowers",
       "owner": "AkashPriyadarshii",
       "description": "Systematic software development framework for AI coding agents upgraded with TypeSafe Jev System One typed decisions",
       "url": "https://github.com/AkashPriyadarshii/jev-superpowers",
-      "stars": 34,
+      "stars": 35,
       "forks": 5,
       "language": "HTML",
       "topics": [
@@ -5938,7 +5995,7 @@
       "owner": "zhihz",
       "description": "Local bilingual probability decisions from context, questions, and candidate answers. Independent research preview inspired by TypeSafe Jev.",
       "url": "https://github.com/zhihz/openjev",
-      "stars": 34,
+      "stars": 35,
       "forks": 4,
       "language": "Python",
       "topics": [],
@@ -5946,8 +6003,137 @@
         "Search"
       ],
       "createdAt": "2026-09-16",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-16"
+    },
+    {
+      "name": "zerikai_memory",
+      "owner": "KikeVen",
+      "description": "A standalone local-only Python MCP server that gives any IDE persistent, workspace-isolated memory. works with any IDE supporting MCP servers",
+      "url": "https://github.com/KikeVen/zerikai_memory",
+      "stars": 35,
+      "forks": 2,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "ai-tools",
+        "chromadb",
+        "deepseek-v4-pro",
+        "jev",
+        "lexical",
+        "mcp",
+        "mcp-memory",
+        "mcp-server",
+        "mcp-tools",
+        "memory",
+        "mistral-7b",
+        "ollama",
+        "ornith",
+        "rag-memory",
+        "re-ranking",
+        "tree-sitter-parser",
+        "typesafe-ai",
+        "typesafe-jev",
+        "zerikai"
+      ],
+      "tags": [
+        "MCP"
+      ],
+      "createdAt": "2026-05-03",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-26"
+    },
+    {
+      "name": "jev",
+      "owner": "dannote",
+      "description": "TypeSafe Jev for OTP: reply to Jev from a GenServer and pattern match on its answer",
+      "url": "https://github.com/dannote/jev",
+      "stars": 34,
+      "forks": 5,
+      "language": "Elixir",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-09-30",
+      "pushedAt": "2026-09-26"
+    },
+    {
+      "name": "jev-code",
+      "owner": "FrancoisChastel",
+      "description": "Jev, TypeSafe's System One classifier, as a tool inside Claude Code, Codex, Pi, and OpenCode: typed classify, check, score, rank, and ask, plus one-command setup.",
+      "url": "https://github.com/FrancoisChastel/jev-code",
+      "stars": 34,
+      "forks": 3,
+      "language": "TypeScript",
+      "topics": [
+        "agent-skills",
+        "classifier",
+        "claude-code",
+        "codex",
+        "coding-agents",
+        "jev",
+        "mcp",
+        "opencode",
+        "pi-package",
+        "system-one",
+        "typesafe"
+      ],
+      "tags": [
+        "MCP",
+        "Agent",
+        "Claude Code"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-30"
+    },
+    {
+      "name": "jev-cli",
+      "owner": "shaharia-lab",
+      "description": "Command-line tool for TypeSafe AI's Jev model. Ask yes/no, multiple-choice and rubric questions about any text and get calibrated probabilities back. Answers become exit codes for shells and CI, JSON ",
+      "url": "https://github.com/shaharia-lab/jev-cli",
+      "stars": 34,
+      "forks": 4,
+      "language": "Rust",
+      "topics": [
+        "ai-agents",
+        "classification",
+        "cli",
+        "command-line-tool",
+        "devtools",
+        "jev",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "rust",
+        "text-classification",
+        "typesafe-ai"
+      ],
+      "tags": [
+        "MCP",
+        "Agent"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-29"
+    },
+    {
+      "name": "hermes-nerve",
+      "owner": "keeltrace",
+      "description": "Nerve is a supervisory nervous system for Hermes agents, adding typed System One decisions, ranking, verification, token-aware oversight, and an opt-in tool gate powered by TypeSafe Jev or Open Source",
+      "url": "https://github.com/keeltrace/hermes-nerve",
+      "stars": 34,
+      "forks": 10,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Agent"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "dohnuts",
@@ -6009,35 +6195,6 @@
       "pushedAt": "2026-09-26"
     },
     {
-      "name": "JEV_sees",
-      "owner": "CharlesFeng0314",
-      "description": "Eyes are All JEV Needs - real time visual devisions from RGB, video and RGB-D cameras.",
-      "url": "https://github.com/CharlesFeng0314/JEV_sees",
-      "stars": 34,
-      "forks": 2,
-      "language": "Python",
-      "topics": [
-        "computer-vision",
-        "jev",
-        "multimodal-ai",
-        "object-detection",
-        "object-tracking",
-        "python",
-        "real-time-ai",
-        "rgbd",
-        "robotics",
-        "typesafe-ai",
-        "visual-reasoning",
-        "yolo"
-      ],
-      "tags": [
-        "Bot"
-      ],
-      "createdAt": "2026-09-30",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-30"
-    },
-    {
       "name": "pijev",
       "owner": "TypeLLM",
       "description": "Permutation Invariant Jev",
@@ -6055,147 +6212,6 @@
       "createdAt": "2026-09-22",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-28"
-    },
-    {
-      "name": "bev-train",
-      "owner": "avbiswas",
-      "description": "Training Jev-like decision models using Qwen3 with choice-order invariance",
-      "url": "https://github.com/avbiswas/bev-train",
-      "stars": 34,
-      "forks": 2,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-27",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-27"
-    },
-    {
-      "name": "zerikai_memory",
-      "owner": "KikeVen",
-      "description": "A standalone local-only Python MCP server that gives any IDE persistent, workspace-isolated memory. works with any IDE supporting MCP servers",
-      "url": "https://github.com/KikeVen/zerikai_memory",
-      "stars": 34,
-      "forks": 2,
-      "language": "Python",
-      "topics": [
-        "ai",
-        "ai-tools",
-        "chromadb",
-        "deepseek-v4-pro",
-        "jev",
-        "lexical",
-        "mcp",
-        "mcp-memory",
-        "mcp-server",
-        "mcp-tools",
-        "memory",
-        "mistral-7b",
-        "ollama",
-        "ornith",
-        "rag-memory",
-        "re-ranking",
-        "tree-sitter-parser",
-        "typesafe-ai",
-        "typesafe-jev",
-        "zerikai"
-      ],
-      "tags": [
-        "MCP"
-      ],
-      "createdAt": "2026-05-03",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-26"
-    },
-    {
-      "name": "jev-for-chrome",
-      "owner": "chy4pro",
-      "description": "Jev for Chrome: drives the tab you are looking at with TypeSafe Jev, a sub-second decision model. Community port of browser-use/jev-ultrafast, not affiliated with TypeSafe.",
-      "url": "https://github.com/chy4pro/jev-for-chrome",
-      "stars": 33,
-      "forks": 6,
-      "language": "TypeScript",
-      "topics": [
-        "ai-agent",
-        "browser-agent",
-        "browser-automation",
-        "browser-use",
-        "chrome-extension",
-        "jev",
-        "manifest-v3",
-        "openrouter",
-        "typesafe",
-        "web-agent"
-      ],
-      "tags": [
-        "Agent",
-        "Browser"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-28"
-    },
-    {
-      "name": "jev-code",
-      "owner": "FrancoisChastel",
-      "description": "Jev, TypeSafe's System One classifier, as a tool inside Claude Code, Codex, Pi, and OpenCode: typed classify, check, score, rank, and ask, plus one-command setup.",
-      "url": "https://github.com/FrancoisChastel/jev-code",
-      "stars": 33,
-      "forks": 3,
-      "language": "TypeScript",
-      "topics": [
-        "agent-skills",
-        "classifier",
-        "claude-code",
-        "codex",
-        "coding-agents",
-        "jev",
-        "mcp",
-        "opencode",
-        "pi-package",
-        "system-one",
-        "typesafe"
-      ],
-      "tags": [
-        "MCP",
-        "Agent",
-        "Claude Code"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "jev-cli",
-      "owner": "shaharia-lab",
-      "description": "Command-line tool for TypeSafe AI's Jev model. Ask yes/no, multiple-choice and rubric questions about any text and get calibrated probabilities back. Answers become exit codes for shells and CI, JSON ",
-      "url": "https://github.com/shaharia-lab/jev-cli",
-      "stars": 33,
-      "forks": 4,
-      "language": "Rust",
-      "topics": [
-        "ai-agents",
-        "classification",
-        "cli",
-        "command-line-tool",
-        "devtools",
-        "jev",
-        "llm",
-        "mcp",
-        "mcp-server",
-        "rust",
-        "text-classification",
-        "typesafe-ai"
-      ],
-      "tags": [
-        "MCP",
-        "Agent"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-29"
     },
     {
       "name": "jev",
@@ -6330,59 +6346,11 @@
       "pushedAt": "2026-09-24"
     },
     {
-      "name": "jev-skill-suggester",
-      "owner": "win4r",
-      "description": "用 TypeSafe Jev 推荐已安装 Skill / Bounded installed-skill recommendations with TypeSafe Jev. Python CLI, Codex skill, bilingual docs and live examples.",
-      "url": "https://github.com/win4r/jev-skill-suggester",
-      "stars": 32,
-      "forks": 3,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tutorial"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-19"
-    },
-    {
-      "name": "hermes-nerve",
-      "owner": "keeltrace",
-      "description": "Nerve is a supervisory nervous system for Hermes agents, adding typed System One decisions, ranking, verification, token-aware oversight, and an opt-in tool gate powered by TypeSafe Jev or Open Source",
-      "url": "https://github.com/keeltrace/hermes-nerve",
-      "stars": 32,
-      "forks": 9,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Agent"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-10-01",
-      "pushedAt": "2026-10-01"
-    },
-    {
-      "name": "is-jeven",
-      "owner": "wobsoriano",
-      "description": "Is it even? Ask Jev.",
-      "url": "https://github.com/wobsoriano/is-jeven",
-      "stars": 32,
-      "forks": 1,
-      "language": "JavaScript",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-23"
-    },
-    {
       "name": "is-malicious",
       "owner": "luantak",
       "description": "A codebase scanner that helps you not run malicous code",
       "url": "https://github.com/luantak/is-malicious",
-      "stars": 32,
+      "stars": 33,
       "forks": 4,
       "language": "TypeScript",
       "topics": [
@@ -6403,6 +6371,38 @@
         "Tool"
       ],
       "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-23"
+    },
+    {
+      "name": "jev-skill-suggester",
+      "owner": "win4r",
+      "description": "用 TypeSafe Jev 推荐已安装 Skill / Bounded installed-skill recommendations with TypeSafe Jev. Python CLI, Codex skill, bilingual docs and live examples.",
+      "url": "https://github.com/win4r/jev-skill-suggester",
+      "stars": 32,
+      "forks": 3,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tutorial"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-09-30",
+      "pushedAt": "2026-09-19"
+    },
+    {
+      "name": "is-jeven",
+      "owner": "wobsoriano",
+      "description": "Is it even? Ask Jev.",
+      "url": "https://github.com/wobsoriano/is-jeven",
+      "stars": 32,
+      "forks": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-17",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-23"
     },
@@ -6469,8 +6469,8 @@
         "Agent"
       ],
       "createdAt": "2026-01-07",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "pix-golpe",
@@ -6487,29 +6487,6 @@
       "createdAt": "2026-09-22",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-23"
-    },
-    {
-      "name": "JevGuide",
-      "owner": "Nisaka520",
-      "description": "弦外之音 —— 微信聊天里的关系进展助手：读屏（无障碍树 / 截屏视觉）→ Jev 判读 + 攻略度 → 聊天模型出 3 条候选回复，攻略度常驻挂在屏幕上。不改微信、不发消息、不注入点击。",
-      "url": "https://github.com/Nisaka520/JevGuide",
-      "stars": 31,
-      "forks": 1,
-      "language": "Kotlin",
-      "topics": [
-        "accessibility",
-        "android",
-        "kotlin",
-        "llm",
-        "material3",
-        "wechat"
-      ],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-23",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-24"
     },
     {
       "name": "slop-grader",
@@ -6592,8 +6569,8 @@
         "Agent"
       ],
       "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jevgpt",
@@ -6623,7 +6600,7 @@
       "description": "Jev (TypeSafe System One) backed auto mode for the Pi coding agent: semantically auto-approves bash, write, and edit tool calls and fails closed when a decision cannot be made.",
       "url": "https://github.com/jomatsu/pi-jev-auto-mode",
       "stars": 30,
-      "forks": 2,
+      "forks": 1,
       "language": "TypeScript",
       "topics": [
         "auto-mode",
@@ -6677,6 +6654,29 @@
       ],
       "createdAt": "2026-09-21",
       "updatedAt": "2026-09-30",
+      "pushedAt": "2026-09-24"
+    },
+    {
+      "name": "JevGuide",
+      "owner": "Nisaka520",
+      "description": "弦外之音 —— 微信聊天里的关系进展助手：读屏（无障碍树 / 截屏视觉）→ Jev 判读 + 攻略度 → 聊天模型出 3 条候选回复，攻略度常驻挂在屏幕上。不改微信、不发消息、不注入点击。",
+      "url": "https://github.com/Nisaka520/JevGuide",
+      "stars": 30,
+      "forks": 1,
+      "language": "Kotlin",
+      "topics": [
+        "accessibility",
+        "android",
+        "kotlin",
+        "llm",
+        "material3",
+        "wechat"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-23",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-09-24"
     },
     {
@@ -6807,6 +6807,22 @@
       "pushedAt": "2026-09-18"
     },
     {
+      "name": "duckdb-jev",
+      "owner": "colliber",
+      "description": "DuckDB extension: typed Jev answers as real SQL types",
+      "url": "https://github.com/colliber/duckdb-jev",
+      "stars": 28,
+      "forks": 1,
+      "language": "C++",
+      "topics": [],
+      "tags": [
+        "Database"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-18"
+    },
+    {
       "name": "tsai-sc",
       "owner": "phyous",
       "description": "TypeSafe Jev controls original StarCraft shareware through keyboard and mouse with recorded action probabilities.",
@@ -6841,22 +6857,6 @@
       "createdAt": "2026-09-19",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-19"
-    },
-    {
-      "name": "duckdb-jev",
-      "owner": "colliber",
-      "description": "DuckDB extension: typed Jev answers as real SQL types",
-      "url": "https://github.com/colliber/duckdb-jev",
-      "stars": 27,
-      "forks": 1,
-      "language": "C++",
-      "topics": [],
-      "tags": [
-        "Database"
-      ],
-      "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-18"
     },
     {
       "name": "jev-harness",
@@ -6947,8 +6947,8 @@
         "Search"
       ],
       "createdAt": "2026-09-23",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jev-ui-test",
@@ -7089,6 +7089,28 @@
       "pushedAt": "2026-09-24"
     },
     {
+      "name": "jev-hub",
+      "owner": "mizzlelover",
+      "description": "JEV HUB · X 上关于 TypeSafe AI「系统一模型」Jev 的长文与演示视频聚合（保留原链与作者）｜ 谁是专家 出品",
+      "url": "https://github.com/mizzlelover/jev-hub",
+      "stars": 25,
+      "forks": 4,
+      "language": "CSS",
+      "topics": [
+        "ai",
+        "awesome-list",
+        "jev",
+        "typesafe",
+        "x-twitter"
+      ],
+      "tags": [
+        "awesome-list"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-21"
+    },
+    {
       "name": "jev-mcp",
       "owner": "blakestone-x",
       "description": "MCP server for TypeSafe Jev: typed classify, score, check, match and screen for any agent, with confidence on every answer",
@@ -7104,6 +7126,22 @@
       "createdAt": "2026-09-16",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-16"
+    },
+    {
+      "name": "claude-x-jev",
+      "owner": "charlesdove977",
+      "description": "Fast, cheap, typed decisions for Claude Code. Jev (TypeSafe's decision model on OpenRouter) sorts, checks, scores, gates and verifies at 0.3s and a fraction of a cent per item. Claude keeps the readin",
+      "url": "https://github.com/charlesdove977/claude-x-jev",
+      "stars": 25,
+      "forks": 5,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Claude Code"
+      ],
+      "createdAt": "2026-09-25",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-25"
     },
     {
       "name": "jsort",
@@ -7203,28 +7241,6 @@
       "createdAt": "2026-09-21",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-29"
-    },
-    {
-      "name": "jev-hub",
-      "owner": "mizzlelover",
-      "description": "JEV HUB · X 上关于 TypeSafe AI「系统一模型」Jev 的长文与演示视频聚合（保留原链与作者）｜ 谁是专家 出品",
-      "url": "https://github.com/mizzlelover/jev-hub",
-      "stars": 24,
-      "forks": 4,
-      "language": "CSS",
-      "topics": [
-        "ai",
-        "awesome-list",
-        "jev",
-        "typesafe",
-        "x-twitter"
-      ],
-      "tags": [
-        "awesome-list"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-21"
     },
     {
       "name": "dsh-jev",
@@ -7353,6 +7369,39 @@
       "pushedAt": "2026-09-17"
     },
     {
+      "name": "laya-php",
+      "owner": "marcreichel",
+      "description": "Classify text in PHP without an LLM bill: typed decisions in 100+ languages, self-hosted. Laravel-ready SDK for Laya, a Jev AI alternative.",
+      "url": "https://github.com/marcreichel/laya-php",
+      "stars": 24,
+      "forks": 0,
+      "language": "PHP",
+      "topics": [
+        "ai",
+        "decision-engine",
+        "jev",
+        "jev-ai",
+        "jev-api",
+        "laravel",
+        "laya",
+        "llm",
+        "multilingual",
+        "nlp",
+        "php",
+        "psr-18",
+        "sdk",
+        "text-classification",
+        "wrapper",
+        "zero-shot"
+      ],
+      "tags": [
+        "SDK"
+      ],
+      "createdAt": "2026-09-26",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-27"
+    },
+    {
       "name": "typesafe-snake",
       "owner": "sorrycc",
       "description": "Snake auto-played by TypeSafe's Jev model: one System One choice per tick, legal moves and facts generated in code",
@@ -7441,23 +7490,6 @@
       "pushedAt": "2026-09-18"
     },
     {
-      "name": "ulka",
-      "owner": "razaanstha",
-      "description": "Experimental browser agent powered by FX, Jev, and Vercel AI Gateway. Bring your own API key to read pages and automate browser tasks.",
-      "url": "https://github.com/razaanstha/ulka",
-      "stars": 23,
-      "forks": 4,
-      "language": "TypeScript",
-      "topics": [],
-      "tags": [
-        "Agent",
-        "Browser"
-      ],
-      "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-26"
-    },
-    {
       "name": "jev-cli",
       "owner": "Nasrallah-AL",
       "description": "Command-line tool for TypeSafe's Jev AI model",
@@ -7501,22 +7533,6 @@
       "createdAt": "2026-09-22",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-22"
-    },
-    {
-      "name": "claude-x-jev",
-      "owner": "charlesdove977",
-      "description": "Fast, cheap, typed decisions for Claude Code. Jev (TypeSafe's decision model on OpenRouter) sorts, checks, scores, gates and verifies at 0.3s and a fraction of a cent per item. Claude keeps the readin",
-      "url": "https://github.com/charlesdove977/claude-x-jev",
-      "stars": 22,
-      "forks": 4,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Claude Code"
-      ],
-      "createdAt": "2026-09-25",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-25"
     },
     {
       "name": "invalidate",
@@ -7643,8 +7659,8 @@
         "Tool"
       ],
       "createdAt": "2026-09-23",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-28"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jev-native-agent-with-extended-options",
@@ -7720,6 +7736,23 @@
       "pushedAt": "2026-09-19"
     },
     {
+      "name": "ulka",
+      "owner": "razaanstha",
+      "description": "Experimental browser agent powered by FX, Jev, and Vercel AI Gateway. Bring your own API key to read pages and automate browser tasks.",
+      "url": "https://github.com/razaanstha/ulka",
+      "stars": 22,
+      "forks": 4,
+      "language": "TypeScript",
+      "topics": [],
+      "tags": [
+        "Agent",
+        "Browser"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-26"
+    },
+    {
       "name": "ad-radar",
       "owner": "pengchujin",
       "description": "开源浏览器插件：在小红书、微博、X、知乎上按关键词和博主折叠内容；用你自己的 Jev API key 识别广告、AI、军事、政治等话题。",
@@ -7765,8 +7798,8 @@
         "awesome-list"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jevwire",
@@ -7929,6 +7962,24 @@
       "pushedAt": "2026-09-21"
     },
     {
+      "name": "awesome-jev",
+      "owner": "Frank-ZY-Dou",
+      "description": "Public examples of Jev used for robot control, 3D modeling and adjacent control tasks, with sources and archived media",
+      "url": "https://github.com/Frank-ZY-Dou/awesome-jev",
+      "stars": 21,
+      "forks": 0,
+      "language": null,
+      "topics": [],
+      "tags": [
+        "awesome-list",
+        "Bot",
+        "Tutorial"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-21"
+    },
+    {
       "name": "laya-mps",
       "owner": "afshinm",
       "description": "Run Jev-style typed decisions locally on your Mac with low RAM usage and fast responses",
@@ -7995,6 +8046,22 @@
       "pushedAt": "2026-09-23"
     },
     {
+      "name": "wechat-triage-hud",
+      "owner": "ops120",
+      "description": "微信 PC 端「按人分诊」悬浮面板：离线 OCR 读屏 + Jev 判断这一轮谁需要你出手。只判断不代聊、不注入微信、每次调用可回查。",
+      "url": "https://github.com/ops120/wechat-triage-hud",
+      "stars": 21,
+      "forks": 6,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-24",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-29"
+    },
+    {
       "name": "RLCDAlignBench",
       "owner": "sumleo",
       "description": "RLCDAlignBench: 44 alignment-failure detection benchmarks and code for 'Just Ask Jev' (RLCD zero-shot detector of AI alignment failures)",
@@ -8032,6 +8099,47 @@
       "createdAt": "2026-09-18",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-18"
+    },
+    {
+      "name": "awesome-jev-usecases",
+      "owner": "anandi1989",
+      "description": "Evidence-backed index of real-world Jev (TypeSafe AI System One) use cases: repos, patterns, benchmarks, and measured results",
+      "url": "https://github.com/anandi1989/awesome-jev-usecases",
+      "stars": 20,
+      "forks": 7,
+      "language": null,
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "awesome-list",
+        "benchmark",
+        "browser-agents",
+        "calibration",
+        "classification",
+        "curated-list",
+        "decision-model",
+        "guardrails",
+        "jev",
+        "llm",
+        "rag",
+        "reranking",
+        "routing",
+        "structured-output",
+        "system-one",
+        "typesafe-ai",
+        "use-cases"
+      ],
+      "tags": [
+        "awesome-list",
+        "Agent",
+        "Browser",
+        "guardrail",
+        "Search"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-26"
     },
     {
       "name": "jevbot",
@@ -8160,24 +8268,6 @@
       "pushedAt": "2026-09-23"
     },
     {
-      "name": "awesome-jev",
-      "owner": "Frank-ZY-Dou",
-      "description": "Public examples of Jev used for robot control, 3D modeling and adjacent control tasks, with sources and archived media",
-      "url": "https://github.com/Frank-ZY-Dou/awesome-jev",
-      "stars": 20,
-      "forks": 0,
-      "language": null,
-      "topics": [],
-      "tags": [
-        "awesome-list",
-        "Bot",
-        "Tutorial"
-      ],
-      "createdAt": "2026-09-19",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-21"
-    },
-    {
       "name": "ErisLint",
       "owner": "Eriskii",
       "description": "Rust linter powered by configurable Jev rules, with a VS Code extension.",
@@ -8194,94 +8284,20 @@
       "pushedAt": "2026-09-18"
     },
     {
-      "name": "wechat-triage-hud",
-      "owner": "ops120",
-      "description": "微信 PC 端「按人分诊」悬浮面板：离线 OCR 读屏 + Jev 判断这一轮谁需要你出手。只判断不代聊、不注入微信、每次调用可回查。",
-      "url": "https://github.com/ops120/wechat-triage-hud",
-      "stars": 20,
-      "forks": 5,
+      "name": "llm-typesafe",
+      "owner": "simonw",
+      "description": "LLM plugin for accessing Jev and other TypeSafe AI models",
+      "url": "https://github.com/simonw/llm-typesafe",
+      "stars": 19,
+      "forks": 2,
       "language": "Python",
       "topics": [],
       "tags": [
         "Tool"
       ],
-      "createdAt": "2026-09-24",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-29"
-    },
-    {
-      "name": "laya-php",
-      "owner": "marcreichel",
-      "description": "Classify text in PHP without an LLM bill: typed decisions in 100+ languages, self-hosted. Laravel-ready SDK for Laya, a Jev AI alternative.",
-      "url": "https://github.com/marcreichel/laya-php",
-      "stars": 20,
-      "forks": 0,
-      "language": "PHP",
-      "topics": [
-        "ai",
-        "decision-engine",
-        "jev",
-        "jev-ai",
-        "jev-api",
-        "laravel",
-        "laya",
-        "llm",
-        "multilingual",
-        "nlp",
-        "php",
-        "psr-18",
-        "sdk",
-        "text-classification",
-        "wrapper",
-        "zero-shot"
-      ],
-      "tags": [
-        "SDK"
-      ],
-      "createdAt": "2026-09-26",
-      "updatedAt": "2026-09-29",
-      "pushedAt": "2026-09-27"
-    },
-    {
-      "name": "awesome-jev-usecases",
-      "owner": "anandi1989",
-      "description": "Evidence-backed index of real-world Jev (TypeSafe AI System One) use cases: repos, patterns, benchmarks, and measured results",
-      "url": "https://github.com/anandi1989/awesome-jev-usecases",
-      "stars": 19,
-      "forks": 7,
-      "language": null,
-      "topics": [
-        "agents",
-        "ai",
-        "ai-agents",
-        "awesome-list",
-        "benchmark",
-        "browser-agents",
-        "calibration",
-        "classification",
-        "curated-list",
-        "decision-model",
-        "guardrails",
-        "jev",
-        "llm",
-        "rag",
-        "reranking",
-        "routing",
-        "structured-output",
-        "system-one",
-        "typesafe-ai",
-        "use-cases"
-      ],
-      "tags": [
-        "awesome-list",
-        "Agent",
-        "Browser",
-        "guardrail",
-        "Search"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-26"
+      "createdAt": "2026-09-22",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-22"
     },
     {
       "name": "hermes-jev-approvals",
@@ -8289,7 +8305,7 @@
       "description": "TypeSafe Jev as the reviewer for Hermes Agent smart command approvals. 8.7x faster, 4.4x fewer prompts, measured on 153 real commands. Approvals only.",
       "url": "https://github.com/anpicasso/hermes-jev-approvals",
       "stars": 19,
-      "forks": 3,
+      "forks": 4,
       "language": "Python",
       "topics": [],
       "tags": [
@@ -8499,7 +8515,7 @@
       ],
       "createdAt": "2026-09-18",
       "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-27"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jcr",
@@ -8618,20 +8634,42 @@
       "pushedAt": "2026-09-23"
     },
     {
-      "name": "llm-typesafe",
-      "owner": "simonw",
-      "description": "LLM plugin for accessing Jev and other TypeSafe AI models",
-      "url": "https://github.com/simonw/llm-typesafe",
+      "name": "jev-usecases",
+      "owner": "kenhuangus",
+      "description": "Production TypeSafe Jev (System One) use-case harnesses with confidence-gated decision logic",
+      "url": "https://github.com/kenhuangus/jev-usecases",
       "stars": 18,
-      "forks": 2,
+      "forks": 6,
       "language": "Python",
       "topics": [],
       "tags": [
         "Tool"
       ],
-      "createdAt": "2026-09-22",
+      "createdAt": "2026-09-18",
       "updatedAt": "2026-10-01",
-      "pushedAt": "2026-09-22"
+      "pushedAt": "2026-09-21"
+    },
+    {
+      "name": "claude-jev",
+      "owner": "0x7067",
+      "description": "Claude Code plugin: Jev for rule checks, verbatim compaction, and prompt routing",
+      "url": "https://github.com/0x7067/claude-jev",
+      "stars": 18,
+      "forks": 5,
+      "language": "TypeScript",
+      "topics": [
+        "ai",
+        "claude-code",
+        "claude-code-plugin",
+        "jev",
+        "jev-ai"
+      ],
+      "tags": [
+        "Claude Code"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "Jevflake",
@@ -8654,28 +8692,6 @@
       "createdAt": "2026-09-20",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-27"
-    },
-    {
-      "name": "claude-jev",
-      "owner": "0x7067",
-      "description": "Claude Code plugin: Jev for rule checks, verbatim compaction, and prompt routing",
-      "url": "https://github.com/0x7067/claude-jev",
-      "stars": 18,
-      "forks": 5,
-      "language": "TypeScript",
-      "topics": [
-        "ai",
-        "claude-code",
-        "claude-code-plugin",
-        "jev",
-        "jev-ai"
-      ],
-      "tags": [
-        "Claude Code"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
     },
     {
       "name": "wechat-jev-assistant",
@@ -8785,23 +8801,7 @@
       ],
       "createdAt": "2026-09-13",
       "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "jev-usecases",
-      "owner": "kenhuangus",
-      "description": "Production TypeSafe Jev (System One) use-case harnesses with confidence-gated decision logic",
-      "url": "https://github.com/kenhuangus/jev-usecases",
-      "stars": 17,
-      "forks": 6,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-29",
-      "pushedAt": "2026-09-21"
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "jevper",
@@ -8845,6 +8845,22 @@
       "pushedAt": "2026-09-24"
     },
     {
+      "name": "jev-rs",
+      "owner": "yijunyu",
+      "description": "System One judgments (noul/choice/score) from any LLM in one prefill — a Rust, Jev-compatible /v1/systemone engine",
+      "url": "https://github.com/yijunyu/jev-rs",
+      "stars": 17,
+      "forks": 2,
+      "language": "Rust",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-21",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-28"
+    },
+    {
       "name": "Jev-vs-ML",
       "owner": "QuicqDev",
       "description": "Jev-vs-ML",
@@ -8859,6 +8875,28 @@
       "createdAt": "2026-09-20",
       "updatedAt": "2026-09-25",
       "pushedAt": "2026-09-22"
+    },
+    {
+      "name": "jev-anything",
+      "owner": "grandamenium",
+      "description": "Agent skill for designing, building, testing, and tuning bounded JEV decision layers",
+      "url": "https://github.com/grandamenium/jev-anything",
+      "stars": 17,
+      "forks": 0,
+      "language": "Python",
+      "topics": [
+        "agent-skill",
+        "claude-code",
+        "codex",
+        "decision-making",
+        "jev"
+      ],
+      "tags": [
+        "Agent"
+      ],
+      "createdAt": "2026-09-24",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-24"
     },
     {
       "name": "zero-api-key-web-search",
@@ -8938,6 +8976,22 @@
       "createdAt": "2026-09-18",
       "updatedAt": "2026-09-26",
       "pushedAt": "2026-09-21"
+    },
+    {
+      "name": "pi-jev-router",
+      "owner": "mejiasd3v",
+      "description": "Automatic model routing for Pi using TypeSafe's Jev through Vercel AI Gateway",
+      "url": "https://github.com/mejiasd3v/pi-jev-router",
+      "stars": 16,
+      "forks": 1,
+      "language": "JavaScript",
+      "topics": [],
+      "tags": [
+        "Claude Code"
+      ],
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-22"
     },
     {
       "name": "jev-ego",
@@ -9076,24 +9130,8 @@
         "Browser"
       ],
       "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "jev-rs",
-      "owner": "yijunyu",
-      "description": "System One judgments (noul/choice/score) from any LLM in one prefill — a Rust, Jev-compatible /v1/systemone engine",
-      "url": "https://github.com/yijunyu/jev-rs",
-      "stars": 16,
-      "forks": 2,
-      "language": "Rust",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-21",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-28"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "a3m-router",
@@ -9152,28 +9190,6 @@
       "createdAt": "2026-09-19",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-27"
-    },
-    {
-      "name": "jev-anything",
-      "owner": "grandamenium",
-      "description": "Agent skill for designing, building, testing, and tuning bounded JEV decision layers",
-      "url": "https://github.com/grandamenium/jev-anything",
-      "stars": 16,
-      "forks": 0,
-      "language": "Python",
-      "topics": [
-        "agent-skill",
-        "claude-code",
-        "codex",
-        "decision-making",
-        "jev"
-      ],
-      "tags": [
-        "Agent"
-      ],
-      "createdAt": "2026-09-24",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-24"
     },
     {
       "name": "duomind",
@@ -9257,24 +9273,8 @@
         "Agent"
       ],
       "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "pi-jev-router",
-      "owner": "mejiasd3v",
-      "description": "Automatic model routing for Pi using TypeSafe's Jev through Vercel AI Gateway",
-      "url": "https://github.com/mejiasd3v/pi-jev-router",
-      "stars": 15,
-      "forks": 1,
-      "language": "JavaScript",
-      "topics": [],
-      "tags": [
-        "Claude Code"
-      ],
-      "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-22"
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
     },
     {
       "name": "pi-jev",
@@ -9559,6 +9559,22 @@
       "pushedAt": "2026-09-28"
     },
     {
+      "name": "jev_antispam_bot",
+      "owner": "backmeupplz",
+      "description": "Minimal grammY Telegram anti-spam bot powered by TypeSafe Jev",
+      "url": "https://github.com/backmeupplz/jev_antispam_bot",
+      "stars": 14,
+      "forks": 2,
+      "language": "TypeScript",
+      "topics": [],
+      "tags": [
+        "Bot"
+      ],
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-10-01"
+    },
+    {
       "name": "typesafe-ai-php",
       "owner": "sanmai",
       "description": "Jev for PHP, TypeSafe AI PHP SDK",
@@ -9674,7 +9690,7 @@
       "description": "Opensource Jev",
       "url": "https://github.com/GPT-AGI/OpenJev",
       "stars": 14,
-      "forks": 3,
+      "forks": 4,
       "language": "Python",
       "topics": [],
       "tags": [
@@ -9750,6 +9766,22 @@
       "createdAt": "2026-09-21",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-24"
+    },
+    {
+      "name": "OpenJev",
+      "owner": "ejhshen",
+      "description": "A comprehensive and open-source reproduction of Jev.",
+      "url": "https://github.com/ejhshen/OpenJev",
+      "stars": 14,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-29",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-29"
     },
     {
       "name": "jev-memory",
@@ -9845,6 +9877,30 @@
       "pushedAt": "2026-09-19"
     },
     {
+      "name": "chat-nojev",
+      "owner": "chy4pro",
+      "description": "jev-chat 对话副驾的派生版：判断、排序和候选回复由同一个模型在同一次调用里给出，所以只需配一把 key。Windows / macOS / Android 三份，其余代码与原版相同。",
+      "url": "https://github.com/chy4pro/chat-nojev",
+      "stars": 14,
+      "forks": 1,
+      "language": "Python",
+      "topics": [
+        "accessibility",
+        "android",
+        "chat-assistant",
+        "llm",
+        "macos",
+        "wechat",
+        "windows"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-22",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-26"
+    },
+    {
       "name": "typesafe-playground",
       "owner": "kavehmz",
       "description": "Interactive experiments with TypeSafe Jev, from support routing to 3D driving simulations with real AI decisions and visible sensor inputs.",
@@ -9873,23 +9929,7 @@
         "Tool"
       ],
       "createdAt": "2026-09-17",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "jev_antispam_bot",
-      "owner": "backmeupplz",
-      "description": "Minimal grammY Telegram anti-spam bot powered by TypeSafe Jev",
-      "url": "https://github.com/backmeupplz/jev_antispam_bot",
-      "stars": 13,
-      "forks": 2,
-      "language": "TypeScript",
-      "topics": [],
-      "tags": [
-        "Bot"
-      ],
-      "createdAt": "2026-09-18",
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-01",
       "pushedAt": "2026-10-01"
     },
     {
@@ -9907,6 +9947,27 @@
       "createdAt": "2026-09-18",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-18"
+    },
+    {
+      "name": "jev",
+      "owner": "stefafafan",
+      "description": "An unofficial, provider-neutral Unix client for Jev from TypeSafe AI. Written in Go.",
+      "url": "https://github.com/stefafafan/jev",
+      "stars": 13,
+      "forks": 1,
+      "language": "Go",
+      "topics": [
+        "ai",
+        "cli",
+        "golang",
+        "jev"
+      ],
+      "tags": [
+        "SDK"
+      ],
+      "createdAt": "2026-09-26",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-26"
     },
     {
       "name": "jev-cli",
@@ -9961,6 +10022,31 @@
       "createdAt": "2026-09-21",
       "updatedAt": "2026-09-28",
       "pushedAt": "2026-09-28"
+    },
+    {
+      "name": "jev-canvas",
+      "owner": "gaborishka",
+      "description": "Draw on a tldraw canvas with your voice and a pointing finger. Jev (TypeSafe System One) decides action, target and place in ~350 ms per spoken word.",
+      "url": "https://github.com/gaborishka/jev-canvas",
+      "stars": 13,
+      "forks": 1,
+      "language": "JavaScript",
+      "topics": [
+        "hand-tracking",
+        "jev",
+        "mediapipe",
+        "openrouter",
+        "tldraw",
+        "typesafe",
+        "voice-control",
+        "web-speech-api"
+      ],
+      "tags": [
+        "Tool"
+      ],
+      "createdAt": "2026-09-19",
+      "updatedAt": "2026-10-01",
+      "pushedAt": "2026-09-19"
     },
     {
       "name": "pi-jev-router",
@@ -10024,22 +10110,6 @@
       "createdAt": "2026-09-22",
       "updatedAt": "2026-09-30",
       "pushedAt": "2026-09-30"
-    },
-    {
-      "name": "OpenJev",
-      "owner": "ejhshen",
-      "description": "A comprehensive and open-source reproduction of Jev.",
-      "url": "https://github.com/ejhshen/OpenJev",
-      "stars": 13,
-      "forks": 0,
-      "language": "Python",
-      "topics": [],
-      "tags": [
-        "Tool"
-      ],
-      "createdAt": "2026-09-29",
-      "updatedAt": "2026-09-30",
-      "pushedAt": "2026-09-29"
     },
     {
       "name": "jev-me",
