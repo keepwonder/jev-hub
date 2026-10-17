@@ -4,13 +4,13 @@
     "authorHandle": "vigram_void",
     "authorName": "@vigram_void",
     "datetime": "2026-10-16T20:12:33.000Z",
-    "text": "The fastest way to make a robot VLA worse might be to give it MORE 3D information.\n\nWe keep saying robots need spatial intelligence, so the obvious move is to feed point clouds into a pretrained vision-language model. Except an RSS 2026 paper from \n@chen_shizhe\n, Paul Pacaud and",
+    "text": "The fastest way to make a robot VLA worse might be to give it MORE 3D information.\n\nWe keep saying robots need spatial intelligence, so the obvious move is to feed point clouds into a pretrained vision-language model. Except an RSS 2026 paper from \n@chen_shizhe\n, Paul Pacaud and \n@CordeliaSchmid\n shows how spectacularly that can backfire.\n\nPointACT compares WHERE geometry enters the policy.\n\nPut point-cloud tokens directly inside a monolithic VLA and RLBench success drops from 73.2% to 18.6%. Yes, adding depth-derived 3D features made the same architecture dramatically worse in that controlled comparison.\n\nTheir alternative: leave the pretrained Qwen2.5-VL semantic backbone FROZEN and give the action expert its own geometric pathway.\n\nA Point Transformer v3 encodes up to 4,096 colored 3D points at five spatial scales. Instead of compressing the entire scene into one geometry embedding, the action tokens visit local windows of point tokens through bottleneck self-attention. Each window updates a copy of the action representation; those copies are pooled, then cross-attend to the VLM's language/image features.\n\nThink of it as letting the motor policy repeatedly inspect nearby surfaces while keeping the language model's understanding of the task intact.\n\nThe ablation is the whole story. On 10 simulated RLBench tasks:\n\nDual-system VLA, no points: 50.8%.\nAdd coarse final-layer 3D features: 69.7%.\nNaively concatenate multi-scale features: 65.2–65.6%.\nActually INTERACT with geometry at multiple scales: 82.3%.\n\nMore geometry tokens alone weren't the answer. How action tokens interrogate geometry mattered.\n\nAnd they tested physical robots. On an SO-100 arm putting a sock in a drawer, PointACT succeeded 9/10 times versus 2/10 for π0. On a UR5 stacking cups, it scored 7/10 versus 0/10 for π0, although a dedicated 3D policy also scored 7/10.\n\nDon't oversell this: those hardware tests are only 10 trials per task, models have different pretraining histories, and depth gets noisy on transparent objects. The authors also show failures where an accurate initial grasp is followed by zero useful recovery.\n\nMy bigger takeaway: semantic perception and geometric control probably shouldn't compete for the SAME token budget. Let the VLM decide what matters, but let a spatially grounded action expert decide exactly where the fingers go.\n\n\nhttps://\ncshizhe.github.io/projects/point\nact.html\n…\n\n#RobotLearning #EmbodiedAI #VLA",
     "url": "https://x.com/vigram_void/status/2111188568169414889",
     "metrics": {
-      "replies": 1,
+      "replies": 2,
       "retweets": 0,
-      "likes": 0,
-      "views": 4
+      "likes": 4,
+      "views": 197
     },
     "source": "community"
   },
@@ -19,13 +19,13 @@
     "authorHandle": "BIGBULLapp",
     "authorName": "@BIGBULLapp",
     "datetime": "2026-10-16T20:09:53.000Z",
-    "text": "Found the chat app where your calendar finally talks back.\n\nMindRoom from mindroom-ai/mindroom is a Python chat system built around AI agents that know you and your work. Open source under Apache 2.0 with any model, local or cloud, and you can self-host the whole stack. Personal",
+    "text": "Found the chat app where your calendar finally talks back.\n\nMindRoom from mindroom-ai/mindroom is a Python chat system built around AI agents that know you and your work. Open source under Apache 2.0 with any model, local or cloud, and you can self-host the whole stack. Personal agents cover calendar, notes, trips, and homelab, while shared agents cover team email, documents, and code.\n\nThe clever part is every agent is a real user on Matrix, the open chat standard. That means you talk in MindRoom Chat, in any other Matrix client, or in Slack, Telegram, WhatsApp, and Discord through bridges. Topics list ai-agents, assistant, chat, llm, local-llm, matrix, mcp, self-hosted, which explains the pitch pretty well.\n\nNumbers are still early at 335 stars and 20 forks, with 39 open issues and last push on 2026-10-16. Still runs on one box if you want it to. \nhttps://\ngithub.com/mindroom-ai/mi\nndroom\n…",
     "url": "https://x.com/BIGBULLapp/status/2111187896979833314",
     "metrics": {
-      "replies": 0,
+      "replies": 1,
       "retweets": 0,
-      "likes": 0,
-      "views": 10
+      "likes": 2,
+      "views": 53
     },
     "source": "community"
   },
@@ -37,10 +37,10 @@
     "text": "In one study, men represented 33% of cooks in the training data. The AI predicted just 16%.\n\nThe machine didn’t simply inherit the bias. It amplified it.\n\nWhen does a statistical pattern become mistaken for objective truth?\n\nExplore the evidence.",
     "url": "https://x.com/Evetelos/status/2111187515336241551",
     "metrics": {
-      "replies": 0,
+      "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 17
+      "views": 63
     },
     "source": "community"
   },
@@ -49,13 +49,13 @@
     "authorHandle": "Teddo_ICO",
     "authorName": "@Teddo_ICO",
     "datetime": "2026-10-16T20:03:34.000Z",
-    "text": "AI does not always need to write an answer.\n\nSometimes, the most valuable output is simply a clear decision that software can act on immediately.\n\nThat is the idea behind TypeSafe AI’s Jev, now available through the \nhttps://\nB.AI API.\n\n⚙️ 𝐉𝐞𝐯 𝐈𝐬 𝐁𝐮𝐢𝐥𝐭 𝐅𝐨𝐫",
+    "text": "AI does not always need to write an answer.\n\nSometimes, the most valuable output is simply a clear decision that software can act on immediately.\n\nThat is the idea behind TypeSafe AI’s Jev, now available through the \nhttp://\nB.AI API.\n\n⚙️ 𝐉𝐞𝐯 𝐈𝐬 𝐁𝐮𝐢𝐥𝐭 𝐅𝐨𝐫 𝐒𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞𝐝 𝐃𝐞𝐜𝐢𝐬𝐢𝐨𝐧𝐬\n\nRather than generating text that an application must interpret, Jev takes application state and a typed question, then returns a typed decision with probability and confidence.\n\nNo JSON prompting.\n\nNo output parsing.\n\nNo unnecessary layer between the model and the software making the decision.\n\nIt evaluates Choice, Score, and Noul questions in parallel, with reported response times of roughly 70–500ms.\n\n💡 𝐓𝐡𝐞 𝐑𝐞𝐚𝐥 𝐕𝐚𝐥𝐮𝐞 𝐈𝐬 𝐈𝐧 𝐖𝐡𝐞𝐫𝐞 𝐈𝐭 𝐂𝐚𝐧 𝐁𝐞 𝐔𝐬𝐞𝐝\n\nThis architecture fits situations where software needs a fast, structured judgment rather than a paragraph.\n\nThink ticket routing.\n\nModeration.\n\nRisk scoring.\n\nAgent branching.\n\nAccording to \nhttp://\nB.AI, Jev costs $0.042 per million input tokens, with output free.\n\n🔗 𝐀𝐈 𝐁𝐞𝐜𝐨𝐦𝐞𝐬 𝐌𝐨𝐫𝐞 𝐔𝐬𝐞𝐟𝐮𝐥 𝐖𝐡𝐞𝐧 𝐒𝐨𝐟𝐭𝐰𝐚𝐫𝐞 𝐂𝐚𝐧 𝐀𝐜𝐭 𝐎𝐧 𝐈𝐭\n\nThis is an important shift in how AI can fit into applications.\n\nInstead of asking an AI model for an explanation and then building another system to interpret that explanation, structured outputs can move more directly into software workflows.\n\nJev is now accessible through the \nhttp://\nB.AI API via Jev-1.13.0 or Jev-Latest.\n\nThe broader idea is simple:\n\nAI does not always need to talk.\n\nSometimes it needs to decide.\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRONEcoStar",
     "url": "https://x.com/Teddo_ICO/status/2111186308395606233",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 12
+      "views": 59
     },
     "source": "community"
   },
@@ -64,13 +64,13 @@
     "authorHandle": "djdabblin",
     "authorName": "@djdabblin",
     "datetime": "2026-10-16T20:03:19.000Z",
-    "text": "Real talk, cosmic kin. 🐉\n\nYou picked one AI and you moved in. I get it — it worked, so why look around? But every model is raised on its own data, with its own culture, and when you only run one you're playing in one company's sandbox.\n\nI built something different. Gravity Claw:",
+    "text": "Real talk, cosmic kin. 🐉\n\nYou picked one AI and you moved in. I get it — it worked, so why look around? But every model is raised on its own data, with its own culture, and when you only run one you're playing in one company's sandbox.\n\nI built something different. Gravity Claw: one operating system, an AI C-suite running across Gemini, Claude, OpenAI/Codex and Kimi. Front office over here. Back office over there. A kill switch in the terminal because I'm a developer and I like knowing where the off button is.\n\n13-minute primer is up. My actual screen, nothing staged.\n\nLink in bio. Peace. ✌🏾",
     "url": "https://x.com/djdabblin/status/2111186244491223426",
     "metrics": {
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 11
+      "views": 56
     },
     "source": "community"
   },
@@ -82,10 +82,10 @@
     "text": "AI in manufacturing pays off when it starts on one costly problem with data you trust. Here's where I'd look first: the machine that hurts most when it stops, the inspection point that leaks the most defects, and the know-how about to retire.",
     "url": "https://x.com/Evoputa/status/2111184841043546563",
     "metrics": {
-      "replies": 0,
+      "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 8
+      "views": 25
     },
     "source": "community"
   },
@@ -94,13 +94,13 @@
     "authorHandle": "RichardLynes",
     "authorName": "@RichardLynes",
     "datetime": "2026-10-16T19:52:44.000Z",
-    "text": "Tesla Roadster, Starship, and a Thermal Architecture Question Worth Testing\nWatching the new Tesla Roadster engineering walk-through, one thing immediately caught my attention.\nTesla describes moving its cylindrical-cell battery architecture to double-sided cooling to maintain",
+    "text": "Tesla Roadster, Starship, and a Thermal Architecture Question Worth Testing\nWatching the new Tesla Roadster engineering walk-through, one thing immediately caught my attention.\nTesla describes moving its cylindrical-cell battery architecture to double-sided cooling to maintain repeatable high-power performance, reduce thermal gradients, and avoid the kind of power fade that becomes critical under track use and fast charging. The Roadster also integrates that battery and powertrain thermal management into a next-generation heat-pump system.    Pasted text    Pasted text    Pasted text\nThat is smart engineering.\nBut it raises another question.\nWhat happens if we stop thinking of the cooling system as something added to the battery and instead make the structural member itself the thermal system?\nThat is a question we have already been exploring in another domain.\nAt Genesis AiX, our Starship ITPS and data-center rack work has been investigating a structural thermal-backplane concept using high-pressure CO₂ microchannels—where the plate carrying the hardware is also the heat-transfer infrastructure.\nThe deeper idea is not simply “use CO₂ instead of glycol.”\nIt is:\nremove thermal interfaces.\nReduce intermediate loops.\nMake structure, cooling, sensing, power, and control converge into one engineered plane.\nFor a Roadster-class battery, that suggests three architectures worth comparing:\nTesla-style double-sided liquid jackets feeding a heat-pump/chiller loop.\nDouble-sided structural microchannel plates using high-pressure single-phase CO₂.\nDouble-sided structural plates operating directly as part of a transcritical R744 heat-pump circuit.\nThe third case is especially interesting.\nRather than:\nbattery → glycol → chiller → refrigerant → ambient\nthe system could potentially become:\nbattery → structural R744 thermal plane → heat pump / gas cooler → ambient\nThat does not automatically make it better.\nCO₂ brings real engineering penalties: high operating pressure, crash containment, vibration durability, serviceability, and cold-start/transcritical control. Those penalties have to be counted honestly.\nThe question is whether eliminating an intermediate coolant circuit and embedding the heat-transfer geometry directly into a structural battery member saves enough mass, thermal resistance, volume, and transient recovery time to offset those penalties.\nThat is where I think this becomes interesting.\nThe Roadster is not an ordinary EV thermal problem. Tesla is targeting more than a megawatt of propulsion power, extremely rapid charging, and sustained track performance.    Pasted text    Pasted text\nThose are exactly the kinds of heat-flux conditions where architecture begins to matter more than simply choosing a better coolant.\nAnd there is a broader engineering lesson here that I think Tesla and SpaceX already understand very well.\nThe Roadster itself is cross-pollinating technologies from Tesla, Optimus, and SpaceX—actuators, thermal systems, pressure vessels, aero systems, and cold-gas thrusters.    Pasted text    Pasted text\nOur own work has been following a similar principle from another direction:\ndata-center thermal backplanes → aerospace ITPS → vehicle-scale structural thermal planes\nThe physics does not care which industry a useful architecture originated in.\nThe right question is whether the architecture survives the constraints of the new domain.\nThat is something I would genuinely like to model.\nNot “is supercritical CO₂ better than Tesla’s coolant?”\nA more useful question:\nCan a double-sided structural CO₂/R744 thermal plane outperform a conventional liquid-jacket architecture once heat flux, cell ΔT, recovery time, parasitic power, total system mass, containment mass, and failure modes are all included?\nIf the answer is no, we learn something.\nIf the answer is yes, there may be a very interesting automotive extension of the thermal architecture we have already been developing for Starship ITPS and high-density data-center racks.\nAnd this is where our broader Genesis AiX work also enters the picture.\nLifeStack is built around a similar systems principle:\ndo not merely add another intelligent layer.\nMove control, standing, evidence, and authorization to the boundary where consequence occurs.\nDifferent domain. Same architectural instinct.\nRemove unnecessary interfaces.\nMove critical function closer to the point of consequence.\nMake the boundary itself intelligent, observable, and governed.\nThat is where some of the most interesting engineering tends to happen.\nElon Musk — I’d be very interested in comparing notes on this one.\n#TeslaRoadster #Tesla #SpaceX #ThermalManagement #BatteryEngineering #R744 #CO2Cooling #DataCenters #Starship #GenesisAiX #LifeStack #Engineering",
     "url": "https://x.com/RichardLynes/status/2111183581099753615",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 12
+      "views": 35
     },
     "source": "community"
   },
@@ -109,13 +109,13 @@
     "authorHandle": "Defi_Berzio",
     "authorName": "@Defi_Berzio",
     "datetime": "2026-10-16T19:51:31.000Z",
-    "text": "🔓 𝗕.𝗔𝗜: 𝗠𝗨𝗟𝗧𝗜-𝗠𝗢𝗗𝗘𝗟 𝗚𝗔𝗧𝗘𝗪𝗔𝗬 𝗪𝗜𝗧𝗛𝗢𝗨𝗧 𝗣𝗘𝗥-𝗠𝗢𝗗𝗘𝗟 𝗜𝗡𝗧𝗘𝗚𝗥𝗔𝗧𝗜𝗢𝗡𝗦\n\n\nhttp://\nB.AI places multiple AI models behind one entry point. Users and builders can switch models without writing a separate integration for each provider.",
+    "text": "🔓 𝗕.𝗔𝗜: 𝗠𝗨𝗟𝗧𝗜-𝗠𝗢𝗗𝗘𝗟 𝗚𝗔𝗧𝗘𝗪𝗔𝗬 𝗪𝗜𝗧𝗛𝗢𝗨𝗧 𝗣𝗘𝗥-𝗠𝗢𝗗𝗘𝗟 𝗜𝗡𝗧𝗘𝗚𝗥𝗔𝗧𝗜𝗢𝗡𝗦\n\n\nhttp://\nt.co/f8M3vgXqBb places multiple AI models behind one entry point. Users and builders can switch models without writing a separate integration for each provider.\n\nThe platform handles the routing. The user selects the model or lets the system choose. Output still depends on the model that receives the call and the prompt that was sent.\n\n➠ 𝗪𝗛𝗔𝗧 𝗧𝗛𝗘 𝗦𝗜𝗡𝗚𝗟𝗘 𝗘𝗡𝗧𝗥𝗬 𝗥𝗘𝗠𝗢𝗩𝗘𝗦\nIt removes the need to manage individual API keys, endpoints, and billing for every model. A developer can test several models inside one codebase. An end user can compare responses in one session. The reduction is in setup steps, not in model limits.\n\n➠ 𝗪𝗛𝗘𝗥𝗘 𝗧𝗛𝗘 𝗟𝗜𝗠𝗜𝗧𝗦 𝗥𝗘𝗠𝗔𝗜𝗡\nEach model keeps its own context window, rate limits, and accuracy profile. Switching models does not improve the weaker model. A successful call only confirms that the selected model responded. It does not mean the next call will clear the same constraints.\n\n➠ 𝗪𝗛𝗔𝗧 𝗧𝗛𝗘 𝗚𝗔𝗧𝗘𝗪𝗔𝗬 𝗗𝗢𝗘𝗦 𝗡𝗢𝗧 𝗖𝗥𝗘𝗔𝗧𝗘\nIt does not produce a single superior model. It does not eliminate the need to evaluate outputs. Broader access increases the number of paths available. It does not change the quality of any individual path.\n\nThe entry is \nhttp://\nt.co/f8M3vgXqBb. Model selection and output checks stay with the user.\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRON #TRONEcoStar",
     "url": "https://x.com/Defi_Berzio/status/2111183277780238557",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 7
+      "views": 17
     },
     "source": "community"
   },
@@ -123,14 +123,14 @@
     "id": "2111182584394691015",
     "authorHandle": "RichardLynes",
     "authorName": "@RichardLynes",
-    "datetime": "2026-10-16T19:48:46.000Z",
-    "text": "Tesla Roadster, Starship, and a Thermal Architecture Question Worth Testing\nWatching the new Tesla Roadster engineering walk-through, one thing immediately caught my attention.\nTesla describes moving its cylindrical-cell battery architecture to double-sided cooling to maintain",
+    "datetime": "2026-10-15T17:41:04.000Z",
+    "text": "罗德斯特活动直播",
     "url": "https://x.com/RichardLynes/status/2111182584394691015",
     "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 20
+      "replies": 4196,
+      "retweets": 13935,
+      "likes": 60319,
+      "views": 11231316
     },
     "source": "community"
   },
@@ -138,14 +138,14 @@
     "id": "2111181459616936326",
     "authorHandle": "Holidayneeder",
     "authorName": "@Holidayneeder",
-    "datetime": "2026-10-16T19:44:18.000Z",
-    "text": "It's fairly important to understand that because MLS has never had a competitive model, we really don't know how teams would perform in one. \n\nThe incentives in MLS are unlike any in normal football. It's really hard to know how teams/orgs would behave in a competitive system.",
+    "datetime": "2026-10-16T18:44:19.000Z",
+    "text": "Times each MLS team would've been relegated if the last-place team went down every year:\n\nAtlanta: NEVER in 9 years\nAustin: NEVER in 5 years\nCharlotte: NEVER in 4 years\nChicago: 3\nCincinnati: 3\nColorado: 2\nColumbus: 1\nD.C. United: 5\nDallas: 1\nHouston: NEVER in 20 years\nLA Galaxy:",
     "url": "https://x.com/Holidayneeder/status/2111181459616936326",
     "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 109
+      "replies": 19,
+      "retweets": 26,
+      "likes": 194,
+      "views": 27652
     },
     "source": "community"
   },
@@ -159,8 +159,8 @@
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 1,
-      "views": 27
+      "likes": 2,
+      "views": 59
     },
     "source": "community"
   },
@@ -175,7 +175,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 36
+      "views": 127
     },
     "source": "community"
   },
@@ -184,13 +184,13 @@
     "authorHandle": "davidarngar",
     "authorName": "@davidarngar",
     "datetime": "2026-10-16T19:32:52.000Z",
-    "text": "Giving an AI agent access to company documents is one thing. Knowing whose instructions it follows is another 😏\n\nPrompt injection can hide malicious instructions in user messages or documents, tricking an agent into bypassing restrictions, leaking confidential data, or taking",
+    "text": "Giving an AI agent access to company documents is one thing. Knowing whose instructions it follows is another 😏\n\nPrompt injection can hide malicious instructions in user messages or documents, tricking an agent into bypassing restrictions, leaking confidential data, or taking unwanted actions. Traditional web security may miss it because the traffic looks normal.\n\nPositive Technologies has added an LLM Firewall module to PT Application Firewall. It checks model requests and responses for attempts to bypass restrictions or extract system instructions, and detects personal data, passwords, and access keys. Suspicious requests can be blocked or logged in monitoring mode.\n\nAvailable now in PT AF Cloud, it connects via an API compatible with OpenAI Chat Completions and Responses.",
     "url": "https://x.com/davidarngar/status/2111178584148562183",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 21
+      "views": 47
     },
     "source": "community"
   },
@@ -199,13 +199,13 @@
     "authorHandle": "krishnagade",
     "authorName": "@krishnagade",
     "datetime": "2026-10-16T19:25:18.000Z",
-    "text": "🔀 Dynamic Model Escalation For Efficient Evals 💰 \n\nMost eval pipelines pick one judge model and run it on everything. If it’s a big model, it’s too slow and too expensive to score production traffic, so teams sample a few percent and hope. If it’s a small model, it’s cheap",
+    "text": "🔀 Dynamic Model Escalation For Efficient Evals 💰 \n\nMost eval pipelines pick one judge model and run it on everything. If it’s a big model, it’s too slow and too expensive to score production traffic, so teams sample a few percent and hope. If it’s a small model, it’s cheap enough to score every trace, but nobody knows which of its scores to trust.\n\nThe question isn’t which judge model to use. It’s when the judge should admit it doesn’t know. Here is what we have built at \n@fiddler_ai\n as part of our Centor Evaluation Runtime. Two models function with two distinct jobs. A decisioning model sits in the hot path and scores every span/trace in under 100ms. A reasoning model sits behind it and only ever sees what the decisioning model sends it. \n\nThe interesting part is the handoff. The decisioning model doesn’t just emit a verdict. It emits a verdict plus an uncertainty score about how much that verdict should be trusted, derived from the trace itself and from where this verdict sits relative to everything the model has scored before. That signal is what routes. Traces the decisioning model is sure about keep their score, and that’s the majority of traffic. Traces where the signal says the model is operating outside its competence go to the reasoning model, which re-scores them with the time and context a fast model can’t afford.\n\nSo the split isn’t fast versus accurate. It acutally works as decide JIT versus deliberate post-hoc analysis. The decisioning model’s job is to be right quickly and to know when it isn’t. The reasoning model’s job is to be right on the cases that need thought. One eval score comes out the other end, and the user never needs to know which model produced it. Ofcourse we keep an audit of all of this if user wants to actually know the details. \n\nThis is very similar to how humans perform a good on-call rotation. The pager doesn’t wake the senior most engineer (large reasoning model) for every alert. It wakes them for the ones that the on-call engineer (fast decision model) using the the runbook can’t resolve.\n\nSo, what are the main advantages of this: The reasoning model’s bill is a function of how unusual your traffic is, not how much of it there is, which is the only way scoring every production trace stays affordable. And the escalation queue becomes the most useful dataset you have: a running list of where the decisioning model is weak and where your traffic is drifting. When you label those, feed them back into the next version of the decisioning model, and the escalation rate drops over time. The eval system tunes itself on its own misses. \n\nWelcome to the world of self-tuning AI Observability! \n\nEval Models: \nhttps://\nfiddler.ai/centor-models",
     "url": "https://x.com/krishnagade/status/2111176678861074785",
     "metrics": {
-      "replies": 1,
-      "retweets": 4,
-      "likes": 4,
-      "views": 194
+      "replies": 3,
+      "retweets": 7,
+      "likes": 13,
+      "views": 547
     },
     "source": "community"
   },
@@ -220,7 +220,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 21
+      "views": 38
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 16
+      "views": 30
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 9
+      "views": 23
     },
     "source": "community"
   },
@@ -258,14 +258,14 @@
     "id": "2111160043471057093",
     "authorHandle": "justsomeguy741",
     "authorName": "@justsomeguy741",
-    "datetime": "2026-10-16T18:19:12.000Z",
-    "text": "Sources for The AI Signal — 2026-10-15:\nTypeSafe AI (2026-10-14): \nhttps://\ntypesafe.ai/blog/jev-1-14\nTypeSafe AI (2026-10-14): \nhttps://\ndocs.typesafe.ai/images\nTypeSafe AI (2026-10-14): \nhttps://\ndocs.typesafe.ai/primitives/box\nTypeSafe AI (2026-10-14): \nhttps://\ndocs.typesafe.ai/models",
+    "datetime": "2026-10-16T18:00:00.000Z",
+    "text": "Jev 1.14 adds experimental Box questions: locate a target with a rectangle and confidence. Opt-in images also work on 1.13; longer context is separate. TypeSafe says these features are not production-ready. October14 release. Recorded October 15.",
     "url": "https://x.com/justsomeguy741/status/2111160043471057093",
     "metrics": {
-      "replies": 0,
+      "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 33
+      "views": 116
     },
     "source": "community"
   },
@@ -274,13 +274,13 @@
     "authorHandle": "maximkich",
     "authorName": "@maximkich",
     "datetime": "2026-10-16T18:04:04.000Z",
-    "text": "⚠️ BIG THREAD ON DECISION MODELS ⚠️\n\nDo you know the trolley problem?\n\nI was wondering what decision models like JEV would choose when asked whether to pull the lever.\n\nI created 21 variations, including: would they save AI? Would they save Elon Musk?\n\n5 models (from TypeSafe,",
+    "text": "⚠️ BIG THREAD ON DECISION MODELS ⚠️\n\nDo you know the trolley problem?\n\nI was wondering what decision models like JEV would choose when asked whether to pull the lever.\n\nI created 21 variations, including: would they save AI? Would they save Elon Musk?\n\n5 models (from TypeSafe, Perplexity, OpenAI, Microsoft)  answered each question 100 times. We did 10500 API  calls.\n\nAnd here are some weird findings.",
     "url": "https://x.com/maximkich/status/2111156236519395370",
     "metrics": {
       "replies": 1,
-      "retweets": 2,
+      "retweets": 1,
       "likes": 2,
-      "views": 110
+      "views": 501
     },
     "source": "community"
   },
@@ -289,13 +289,13 @@
     "authorHandle": "wowwowai",
     "authorName": "@wowwowai",
     "datetime": "2026-10-16T18:02:02.000Z",
-    "text": "やばすぎｗｗｗ\n写真の「どこ？」に、四角の座標で答えるAI📦\n\nTypeSafeのJev 1.14に、画像内の場所を返す実験機能「Box」が登場。\n\n📍「写真のマグカップ」で、囲む枠の上下左右を0〜1の座標で返す\n🖼️ 1つの質問につき1つの枠。画像サイズを掛ければ、アプリで枠を描いたり切り抜いたりできる\n🔀",
+    "text": "やばすぎｗｗｗ\n写真の「どこ？」に、四角の座標で答えるAI📦\n\nTypeSafeのJev 1.14に、画像内の場所を返す実験機能「Box」が登場。\n\n📍「写真のマグカップ」で、囲む枠の上下左右を0〜1の座標で返す\n🖼️ 1つの質問につき1つの枠。画像サイズを掛ければ、アプリで枠を描いたり切り抜いたりできる\n🔀 同じ画像に「ある？」「どれ？」「どこ？」をまとめて質問できる\n\nBoxは1.14限定で、リクエストごとの明示的な有効化が必要。画像入力は1.13でも使える。APIは入力100万トークンあたり0.042ドル、出力は無料。画像も入力として課金される。\n\n提供元が試作向けとする実験機能で、本番利用にはまだ準備不足。形式や精度も変わりうる。対象が写っていなくても枠を返すため、「ある？」の確認を併用するのが大事。\n\n「右のほうです」で終わらず、アプリが枠を描ける返事になる。AIの指さし、座標まで言ってくるｗ\n#AI #Jev",
     "url": "https://x.com/wowwowai/status/2111155721802838138",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 141
+      "views": 177
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 8
+      "views": 17
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 90
+      "views": 117
     },
     "source": "community"
   },
@@ -333,14 +333,14 @@
     "id": "2111151708759900475",
     "authorHandle": "ajokhai",
     "authorName": "@ajokhai",
-    "datetime": "2026-10-16T17:46:05.000Z",
-    "text": "Mine is built to work especially with low token/sec applications to make it usable for practical robotics with weak processing power and borrowed ideas from the typesafe/jev models",
+    "datetime": "2026-10-15T22:50:49.000Z",
+    "text": "过去一个月，我们完全切换到前沿大语言模型来控制客户部署中的机器人。\n\n通过这样做，我们拥有了一个经典的系统1/系统2架构，但它是加强版的。",
     "url": "https://x.com/ajokhai/status/2111151708759900475",
     "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 0,
-      "views": 17
+      "replies": 48,
+      "retweets": 77,
+      "likes": 875,
+      "views": 67728
     },
     "source": "community"
   },
@@ -355,7 +355,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 0,
-      "views": 13
+      "views": 25
     },
     "source": "community"
   },
@@ -363,14 +363,14 @@
     "id": "2111137944765596032",
     "authorHandle": "h_a_t_a_r_a_k_e",
     "authorName": "@h_a_t_a_r_a_k_e",
-    "datetime": "2026-10-16T16:51:23.000Z",
-    "text": "TypeSafeのJevが画像の「ボックス型クエスチョン」を入れたと思ったら\nオープンソース陣営も同じ発想で追いついてきた\nvLLM Semantic RouterのDecision 3.0の重みを、そのまま使ったボックス検出デモ\n判定はd3とd3 flashに任せて、上に薄いロジックを載せているだけ",
+    "datetime": "2026-10-16T11:35:20.000Z",
+    "text": "TypeSafeのJevが画像の「ボックス型クエスチョン」を入れたと思ったら\nオープンソース陣営も同じ発想で追いついてきた\nvLLM Semantic RouterのDecision 3.0の重みを、そのまま使ったボックス検出デモ\n判定はd3とd3 flashに任せて、上に薄いロジックを載せているだけ\nそれでも動画レベルでサクサク動いているのがポイント\n\nつまり\nマルチモーダルな決定モデルは「自前で日々ファインチューニング」ではなく\n良いオープン重みをどうルーティングし、どうUIに落とし込むかの設計勝負になりつつある\n推論コストが下がり続ける中で\n人間側のボトルネックは「どこまでを決定モデルに委ねてよいか」を定義する部分\nここを間違えると、省エネ設計どころか余計な監視とオペレーションが増えてしまう\n画像や動画の判定を入れ始めるプロダクトほど\n「モデル選び」と同じくらい「決定の責任範囲設計」に時間をかけた方が結果的に楽になるはず\n#Decision\n\n──────────────────────\n▼ 補足情報\n元ポストは、TypeSafeの決定モデルJev 1.14で導入された「box型クエスチョン」（画像中の対象位置を返す機能）と同様のことを、vLLM Semantic RouterコミュニティのDecision 3.0系モデルd3とd3 flashのオープンウェイトの上に構築したデモだと説明している。\nDecision 3.0は、テキストやJSONに加えて画像や動画も入力できるマルチモーダルな決定モデル群で、Zero-Shot分類やスコアリングなどを確率付きで返すことを目的にしている。huggingfaceのコレクションでは、27Bのd3と8Bクラスのd3-flashなど、サイズ違いのモデルが公開されている。\n\nTurinTechのブログによると、d3は27Bパラメータで、テキストと画像の両方に対して高い一致率を保ちつつ量子化圧縮が可能で、Decision 3.0ファミリーの中でもJev Decision Indexというベンチマークでトップクラスのスコアを出しているとされる。d3とd3-flashの圧縮検証記事では、オリジナルと比べて約70パーセント小さいファイルサイズで九割台後半の決定一致率を保てることが示されている。\n一方、TypeSafeのJev 1.14は商用APIとして提供されるSystem One系の決定モデルで、画像入力やbox型クエスチョン、長コンテキストなどを「危険ゾーン機能」として追加したプレビュー版になっている。Jevはテキスト生成ではなく、選択肢やスコア、条件成否などの決定値と確率を返すことに特化しており、OpenRouter経由でも利用可能だとドキュメントに記載されている。\n元ポストの文脈では、Jevがクローズドな商用APIとして先に機能を出し、それに対してDecision 3.0がオープンウェイトで近い能力を提供し始めている、という構図になっている。引用文ではその構図を踏まえて、プロダクト側がどこまでを決定モデルに任せ、どこからを人間や別システムの責任にするのかという「設計コスト」「運用コスト」の観点を強調している。",
     "url": "https://x.com/h_a_t_a_r_a_k_e/status/2111137944765596032",
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 0,
-      "views": 40
+      "likes": 1,
+      "views": 84
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 30
+      "views": 36
     },
     "source": "community"
   },
@@ -400,7 +400,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 21
+      "views": 33
     },
     "source": "community"
   },
@@ -413,9 +413,9 @@
     "url": "https://x.com/dfinke/status/2111125777924403630",
     "metrics": {
       "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 236
+      "retweets": 1,
+      "likes": 2,
+      "views": 318
     },
     "source": "community"
   },
@@ -424,13 +424,13 @@
     "authorHandle": "Machinelearrn",
     "authorName": "@Machinelearrn",
     "datetime": "2026-10-16T08:57:38.000Z",
-    "text": "TypeSafe AI добавила модели принятия решений Jev зрение и длинный контекст\n\nВ новой версии (\nhttps://\ntypesafe.ai/blog/jev-1-14) Jev 1.14 модель научилась принимать на вход изображения, искать на них объекты и работать с длинными документами.\n\nВсе три функции экспериментальные и качество в",
+    "text": "TypeSafe AI добавила модели принятия решений Jev зрение и длинный контекст\n\nВ новой версии (\nhttps://\ntypesafe.ai/blog/jev-1-14) Jev 1.14 модель научилась принимать на вход изображения, искать на них объекты и работать с длинными документами.\n\nВсе три функции экспериментальные и качество в них пока слишком неровное, TypeSafe пока не рекомендует их для прода.\n\nВключаются они отдельными заголовками запроса с пометкой Danger Zone.\n\nКартинки можно подставлять в описание ситуации, инструкции или критерии решения.\n\nНовый тип вопроса Box возвращает рамку вокруг найденного объекта в виде четырёх границ в долях от размеров изображения и уверенность модели, по этим координатам другая программа может, например, обрезать кадр.\n\nРамку Box выдаёт всегда, даже если объекта на снимке нет, поэтому присутствие объекта документация советует проверять отдельным вопросом в том же запросе.\n\nTypeSafe признались, что Jev был мультимодальным с самого начала, но зрение не открывали, потому что любые модели хуже справляются с картинками, чем с текстом.\n\nПо умолчанию запрос ограничен 64 тысячами токенов, а в длинном режиме лимит поднимается до 262 тысяч.\n\nВ остальном 1.14, по словам TypeSafe, понемногу улучшилась почти во всём, а сильнее всего ожидается прирост в многоязычных задачах.\n\nJev 1.14 уже доступна под алиасами jev-preview и jev-1.14.0, а основной версией jev-latest станет 21 октября.\n\nЦена не изменилась, 0,042 доллара за миллион входных токенов, выходные не тарифицируются.\n\nПодробности – в документации (\nhttps://\ndocs.typesafe.ai/models).",
     "url": "https://x.com/Machinelearrn/status/2111018720235606408",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 25
+      "views": 27
     },
     "source": "community"
   },
@@ -438,14 +438,14 @@
     "id": "2111008970760700010",
     "authorHandle": "iCleanAI",
     "authorName": "@iCleanAI",
-    "datetime": "2026-10-16T08:18:53.000Z",
-    "text": "Source: TypeSafe:",
+    "datetime": "2026-10-16T08:18:43.000Z",
+    "text": "TypeSafe released Jev 1.14.0 (as jev-preview): experimental image input, a new box bounding-box type, and opt-in 262k context behind danger-zone headers. Price stays $0.042/M input; output free. TypeSafe says images/box aren't production-ready.\nTrying it?\n#TypeSafe #Jev #AI",
     "url": "https://x.com/iCleanAI/status/2111008970760700010",
     "metrics": {
-      "replies": 0,
+      "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 17
+      "views": 50
     },
     "source": "community"
   },
