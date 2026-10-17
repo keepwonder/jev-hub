@@ -8,9 +8,9 @@
     "url": "https://x.com/vigram_void/status/2111188568169414889",
     "metrics": {
       "replies": 2,
-      "retweets": 2,
-      "likes": 24,
-      "views": 1178
+      "retweets": 4,
+      "likes": 38,
+      "views": 1656
     },
     "source": "community"
   },
@@ -25,7 +25,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 2,
-      "views": 63
+      "views": 69
     },
     "source": "community"
   },
@@ -40,7 +40,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 83
+      "views": 92
     },
     "source": "community"
   },
@@ -54,8 +54,8 @@
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 0,
-      "views": 73
+      "likes": 1,
+      "views": 88
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 60
+      "views": 61
     },
     "source": "community"
   },
@@ -82,10 +82,10 @@
     "text": "AI in manufacturing pays off when it starts on one costly problem with data you trust. Here's where I'd look first: the machine that hurts most when it stops, the inspection point that leaks the most defects, and the know-how about to retire.",
     "url": "https://x.com/Evoputa/status/2111184841043546563",
     "metrics": {
-      "replies": 2,
+      "replies": 3,
       "retweets": 0,
       "likes": 0,
-      "views": 27
+      "views": 33
     },
     "source": "community"
   },
@@ -100,7 +100,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 39
+      "views": 40
     },
     "source": "community"
   },
@@ -115,7 +115,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 21
+      "views": 22
     },
     "source": "community"
   },
@@ -128,9 +128,9 @@
     "url": "https://x.com/aLexKriz83/status/2111179039050445066",
     "metrics": {
       "replies": 1,
-      "retweets": 0,
+      "retweets": 1,
       "likes": 3,
-      "views": 76
+      "views": 81
     },
     "source": "community"
   },
@@ -145,7 +145,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 3,
-      "views": 178
+      "views": 195
     },
     "source": "community"
   },
@@ -160,7 +160,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 48
+      "views": 50
     },
     "source": "community"
   },
@@ -172,10 +172,10 @@
     "text": "🔀 动态模型升级以实现高效评估 💰\n\n大多数评估管道会选择一个评判模型并将其应用于所有内容。如果它是一个大模型，那么评分生产流量时会太慢且太昂贵，因此团队通常只抽样几个百分比的数据并寄希望于此。如果它是一个小模型，则足够便宜，可以评分每个跟踪，但没人知道它的哪些评分值得信任。\n\n问题不在于使用哪个评判模型，而在于评判模型何时应该承认自己不知道答案。这是我们在 \n@fiddler_ai\n 构建的 Centor 评估运行时的一部分。两个模型各司其职。一个决策模型位于热路径中，在 100ms 内对每个跨度/跟踪进行评分。一个推理模型位于其后，只会看到决策模型发送给它的内容。\n\n有趣的部分在于移交。决策模型不仅仅发出一个裁决。它会发出一个裁决加上一个不确定性分数，这个分数表示该裁决的可信度，该分数来源于跟踪本身以及该裁决相对于模型之前评分的所有内容的位置。这个信号决定了路由。决策模型确定的跟踪会保留其分数，而这占了流量的多数。信号显示模型超出其能力范围的跟踪会转交给推理模型，后者会用快速模型无法负担的时间和上下文重新评分它们。\n\n因此，这种拆分不是快速与准确之间的对立。它实际上是即时决策（JIT）与事后深思熟虑分析之间的运作。决策模型的任务是快速做出正确判断，并知道何时不正确。推理模型的任务是在需要思考的情况下做出正确判断。最终输出一个评估分数，用户无需知道是哪个模型生成的。当然，如果用户想了解细节，我们会保留所有这些的审计记录。\n\n这与人类如何进行良好的值班轮换非常相似。寻呼机不会为每个警报唤醒最资深的工程师（大型推理模型）。它只会为值班工程师（快速决策模型）使用运行手册无法解决的警报唤醒他们。\n\n那么，这种方法的主要优势是什么：推理模型的账单取决于你的流量有多异常，而不是流量有多大，这是让评分每个生产跟踪保持负担得起唯一的方式。而且，升级队列成为你拥有的最有用的数据集：一个运行中的列表，显示决策模型的弱点以及你的流量漂移的位置。当你标记那些数据，将它们反馈到决策模型的下一个版本中时，升级率会随时间降低。评估系统会在自己的失误上自我调优。\n\n欢迎来到自调优 AI 可观测性世界！\n\nEval Models:",
     "url": "https://x.com/krishnagade/status/2111176678861074785",
     "metrics": {
-      "replies": 6,
-      "retweets": 10,
-      "likes": 22,
-      "views": 1549
+      "replies": 7,
+      "retweets": 11,
+      "likes": 24,
+      "views": 1811
     },
     "source": "community"
   },
@@ -187,10 +187,10 @@
     "text": "如果每年垫底球队都会降级，那么每个MLS球队的降级次数：\n\n亚特兰大：9年来从未降级  \n奥斯汀：5年来从未降级  \n夏洛特：4年来从未降级  \n芝加哥：3  \n辛辛那提：3  \n科罗拉多：2  \n哥伦布：1  \nD.C. United：5  \n达拉斯：1  \n休斯顿：20年来从未降级  \nLA Galaxy：1  \nLAFC：8年来从未降级",
     "url": "https://x.com/Holidayneeder/status/2111181459616936326",
     "metrics": {
-      "replies": 20,
-      "retweets": 29,
-      "likes": 234,
-      "views": 40707
+      "replies": 21,
+      "retweets": 30,
+      "likes": 246,
+      "views": 45071
     },
     "source": "community"
   },
@@ -205,7 +205,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 41
+      "views": 44
     },
     "source": "community"
   },
@@ -220,7 +220,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 33
+      "views": 34
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 29
+      "views": 31
     },
     "source": "community"
   },
@@ -249,8 +249,8 @@
     "metrics": {
       "replies": 1,
       "retweets": 1,
-      "likes": 2,
-      "views": 825
+      "likes": 3,
+      "views": 984
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 2,
-      "views": 193
+      "views": 196
     },
     "source": "community"
   },
@@ -280,7 +280,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 22
+      "views": 24
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 127
+      "views": 131
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 127
+      "views": 131
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 0,
-      "views": 29
+      "views": 32
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 39
+      "views": 43
     },
     "source": "community"
   },
@@ -355,7 +355,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 39
+      "views": 41
     },
     "source": "community"
   },
@@ -368,9 +368,9 @@
     "url": "https://x.com/dfinke/status/2111125777924403630",
     "metrics": {
       "replies": 1,
-      "retweets": 1,
+      "retweets": 0,
       "likes": 2,
-      "views": 360
+      "views": 380
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 121
+      "views": 132
     },
     "source": "community"
   },
@@ -400,7 +400,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 33
+      "views": 35
     },
     "source": "community"
   },
@@ -415,7 +415,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 56
+      "views": 59
     },
     "source": "community"
   },
@@ -423,14 +423,14 @@
     "id": "2110896900220289025",
     "authorHandle": "old_pgmrs_will",
     "authorName": "@old_pgmrs_will",
-    "datetime": "2026-10-16T00:53:34.000Z",
+    "datetime": "2026-10-15T01:02:12.000Z",
     "text": "Jevが画像にも対応\nそういえば TypeSafe AI は直近で大規模な資金調達にも成功してた\n類似モデルが続出してる状況で今後の伸びに期待できるかな？\n\nhttps://\ntypesafe.ai/blog/series-ai",
     "url": "https://x.com/old_pgmrs_will/status/2110896900220289025",
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 8,
-      "views": 508
+      "likes": 9,
+      "views": 574
     },
     "source": "community"
   },
