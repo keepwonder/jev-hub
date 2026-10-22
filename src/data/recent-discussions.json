@@ -10,7 +10,7 @@
       "replies": 3,
       "retweets": 4,
       "likes": 45,
-      "views": 2535
+      "views": 2548
     },
     "source": "community"
   },
@@ -25,7 +25,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 2,
-      "views": 119
+      "views": 121
     },
     "source": "community"
   },
@@ -40,7 +40,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 162
+      "views": 169
     },
     "source": "community"
   },
@@ -49,13 +49,13 @@
     "authorHandle": "Teddo_ICO",
     "authorName": "@Teddo_ICO",
     "datetime": "2026-10-16T20:03:34.000Z",
-    "text": "AI does not always need to write an answer.\n\nSometimes, the most valuable output is simply a clear decision that software can act on immediately.\n\nThat is the idea behind TypeSafe AI’s Jev, now available through the \nhttp://\nB.AI API.\n\n⚙️ 𝐉𝐞𝐯 𝐈𝐬 𝐁𝐮𝐢𝐥𝐭 𝐅𝐨𝐫 𝐒𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞𝐝 𝐃𝐞𝐜𝐢𝐬𝐢𝐨𝐧𝐬\n\nRather than generating text that an application must interpret, Jev takes application state and a typed question, then returns a typed decision with probability and confidence.\n\nNo JSON prompting.\n\nNo output parsing.\n\nNo unnecessary layer between the model and the software making the decision.\n\nIt evaluates Choice, Score, and Noul questions in parallel, with reported response times of roughly 70–500ms.\n\n💡 𝐓𝐡𝐞 𝐑𝐞𝐚𝐥 𝐕𝐚𝐥𝐮𝐞 𝐈𝐬 𝐈𝐧 𝐖𝐡𝐞𝐫𝐞 𝐈𝐭 𝐂𝐚𝐧 𝐁𝐞 𝐔𝐬𝐞𝐝\n\nThis architecture fits situations where software needs a fast, structured judgment rather than a paragraph.\n\nThink ticket routing.\n\nModeration.\n\nRisk scoring.\n\nAgent branching.\n\nAccording to \nhttp://\nB.AI, Jev costs $0.042 per million input tokens, with output free.\n\n🔗 𝐀𝐈 𝐁𝐞𝐜𝐨𝐦𝐞𝐬 𝐌𝐨𝐫𝐞 𝐔𝐬𝐞𝐟𝐮𝐥 𝐖𝐡𝐞𝐧 𝐒𝐨𝐟𝐭𝐰𝐚𝐫𝐞 𝐂𝐚𝐧 𝐀𝐜𝐭 𝐎𝐧 𝐈𝐭\n\nThis is an important shift in how AI can fit into applications.\n\nInstead of asking an AI model for an explanation and then building another system to interpret that explanation, structured outputs can move more directly into software workflows.\n\nJev is now accessible through the \nhttp://\nB.AI API via Jev-1.13.0 or Jev-Latest.\n\nThe broader idea is simple:\n\nAI does not always need to talk.\n\nSometimes it needs to decide.\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRONEcoStar",
+    "text": "AI 不总是需要写出答案。\n\n有时，最有价值的输出只是一个清晰的决策，软件可以立即采取行动。\n\n这就是 TypeSafe AI 的 Jev 背后的理念，现在可以通过 \nhttp://\nB.AI API 使用。\n\n⚙️ 𝐉𝐞𝐯 𝐈𝐬 𝐁𝐮𝐢𝐥𝐭 𝐅𝐨𝐫 𝐒𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞𝐝 𝐃𝐞𝐜𝐢𝐬𝐢𝐨𝐧𝐬\n\nJev 不是生成需要应用解释的文本，而是接收应用状态和类型化问题，然后返回带有概率和置信度的类型化决策。\n\n无需 JSON 提示。\n\n无需输出解析。\n\n模型与做出决策的软件之间没有不必要的层级。\n\n它并行评估 Choice、Score 和 Noul 问题，报告的响应时间约为 70–500 毫秒。\n\n💡 𝐓𝐡𝐞 𝐑𝐞𝐚𝐥 𝐕𝐚𝐥𝐮𝐞 𝐈𝐬 𝐈𝐧 𝐖𝐡𝐞𝐫𝐞 𝐈𝐭 𝐂𝐚𝐧 𝐁𝐞 𝐔𝐬𝐞𝐝\n\n这种架构适用于软件需要快速结构化判断而非一段文字的情况。\n\n想想票据路由。\n\n审核。\n\n风险评分。\n\n代理分支。\n\n根据 \nhttp://\nB.AI，Jev 的费用为每百万输入令牌 0.042 美元，输出免费。\n\n🔗 𝐀𝐈 𝐁𝐞𝐜𝐨𝐦𝐞𝐬 𝐌𝐨𝐫𝐞 𝐔𝐬𝐞𝐟𝐮𝐥 𝐖𝐡𝐞𝐧 𝐒𝐨𝐟𝐭𝐰𝐚𝐫𝐞 𝐂𝐚𝐧 𝐀𝐜𝐭 𝐎𝐧 𝐈𝐭\n\n这是 AI 如何融入应用的一个重要转变。\n\n不再是向 AI 模型询问解释，然后构建另一个系统来解释该解释，结构化输出可以更直接地融入软件工作流程。\n\nJev 现在可以通过 \nhttp://\nB.AI API 使用 Jev-1.13.0 或 Jev-Latest 访问。\n\n更广泛的理念很简单：\n\nAI 不总是需要说话。\n\n有时它需要做出决定。\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRONEcoStar",
     "url": "https://x.com/Teddo_ICO/status/2111186308395606233",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 6715
+      "views": 6716
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 84
+      "views": 85
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 4,
       "retweets": 0,
       "likes": 1,
-      "views": 60
+      "views": 61
     },
     "source": "community"
   },
@@ -100,7 +100,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 63
+      "views": 65
     },
     "source": "community"
   },
@@ -115,7 +115,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 45
+      "views": 46
     },
     "source": "community"
   },
@@ -130,7 +130,7 @@
       "replies": 1,
       "retweets": 2,
       "likes": 3,
-      "views": 2236
+      "views": 2243
     },
     "source": "community"
   },
@@ -145,7 +145,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 3,
-      "views": 341
+      "views": 353
     },
     "source": "community"
   },
@@ -160,7 +160,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 76
+      "views": 77
     },
     "source": "community"
   },
@@ -175,7 +175,7 @@
       "replies": 9,
       "retweets": 15,
       "likes": 37,
-      "views": 4782
+      "views": 4796
     },
     "source": "community"
   },
@@ -189,8 +189,8 @@
     "metrics": {
       "replies": 21,
       "retweets": 33,
-      "likes": 258,
-      "views": 53201
+      "likes": 259,
+      "views": 53235
     },
     "source": "community"
   },
@@ -205,7 +205,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 70
+      "views": 71
     },
     "source": "community"
   },
@@ -220,7 +220,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 62
+      "views": 63
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 57
+      "views": 58
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 4,
-      "views": 1243
+      "views": 1249
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 2,
-      "views": 243
+      "views": 246
     },
     "source": "community"
   },
@@ -280,7 +280,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 49
+      "views": 50
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 181
+      "views": 183
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 181
+      "views": 183
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 0,
-      "views": 68
+      "views": 71
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 66
+      "views": 67
     },
     "source": "community"
   },
@@ -355,7 +355,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 75
+      "views": 76
     },
     "source": "community"
   },
@@ -370,7 +370,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 4,
-      "views": 535
+      "views": 539
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 269
+      "views": 277
     },
     "source": "community"
   },
@@ -400,7 +400,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 63
+      "views": 64
     },
     "source": "community"
   },
@@ -415,7 +415,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 91
+      "views": 93
     },
     "source": "community"
   },
@@ -430,7 +430,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 150
+      "views": 151
     },
     "source": "community"
   },
