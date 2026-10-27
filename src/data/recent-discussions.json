@@ -1,20 +1,5 @@
 [
   {
-    "id": "2114840044083314981",
-    "authorHandle": "DaveyHert",
-    "authorName": "@DaveyHert",
-    "datetime": "2026-10-26T19:42:34.000Z",
-    "text": "我看到你是新来的。欢迎！😂\n\n试着构建一个能在网上运行的代理，就像 \n@usejobmate\n 的自动申请代理一样。我不得不自己构建一个框架才能让它按预期工作，天哪！",
-    "url": "https://x.com/DaveyHert/status/2114840044083314981",
-    "metrics": {
-      "replies": 4,
-      "retweets": 9,
-      "likes": 55,
-      "views": 4929
-    },
-    "source": "community"
-  },
-  {
     "id": "2114839490573308133",
     "authorHandle": "mayowa_olusoji",
     "authorName": "@mayowa_olusoji",
@@ -23,9 +8,9 @@
     "url": "https://x.com/mayowa_olusoji/status/2114839490573308133",
     "metrics": {
       "replies": 1,
-      "retweets": 0,
-      "likes": 0,
-      "views": 15
+      "retweets": 1,
+      "likes": 1,
+      "views": 19
     },
     "source": "community"
   },
@@ -40,7 +25,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 131
+      "views": 137
     },
     "source": "community"
   },
@@ -52,25 +37,10 @@
     "text": "终于在我的 4× NVIDIA DGX Spark 集群上成功运行了 DeepSeek-V4.1-Flash-1017。\n\nRepo:\n\nhttps://\ngithub.com/knapcio/DeepSe\nek-V4.1-Flash-4x-DGX-Spark-TP4\n…\nModel:\ndeepseek-ai/DeepSeek-V4.1-Flash-1017\nrevision: 1bae0e1088993b9b82de08f59de5be5a34e42170\n\n我的配置：\n• 4× DGX Spark / GB10\n• TP4 / EP1\n• SGLang canary\n• 2× 200GbE RoCE rails 通过 MikroTik CRS812\n• RoCEnante\n• B12X-next routed MoE\n• DSpark speculative decoding, block size 5\n• packed local Engram shards on every node\n• FP8 KV cache\n• 1,048,576 context\n• 16 concurrent requests\n\n生产设置：\n• CHUNKED_PREFILL_SIZE=8192\n• MEM_FRACTION_STATIC=0.78\n• HEAD_MEM_FRACTION_STATIC=0.78\n• DSV41_CACHE_GIB=4\n• NCCL_IB_TC=104\n• NCCL_PROTO=^LL128\n• NCCL_MAX_NCHANNELS=8\n另外还修补了旧的 RoCEnante 路径，让它真正遵守 NCCL_IB_TC=104 而不是悄无声息地使用 TC0\n\n运行时验证：\n• RoCEnante 在两条轨道上均激活\n• B12X next 在 EP1 激活\n• shared expert K pad 576→640 被 b12x 接受\n• RoCE compact gather 激活\n• 所有 4 个容器健康\n• qeval: 71/75\n\nsparkDash 结果：\nStructured C1: 157.0 tok/s - TTFT 229 ms\nProse C1: 87.7 tok/s - TTFT 221 ms\nCode C1: 142.4 tok/s - TTFT 235 ms\nCode C1 @ 64K context: 126.7 tok/s - TTFT 411 ms\n\nPrefill:\n64K: 5,953.7 tok/s\n128K: 6,026.2 tok/s\n256K: 5,137.9 tok/s\n\n这是我在 Sparks 上第一个 DeepSeek V4.1 Flash 配置，整个技术栈——模型、RoCE、NCCL、MoE、Engram 和 speculative decoding——感觉像一个真正调优好的系统，而不是一堆独立的优化措施。\n\n\n@majewskizby\n 仓库的工作非常令人印象深刻。",
     "url": "https://x.com/FT_IOxCS/status/2114838223000383914",
     "metrics": {
-      "replies": 4,
+      "replies": 5,
       "retweets": 3,
-      "likes": 17,
-      "views": 765
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114834692935729386",
-    "authorHandle": "6AW0RON0k",
-    "authorName": "@6AW0RON0k",
-    "datetime": "2026-10-25T14:10:05.000Z",
-    "text": "🚨holy f*ck, this broke my brain.\n\nJev replaces every LLM decision call for $0.042 per million. Output is free.\n\nDiogo Almeida built it at TypeSafe. No text generation. The model takes typed questions and returns calibrated probabilities in one call. Jev against LLM calls on four decision workflows: 193.6x faster, 444.6x cheaper, upper bound. The worked example on the home page clocks 75x and 171x.\n\nSPLIT - no KV cache, no long transcript, typed questions in parallel\nSCORE - choice, yes/no, probability answered at once in one call\nGATE - guardrail scores a shell command before the harness runs it\n\nOne long transcript is the tax. The split pipeline runs below ↓",
-    "url": "https://x.com/6AW0RON0k/status/2114834692935729386",
-    "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 15,
-      "views": 413
+      "likes": 22,
+      "views": 1247
     },
     "source": "community"
   },
@@ -82,10 +52,10 @@
     "text": "一个家伙花了599美元买了一台Mac mini。\n\n他接上了一台显示器、一个键盘和一个鼠标。他打开Safari检查了邮件。他把它当作一台廉价的台式电脑使用。\n\n整整2年，他都不知道他的Mac",
     "url": "https://x.com/ai_univarse/status/2114834634169290997",
     "metrics": {
-      "replies": 6,
-      "retweets": 7,
-      "likes": 8,
-      "views": 478
+      "replies": 11,
+      "retweets": 25,
+      "likes": 31,
+      "views": 1033
     },
     "source": "community"
   },
@@ -99,8 +69,8 @@
     "metrics": {
       "replies": 1,
       "retweets": 0,
-      "likes": 1,
-      "views": 95
+      "likes": 5,
+      "views": 139
     },
     "source": "community"
   },
@@ -113,9 +83,9 @@
     "url": "https://x.com/MEDBED01/status/2114832799026794664",
     "metrics": {
       "replies": 0,
-      "retweets": 0,
-      "likes": 4,
-      "views": 149
+      "retweets": 1,
+      "likes": 9,
+      "views": 177
     },
     "source": "community"
   },
@@ -130,37 +100,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 16
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114832692957135054",
-    "authorHandle": "stretchcloud",
-    "authorName": "@stretchcloud",
-    "datetime": "2026-10-26T11:03:27.000Z",
-    "text": "Finding one qualified lead costs $0.0089 through Treg's new Jev-powered people search. Clay charges upward of $600 a month for the same job once you're past the free tier. Same task. Agent does the asking instead of a rep.\n\nTreg itself isn't really a people search tool. It's a catalog, built by the Superdesign team and released under AGPL on GitHub, that gives an agent one API key and access to roughly 2,900 endpoints across 60 providers, from LinkedIn and email verification to enrichment and scraping, priced per call starting around a cent. The people search layer running on top uses Jev, a decision model from TypeSafe that classifies and ranks instead of writing prose, which is most of why a single lookup comes in under a cent.\n\nClay just raised $115 million at a $7.1 billion valuation in September, led by Wellington with Sequoia and a16z's growth fund among others in the round, and claims 17,000 customers including 80% of the Forbes AI 50. Its own plans run from $149 a month for a couple thousand credits up to $2,000 for the heaviest tier. Apollo sits in similar territory once a team adds the credit top-ups most of them end up buying. None of that is a reason those platforms lose their current customers tomorrow. The workflow tooling and CRM integration are real.\n\nWhat's different is the marginal lead. A sales team that used to ration who got researched, because credits were expensive, can now research everyone, because the cost per lookup rounds to nothing. Qualification stops being a budget decision and starts being a default.",
-    "url": "https://x.com/stretchcloud/status/2114832692957135054",
-    "metrics": {
-      "replies": 0,
-      "retweets": 1,
-      "likes": 2,
-      "views": 193
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114832643447554203",
-    "authorHandle": "Alexxx636",
-    "authorName": "@Alexxx636",
-    "datetime": "2026-10-21T09:02:50.000Z",
-    "text": "Last Tuesday I booked a 4am ride to the airport. The app showed “arrived,” so the payment released. I stood outside for 25 minutes. The driver was still in traffic. I missed the flight by 12 minutes.\nThe system only saw the button he tapped. It never checked the live tracking page against the booking.\n\nThat is the exact hole smart contracts leave open. They need someone outside to tell them what happened. That is where decentralization ends.\nIntelligent Contracts go and check for themselves.\n\n\n@GenLayer\n’s version can pull the tracking page itself and ask a language model whether the driver was actually there. One validator proposes the answer. The others run the same check with their own models and have to land on the same result. If they disagree, a new leader tries again. Anyone can still appeal.\n\nA fake screenshot can still fool it, but no single person gets to decide the reality before the money moves.\n\nWhat is the last payment you released based only on someone’s report, then wished the system had looked for itself?",
-    "url": "https://x.com/Alexxx636/status/2114832643447554203",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 32
+      "views": 19
     },
     "source": "community"
   },
@@ -175,22 +115,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 19
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114831970740101519",
-    "authorHandle": "LegendaryKayCe",
-    "authorName": "@LegendaryKayCe",
-    "datetime": "2026-10-26T19:28:43.000Z",
-    "text": "一次钱包交互可能会让你付出超出预期的代价。\n\n我们正在构建 AI 驱动的工具，帮助用户评估钱包风险、检查标记地址，并在与 Solana 交互前做出更明智的决策。\n\n先了解地址，理解风险。然后行动。\n\n欢迎来到 KizaTrust AI。",
-    "url": "https://x.com/LegendaryKayCe/status/2114831970740101519",
-    "metrics": {
-      "replies": 16,
-      "retweets": 11,
-      "likes": 17,
-      "views": 1990
+      "views": 22
     },
     "source": "community"
   },
@@ -205,7 +130,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 19
+      "views": 23
     },
     "source": "community"
   },
@@ -220,7 +145,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 167
+      "views": 207
     },
     "source": "community"
   },
@@ -235,7 +160,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 6
+      "views": 7
     },
     "source": "community"
   },
@@ -247,25 +172,40 @@
     "text": "I built a model router for a coding agent and measured it on 144 SWE-bench runs.\nThe harness saved more than the router. Three actions that need no model call cut cost per resolved task more than the routing choices I tested.",
     "url": "https://x.com/BalajiBuilds/status/2114829421446328377",
     "metrics": {
-      "replies": 4,
+      "replies": 6,
       "retweets": 1,
-      "likes": 6,
-      "views": 283
+      "likes": 8,
+      "views": 362
     },
     "source": "community"
   },
   {
-    "id": "2114828380525006878",
-    "authorHandle": "webbovich77",
-    "authorName": "@webbovich77",
-    "datetime": "2026-10-23T19:14:48.000Z",
-    "text": "这就是Kimi AI如何宣传他们的全新模型Kimi K3.1 pro的。我认识所有和他们合作的影响者，没有一个是诚实的，我自己也发过关于这事的帖子，但我没有参与其中，也从未使用过他们提供的模板。\n\n宣传伎俩，我还有更多要分享，这太他妈的荒唐了，我会跟进这个话题",
-    "url": "https://x.com/webbovich77/status/2114828380525006878",
+    "id": "2114840044083314981",
+    "authorHandle": "DaveyHert",
+    "authorName": "@DaveyHert",
+    "datetime": "2026-10-26T19:42:34.000Z",
+    "text": "我看到你是新来的。欢迎！😂\n\n试着构建一个能在网上运行的代理，就像 \n@usejobmate\n 的自动申请代理一样。我不得不自己构建一个框架才能让它按预期工作，天哪！",
+    "url": "https://x.com/DaveyHert/status/2114840044083314981",
     "metrics": {
-      "replies": 257,
-      "retweets": 416,
-      "likes": 2091,
-      "views": 492344
+      "replies": 5,
+      "retweets": 10,
+      "likes": 89,
+      "views": 6723
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114831970740101519",
+    "authorHandle": "LegendaryKayCe",
+    "authorName": "@LegendaryKayCe",
+    "datetime": "2026-10-26T19:28:43.000Z",
+    "text": "一次钱包交互可能会让你付出超出预期的代价。\n\n我们正在构建 AI 驱动的工具，帮助用户评估钱包风险、检查标记地址，并在与 Solana 交互前做出更明智的决策。\n\n先了解地址，理解风险。然后行动。\n\n欢迎来到 KizaTrust AI。",
+    "url": "https://x.com/LegendaryKayCe/status/2114831970740101519",
+    "metrics": {
+      "replies": 17,
+      "retweets": 14,
+      "likes": 28,
+      "views": 2753
     },
     "source": "community"
   },
@@ -277,10 +217,10 @@
     "text": "人们想要 swag。我们听到了。所以理所当然：免费冰激凌代替。\n\n\n@Judgmentlabs\n 用免费冰激凌庆祝，我们将供应 Jev-Jam 口味的冰激凌勺！\n\n235 Pine St, San Francisco\n星期二，10 月 27 日，上午 11 点至下午 1:15",
     "url": "https://x.com/typesafeai/status/2114785106858795418",
     "metrics": {
-      "replies": 9,
-      "retweets": 10,
-      "likes": 109,
-      "views": 11591
+      "replies": 10,
+      "retweets": 11,
+      "likes": 117,
+      "views": 13439
     },
     "source": "community"
   },
@@ -295,7 +235,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 5,
-      "views": 667
+      "views": 816
     },
     "source": "community"
   },
@@ -310,7 +250,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 39
+      "views": 52
     },
     "source": "community"
   },
@@ -325,7 +265,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 57
+      "views": 65
     },
     "source": "community"
   },
@@ -340,7 +280,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 12
+      "views": 14
     },
     "source": "community"
   },
@@ -355,7 +295,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 79
+      "views": 88
     },
     "source": "community"
   },
@@ -370,7 +310,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 79
+      "views": 88
     },
     "source": "community"
   },
@@ -382,10 +322,85 @@
     "text": "Diogo Almeida 和 TypeSafe AI 团队将把 Jev 带到 AIE CODE。\n\nSystem One 模型以及人们用它们构建的内容。\n\n11 月 10 日至 12 日，旧金山。\n申请参加：\nhttps://\nai.engineer/code",
     "url": "https://x.com/aiDotEngineer/status/2114733797648281624",
     "metrics": {
-      "replies": 0,
+      "replies": 1,
       "retweets": 1,
       "likes": 18,
-      "views": 3740
+      "views": 4151
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114718856921186761",
+    "authorHandle": "BBandpey",
+    "authorName": "@BBandpey",
+    "datetime": "2026-10-25T13:51:46.000Z",
+    "text": "IM LITERALLY SO COOKED WITH MY ACCOUNT\n\n58% DONE already out of 100% and it just reset few hours ago...\n\nResets back in Saturday (and its only Sunday) from current week and resets fucking next week Saturday\n\n60% DONE\n\nFUCK!! \n\nAll I did was basic theme change + full email stack",
+    "url": "https://x.com/BBandpey/status/2114718856921186761",
+    "metrics": {
+      "replies": 9,
+      "retweets": 0,
+      "likes": 12,
+      "views": 2084
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114832692957135054",
+    "authorHandle": "stretchcloud",
+    "authorName": "@stretchcloud",
+    "datetime": "2026-10-26T11:03:27.000Z",
+    "text": "Finding one qualified lead costs $0.0089 through Treg's new Jev-powered people search. Clay charges upward of $600 a month for the same job once you're past the free tier. Same task. Agent does the asking instead of a rep.\n\nTreg itself isn't really a people search tool. It's a catalog, built by the Superdesign team and released under AGPL on GitHub, that gives an agent one API key and access to roughly 2,900 endpoints across 60 providers, from LinkedIn and email verification to enrichment and scraping, priced per call starting around a cent. The people search layer running on top uses Jev, a decision model from TypeSafe that classifies and ranks instead of writing prose, which is most of why a single lookup comes in under a cent.\n\nClay just raised $115 million at a $7.1 billion valuation in September, led by Wellington with Sequoia and a16z's growth fund among others in the round, and claims 17,000 customers including 80% of the Forbes AI 50. Its own plans run from $149 a month for a couple thousand credits up to $2,000 for the heaviest tier. Apollo sits in similar territory once a team adds the credit top-ups most of them end up buying. None of that is a reason those platforms lose their current customers tomorrow. The workflow tooling and CRM integration are real.\n\nWhat's different is the marginal lead. A sales team that used to ration who got researched, because credits were expensive, can now research everyone, because the cost per lookup rounds to nothing. Qualification stops being a budget decision and starts being a default.",
+    "url": "https://x.com/stretchcloud/status/2114832692957135054",
+    "metrics": {
+      "replies": 0,
+      "retweets": 1,
+      "likes": 3,
+      "views": 249
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114674262179188755",
+    "authorHandle": "treg_ai",
+    "authorName": "@treg_ai",
+    "datetime": "2026-10-26T11:03:27.000Z",
+    "text": "介绍 Jev \n@typesafeai\n 驱动的人脉搜索\n\n只需 $0.0089/条线索，再也不用 $600 的订阅费，\n\n在 \nhttp://\ntreg.to/people-search 试用\n\n- 比 Clay 便宜 85%\n- 人物搜索基准准确度排名 #1\n- 插件可接入任何代理以查找任何人\n\n完全开源，0% 加价\n\nGit 仓库如下 👇",
+    "url": "https://x.com/treg_ai/status/2114674262179188755",
+    "metrics": {
+      "replies": 214,
+      "retweets": 264,
+      "likes": 3729,
+      "views": 471227
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114646988805341581",
+    "authorHandle": "blockphd7",
+    "authorName": "@blockphd7",
+    "datetime": "2026-10-26T09:15:05.000Z",
+    "text": "很多人把大模型当聊天框，其实有一类任务更适合只问一句结构化的问题，是或否、多选分类、打分、图上框出目标。TypeSafe 的 Jev（System One 决策模型）就是干这个的，不是聊天替身。\n\n\nhttp://\napikey.fan 已上 TypeSafe 官方直连分组，jev-1.14.0 和 jev-1.13.0 都能走。价目页现价大约每百万输入 0.033 美元，对照官方 0.042，大约七五折到八折这一档，输出不计费。1.14 多了 Box 题型，能回物体坐标。两边都支持图片，网关上长上下文默认可拉到约 26 万 token，单价不跟着涨。\n\n怎么用比较成熟？最省事的是 Magpie：路由组挂上 TypeSafe，分类器选 typesafe/jev-latest，每轮先让 Jev 判断意图，简单题走便宜快模型，写测试、啃难题再上 Claude 或 Kimi，Routing 页还能看到置信度。官方也推同一思路，先 choice 或 score 做闸门，置信度够才动贵模型。再往上，可以一条请求里打一组 noul 做越狱与伤害筛查，或者工单分流、表单自动归类；1.14 审图时先问有没有目标，再信 Box 坐标。\n\n顺带一句，同站 Kimi 分组里已经能看到 kimi-k3.1-pro，折扣通道大约 0.97 / 5.1 美元每百万，比官方 2 / 10 低一截。\n\n注册用我的邀请链接（评论区），文档、Magpie、免费池也放评论。实扣以分组费率×用量为准，页面有四舍五入，以账单为准。工具向分享，不构成投资建议。",
+    "url": "https://x.com/blockphd7/status/2114646988805341581",
+    "metrics": {
+      "replies": 9,
+      "retweets": 0,
+      "likes": 4,
+      "views": 400
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114834692935729386",
+    "authorHandle": "6AW0RON0k",
+    "authorName": "@6AW0RON0k",
+    "datetime": "2026-10-25T14:10:05.000Z",
+    "text": "🚨天哪，这太他妈颠覆我的认知了。\n\nJev 以每百万次 0.042 美元的价格替换每个 LLM 决策调用。输出免费。\n\nDiogo Almeida 在 TypeSafe 构建了它。没有文本生成。模型接收类型化问题，并在一次调用中返回校准的概率。Jev 对四个决策工作流的 LLM 调用：快 193.6 倍，便宜 444.6 倍，上限。主页上的工作示例显示快 75 倍，便宜 171 倍。\n\nSPLIT - 无 KV 缓存，无长转录，类型化问题并行处理\nSCORE - 选择，是/否，概率一次性在一次调用中回答\nGATE - 防护栏在执行前对 shell 命令进行评分\n\n一个长转录就是代价。分割管道在下方运行 ↓",
+    "url": "https://x.com/6AW0RON0k/status/2114834692935729386",
+    "metrics": {
+      "replies": 4,
+      "retweets": 0,
+      "likes": 20,
+      "views": 573
     },
     "source": "community"
   },
@@ -399,68 +414,8 @@
     "metrics": {
       "replies": 9,
       "retweets": 0,
-      "likes": 11,
-      "views": 2022
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114720706176909325",
-    "authorHandle": "AnnatarXBT",
-    "authorName": "@AnnatarXBT",
-    "datetime": "2026-09-18T16:25:10.000Z",
-    "text": "Jev + Claude Opus 5.5 在运行公司大脑方面吓人地出色\n\n完整的架构来自 TypeSafe 和 Anthropic 文档，浓缩成一份 14 页的 PDF\n\n10 个步骤：\n\n1. 分离角色\n> Opus 5.5 思考，Jev 决定，你的代码拥有分支\n\n2. 停止向文本生成器询问是或否\n> Jev 在 0.44 秒内以 0.00035 美元的成本返回一个类型化的答案，附带校准的概率\n\n3. 并行提问\n> Choice、Score 和 Noul 并行运行，因此第四个问题几乎不费成本\n\n4. 根据数字分支\n> 0.999 直接进入 if 语句，约 99% 的回合在那里结束\n\n5.  purposeful 路由\n> 将 Opus 5.5 弹回 Sonnet 再返回的成本是 5.84，而保持原位只需 3.32\n\n6. 保持一个上下文温暖\n> 缓存读取每 Mtok 0.20 美元，比新鲜加载便宜 20 倍\n\n7. 升级困难的 1%\n> 它转到 Opus 5.5，带有 1M 上下文，在 Terminal-Bench 4.0 上得分 66.4%\n\n8. 在每个查询中为每个块评分\n> 保留它、总结它或丢弃它，并在每回合重建上下文\n\n9. 为每个命令设置关卡\n> 每个 bash 调用在运行前被分类，在你自己的代码内部\n\n10. 判断每次运行\n> 每天 3.50 美元处理 10,000 次跟踪，在所有 500 个测试决策上匹配人类标签\n\n一个为每个微小调用支付前沿价格的循环变成了一个大脑，它花费不到一分钱来注意，并仅在思考时正确付费\n\n谁把这个带到预算会议，谁就带着 AI 账单下降和输出上升走进去\n\n从零开始设置的分步 Jev 路线图如下 👇",
-    "url": "https://x.com/AnnatarXBT/status/2114720706176909325",
-    "metrics": {
-      "replies": 4,
-      "retweets": 3,
-      "likes": 32,
-      "views": 1713
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114718856921186761",
-    "authorHandle": "BBandpey",
-    "authorName": "@BBandpey",
-    "datetime": "2026-10-26T14:00:39.000Z",
-    "text": "It is Jev. It is a model from \nhttps://\nTypeSafe.ai\n\nYou can get it from \nhttps://\nopenrouter.ai",
-    "url": "https://x.com/BBandpey/status/2114718856921186761",
-    "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 1,
-      "views": 8
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114674262179188755",
-    "authorHandle": "treg_ai",
-    "authorName": "@treg_ai",
-    "datetime": "2026-10-26T11:03:27.000Z",
-    "text": "介绍 Jev \n@typesafeai\n 驱动的人脉搜索\n\n只需 $0.0089/条线索，再也不用 $600 的订阅费，\n\n在 \nhttp://\ntreg.to/people-search 试用\n\n- 比 Clay 便宜 85%\n- 人物搜索基准准确度排名 #1\n- 插件可接入任何代理以查找任何人\n\n完全开源，0% 加价\n\nGit 仓库如下 👇",
-    "url": "https://x.com/treg_ai/status/2114674262179188755",
-    "metrics": {
-      "replies": 172,
-      "retweets": 200,
-      "likes": 2737,
-      "views": 301451
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114646988805341581",
-    "authorHandle": "blockphd7",
-    "authorName": "@blockphd7",
-    "datetime": "2026-10-26T09:15:05.000Z",
-    "text": "很多人把大模型当聊天框，其实有一类任务更适合只问一句结构化的问题，是或否、多选分类、打分、图上框出目标。TypeSafe 的 Jev（System One 决策模型）就是干这个的，不是聊天替身。\n\n\nhttps://\napikey.fan 已上 TypeSafe 官方直连分组，jev-1.14.0 和 jev-1.13.0",
-    "url": "https://x.com/blockphd7/status/2114646988805341581",
-    "metrics": {
-      "replies": 9,
-      "retweets": 0,
-      "likes": 4,
-      "views": 318
+      "likes": 12,
+      "views": 2084
     },
     "source": "community"
   },
@@ -536,6 +491,21 @@
       "retweets": 0,
       "likes": 0,
       "views": 80
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114828380525006878",
+    "authorHandle": "webbovich77",
+    "authorName": "@webbovich77",
+    "datetime": "2026-10-23T19:14:48.000Z",
+    "text": "这就是Kimi AI如何宣传他们的全新模型Kimi K3.1 pro的。我认识所有和他们合作的影响者，没有一个是诚实的，我自己也发过关于这事的帖子，但我没有参与其中，也从未使用过他们提供的模板。\n\n宣传伎俩，我还有更多要分享，这太他妈的荒唐了，我会跟进这个话题",
+    "url": "https://x.com/webbovich77/status/2114828380525006878",
+    "metrics": {
+      "replies": 257,
+      "retweets": 416,
+      "likes": 2091,
+      "views": 492344
     },
     "source": "community"
   },
@@ -671,6 +641,21 @@
       "retweets": 5,
       "likes": 21,
       "views": 1413
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114832643447554203",
+    "authorHandle": "Alexxx636",
+    "authorName": "@Alexxx636",
+    "datetime": "2026-10-21T09:02:50.000Z",
+    "text": "Last Tuesday I booked a 4am ride to the airport. The app showed “arrived,” so the payment released. I stood outside for 25 minutes. The driver was still in traffic. I missed the flight by 12 minutes.\nThe system only saw the button he tapped. It never checked the live tracking page against the booking.\n\nThat is the exact hole smart contracts leave open. They need someone outside to tell them what happened. That is where decentralization ends.\nIntelligent Contracts go and check for themselves.\n\n\n@GenLayer\n’s version can pull the tracking page itself and ask a language model whether the driver was actually there. One validator proposes the answer. The others run the same check with their own models and have to land on the same result. If they disagree, a new leader tries again. Anyone can still appeal.\n\nA fake screenshot can still fool it, but no single person gets to decide the reality before the money moves.\n\nWhat is the last payment you released based only on someone’s report, then wished the system had looked for itself?",
+    "url": "https://x.com/Alexxx636/status/2114832643447554203",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 1,
+      "views": 32
     },
     "source": "community"
   },
@@ -896,6 +881,21 @@
       "retweets": 0,
       "likes": 3,
       "views": 412
+    },
+    "source": "community"
+  },
+  {
+    "id": "2114720706176909325",
+    "authorHandle": "AnnatarXBT",
+    "authorName": "@AnnatarXBT",
+    "datetime": "2026-09-18T16:25:10.000Z",
+    "text": "Jev + Claude Opus 5.5 在运行公司大脑方面吓人地出色\n\n完整的架构来自 TypeSafe 和 Anthropic 文档，浓缩成一份 14 页的 PDF\n\n10 个步骤：\n\n1. 分离角色\n> Opus 5.5 思考，Jev 决定，你的代码拥有分支\n\n2. 停止向文本生成器询问是或否\n> Jev 在 0.44 秒内以 0.00035 美元的成本返回一个类型化的答案，附带校准的概率\n\n3. 并行提问\n> Choice、Score 和 Noul 并行运行，因此第四个问题几乎不费成本\n\n4. 根据数字分支\n> 0.999 直接进入 if 语句，约 99% 的回合在那里结束\n\n5.  purposeful 路由\n> 将 Opus 5.5 弹回 Sonnet 再返回的成本是 5.84，而保持原位只需 3.32\n\n6. 保持一个上下文温暖\n> 缓存读取每 Mtok 0.20 美元，比新鲜加载便宜 20 倍\n\n7. 升级困难的 1%\n> 它转到 Opus 5.5，带有 1M 上下文，在 Terminal-Bench 4.0 上得分 66.4%\n\n8. 在每个查询中为每个块评分\n> 保留它、总结它或丢弃它，并在每回合重建上下文\n\n9. 为每个命令设置关卡\n> 每个 bash 调用在运行前被分类，在你自己的代码内部\n\n10. 判断每次运行\n> 每天 3.50 美元处理 10,000 次跟踪，在所有 500 个测试决策上匹配人类标签\n\n一个为每个微小调用支付前沿价格的循环变成了一个大脑，它花费不到一分钱来注意，并仅在思考时正确付费\n\n谁把这个带到预算会议，谁就带着 AI 账单下降和输出上升走进去\n\n从零开始设置的分步 Jev 路线图如下 👇",
+    "url": "https://x.com/AnnatarXBT/status/2114720706176909325",
+    "metrics": {
+      "replies": 4,
+      "retweets": 3,
+      "likes": 32,
+      "views": 1713
     },
     "source": "community"
   }
