@@ -10,7 +10,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 23
+      "views": 24
     },
     "source": "community"
   },
@@ -25,7 +25,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 144
+      "views": 146
     },
     "source": "community"
   },
@@ -37,10 +37,10 @@
     "text": "终于在我的 4× NVIDIA DGX Spark 集群上成功运行了 DeepSeek-V4.1-Flash-1017。\n\nRepo:\n\nhttps://\ngithub.com/knapcio/DeepSe\nek-V4.1-Flash-4x-DGX-Spark-TP4\n…\nModel:\ndeepseek-ai/DeepSeek-V4.1-Flash-1017\nrevision: 1bae0e1088993b9b82de08f59de5be5a34e42170\n\n我的配置：\n• 4× DGX Spark / GB10\n• TP4 / EP1\n• SGLang canary\n• 2× 200GbE RoCE rails 通过 MikroTik CRS812\n• RoCEnante\n• B12X-next routed MoE\n• DSpark speculative decoding, block size 5\n• packed local Engram shards on every node\n• FP8 KV cache\n• 1,048,576 context\n• 16 concurrent requests\n\n生产设置：\n• CHUNKED_PREFILL_SIZE=8192\n• MEM_FRACTION_STATIC=0.78\n• HEAD_MEM_FRACTION_STATIC=0.78\n• DSV41_CACHE_GIB=4\n• NCCL_IB_TC=104\n• NCCL_PROTO=^LL128\n• NCCL_MAX_NCHANNELS=8\n另外还修补了旧的 RoCEnante 路径，让它真正遵守 NCCL_IB_TC=104 而不是悄无声息地使用 TC0\n\n运行时验证：\n• RoCEnante 在两条轨道上均激活\n• B12X next 在 EP1 激活\n• shared expert K pad 576→640 被 b12x 接受\n• RoCE compact gather 激活\n• 所有 4 个容器健康\n• qeval: 71/75\n\nsparkDash 结果：\nStructured C1: 157.0 tok/s - TTFT 229 ms\nProse C1: 87.7 tok/s - TTFT 221 ms\nCode C1: 142.4 tok/s - TTFT 235 ms\nCode C1 @ 64K context: 126.7 tok/s - TTFT 411 ms\n\nPrefill:\n64K: 5,953.7 tok/s\n128K: 6,026.2 tok/s\n256K: 5,137.9 tok/s\n\n这是我在 Sparks 上第一个 DeepSeek V4.1 Flash 配置，整个技术栈——模型、RoCE、NCCL、MoE、Engram 和 speculative decoding——感觉像一个真正调优好的系统，而不是一堆独立的优化措施。\n\n\n@majewskizby\n 仓库的工作非常令人印象深刻。",
     "url": "https://x.com/FT_IOxCS/status/2114838223000383914",
     "metrics": {
-      "replies": 5,
+      "replies": 6,
       "retweets": 4,
       "likes": 27,
-      "views": 1637
+      "views": 1695
     },
     "source": "community"
   },
@@ -48,14 +48,14 @@
     "id": "2114834634169290997",
     "authorHandle": "ai_univarse",
     "authorName": "@ai_univarse",
-    "datetime": "2026-10-26T21:40:31.000Z",
-    "text": "一个家伙花了599美元买了一台Mac mini。\n\n他接上了一台显示器、一个键盘和一个鼠标。他打开Safari检查了邮件。他把它当作一台廉价的台式电脑使用。\n\n整整2年，他都不知道他的Mac",
+    "datetime": "2026-10-26T21:40:33.000Z",
+    "text": "Tanvir started with the one that surprised Rafi the most. He told him the mini does not need a monitor at all.\n\nHe opened System Settings, then General, then Sharing, and showed Rafi two switches. Screen Sharing lets another computer on your network see your desktop and control",
     "url": "https://x.com/ai_univarse/status/2114834634169290997",
     "metrics": {
-      "replies": 12,
-      "retweets": 32,
-      "likes": 42,
-      "views": 1699
+      "replies": 1,
+      "retweets": 0,
+      "likes": 6,
+      "views": 85
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 6,
-      "views": 165
+      "views": 169
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 0,
       "retweets": 2,
       "likes": 11,
-      "views": 202
+      "views": 207
     },
     "source": "community"
   },
@@ -100,7 +100,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 23
+      "views": 24
     },
     "source": "community"
   },
@@ -115,7 +115,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 25
+      "views": 26
     },
     "source": "community"
   },
@@ -130,7 +130,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 28
+      "views": 29
     },
     "source": "community"
   },
@@ -145,7 +145,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 229
+      "views": 238
     },
     "source": "community"
   },
@@ -160,7 +160,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 9
+      "views": 10
     },
     "source": "community"
   },
@@ -175,7 +175,7 @@
       "replies": 6,
       "retweets": 1,
       "likes": 9,
-      "views": 413
+      "views": 422
     },
     "source": "community"
   },
@@ -190,7 +190,7 @@
       "replies": 7,
       "retweets": 11,
       "likes": 98,
-      "views": 7356
+      "views": 7410
     },
     "source": "community"
   },
@@ -205,7 +205,7 @@
       "replies": 23,
       "retweets": 21,
       "likes": 49,
-      "views": 3703
+      "views": 3793
     },
     "source": "community"
   },
@@ -218,9 +218,9 @@
     "url": "https://x.com/typesafeai/status/2114785106858795418",
     "metrics": {
       "replies": 13,
-      "retweets": 13,
-      "likes": 126,
-      "views": 20289
+      "retweets": 14,
+      "likes": 127,
+      "views": 22490
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 6,
-      "views": 889
+      "views": 897
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 57
+      "views": 59
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 75
+      "views": 78
     },
     "source": "community"
   },
@@ -273,14 +273,14 @@
     "id": "2114737623747244282",
     "authorHandle": "cloudnativeboy",
     "authorName": "@cloudnativeboy",
-    "datetime": "2026-10-26T15:10:15.000Z",
-    "text": "Three primitives:\n\n• Choice = pick from options\n• Score = rate against a rubric\n• Noul = estimate whether a statement is true (0–1)\n\nAsk several questions in one request; Jev evaluates them in parallel.",
+    "datetime": "2026-10-26T15:14:19.000Z",
+    "text": "10/17\n\nLimitations: Jev doesn’t write prose, code or explanations.\n\nIt works best with narrow, well-scoped questions and known choices. For ambiguous problems or multi-factor reasoning, decompose the task or keep the reasoning step with an LLM.",
     "url": "https://x.com/cloudnativeboy/status/2114737623747244282",
     "metrics": {
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 16
+      "views": 13
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 105
+      "views": 107
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 105
+      "views": 107
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 19,
-      "views": 4458
+      "views": 4540
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 3,
-      "views": 283
+      "views": 292
     },
     "source": "community"
   },
@@ -352,10 +352,10 @@
     "text": "介绍 Jev \n@typesafeai\n 驱动的人脉搜索\n\n只需 $0.0089/条线索，再也不用 $600 的订阅费，\n\n在 \nhttp://\ntreg.to/people-search 试用\n\n- 比 Clay 便宜 85%\n- 人物搜索基准准确度排名 #1\n- 插件可接入任何代理以查找任何人\n\n完全开源，0% 加价\n\nGit 仓库如下 👇",
     "url": "https://x.com/treg_ai/status/2114674262179188755",
     "metrics": {
-      "replies": 229,
-      "retweets": 287,
-      "likes": 4103,
-      "views": 537257
+      "replies": 233,
+      "retweets": 296,
+      "likes": 4182,
+      "views": 551285
     },
     "source": "community"
   },
@@ -370,7 +370,7 @@
       "replies": 9,
       "retweets": 0,
       "likes": 4,
-      "views": 428
+      "views": 434
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 5,
       "retweets": 1,
       "likes": 30,
-      "views": 789
+      "views": 814
     },
     "source": "community"
   },
@@ -394,13 +394,13 @@
     "authorHandle": "BBandpey",
     "authorName": "@BBandpey",
     "datetime": "2026-10-25T13:51:46.000Z",
-    "text": "IM LITERALLY SO COOKED WITH MY ACCOUNT\n\n58% DONE already out of 100% and it just reset few hours ago...\n\nResets back in Saturday (and its only Sunday) from current week and resets fucking next week Saturday\n\n60% DONE\n\nFUCK!! \n\nAll I did was basic theme change + full email stack",
+    "text": "我真的被我的账号搞得要死了\n\n已经完成了58%，总共100%，而且它就在几小时前刚重置过……\n\n每周六重置（现在才周日），然后他妈的下周六又重置\n\n60% 完成\n\n操！！\n\n我只是做了个基本主题更改 + 完整的电子邮件流程创建 T_T\n\n什么鬼",
     "url": "https://x.com/BBandpey/status/2114718856921186761",
     "metrics": {
       "replies": 9,
       "retweets": 0,
       "likes": 12,
-      "views": 2107
+      "views": 2119
     },
     "source": "community"
   },
@@ -409,13 +409,13 @@
     "authorHandle": "BBandpey",
     "authorName": "@BBandpey",
     "datetime": "2026-10-25T13:51:46.000Z",
-    "text": "IM LITERALLY SO COOKED WITH MY ACCOUNT\n\n58% DONE already out of 100% and it just reset few hours ago...\n\nResets back in Saturday (and its only Sunday) from current week and resets fucking next week Saturday\n\n60% DONE\n\nFUCK!! \n\nAll I did was basic theme change + full email stack",
+    "text": "我真的被我的账号搞得要死了\n\n已经完成了58%，总共100%，而且它就在几小时前刚重置过……\n\n每周六重置（现在才周日），然后他妈的下周六又重置\n\n60% 完成\n\n操！！\n\n我只是做了个基本主题更改 + 完整的电子邮件流程创建 T_T\n\n什么鬼",
     "url": "https://x.com/BBandpey/status/2114725824763208089",
     "metrics": {
       "replies": 9,
       "retweets": 0,
       "likes": 12,
-      "views": 2107
+      "views": 2119
     },
     "source": "community"
   },
