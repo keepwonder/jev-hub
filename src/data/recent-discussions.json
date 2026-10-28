@@ -10,7 +10,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 28
+      "views": 29
     },
     "source": "community"
   },
@@ -25,7 +25,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 150
+      "views": 151
     },
     "source": "community"
   },
@@ -37,10 +37,10 @@
     "text": "终于在我的 4× NVIDIA DGX Spark 集群上成功运行了 DeepSeek-V4.1-Flash-1017。\n\nRepo:\n\nhttps://\ngithub.com/knapcio/DeepSe\nek-V4.1-Flash-4x-DGX-Spark-TP4\n…\nModel:\ndeepseek-ai/DeepSeek-V4.1-Flash-1017\nrevision: 1bae0e1088993b9b82de08f59de5be5a34e42170\n\n我的配置：\n• 4× DGX Spark / GB10\n• TP4 / EP1\n• SGLang canary\n• 2× 200GbE RoCE rails 通过 MikroTik CRS812\n• RoCEnante\n• B12X-next routed MoE\n• DSpark speculative decoding, block size 5\n• packed local Engram shards on every node\n• FP8 KV cache\n• 1,048,576 context\n• 16 concurrent requests\n\n生产设置：\n• CHUNKED_PREFILL_SIZE=8192\n• MEM_FRACTION_STATIC=0.78\n• HEAD_MEM_FRACTION_STATIC=0.78\n• DSV41_CACHE_GIB=4\n• NCCL_IB_TC=104\n• NCCL_PROTO=^LL128\n• NCCL_MAX_NCHANNELS=8\n另外还修补了旧的 RoCEnante 路径，让它真正遵守 NCCL_IB_TC=104 而不是悄无声息地使用 TC0\n\n运行时验证：\n• RoCEnante 在两条轨道上均激活\n• B12X next 在 EP1 激活\n• shared expert K pad 576→640 被 b12x 接受\n• RoCE compact gather 激活\n• 所有 4 个容器健康\n• qeval: 71/75\n\nsparkDash 结果：\nStructured C1: 157.0 tok/s - TTFT 229 ms\nProse C1: 87.7 tok/s - TTFT 221 ms\nCode C1: 142.4 tok/s - TTFT 235 ms\nCode C1 @ 64K context: 126.7 tok/s - TTFT 411 ms\n\nPrefill:\n64K: 5,953.7 tok/s\n128K: 6,026.2 tok/s\n256K: 5,137.9 tok/s\n\n这是我在 Sparks 上第一个 DeepSeek V4.1 Flash 配置，整个技术栈——模型、RoCE、NCCL、MoE、Engram 和 speculative decoding——感觉像一个真正调优好的系统，而不是一堆独立的优化措施。\n\n\n@majewskizby\n 仓库的工作非常令人印象深刻。",
     "url": "https://x.com/FT_IOxCS/status/2114838223000383914",
     "metrics": {
-      "replies": 6,
+      "replies": 7,
       "retweets": 4,
-      "likes": 27,
-      "views": 1736
+      "likes": 28,
+      "views": 1749
     },
     "source": "community"
   },
@@ -53,9 +53,9 @@
     "url": "https://x.com/ai_univarse/status/2114834634169290997",
     "metrics": {
       "replies": 13,
-      "retweets": 30,
+      "retweets": 29,
       "likes": 46,
-      "views": 1990
+      "views": 2028
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 6,
-      "views": 177
+      "views": 178
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 0,
       "retweets": 2,
       "likes": 11,
-      "views": 213
+      "views": 215
     },
     "source": "community"
   },
@@ -100,7 +100,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 29
+      "views": 31
     },
     "source": "community"
   },
@@ -115,7 +115,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 30
+      "views": 32
     },
     "source": "community"
   },
@@ -130,7 +130,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 34
+      "views": 35
     },
     "source": "community"
   },
@@ -145,7 +145,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 252
+      "views": 256
     },
     "source": "community"
   },
@@ -160,7 +160,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 12
+      "views": 13
     },
     "source": "community"
   },
@@ -175,7 +175,7 @@
       "replies": 6,
       "retweets": 1,
       "likes": 9,
-      "views": 446
+      "views": 455
     },
     "source": "community"
   },
@@ -190,7 +190,7 @@
       "replies": 8,
       "retweets": 11,
       "likes": 98,
-      "views": 7536
+      "views": 7559
     },
     "source": "community"
   },
@@ -205,7 +205,7 @@
       "replies": 27,
       "retweets": 28,
       "likes": 65,
-      "views": 4793
+      "views": 4969
     },
     "source": "community"
   },
@@ -219,8 +219,8 @@
     "metrics": {
       "replies": 15,
       "retweets": 14,
-      "likes": 129,
-      "views": 24208
+      "likes": 130,
+      "views": 24448
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 6,
-      "views": 910
+      "views": 914
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 61
+      "views": 62
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 85
+      "views": 87
     },
     "source": "community"
   },
@@ -280,7 +280,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 22
+      "views": 23
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 125
+      "views": 127
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 125
+      "views": 127
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 19,
-      "views": 4652
+      "views": 4663
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 3,
-      "views": 304
+      "views": 310
     },
     "source": "community"
   },
@@ -354,8 +354,8 @@
     "metrics": {
       "replies": 237,
       "retweets": 303,
-      "likes": 4219,
-      "views": 559997
+      "likes": 4222,
+      "views": 561820
     },
     "source": "community"
   },
@@ -370,7 +370,7 @@
       "replies": 9,
       "retweets": 1,
       "likes": 4,
-      "views": 466
+      "views": 471
     },
     "source": "community"
   },
@@ -382,10 +382,10 @@
     "text": "🚨天哪，这太他妈颠覆我的认知了。\n\nJev 以每百万次 0.042 美元的价格替换每个 LLM 决策调用。输出免费。\n\nDiogo Almeida 在 TypeSafe 构建了它。没有文本生成。模型接收类型化问题，并在一次调用中返回校准的概率。Jev 对四个决策工作流的 LLM 调用：快 193.6 倍，便宜 444.6 倍，上限。主页上的工作示例显示快 75 倍，便宜 171 倍。\n\nSPLIT - 无 KV 缓存，无长转录，类型化问题并行处理\nSCORE - 选择，是/否，概率一次性在一次调用中回答\nGATE - 防护栏在执行前对 shell 命令进行评分\n\n一个长转录就是代价。分割管道在下方运行 ↓",
     "url": "https://x.com/6AW0RON0k/status/2114834692935729386",
     "metrics": {
-      "replies": 5,
+      "replies": 6,
       "retweets": 1,
       "likes": 30,
-      "views": 843
+      "views": 850
     },
     "source": "community"
   },
