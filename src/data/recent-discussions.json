@@ -10,7 +10,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 36
+      "views": 37
     },
     "source": "community"
   },
@@ -25,7 +25,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 158
+      "views": 159
     },
     "source": "community"
   },
@@ -40,7 +40,7 @@
       "replies": 7,
       "retweets": 4,
       "likes": 28,
-      "views": 1788
+      "views": 1791
     },
     "source": "community"
   },
@@ -55,7 +55,7 @@
       "replies": 13,
       "retweets": 25,
       "likes": 45,
-      "views": 2196
+      "views": 2213
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 6,
-      "views": 188
+      "views": 190
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 0,
       "retweets": 2,
       "likes": 11,
-      "views": 223
+      "views": 226
     },
     "source": "community"
   },
@@ -100,7 +100,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 41
+      "views": 42
     },
     "source": "community"
   },
@@ -115,7 +115,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 39
+      "views": 40
     },
     "source": "community"
   },
@@ -130,7 +130,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 40
+      "views": 41
     },
     "source": "community"
   },
@@ -145,7 +145,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 284
+      "views": 287
     },
     "source": "community"
   },
@@ -160,7 +160,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 18
+      "views": 19
     },
     "source": "community"
   },
@@ -175,7 +175,7 @@
       "replies": 7,
       "retweets": 1,
       "likes": 9,
-      "views": 535
+      "views": 539
     },
     "source": "community"
   },
@@ -190,7 +190,7 @@
       "replies": 8,
       "retweets": 11,
       "likes": 98,
-      "views": 7667
+      "views": 7685
     },
     "source": "community"
   },
@@ -205,7 +205,7 @@
       "replies": 27,
       "retweets": 27,
       "likes": 63,
-      "views": 5327
+      "views": 5339
     },
     "source": "community"
   },
@@ -220,7 +220,7 @@
       "replies": 17,
       "retweets": 14,
       "likes": 132,
-      "views": 25138
+      "views": 25196
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 6,
-      "views": 942
+      "views": 951
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 68
+      "views": 69
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 104
+      "views": 106
     },
     "source": "community"
   },
@@ -273,14 +273,14 @@
     "id": "2114737623747244282",
     "authorHandle": "cloudnativeboy",
     "authorName": "@cloudnativeboy",
-    "datetime": "2026-10-26T15:12:45.000Z",
-    "text": "7/17\n\nBest mental model:\n\nLLM writes. Jev decides. Code acts.\n\nLet an LLM handle open-ended language and synthesis; Jev routes, classifies, scores, and checks bounded choices; and deterministic code enforces permissions, thresholds, logging, and fallbacks.",
+    "datetime": "2026-10-26T15:10:15.000Z",
+    "text": "Three primitives:\n\n• Choice = pick from options\n• Score = rate against a rubric\n• Noul = estimate whether a statement is true (0–1)\n\nAsk several questions in one request; Jev evaluates them in parallel.",
     "url": "https://x.com/cloudnativeboy/status/2114737623747244282",
     "metrics": {
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 25
+      "views": 29
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 149
+      "views": 151
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 149
+      "views": 151
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 19,
-      "views": 4756
+      "views": 4767
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 3,
-      "views": 324
+      "views": 327
     },
     "source": "community"
   },
@@ -352,10 +352,10 @@
     "text": "介绍 Jev \n@typesafeai\n 驱动的人脉搜索\n\n只需 $0.0089/条线索，再也不用 $600 的订阅费，\n\n在 \nhttp://\ntreg.to/people-search 试用\n\n- 比 Clay 便宜 85%\n- 人物搜索基准准确度排名 #1\n- 插件可接入任何代理以查找任何人\n\n完全开源，0% 加价\n\nGit 仓库如下 👇",
     "url": "https://x.com/treg_ai/status/2114674262179188755",
     "metrics": {
-      "replies": 241,
+      "replies": 242,
       "retweets": 308,
       "likes": 4243,
-      "views": 568183
+      "views": 569417
     },
     "source": "community"
   },
@@ -370,7 +370,7 @@
       "replies": 9,
       "retweets": 1,
       "likes": 4,
-      "views": 512
+      "views": 517
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 6,
       "retweets": 1,
       "likes": 30,
-      "views": 889
+      "views": 895
     },
     "source": "community"
   },
@@ -400,7 +400,7 @@
       "replies": 9,
       "retweets": 0,
       "likes": 12,
-      "views": 2173
+      "views": 2176
     },
     "source": "community"
   },
@@ -415,7 +415,7 @@
       "replies": 9,
       "retweets": 0,
       "likes": 12,
-      "views": 2173
+      "views": 2176
     },
     "source": "community"
   },
