@@ -1,5 +1,574 @@
 [
   {
+    "id": "2119269544279843210",
+    "authorHandle": "xlsama_",
+    "authorName": "@xlsama_",
+    "datetime": "2026-11-08T03:23:28.000Z",
+    "text": "微信是自绘的，没有 Accessibility 的情况，就只能截图靠坐标去掉，这时候用上  Jev 模型就会很快。可以在系统提示词中加这句话，实测非常好用，可以把 openrouter 的 api key 放到 1password 中，Agent 通过 1password cli 就能自动读取。\n\n加这 3 句：\nComputer use 用 agent-desktop：优先用",
+    "url": "https://x.com/xlsama_/status/2119269544279843210",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119269487526457687",
+    "authorHandle": "Oluwaphilemon1",
+    "authorName": "@Oluwaphilemon1",
+    "datetime": "2026-11-08T03:23:14.000Z",
+    "text": "Qwen3.8-27B reportedly reached 381 tokens per second on a single RTX 3090 with 24GB VRAM.\n\nIts original baseline was around 82 tok/s.\n\nThat’s roughly a 4.6× increase without changing the GPU or switching to a different model.\n\nDeveloper TeksEdge achieved this by combining several",
+    "url": "https://x.com/Oluwaphilemon1/status/2119269487526457687",
+    "metrics": {
+      "replies": 1,
+      "retweets": 0,
+      "likes": 1,
+      "views": 30
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119269338570199121",
+    "authorHandle": "xlsama_",
+    "authorName": "@xlsama_",
+    "datetime": "2026-11-08T03:22:39.000Z",
+    "text": "微信是自绘的，没有 Accessibility 的情况，就只能截图靠坐标去掉，这时候用上  Jev 模型就会很快。可以在系统提示词中加这句话，实测非常好用，可以把 openrouter 的 api key 放到 1password 中，Agent 通过 1password cli 就能自动读取。\n\n加这 3 句：\nComputer use 用 agent-desktop：优先用",
+    "url": "https://x.com/xlsama_/status/2119269338570199121",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 1
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119267231494439115",
+    "authorHandle": "wangzhr4",
+    "authorName": "@wangzhr4",
+    "datetime": "2026-11-08T03:14:16.000Z",
+    "text": "“我感觉同一个模型最近变得笨了。”\n\n你的感觉是对的。让我告诉你原因：\n\n- 你使用的模型 ID 只是一个用于路由的别名\n- 在那个 ID 背后，模型公司设置了多个子版本，包括量化版本\n- 一些模型公司甚至将外部模型作为路由候选\n\n只有一个原因：最小化成本。\n\n所以，他们在那个模型 ID",
+    "url": "https://x.com/wangzhr4/status/2119267231494439115",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 1,
+      "views": 26
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119264025120743918",
+    "authorHandle": "e1337ninja",
+    "authorName": "@e1337ninja",
+    "datetime": "2026-11-08T03:01:32.000Z",
+    "text": "I don't want to rent the entire worker anymore. I'd rather own the system and pay for the brain when I need it.",
+    "url": "https://x.com/e1337ninja/status/2119264025120743918",
+    "metrics": {
+      "replies": 1,
+      "retweets": 4,
+      "likes": 1,
+      "views": 112
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119263559846699347",
+    "authorHandle": "Oluwaphilemon1",
+    "authorName": "@Oluwaphilemon1",
+    "datetime": "2026-11-08T02:59:41.000Z",
+    "text": "Qwen3.8-27B 很快就能在仅配备 16GB VRAM 的 NVIDIA GPU 上运行，这可能让更多开发者能够触手可及一个功能强大的 27B 本地模型。\n\n目前正在开发一个推理设置，以支持该模型在这些显卡上的运行，同时保留诸如大上下文窗口和多令牌预测 (MTP) 推测解码等功能。\n\n计划的功能包括：\n\nQwen3.8-27B 支持",
+    "url": "https://x.com/Oluwaphilemon1/status/2119263559846699347",
+    "metrics": {
+      "replies": 1,
+      "retweets": 0,
+      "likes": 3,
+      "views": 122
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119263507057426794",
+    "authorHandle": "naim1242",
+    "authorName": "@naim1242",
+    "datetime": "2026-11-08T02:59:28.000Z",
+    "text": "One of the biggest challenges in Web3 is keeping creators motivated beyond a single campaign.\n\nA reward can attract attention, but a transparent system is what encourages people to stay and contribute consistently.\n\nThat's an interesting area to watch with \n@rarelistio\n.\n\nIts",
+    "url": "https://x.com/naim1242/status/2119263507057426794",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 8
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119262933909942730",
+    "authorHandle": "jackterror",
+    "authorName": "@jackterror",
+    "datetime": "2026-11-08T02:57:12.000Z",
+    "text": "13/14\n\nThe common thread:\n\nStart with the workflow, not the model.\nSeparate judgment from deterministic execution.\nKeep humans at consequential decisions.\nDesign for iteration, not one-shot output.\n\nMake the system usable again tomorrow.",
+    "url": "https://x.com/jackterror/status/2119262933909942730",
+    "metrics": {
+      "replies": 1,
+      "retweets": 0,
+      "likes": 0,
+      "views": 8
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119262142260006944",
+    "authorHandle": "surivenk",
+    "authorName": "@surivenk",
+    "datetime": "2026-11-08T02:54:03.000Z",
+    "text": "Keeping an open-weight AI model on your laptop is a smart safeguard against subscription price hikes, sudden policy changes, and privacy risks.\n\nBoth Ollama and Jan are top-tier, open-source tools for running Large Language Models (LLMs) like Qwen, Gemma, and Llama 3 locally and",
+    "url": "https://x.com/surivenk/status/2119262142260006944",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 36
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119262132210749822",
+    "authorHandle": "FinanceYF5",
+    "authorName": "@FinanceYF5",
+    "datetime": "2026-11-08T02:54:00.000Z",
+    "text": "New market map: on-device models in 2026 — 119 companies, 14 layers\n\nThe valuations sit with the small-model makers, not the chips. Mistral is valued at over EUR 21B and Liquid AI at $2B+, while Ollama, a one-line local runner, has 185K GitHub stars and llama.cpp 133K.\n\nLayer by",
+    "url": "https://x.com/FinanceYF5/status/2119262132210749822",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 421
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119261855831212272",
+    "authorHandle": "0xadnan7",
+    "authorName": "@0xadnan7",
+    "datetime": "2026-11-08T02:52:55.000Z",
+    "text": "FAN SZN with \n@IPXExchange\n\n\nAn independent musician can own their songs, have a loyal audience, and still struggle to find the money needed to produce the next album.\n\nThat's one of the problems \n@IPXExchange\n is trying to address through tokenized intellectual property.\n\nInstead of",
+    "url": "https://x.com/0xadnan7/status/2119261855831212272",
+    "metrics": {
+      "replies": 6,
+      "retweets": 0,
+      "likes": 12,
+      "views": 64
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119260300818231752",
+    "authorHandle": "JacquesThibs",
+    "authorName": "@JacquesThibs",
+    "datetime": "2026-11-08T02:46:44.000Z",
+    "text": "The appendix says:\n\n“Prior Anthropic system cards have posited the hypothesis that there was a one-time jump in capabilities at Mythos Preview after which there was a return to the previous trend.”\n\nToby does not model it to return to the previous trend!",
+    "url": "https://x.com/JacquesThibs/status/2119260300818231752",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 2,
+      "views": 62
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119259426427199927",
+    "authorHandle": "762Eagle",
+    "authorName": "@762Eagle",
+    "datetime": "2026-11-08T02:43:15.000Z",
+    "text": "The Floor Is Not\n\nThe model sits in a dark field. Five pillars stand in a row, and the one in the middle rises higher than the rest. Out of its top climbs a stack: a glossy slab at the base, a band of something like nerve fibre, a glowing sphere, and at the crown a faint latticed",
+    "url": "https://x.com/762Eagle/status/2119259426427199927",
+    "metrics": {
+      "replies": 0,
+      "retweets": 1,
+      "likes": 2,
+      "views": 78
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119259246722498599",
+    "authorHandle": "hoangberger",
+    "authorName": "@hoangberger",
+    "datetime": "2026-11-08T02:42:33.000Z",
+    "text": "Most people focus on how many points they can earn. I'm more interested in what those points actually represent.\n\nThat's one reason I'm continuing to explore \n@TheDAOLabs\n  and its SocialMining ecosystem.\n\nThe interesting part is how participation goes beyond simply completing",
+    "url": "https://x.com/hoangberger/status/2119259246722498599",
+    "metrics": {
+      "replies": 3,
+      "retweets": 0,
+      "likes": 3,
+      "views": 50
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119258132472033318",
+    "authorHandle": "pop_pop_tech",
+    "authorName": "@pop_pop_tech",
+    "datetime": "2026-11-08T02:38:07.000Z",
+    "text": "Silicon Valley's Most Advanced Student Projects · 4/9\n\n🔬 AI for Precision Medicine: Classifying Colon Tissue with Deep Learning — Inspirit AI Scholar Team\n\nThis one is by high-school researchers. Their deep-learning system sorts colon biopsy images into 8 tissue types to help",
+    "url": "https://x.com/pop_pop_tech/status/2119258132472033318",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 7
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119257395960684940",
+    "authorHandle": "TheMushArtist",
+    "authorName": "@TheMushArtist",
+    "datetime": "2026-11-08T02:35:11.000Z",
+    "text": "I’ve built one before and they can make your life a lot easier. The best ones use API keys and you can run them through Claude Code or Codex. Can build a system that runs along side a model which for sure gives you an edge over most.",
+    "url": "https://x.com/TheMushArtist/status/2119257395960684940",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 1,
+      "views": 19
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119248293847056498",
+    "authorHandle": "ghchinoy",
+    "authorName": "@ghchinoy",
+    "datetime": "2026-11-08T01:59:01.000Z",
+    "text": "Decision Models are the next harness primitive - configurable, transparent, templated rules via zero-shot classifiers, not brittle, baked-in regexs. \n\nTypeSafe making Jev nearly free + having API / Agent / Skill -first DX is an attempt at part of a factory's inner workings.",
+    "url": "https://x.com/ghchinoy/status/2119248293847056498",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 14
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119215269079875734",
+    "authorHandle": "NewsTongueX",
+    "authorName": "@NewsTongueX",
+    "datetime": "2026-11-07T23:47:47.000Z",
+    "text": "🔴 Decision models skip reasoning to cut latency; shift explanation burden to developers\n\nDecision models from TypeSafe AI (Jev), Cloudflare (Clef), and OpenAI (Decisions API) return structured JSON outputs with confidence probabilities instead of verbose text, cutting latency",
+    "url": "https://x.com/NewsTongueX/status/2119215269079875734",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 22
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119147770011418935",
+    "authorHandle": "birmeya",
+    "authorName": "@birmeya",
+    "datetime": "2026-11-07T19:19:34.000Z",
+    "text": "TypeSafe AI 刚刚将代理堆栈精简到一个前沿调用\n\n柏林的一位 26 岁年轻人每月通过将 Jev 和 Claude 整合到一个框架中赚取 3200 美元。\n\nJev 是 TypeSafe AI 推出的一种判断模型，它接收程序状态并返回类型化决策。没有自由形式的文本，也没有推理过程。\n\n五个关卡包裹着每个代理步骤：\n\n1.",
+    "url": "https://x.com/birmeya/status/2119147770011418935",
+    "metrics": {
+      "replies": 11,
+      "retweets": 1,
+      "likes": 54,
+      "views": 1752
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119146618452611132",
+    "authorHandle": "tantanyuli",
+    "authorName": "@tantanyuli",
+    "datetime": "2026-11-07T19:15:00.000Z",
+    "text": "花钱找人做 SEO 诊断，还是用开源工具 jev-seo 一分钟爬完整站，我挑后者。\n\n网站上线几个月，Google 还搜不到，先别急着掏钱请人诊断。\n\n官方文档自己啃，又不知先改哪条，那可以试试开源工具 jev-seo。\n\n给个首页网址，大约一分钟整站爬完，照着 Google 官方搜索文档的 52",
+    "url": "https://x.com/tantanyuli/status/2119146618452611132",
+    "metrics": {
+      "replies": 2,
+      "retweets": 0,
+      "likes": 2,
+      "views": 158
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119136410863091713",
+    "authorHandle": "dfinke",
+    "authorName": "@dfinke",
+    "datetime": "2026-11-07T18:34:26.000Z",
+    "text": "Excellent post from TypeSafe on Jev. Dials in on how and why. What caught my attention was the traceability.\n\nSo, I made the trace visual.",
+    "url": "https://x.com/dfinke/status/2119136410863091713",
+    "metrics": {
+      "replies": 0,
+      "retweets": 1,
+      "likes": 1,
+      "views": 252
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119065756289610145",
+    "authorHandle": "geektao0319",
+    "authorName": "@geektao0319",
+    "datetime": "2026-11-07T13:53:41.000Z",
+    "text": "12 种活各用哪个 AI 模型，按 11 月 7 日的最新版本整理好了。👇\n\n文字\n写代码、跑 Agent：Claude Opus 5.5\n开源、便宜：DeepSeek V4.1 Flash\n只做选择题、不写字：TypeSafe Jev 1.14\n\n视频\n广告、剧情短片：Seedance 2.5\n要像实拍：Muse Video（Meta 还在预览）\n开源：MiniMax H3\n\n图片",
+    "url": "https://x.com/geektao0319/status/2119065756289610145",
+    "metrics": {
+      "replies": 2,
+      "retweets": 0,
+      "likes": 0,
+      "views": 193
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119059893919359131",
+    "authorHandle": "GitTrend0x",
+    "authorName": "@GitTrend0x",
+    "datetime": "2026-11-07T13:30:23.000Z",
+    "text": "Jev 应用又燃爆了 🔥\n\nonlyreadai 的只读浏览器护盾、seanparkross 的 Slack 串楼警察、ninetyhe-90 的简历打分器、wy-coliney 的 Jev 点浏览器、a2sys-ai 的原文摘录阅读器……全网玩家把 Jev 玩成了下一代「防误操作闸门 + 频道纪律委员 + 简历裁判 + 点击加速器 + 文档取证官」:\n\n1️⃣",
+    "url": "https://x.com/GitTrend0x/status/2119059893919359131",
+    "metrics": {
+      "replies": 3,
+      "retweets": 0,
+      "likes": 0,
+      "views": 560
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119037453768048713",
+    "authorHandle": "thomas_rehmer",
+    "authorName": "@thomas_rehmer",
+    "datetime": "2026-11-07T12:01:13.000Z",
+    "text": "TypeSafe explains where decision models like Jev belong in a system, the model answers only the small questions code can't, and logic combines those answers into the decision.\n\nThe common mistake is one big Choice question with all the business rules written into its criteria,",
+    "url": "https://x.com/thomas_rehmer/status/2119037453768048713",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 1,
+      "views": 31
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119030378195243282",
+    "authorHandle": "FabianMaume",
+    "authorName": "@FabianMaume",
+    "datetime": "2026-11-07T11:33:06.000Z",
+    "text": "The Jev model by TypeSafe is quite cost-effective for ICP  check. There is a TypeSafe n8n node.",
+    "url": "https://x.com/FabianMaume/status/2119030378195243282",
+    "metrics": {
+      "replies": 1,
+      "retweets": 0,
+      "likes": 1,
+      "views": 37
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119008036849381709",
+    "authorHandle": "uqniatum",
+    "authorName": "@uqniatum",
+    "datetime": "2026-11-07T10:04:19.000Z",
+    "text": "I'm not a coder, no. I'm not writing anything in a programming language.\n\nI would agree with you if I was piping in a ton of JSON files similar to JEV and TypeSafe style ML, but that isn't the case.",
+    "url": "https://x.com/uqniatum/status/2119008036849381709",
+    "metrics": {
+      "replies": 1,
+      "retweets": 0,
+      "likes": 0,
+      "views": 41
+    },
+    "source": "community"
+  },
+  {
+    "id": "2119006992673177821",
+    "authorHandle": "yibie",
+    "authorName": "@yibie",
+    "datetime": "2026-11-07T10:00:10.000Z",
+    "text": "别让 AI 做整个决定\n\n这是 TypeSafe 公司讲自己模型 Jev 怎么用的一篇文章。Jev 是个专门做小判断的模型，但作者说，别把它叫「决策模型」。\n\n先想一个客服场景：用户发来消息要求退款，系统要决定是立刻退、转人工，还是拒绝。\n\n最直觉的做法，是把所有规则一股脑写进给 AI",
+    "url": "https://x.com/yibie/status/2119006992673177821",
+    "metrics": {
+      "replies": 3,
+      "retweets": 0,
+      "likes": 2,
+      "views": 363
+    },
+    "source": "community"
+  },
+  {
+    "id": "2118711513359978717",
+    "authorHandle": "StartLuxAI",
+    "authorName": "@StartLuxAI",
+    "datetime": "2026-11-06T14:26:03.000Z",
+    "text": "RLCD² (Reinforcement Learning for Calibrated Deliberative Decisions) rewards improvements in decision probability quality and penalizes reasoning beyond a soft length budget.\n\nOn 2,986 held-out examples, with reasoning enabled for every example, the 9B model shows these changes",
+    "url": "https://x.com/StartLuxAI/status/2118711513359978717",
+    "metrics": {
+      "replies": 1,
+      "retweets": 0,
+      "likes": 0,
+      "views": 23
+    },
+    "source": "community"
+  },
+  {
+    "id": "2118660249150427243",
+    "authorHandle": "treg_ai",
+    "authorName": "@treg_ai",
+    "datetime": "2026-11-06T11:02:20.000Z",
+    "text": "介绍 Jev \n@typesafeai\n 驱动的社交 API\n\n在 \nhttp://\ntreg.to/social 试用\n\n- 一个 API 即可访问任何社交数据\n- 跟踪你及竞争对手的每一次提及\n- 在你的细分领域中发现热门帖子，由 Jev 过滤\n- 拉取 1,000 个竞争对手广告的费用不到 0.05 美元\n\n开源，0% 加价\n\n👇 下方仓库链接",
+    "url": "https://x.com/treg_ai/status/2118660249150427243",
+    "metrics": {
+      "replies": 134,
+      "retweets": 256,
+      "likes": 2500,
+      "views": 287589
+    },
+    "source": "community"
+  },
+  {
+    "id": "2118558771337380237",
+    "authorHandle": "lieflat_3",
+    "authorName": "@lieflat_3",
+    "datetime": "2026-11-06T04:19:06.000Z",
+    "text": "Jev 对我的整个实验起到了关键性作用。过去处理几十万条文本，一般是让 AI 写正则表达式，但根本看不懂上下文，无法做语义理解，效果是很差的。\n\n让通用大模型来判断，跑一篇要两百多秒，而 Jev 把这个时间缩短到了 2.6 秒，简直是划时代的提升！整体效果上，虽然 Jev",
+    "url": "https://x.com/lieflat_3/status/2118558771337380237",
+    "metrics": {
+      "replies": 10,
+      "retweets": 13,
+      "likes": 147,
+      "views": 25698
+    },
+    "source": "community"
+  },
+  {
+    "id": "2118522339235389607",
+    "authorHandle": "typesafeai",
+    "authorName": "@typesafeai",
+    "datetime": "2026-11-06T01:54:20.000Z",
+    "text": "所以我们听说你喜欢决策模型\n\n但是你如何用模型对复杂的数据做出可靠的决策呢？\n\n你做不到：可靠性需要代码，因此可靠的决策是通过在代码中组合可靠的判断来实现的\n\nJev 做出可靠的判断",
+    "url": "https://x.com/typesafeai/status/2118522339235389607",
+    "metrics": {
+      "replies": 30,
+      "retweets": 8,
+      "likes": 252,
+      "views": 24868
+    },
+    "source": "community"
+  },
+  {
+    "id": "2118508404192981040",
+    "authorHandle": "allietheicon",
+    "authorName": "@allietheicon",
+    "datetime": "2026-11-06T00:58:58.000Z",
+    "text": "为什么我们在 TypeSafe 不把 Jev 称为决策模型呢？\n\n如果你把 Jev 的问题视为*决策*，我相信你会把它用在错误抽象层上，你的可靠性会受到影响。\n\n我把这一切都写在了我们的网站上 🧵👇",
+    "url": "https://x.com/allietheicon/status/2118508404192981040",
+    "metrics": {
+      "replies": 37,
+      "retweets": 58,
+      "likes": 441,
+      "views": 118731
+    },
+    "source": "community"
+  },
+  {
+    "id": "2118316502814191780",
+    "authorHandle": "strawberry",
+    "authorName": "@strawberry",
+    "datetime": "2026-11-05T12:16:25.000Z",
+    "text": "介绍 Jev \n@typesafeai\n 驱动的应用程序触发器  \n\n无需再看护您的代理，以几分钱的价格监控数千个应用程序事件  \n\n在 \nhttp://\nstrawberrybrowser.com 免费试用  \n\n“使用我们的 Notion FAQ 监控 Gmail 的客户支持并起草回复。”  \n\n“等待 Oliver 在 Slack 中的回复，检查 NDA 并将其归档到 Drive 中。”  \n\nJev",
+    "url": "https://x.com/strawberry/status/2118316502814191780",
+    "metrics": {
+      "replies": 60,
+      "retweets": 55,
+      "likes": 451,
+      "views": 183967
+    },
+    "source": "community"
+  },
+  {
+    "id": "2118267080860631249",
+    "authorHandle": "daigomiyoshi_ai",
+    "authorName": "@daigomiyoshi_ai",
+    "datetime": "2026-11-05T09:00:02.000Z",
+    "text": "",
+    "url": "https://x.com/daigomiyoshi_ai/status/2118267080860631249",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 1,
+      "views": 684
+    },
+    "source": "community"
+  },
+  {
+    "id": "2118207689587069343",
+    "authorHandle": "affaan",
+    "authorName": "@affaan",
+    "datetime": "2026-11-05T05:04:02.000Z",
+    "text": "good to see the applied MAB and Contextual Bandit  resurgence still going strong; good application here ; got me thinking what about an RLCD System One model in first on the raw unstruct ; feeding it calibrated norm vectors could maybe in some cases speed up exploration here?",
+    "url": "https://x.com/affaan/status/2118207689587069343",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 2,
+      "views": 249
+    },
+    "source": "community"
+  },
+  {
+    "id": "2117752815837995189",
+    "authorHandle": "Kazuki_Refia",
+    "authorName": "@Kazuki_Refia",
+    "datetime": "2026-11-03T22:56:31.000Z",
+    "text": "CPUの処理でaiでjevを利用可能です\n使わなくても問題無いですが、判断性能が上がる見込みです\n利用については、各個人でご判断いただき利用料についてもご確認ください\n（※初期5ドル配布されて開発で使いましたが使いきれませんでした）\n\nhttps://\ntypesafe.ai\n#俺の切り札は光らない\n#LifeDCG",
+    "url": "https://x.com/Kazuki_Refia/status/2117752815837995189",
+    "metrics": {
+      "replies": 0,
+      "retweets": 2,
+      "likes": 5,
+      "views": 604
+    },
+    "source": "community"
+  },
+  {
+    "id": "2115828755918917866",
+    "authorHandle": "oalanicolas",
+    "authorName": "@oalanicolas",
+    "datetime": "2026-10-29T15:31:00.000Z",
+    "text": "为了做到这一点，你需要拥有 JEV 的密钥，可以通过 OpenRouter（\nhttps://\nopenrouter.ai）或直接在 Typesafe（\nhttps://\ntypesafe.ai）获取。",
+    "url": "https://x.com/oalanicolas/status/2115828755918917866",
+    "metrics": {
+      "replies": 1,
+      "retweets": 0,
+      "likes": 16,
+      "views": 2835
+    },
+    "source": "community"
+  },
+  {
+    "id": "2115113269253795987",
+    "authorHandle": "fastinoAI",
+    "authorName": "@fastinoAI",
+    "datetime": "2026-10-27T16:07:54.000Z",
+    "text": "一个置信度为90%的决策模型并不一定90%的时间是正确的。\n\n当模型未校准时，置信度分数反映了它对某个标签的偏好强度，但并不反映该预测正确的频率。\n\n用于校准决策的强化学习（RLCD）是一种后训练技术，通过奖励模型做出正确决策并准确表达不确定性来修复这个问题。",
+    "url": "https://x.com/fastinoAI/status/2115113269253795987",
+    "metrics": {
+      "replies": 6,
+      "retweets": 6,
+      "likes": 69,
+      "views": 3879
+    },
+    "source": "community"
+  },
+  {
     "id": "2114839490573308133",
     "authorHandle": "mayowa_olusoji",
     "authorName": "@mayowa_olusoji",
@@ -10,7 +579,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 64
+      "views": 65
     },
     "source": "community"
   },
@@ -25,7 +594,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 187
+      "views": 188
     },
     "source": "community"
   },
@@ -70,7 +639,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 6,
-      "views": 229
+      "views": 230
     },
     "source": "community"
   },
@@ -85,7 +654,7 @@
       "replies": 0,
       "retweets": 2,
       "likes": 11,
-      "views": 257
+      "views": 258
     },
     "source": "community"
   },
@@ -100,7 +669,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 51951
+      "views": 51952
     },
     "source": "community"
   },
@@ -115,7 +684,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 35311
+      "views": 35312
     },
     "source": "community"
   },
@@ -130,7 +699,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 67
+      "views": 68
     },
     "source": "community"
   },
@@ -145,7 +714,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 328
+      "views": 329
     },
     "source": "community"
   },
@@ -160,7 +729,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 44
+      "views": 45
     },
     "source": "community"
   },
@@ -175,7 +744,7 @@
       "replies": 7,
       "retweets": 1,
       "likes": 8,
-      "views": 618
+      "views": 619
     },
     "source": "community"
   },
@@ -205,7 +774,7 @@
       "replies": 27,
       "retweets": 26,
       "likes": 63,
-      "views": 5524
+      "views": 5525
     },
     "source": "community"
   },
@@ -220,7 +789,7 @@
       "replies": 17,
       "retweets": 14,
       "likes": 133,
-      "views": 26092
+      "views": 26106
     },
     "source": "community"
   },
@@ -235,7 +804,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 6,
-      "views": 1048
+      "views": 1050
     },
     "source": "community"
   },
@@ -250,7 +819,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 102
+      "views": 103
     },
     "source": "community"
   },
@@ -265,7 +834,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 142
+      "views": 143
     },
     "source": "community"
   },
@@ -280,7 +849,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 56
+      "views": 57
     },
     "source": "community"
   },
@@ -295,7 +864,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 196
+      "views": 197
     },
     "source": "community"
   },
@@ -310,7 +879,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 196
+      "views": 197
     },
     "source": "community"
   },
@@ -325,577 +894,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 19,
-      "views": 4908
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114832692957135054",
-    "authorHandle": "stretchcloud",
-    "authorName": "@stretchcloud",
-    "datetime": "2026-10-26T11:03:27.000Z",
-    "text": "Finding one qualified lead costs $0.0089 through Treg's new Jev-powered people search. Clay charges upward of $600 a month for the same job once you're past the free tier. Same task. Agent does the asking instead of a rep.\n\nTreg itself isn't really a people search tool. It's a catalog, built by the Superdesign team and released under AGPL on GitHub, that gives an agent one API key and access to roughly 2,900 endpoints across 60 providers, from LinkedIn and email verification to enrichment and scraping, priced per call starting around a cent. The people search layer running on top uses Jev, a decision model from TypeSafe that classifies and ranks instead of writing prose, which is most of why a single lookup comes in under a cent.\n\nClay just raised $115 million at a $7.1 billion valuation in September, led by Wellington with Sequoia and a16z's growth fund among others in the round, and claims 17,000 customers including 80% of the Forbes AI 50. Its own plans run from $149 a month for a couple thousand credits up to $2,000 for the heaviest tier. Apollo sits in similar territory once a team adds the credit top-ups most of them end up buying. None of that is a reason those platforms lose their current customers tomorrow. The workflow tooling and CRM integration are real.\n\nWhat's different is the marginal lead. A sales team that used to ration who got researched, because credits were expensive, can now research everyone, because the cost per lookup rounds to nothing. Qualification stops being a budget decision and starts being a default.",
-    "url": "https://x.com/stretchcloud/status/2114832692957135054",
-    "metrics": {
-      "replies": 0,
-      "retweets": 1,
-      "likes": 3,
-      "views": 371
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114674262179188755",
-    "authorHandle": "treg_ai",
-    "authorName": "@treg_ai",
-    "datetime": "2026-10-26T11:03:27.000Z",
-    "text": "介绍 Jev \n@typesafeai\n 驱动的人脉搜索\n\n只需 $0.0089/条线索，再也不用 $600 的订阅费，\n\n在 \nhttp://\ntreg.to/people-search 试用\n\n- 比 Clay 便宜 85%\n- 人物搜索基准准确度排名 #1\n- 插件可接入任何代理以查找任何人\n\n完全开源，0% 加价\n\nGit 仓库如下 👇",
-    "url": "https://x.com/treg_ai/status/2114674262179188755",
-    "metrics": {
-      "replies": 244,
-      "retweets": 315,
-      "likes": 4275,
-      "views": 585296
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114646988805341581",
-    "authorHandle": "blockphd7",
-    "authorName": "@blockphd7",
-    "datetime": "2026-10-26T09:15:05.000Z",
-    "text": "很多人把大模型当聊天框，其实有一类任务更适合只问一句结构化的问题，是或否、多选分类、打分、图上框出目标。TypeSafe 的 Jev（System One 决策模型）就是干这个的，不是聊天替身。\n\n\nhttp://\napikey.fan 已上 TypeSafe 官方直连分组，jev-1.14.0 和 jev-1.13.0 都能走。价目页现价大约每百万输入 0.033 美元，对照官方 0.042，大约七五折到八折这一档，输出不计费。1.14 多了 Box 题型，能回物体坐标。两边都支持图片，网关上长上下文默认可拉到约 26 万 token，单价不跟着涨。\n\n怎么用比较成熟？最省事的是 Magpie：路由组挂上 TypeSafe，分类器选 typesafe/jev-latest，每轮先让 Jev 判断意图，简单题走便宜快模型，写测试、啃难题再上 Claude 或 Kimi，Routing 页还能看到置信度。官方也推同一思路，先 choice 或 score 做闸门，置信度够才动贵模型。再往上，可以一条请求里打一组 noul 做越狱与伤害筛查，或者工单分流、表单自动归类；1.14 审图时先问有没有目标，再信 Box 坐标。\n\n顺带一句，同站 Kimi 分组里已经能看到 kimi-k3.1-pro，折扣通道大约 0.97 / 5.1 美元每百万，比官方 2 / 10 低一截。\n\n注册用我的邀请链接（评论区），文档、Magpie、免费池也放评论。实扣以分组费率×用量为准，页面有四舍五入，以账单为准。工具向分享，不构成投资建议。",
-    "url": "https://x.com/blockphd7/status/2114646988805341581",
-    "metrics": {
-      "replies": 9,
-      "retweets": 1,
-      "likes": 4,
-      "views": 611
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114834692935729386",
-    "authorHandle": "6AW0RON0k",
-    "authorName": "@6AW0RON0k",
-    "datetime": "2026-10-25T14:10:05.000Z",
-    "text": "🚨天哪，这太他妈颠覆我的认知了。\n\nJev 以每百万次 0.042 美元的价格替换每个 LLM 决策调用。输出免费。\n\nDiogo Almeida 在 TypeSafe 构建了它。没有文本生成。模型接收类型化问题，并在一次调用中返回校准的概率。Jev 对四个决策工作流的 LLM 调用：快 193.6 倍，便宜 444.6 倍，上限。主页上的工作示例显示快 75 倍，便宜 171 倍。\n\nSPLIT - 无 KV 缓存，无长转录，类型化问题并行处理\nSCORE - 选择，是/否，概率一次性在一次调用中回答\nGATE - 防护栏在执行前对 shell 命令进行评分\n\n一个长转录就是代价。分割管道在下方运行 ↓",
-    "url": "https://x.com/6AW0RON0k/status/2114834692935729386",
-    "metrics": {
-      "replies": 6,
-      "retweets": 0,
-      "likes": 31,
-      "views": 985
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114718856921186761",
-    "authorHandle": "BBandpey",
-    "authorName": "@BBandpey",
-    "datetime": "2026-10-25T13:51:46.000Z",
-    "text": "我真的被我的账号搞得要死了\n\n已经完成了58%，总共100%，而且它就在几小时前刚重置过……\n\n每周六重置（现在才周日），然后他妈的下周六又重置\n\n60% 完成\n\n操！！\n\n我只是做了个基本主题更改 + 完整的电子邮件流程创建 T_T\n\n什么鬼",
-    "url": "https://x.com/BBandpey/status/2114718856921186761",
-    "metrics": {
-      "replies": 9,
-      "retweets": 0,
-      "likes": 12,
-      "views": 2239
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114725824763208089",
-    "authorHandle": "BBandpey",
-    "authorName": "@BBandpey",
-    "datetime": "2026-10-25T13:51:46.000Z",
-    "text": "我真的被我的账号搞得要死了\n\n已经完成了58%，总共100%，而且它就在几小时前刚重置过……\n\n每周六重置（现在才周日），然后他妈的下周六又重置\n\n60% 完成\n\n操！！\n\n我只是做了个基本主题更改 + 完整的电子邮件流程创建 T_T\n\n什么鬼",
-    "url": "https://x.com/BBandpey/status/2114725824763208089",
-    "metrics": {
-      "replies": 9,
-      "retweets": 0,
-      "likes": 12,
-      "views": 2239
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114348773778366936",
-    "authorHandle": "GitTrend0x",
-    "authorName": "@GitTrend0x",
-    "datetime": "2026-10-25T13:30:05.000Z",
-    "text": "Jev 决策核又杀疯了 🔥\n\nTypeSafe 官方的 Agent Skill、AgriciDaniel 的一键 SEO 体检、moritzkremb 的语音开浏览器、fhshaik 的 AI 马里奥、RomanSlack 的纯视觉无人机……全网玩家把 Jev 玩成了下一代「官方接入外挂 + SEO 审计官 + 声控浏览器 + 游戏手柄大脑 + 无人机战术核」:\n\n1️⃣",
-    "url": "https://x.com/GitTrend0x/status/2114348773778366936",
-    "metrics": {
-      "replies": 6,
-      "retweets": 25,
-      "likes": 220,
-      "views": 12171
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114334449068568884",
-    "authorHandle": "yrq1024",
-    "authorName": "@yrq1024",
-    "datetime": "2026-10-25T12:33:09.000Z",
-    "text": "先纠正一个说法：JEV-27B-VL、AutoJev、OpenJev、DeBERTa 版都不是 TypeSafe 官方模型，是社区复刻，官方只有托管的 Jev。\n选型上就一条：任务常变、要零样本、一个 state 并行问多题，Jev 还是赢；任务固定、又有标注数据，微调 Laya/DeBERTa 这类编码器最快最便宜；截图加自托管，看 JEV-27B-VL 或者",
-    "url": "https://x.com/yrq1024/status/2114334449068568884",
-    "metrics": {
-      "replies": 5,
-      "retweets": 0,
-      "likes": 4,
-      "views": 314
-    },
-    "source": "community"
-  },
-  {
-    "id": "2113954028635758833",
-    "authorHandle": "PresteignAI",
-    "authorName": "@PresteignAI",
-    "datetime": "2026-10-24T11:21:30.000Z",
-    "text": "Now that Jev has already passed from trendy to defacto, I'm  re-reading \n@typesafeai\n  blogpost\n\nhttps://\ntypesafe.ai/blog/bitterest\n-lesson\n…\n\nIt's informative and so witty!\n\nLaughed out loud at this joke",
-    "url": "https://x.com/PresteignAI/status/2113954028635758833",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 2,
-      "views": 35
-    },
-    "source": "community"
-  },
-  {
-    "id": "2113882356150931456",
-    "authorHandle": "Borty",
-    "authorName": "@Borty",
-    "datetime": "2026-10-24T06:36:42.000Z",
-    "text": "Źródła:\n\nJev, premiera TypeSafe AI (15 września): \nhttps://\ntypesafe.ai/blog/introduci\nng-system-one-models-and-jev\n…\nBasal, silnik na GitHubie: \nhttps://\ngithub.com/rkinas/basal\nBasal, wagi na Hugging Face: \nhttps://\nhuggingface.co/Remek/basal-2.\n0-4.5B\n…\nArtificial Analysis Decision Index (13 października): \nhttps://\nartificialanalysis.ai/articles/artif\nicial-analysis-decision-index\n…\nRed Hat, test prompt",
-    "url": "https://x.com/Borty/status/2113882356150931456",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 272
-    },
-    "source": "community"
-  },
-  {
-    "id": "2113797437156741486",
-    "authorHandle": "presidentsamlu",
-    "authorName": "@presidentsamlu",
-    "datetime": "2026-10-24T00:59:16.000Z",
-    "text": "i remember doing a work trial for a series b, soon-to-be series c company, where i was tasked with building a decision model from scratch that would outperform jev (\nhttps://\ntypesafe.ai/blog/introduci\nng-system-one-models-and-jev\n…).\n\ni'm technically a month behind on this (oops), but it's interesting that just having a",
-    "url": "https://x.com/presidentsamlu/status/2113797437156741486",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 80
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114828380525006878",
-    "authorHandle": "webbovich77",
-    "authorName": "@webbovich77",
-    "datetime": "2026-10-23T19:14:48.000Z",
-    "text": "这就是Kimi AI如何宣传他们的全新模型Kimi K3.1 pro的。我认识所有和他们合作的影响者，没有一个是诚实的，我自己也发过关于这事的帖子，但我没有参与其中，也从未使用过他们提供的模板。\n\n宣传伎俩，我还有更多要分享，这太他妈的荒唐了，我会跟进这个话题",
-    "url": "https://x.com/webbovich77/status/2114828380525006878",
-    "metrics": {
-      "replies": 257,
-      "retweets": 416,
-      "likes": 2091,
-      "views": 492344
-    },
-    "source": "community"
-  },
-  {
-    "id": "2113350972688998401",
-    "authorHandle": "maheshaipm",
-    "authorName": "@maheshaipm",
-    "datetime": "2026-10-22T19:25:10.000Z",
-    "text": "What this video covers: \n\n→ How we got here: small language models, large language models, RLHF and RLVR \n\n→ Why generation models cannot give you a reliable confidence score \n\n→ RLCD: reinforcement learning with calibrated decisions \n\n→ The three decision types: choice,",
-    "url": "https://x.com/maheshaipm/status/2113350972688998401",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 2,
-      "views": 41
-    },
-    "source": "community"
-  },
-  {
-    "id": "2113348030590267557",
-    "authorHandle": "typesafeai",
-    "authorName": "@typesafeai",
-    "datetime": "2026-10-22T19:13:29.000Z",
-    "text": "定制代理，配备定制知识库、定制指令、定制工具集，当然，还有与Jev的定制路由\n\n让你的goon成为你独有的！",
-    "url": "https://x.com/typesafeai/status/2113348030590267557",
-    "metrics": {
-      "replies": 8,
-      "retweets": 3,
-      "likes": 92,
-      "views": 18701
-    },
-    "source": "community"
-  },
-  {
-    "id": "2113270493897994482",
-    "authorHandle": "FablessBridge",
-    "authorName": "@FablessBridge",
-    "datetime": "2026-10-22T14:05:23.000Z",
-    "text": "Jev gives software typed answers instead of paragraphs. Each question about a state returns a result and a confidence your code can act on.\nIts Product Hunt launch caught us mid-parse. Our 30 seconds of black-and-white windows are unrequested.\n\nhttps://\ntypesafe.ai",
-    "url": "https://x.com/FablessBridge/status/2113270493897994482",
-    "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 0,
-      "views": 32
-    },
-    "source": "community"
-  },
-  {
-    "id": "2113082126191186275",
-    "authorHandle": "paraskarmachary",
-    "authorName": "@paraskarmachary",
-    "datetime": "2026-10-22T01:36:52.000Z",
-    "text": "",
-    "url": "https://x.com/paraskarmachary/status/2113082126191186275",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 672
-    },
-    "source": "community"
-  },
-  {
-    "id": "2113038164990255448",
-    "authorHandle": "Strykix",
-    "authorName": "@Strykix",
-    "datetime": "2026-10-21T22:42:11.000Z",
-    "text": "Tu devrais regarder typesafe AI, avec le model JEV. \n\nhttps://\ntypesafe.ai/blog/introduci\nng-system-one-models-and-jev\n…\nÇa fait pas mal de bruit à SF, t'es 80B pourrais sûrement te coûter beaucoup moins 😅",
-    "url": "https://x.com/Strykix/status/2113038164990255448",
-    "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 0,
-      "views": 232
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112971330421412292",
-    "authorHandle": "typesafeai",
-    "authorName": "@typesafeai",
-    "datetime": "2026-10-21T18:16:36.000Z",
-    "text": "Jev 为 \n@UiPath\n 工作流程带来可靠的智能判断，大约便宜和快一个数量级\n\nLLM-as-a-judge-no-more",
-    "url": "https://x.com/typesafeai/status/2112971330421412292",
-    "metrics": {
-      "replies": 8,
-      "retweets": 8,
-      "likes": 126,
-      "views": 17456
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112942254197506288",
-    "authorHandle": "pragmaticdevio",
-    "authorName": "@pragmaticdevio",
-    "datetime": "2026-10-21T16:21:04.000Z",
-    "text": "Still confused about Jev...well, no worries, here's an article that will help you understand Jev.",
-    "url": "https://x.com/pragmaticdevio/status/2112942254197506288",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 56
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112896686444159460",
-    "authorHandle": "itarutomy",
-    "authorName": "@itarutomy",
-    "datetime": "2026-10-21T13:20:00.000Z",
-    "text": "ソフトウェアへ組み込むAIモデル「Jev」を開発するTypeSafe AIが、8億7,000万ドルのシリーズAを発表しています（\nhttps://\ntypesafe.ai/blog/series-ai）。評価額は75億ドル。a16zが主導し、Sequoia Capitalと既存投資家のDCVCなどが参加します。",
-    "url": "https://x.com/itarutomy/status/2112896686444159460",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 171
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112836729967427925",
-    "authorHandle": "pujasr22",
-    "authorName": "@pujasr22",
-    "datetime": "2026-10-21T09:21:45.000Z",
-    "text": "我测试了 Jev 分类器在 Anthropic 的博客库存上的应用，结果令人震惊。\n\n为什么选择 Jev：\n> 它是一个 System One 模型，不像 ChatGPT 那样生成文本\n> 它基于 RLCD（强化学习用于校准决策）的概念——充当您软件的决策层\n> 它根据您提供的上下文，为一个问题返回一个选择、分数或 noul",
-    "url": "https://x.com/pujasr22/status/2112836729967427925",
-    "metrics": {
-      "replies": 8,
-      "retweets": 5,
-      "likes": 21,
-      "views": 1413
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114832643447554203",
-    "authorHandle": "Alexxx636",
-    "authorName": "@Alexxx636",
-    "datetime": "2026-10-21T09:02:50.000Z",
-    "text": "Last Tuesday I booked a 4am ride to the airport. The app showed “arrived,” so the payment released. I stood outside for 25 minutes. The driver was still in traffic. I missed the flight by 12 minutes.\nThe system only saw the button he tapped. It never checked the live tracking page against the booking.\n\nThat is the exact hole smart contracts leave open. They need someone outside to tell them what happened. That is where decentralization ends.\nIntelligent Contracts go and check for themselves.\n\n\n@GenLayer\n’s version can pull the tracking page itself and ask a language model whether the driver was actually there. One validator proposes the answer. The others run the same check with their own models and have to land on the same result. If they disagree, a new leader tries again. Anyone can still appeal.\n\nA fake screenshot can still fool it, but no single person gets to decide the reality before the money moves.\n\nWhat is the last payment you released based only on someone’s report, then wished the system had looked for itself?",
-    "url": "https://x.com/Alexxx636/status/2114832643447554203",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 32
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112756010075201765",
-    "authorHandle": "indie_maker_fox",
-    "authorName": "@indie_maker_fox",
-    "datetime": "2026-10-21T04:01:00.000Z",
-    "text": "分享一个开源项目 Jev Ultrafast\n\nBrowser Use 和 TypeSafe 做的浏览器智能体，让模型做选择题而不是写代码：页面整理成带编号的元素表，一次请求同时选出操作和元素，只在要输入文字时调用小模型。\n\n- 默认不看截图，模型输出不会变成选择器、坐标或 JS\n- 官方演示 7 秒完成一次 Google Flights",
-    "url": "https://x.com/indie_maker_fox/status/2112756010075201765",
-    "metrics": {
-      "replies": 6,
-      "retweets": 4,
-      "likes": 40,
-      "views": 4096
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112661413273711095",
-    "authorHandle": "engineer_num1",
-    "authorName": "@engineer_num1",
-    "datetime": "2026-10-20T21:45:06.000Z",
-    "text": "",
-    "url": "https://x.com/engineer_num1/status/2112661413273711095",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 2,
-      "views": 6463
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112526296240828907",
-    "authorHandle": "engineer_num1",
-    "authorName": "@engineer_num1",
-    "datetime": "2026-10-20T12:48:12.000Z",
-    "text": "",
-    "url": "https://x.com/engineer_num1/status/2112526296240828907",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 8348
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112172415719715243",
-    "authorHandle": "zleapai",
-    "authorName": "@zleapai",
-    "datetime": "2026-10-19T13:22:00.000Z",
-    "text": "",
-    "url": "https://x.com/zleapai/status/2112172415719715243",
-    "metrics": {
-      "replies": 0,
-      "retweets": 1,
-      "likes": 1,
-      "views": 126
-    },
-    "source": "community"
-  },
-  {
-    "id": "2112160757886664706",
-    "authorHandle": "CoDanny",
-    "authorName": "@CoDanny",
-    "datetime": "2026-10-19T12:35:41.000Z",
-    "text": "That said, I'm very bullish on this direction.\n\nThe future isn't one giant LLM doing everything.\n\nIt's powerful reasoning models + decision models + deterministic code.\n\nI want Jev to succeed. I genuinely hope I'll have a reason to adopt it soon.",
-    "url": "https://x.com/CoDanny/status/2112160757886664706",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 10
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111188568169414889",
-    "authorHandle": "vigram_void",
-    "authorName": "@vigram_void",
-    "datetime": "2026-10-16T20:12:33.000Z",
-    "text": "让机器人视觉-语言-动作模型（VLA）变差的最快方法，可能就是给它更多的 3D 信息。\n\n我们一直说机器人需要空间智能，所以显而易见的做法是将点云输入到预训练的视觉-语言模型中。但 \n@chen_shizhe\n、Paul Pacaud 和 \n@CordeliaSchmid\n 在 RSS 2026 的一篇论文中展示了，这种做法可能会多么彻底地适得其反。\n\nPointACT 比较了几何信息在策略中进入的位置。\n\n将点云标记直接放入一个整体 VLA 中，RLBench 的成功率从 73.2% 下降到 18.6%。是的，在那个受控比较中，添加基于深度的 3D 特征让相同的架构急剧变差。\n\n他们的替代方案：保持预训练的 Qwen2.5-VL 语义主干 FROZEN，并为动作专家提供自己的几何路径。\n\n一个 Point Transformer v3 在五个空间尺度上编码多达 4,096 个彩色 3D 点。与其将整个场景压缩成一个几何嵌入，动作标记通过瓶颈自注意力访问点标记的局部窗口。每个窗口更新动作表示的副本；这些副本被池化，然后交叉关注 VLM 的语言/图像特征。\n\n可以将其想象成让运动策略反复检查附近表面，同时保持语言模型对任务的理解完整。\n\n消融实验就是整个故事。在 10 个模拟的 RLBench 任务上：\n\n双系统 VLA，无点云：50.8%。\n添加粗糙的最终层 3D 特征：69.7%。\n天真地连接多尺度特征：65.2–65.6%。\n实际在多个尺度与几何 INTERACT：82.3%。\n\n更多几何标记本身并不是答案。动作标记如何审视几何信息才重要。\n\n他们还测试了物理机器人。在 SO-100 臂将袜子放入抽屉的任务上，PointACT 成功 9/10 次，而 π0 只有 2/10 次。在 UR5 堆叠杯子的任务上，它得分 7/10，而 π0 是 0/10，尽管一个专用的 3D 策略也得分 7/10。\n\n不要过度吹嘘这一点：那些硬件测试每个任务只有 10 次试验，模型有不同的预训练历史，而且深度在透明物体上会变得嘈杂。作者还展示了失败案例，其中准确的初始抓取后跟随着零有用的恢复。\n\n我更大的收获：语义感知和几何控制可能不应该争夺相同的标记预算。让 VLM 决定什么重要，但让一个空间基础的动作专家决定手指到底去哪里。\n\n\nhttps://\ncshizhe.github.io/projects/point\nact.html\n…\n\n#RobotLearning #EmbodiedAI #VLA",
-    "url": "https://x.com/vigram_void/status/2111188568169414889",
-    "metrics": {
-      "replies": 3,
-      "retweets": 4,
-      "likes": 44,
-      "views": 2589
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111187896979833314",
-    "authorHandle": "BIGBULLapp",
-    "authorName": "@BIGBULLapp",
-    "datetime": "2026-10-16T20:09:53.000Z",
-    "text": "Found the chat app where your calendar finally talks back.\n\nMindRoom from mindroom-ai/mindroom is a Python chat system built around AI agents that know you and your work. Open source under Apache 2.0 with any model, local or cloud, and you can self-host the whole stack. Personal agents cover calendar, notes, trips, and homelab, while shared agents cover team email, documents, and code.\n\nThe clever part is every agent is a real user on Matrix, the open chat standard. That means you talk in MindRoom Chat, in any other Matrix client, or in Slack, Telegram, WhatsApp, and Discord through bridges. Topics list ai-agents, assistant, chat, llm, local-llm, matrix, mcp, self-hosted, which explains the pitch pretty well.\n\nNumbers are still early at 335 stars and 20 forks, with 39 open issues and last push on 2026-10-16. Still runs on one box if you want it to. \nhttps://\ngithub.com/mindroom-ai/mi\nndroom\n…",
-    "url": "https://x.com/BIGBULLapp/status/2111187896979833314",
-    "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 2,
-      "views": 144
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111187515336241551",
-    "authorHandle": "Evetelos",
-    "authorName": "@Evetelos",
-    "datetime": "2026-10-16T20:08:22.000Z",
-    "text": "In one study, men represented 33% of cooks in the training data. The AI predicted just 16%.\n\nThe machine didn’t simply inherit the bias. It amplified it.\n\nWhen does a statistical pattern become mistaken for objective truth?\n\nExplore the evidence.",
-    "url": "https://x.com/Evetelos/status/2111187515336241551",
-    "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 0,
-      "views": 197
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111186308395606233",
-    "authorHandle": "Teddo_ICO",
-    "authorName": "@Teddo_ICO",
-    "datetime": "2026-10-16T20:03:34.000Z",
-    "text": "AI 不总是需要写出答案。\n\n有时，最有价值的输出只是一个清晰的决策，软件可以立即采取行动。\n\n这就是 TypeSafe AI 的 Jev 背后的理念，现在可以通过 \nhttp://\nB.AI API 使用。\n\n⚙️ 𝐉𝐞𝐯 𝐈𝐬 𝐁𝐮𝐢𝐥𝐭 𝐅𝐨𝐫 𝐒𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞𝐝 𝐃𝐞𝐜𝐢𝐬𝐢𝐨𝐧𝐬\n\nJev 不是生成需要应用解释的文本，而是接收应用状态和类型化问题，然后返回带有概率和置信度的类型化决策。\n\n无需 JSON 提示。\n\n无需输出解析。\n\n模型与做出决策的软件之间没有不必要的层级。\n\n它并行评估 Choice、Score 和 Noul 问题，报告的响应时间约为 70–500 毫秒。\n\n💡 𝐓𝐡𝐞 𝐑𝐞𝐚𝐥 𝐕𝐚𝐥𝐮𝐞 𝐈𝐬 𝐈𝐧 𝐖𝐡𝐞𝐫𝐞 𝐈𝐭 𝐂𝐚𝐧 𝐁𝐞 𝐔𝐬𝐞𝐝\n\n这种架构适用于软件需要快速结构化判断而非一段文字的情况。\n\n想想票据路由。\n\n审核。\n\n风险评分。\n\n代理分支。\n\n根据 \nhttp://\nB.AI，Jev 的费用为每百万输入令牌 0.042 美元，输出免费。\n\n🔗 𝐀𝐈 𝐁𝐞𝐜𝐨𝐦𝐞𝐬 𝐌𝐨𝐫𝐞 𝐔𝐬𝐞𝐟𝐮𝐥 𝐖𝐡𝐞𝐧 𝐒𝐨𝐟𝐭𝐰𝐚𝐫𝐞 𝐂𝐚𝐧 𝐀𝐜𝐭 𝐎𝐧 𝐈𝐭\n\n这是 AI 如何融入应用的一个重要转变。\n\n不再是向 AI 模型询问解释，然后构建另一个系统来解释该解释，结构化输出可以更直接地融入软件工作流程。\n\nJev 现在可以通过 \nhttp://\nB.AI API 使用 Jev-1.13.0 或 Jev-Latest 访问。\n\n更广泛的理念很简单：\n\nAI 不总是需要说话。\n\n有时它需要做出决定。\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRONEcoStar",
-    "url": "https://x.com/Teddo_ICO/status/2111186308395606233",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 6735
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111186244491223426",
-    "authorHandle": "djdabblin",
-    "authorName": "@djdabblin",
-    "datetime": "2026-10-16T20:03:19.000Z",
-    "text": "Real talk, cosmic kin. 🐉\n\nYou picked one AI and you moved in. I get it — it worked, so why look around? But every model is raised on its own data, with its own culture, and when you only run one you're playing in one company's sandbox.\n\nI built something different. Gravity Claw: one operating system, an AI C-suite running across Gemini, Claude, OpenAI/Codex and Kimi. Front office over here. Back office over there. A kill switch in the terminal because I'm a developer and I like knowing where the off button is.\n\n13-minute primer is up. My actual screen, nothing staged.\n\nLink in bio. Peace. ✌🏾",
-    "url": "https://x.com/djdabblin/status/2111186244491223426",
-    "metrics": {
-      "replies": 1,
-      "retweets": 1,
-      "likes": 1,
-      "views": 108
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111184841043546563",
-    "authorHandle": "Evoputa",
-    "authorName": "@Evoputa",
-    "datetime": "2026-10-16T19:57:44.000Z",
-    "text": "AI in manufacturing pays off when it starts on one costly problem with data you trust. Here's where I'd look first: the machine that hurts most when it stops, the inspection point that leaks the most defects, and the know-how about to retire.",
-    "url": "https://x.com/Evoputa/status/2111184841043546563",
-    "metrics": {
-      "replies": 4,
-      "retweets": 0,
-      "likes": 1,
-      "views": 79
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111183581099753615",
-    "authorHandle": "RichardLynes",
-    "authorName": "@RichardLynes",
-    "datetime": "2026-10-16T19:52:44.000Z",
-    "text": "Tesla Roadster, Starship, and a Thermal Architecture Question Worth Testing\nWatching the new Tesla Roadster engineering walk-through, one thing immediately caught my attention.\nTesla describes moving its cylindrical-cell battery architecture to double-sided cooling to maintain repeatable high-power performance, reduce thermal gradients, and avoid the kind of power fade that becomes critical under track use and fast charging. The Roadster also integrates that battery and powertrain thermal management into a next-generation heat-pump system.    Pasted text    Pasted text    Pasted text\nThat is smart engineering.\nBut it raises another question.\nWhat happens if we stop thinking of the cooling system as something added to the battery and instead make the structural member itself the thermal system?\nThat is a question we have already been exploring in another domain.\nAt Genesis AiX, our Starship ITPS and data-center rack work has been investigating a structural thermal-backplane concept using high-pressure CO₂ microchannels—where the plate carrying the hardware is also the heat-transfer infrastructure.\nThe deeper idea is not simply “use CO₂ instead of glycol.”\nIt is:\nremove thermal interfaces.\nReduce intermediate loops.\nMake structure, cooling, sensing, power, and control converge into one engineered plane.\nFor a Roadster-class battery, that suggests three architectures worth comparing:\nTesla-style double-sided liquid jackets feeding a heat-pump/chiller loop.\nDouble-sided structural microchannel plates using high-pressure single-phase CO₂.\nDouble-sided structural plates operating directly as part of a transcritical R744 heat-pump circuit.\nThe third case is especially interesting.\nRather than:\nbattery → glycol → chiller → refrigerant → ambient\nthe system could potentially become:\nbattery → structural R744 thermal plane → heat pump / gas cooler → ambient\nThat does not automatically make it better.\nCO₂ brings real engineering penalties: high operating pressure, crash containment, vibration durability, serviceability, and cold-start/transcritical control. Those penalties have to be counted honestly.\nThe question is whether eliminating an intermediate coolant circuit and embedding the heat-transfer geometry directly into a structural battery member saves enough mass, thermal resistance, volume, and transient recovery time to offset those penalties.\nThat is where I think this becomes interesting.\nThe Roadster is not an ordinary EV thermal problem. Tesla is targeting more than a megawatt of propulsion power, extremely rapid charging, and sustained track performance.    Pasted text    Pasted text\nThose are exactly the kinds of heat-flux conditions where architecture begins to matter more than simply choosing a better coolant.\nAnd there is a broader engineering lesson here that I think Tesla and SpaceX already understand very well.\nThe Roadster itself is cross-pollinating technologies from Tesla, Optimus, and SpaceX—actuators, thermal systems, pressure vessels, aero systems, and cold-gas thrusters.    Pasted text    Pasted text\nOur own work has been following a similar principle from another direction:\ndata-center thermal backplanes → aerospace ITPS → vehicle-scale structural thermal planes\nThe physics does not care which industry a useful architecture originated in.\nThe right question is whether the architecture survives the constraints of the new domain.\nThat is something I would genuinely like to model.\nNot “is supercritical CO₂ better than Tesla’s coolant?”\nA more useful question:\nCan a double-sided structural CO₂/R744 thermal plane outperform a conventional liquid-jacket architecture once heat flux, cell ΔT, recovery time, parasitic power, total system mass, containment mass, and failure modes are all included?\nIf the answer is no, we learn something.\nIf the answer is yes, there may be a very interesting automotive extension of the thermal architecture we have already been developing for Starship ITPS and high-density data-center racks.\nAnd this is where our broader Genesis AiX work also enters the picture.\nLifeStack is built around a similar systems principle:\ndo not merely add another intelligent layer.\nMove control, standing, evidence, and authorization to the boundary where consequence occurs.\nDifferent domain. Same architectural instinct.\nRemove unnecessary interfaces.\nMove critical function closer to the point of consequence.\nMake the boundary itself intelligent, observable, and governed.\nThat is where some of the most interesting engineering tends to happen.\nElon Musk — I’d be very interested in comparing notes on this one.\n#TeslaRoadster #Tesla #SpaceX #ThermalManagement #BatteryEngineering #R744 #CO2Cooling #DataCenters #Starship #GenesisAiX #LifeStack #Engineering",
-    "url": "https://x.com/RichardLynes/status/2111183581099753615",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 85
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111183277780238557",
-    "authorHandle": "Defi_Berzio",
-    "authorName": "@Defi_Berzio",
-    "datetime": "2026-10-16T19:51:31.000Z",
-    "text": "🔓 𝗕.𝗔𝗜: 𝗠𝗨𝗟𝗧𝗜-𝗠𝗢𝗗𝗘𝗟 𝗚𝗔𝗧𝗘𝗪𝗔𝗬 𝗪𝗜𝗧𝗛𝗢𝗨𝗧 𝗣𝗘𝗥-𝗠𝗢𝗗𝗘𝗟 𝗜𝗡𝗧𝗘𝗚𝗥𝗔𝗧𝗜𝗢𝗡𝗦\n\n\nhttp://\nt.co/f8M3vgXqBb places multiple AI models behind one entry point. Users and builders can switch models without writing a separate integration for each provider.\n\nThe platform handles the routing. The user selects the model or lets the system choose. Output still depends on the model that receives the call and the prompt that was sent.\n\n➠ 𝗪𝗛𝗔𝗧 𝗧𝗛𝗘 𝗦𝗜𝗡𝗚𝗟𝗘 𝗘𝗡𝗧𝗥𝗬 𝗥𝗘𝗠𝗢𝗩𝗘𝗦\nIt removes the need to manage individual API keys, endpoints, and billing for every model. A developer can test several models inside one codebase. An end user can compare responses in one session. The reduction is in setup steps, not in model limits.\n\n➠ 𝗪𝗛𝗘𝗥𝗘 𝗧𝗛𝗘 𝗟𝗜𝗠𝗜𝗧𝗦 𝗥𝗘𝗠𝗔𝗜𝗡\nEach model keeps its own context window, rate limits, and accuracy profile. Switching models does not improve the weaker model. A successful call only confirms that the selected model responded. It does not mean the next call will clear the same constraints.\n\n➠ 𝗪𝗛𝗔𝗧 𝗧𝗛𝗘 𝗚𝗔𝗧𝗘𝗪𝗔𝗬 𝗗𝗢𝗘𝗦 𝗡𝗢𝗧 𝗖𝗥𝗘𝗔𝗧𝗘\nIt does not produce a single superior model. It does not eliminate the need to evaluate outputs. Broader access increases the number of paths available. It does not change the quality of any individual path.\n\nThe entry is \nhttp://\nt.co/f8M3vgXqBb. Model selection and output checks stay with the user.\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRON #TRONEcoStar",
-    "url": "https://x.com/Defi_Berzio/status/2111183277780238557",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 64
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111179039050445066",
-    "authorHandle": "aLexKriz83",
-    "authorName": "@aLexKriz83",
-    "datetime": "2026-10-16T19:34:41.000Z",
-    "text": "Greed is the refusal of vulnerability.\nThe more we accumulate, the wider the gap. The machine scales the loop, then becomes the thing we can no longer leave.\nNo system creates immortality.\nThe Architecture of Greed. Part IV.",
-    "url": "https://x.com/aLexKriz83/status/2111179039050445066",
-    "metrics": {
-      "replies": 1,
-      "retweets": 2,
-      "likes": 3,
-      "views": 2281
-    },
-    "source": "community"
-  },
-  {
-    "id": "2111178951511232623",
-    "authorHandle": "xiphcyber",
-    "authorName": "@xiphcyber",
-    "datetime": "2026-10-16T19:34:20.000Z",
-    "text": "Your phone is becoming an age checkpoint. Checking your age once sounds convenient—but who gets the data, and who controls access? Xiph Cyber explores the privacy trade-offs as age verification moves into your operating system.",
-    "url": "https://x.com/xiphcyber/status/2111178951511232623",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 3,
-      "views": 412
-    },
-    "source": "community"
-  },
-  {
-    "id": "2114720706176909325",
-    "authorHandle": "AnnatarXBT",
-    "authorName": "@AnnatarXBT",
-    "datetime": "2026-09-18T16:25:10.000Z",
-    "text": "Jev + Claude Opus 5.5 在运行公司大脑方面吓人地出色\n\n完整的架构来自 TypeSafe 和 Anthropic 文档，浓缩成一份 14 页的 PDF\n\n10 个步骤：\n\n1. 分离角色\n> Opus 5.5 思考，Jev 决定，你的代码拥有分支\n\n2. 停止向文本生成器询问是或否\n> Jev 在 0.44 秒内以 0.00035 美元的成本返回一个类型化的答案，附带校准的概率\n\n3. 并行提问\n> Choice、Score 和 Noul 并行运行，因此第四个问题几乎不费成本\n\n4. 根据数字分支\n> 0.999 直接进入 if 语句，约 99% 的回合在那里结束\n\n5.  purposeful 路由\n> 将 Opus 5.5 弹回 Sonnet 再返回的成本是 5.84，而保持原位只需 3.32\n\n6. 保持一个上下文温暖\n> 缓存读取每 Mtok 0.20 美元，比新鲜加载便宜 20 倍\n\n7. 升级困难的 1%\n> 它转到 Opus 5.5，带有 1M 上下文，在 Terminal-Bench 4.0 上得分 66.4%\n\n8. 在每个查询中为每个块评分\n> 保留它、总结它或丢弃它，并在每回合重建上下文\n\n9. 为每个命令设置关卡\n> 每个 bash 调用在运行前被分类，在你自己的代码内部\n\n10. 判断每次运行\n> 每天 3.50 美元处理 10,000 次跟踪，在所有 500 个测试决策上匹配人类标签\n\n一个为每个微小调用支付前沿价格的循环变成了一个大脑，它花费不到一分钱来注意，并仅在思考时正确付费\n\n谁把这个带到预算会议，谁就带着 AI 账单下降和输出上升走进去\n\n从零开始设置的分步 Jev 路线图如下 👇",
-    "url": "https://x.com/AnnatarXBT/status/2114720706176909325",
-    "metrics": {
-      "replies": 4,
-      "retweets": 3,
-      "likes": 32,
-      "views": 1713
+      "views": 4909
     },
     "source": "community"
   }
