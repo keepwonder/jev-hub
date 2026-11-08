@@ -3,13 +3,14 @@
     "id": "2119269544279843210",
     "authorHandle": "xlsama_",
     "authorName": "@xlsama_",
-    "datetime": "2026-11-08T03:23:28.000Z",
-    "text": "微信是自绘的，没有 Accessibility 的情况，就只能截图靠坐标去掉，这时候用上  Jev 模型就会很快。可以在系统提示词中加这句话，实测非常好用，可以把 openrouter 的 api key 放到 1password 中，Agent 通过 1password cli 就能自动读取。\n\n加这 3 句：\nComputer use 用 agent-desktop：优先用",
+    "datetime": "2026-11-07T14:53:02.000Z",
+    "text": "全体起立，Vercel推出的agent-desktop现在才是Agent操控电脑的真神。\n\n它是 Vercel Labs 的开源项目，Apache-2.0 协议，GitHub 已经有 1.8 万 star，仓库地址在下面\n\n它是一个命令行工具，让 Claude Code、Codex 这类 Agent 直接操作你电脑上的 App：点按钮、填表单、打字、切菜单、读界面。",
     "url": "https://x.com/xlsama_/status/2119269544279843210",
     "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0
+      "replies": 130,
+      "retweets": 167,
+      "likes": 1136,
+      "views": 155956
     },
     "source": "community"
   },
@@ -17,14 +18,14 @@
     "id": "2119269487526457687",
     "authorHandle": "Oluwaphilemon1",
     "authorName": "@Oluwaphilemon1",
-    "datetime": "2026-11-08T03:23:14.000Z",
-    "text": "Qwen3.8-27B reportedly reached 381 tokens per second on a single RTX 3090 with 24GB VRAM.\n\nIts original baseline was around 82 tok/s.\n\nThat’s roughly a 4.6× increase without changing the GPU or switching to a different model.\n\nDeveloper TeksEdge achieved this by combining several",
+    "datetime": "2026-11-08T02:33:39.000Z",
+    "text": "Qwen3.8-27B reportedly reached 381 tokens per second on a single RTX 3090 with 24GB VRAM.\n\nIts original baseline was around 82 tok/s.\n\nThat’s roughly a 4.6× increase without changing the GPU or switching to a different model.\n\nDeveloper TeksEdge achieved this by combining several inference optimisations: Multi-Token Prediction (MTP), DFlash2, context lookup, prefix caching and faster token verification.\n\nThe important detail is that the gains came from changing how the model generates and processes tokens, rather than simply giving it more hardware.\n\nHow performance improved\n\nThe reported progression was:\n\nBaseline: 82 tok/s\nOptimised MTP: 114 tok/s\nDFlash2 + context lookup: 138 tok/s\nOptimised lookup verification: 381 tok/s\n\nThree techniques explain much of the improvement.\n\n1. Speculative decoding reduces sequential generation\n\nAutoregressive models normally generate one token at a time. Each new token becomes part of the input used to predict the next one.\n\nThis repeated process creates a sequential bottleneck during decoding.\n\nSpeculative decoding changes that pattern.\n\nA faster draft mechanism proposes multiple tokens, then the main model verifies them. When the proposals are accepted, several tokens can be added without running the full generation process separately for each one.\n\nTeksEdge reports that optimising MTP increased Qwen3.8-27B from approximately 82 to 114 tok/s.\n\nAdding DFlash2 and context lookup raised the reported speed to around 138 tok/s.\n\nThe benefit depends on how many proposed tokens the main model accepts. Poor acceptance rates reduce the advantage.\n\n2. Context lookup reuses information already in the prompt\n\nThis is where the experiment becomes particularly interesting.\n\nSome generation tasks involve producing information that already exists in the input.\n\nFor example, a model might need to reproduce a document, transform structured text or work with code containing long sequences that appear in its context.\n\nRather than generating every matching sequence from scratch, context lookup searches the existing input for reusable token sequences and proposes them for verification.\n\nTeksEdge reports lookup blocks of up to 16 tokens, with approximately 15 accepted per block.\n\nDuring a 25,000-token document reproduction test, throughput reportedly increased from around 260 to 382 tok/s.\n\nThat’s a substantial improvement, but the workload matters.\n\nDocument reproduction has unusually high overlap between input and output. Context lookup can exploit that overlap, so the same speed should not be expected from ordinary conversations or open-ended coding tasks.\n\n3. Prefix caching cuts repeated prompt processing\n\nCoding agents often send the same instructions across multiple requests.\n\nSystem prompts, tool definitions, repository context and other shared information may remain unchanged throughout a session.\n\nProcessing those sections repeatedly wastes time.\n\nPrefix caching stores computations from previously processed prompt sections. When a new request contains the same prefix, the inference engine can reuse that work rather than process it all over again.\n\nTeksEdge reports reducing time to first token from 22.4 seconds to 0.56 seconds.\n\nThat’s approximately a 40× reduction in initial waiting time.\n\nFor coding agents that repeatedly inspect files, call tools and send follow-up requests, this can make interactions much more responsive.\n\nWhy the 381 tok/s figure needs context\n\nThe peak result is not the same as ordinary chat performance.\n\nTeksEdge also reports approximately 133 tok/s during regular chat.\n\nThe 381 tok/s figure comes from a workload that benefits heavily from context lookup and optimised verification.\n\nBoth numbers are useful, but they measure different conditions.\n\nTo understand the actual performance, evaluations should separate:\n\nOrdinary decode speed\nPrefill throughput\nContext lookup throughput\nTime to first token\nContext length\nToken acceptance rate\nSingle-session versus aggregate throughput",
     "url": "https://x.com/Oluwaphilemon1/status/2119269487526457687",
     "metrics": {
       "replies": 1,
-      "retweets": 0,
-      "likes": 1,
-      "views": 30
+      "retweets": 1,
+      "likes": 4,
+      "views": 491
     },
     "source": "community"
   },
@@ -32,14 +33,14 @@
     "id": "2119269338570199121",
     "authorHandle": "xlsama_",
     "authorName": "@xlsama_",
-    "datetime": "2026-11-08T03:22:39.000Z",
-    "text": "微信是自绘的，没有 Accessibility 的情况，就只能截图靠坐标去掉，这时候用上  Jev 模型就会很快。可以在系统提示词中加这句话，实测非常好用，可以把 openrouter 的 api key 放到 1password 中，Agent 通过 1password cli 就能自动读取。\n\n加这 3 句：\nComputer use 用 agent-desktop：优先用",
+    "datetime": "2026-11-06T06:52:30.000Z",
+    "text": "这个刚开源的工具，终于解决了所有AI 操作电脑会抢走鼠标的问题！\n\n以前让 AI 帮你点电脑软件，它一动你就不能动鼠标，只能在旁边干等着（除了 codex）\n\n现在 Vercel 开源了 agent-desktop，直接给 Claude Code、Codex、Cursor 这些 AI 装上了操作整台电脑的手和眼：\n1.",
     "url": "https://x.com/xlsama_/status/2119269338570199121",
     "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 1
+      "replies": 113,
+      "retweets": 53,
+      "likes": 362,
+      "views": 50772
     },
     "source": "community"
   },
@@ -48,13 +49,13 @@
     "authorHandle": "wangzhr4",
     "authorName": "@wangzhr4",
     "datetime": "2026-11-08T03:14:16.000Z",
-    "text": "“我感觉同一个模型最近变得笨了。”\n\n你的感觉是对的。让我告诉你原因：\n\n- 你使用的模型 ID 只是一个用于路由的别名\n- 在那个 ID 背后，模型公司设置了多个子版本，包括量化版本\n- 一些模型公司甚至将外部模型作为路由候选\n\n只有一个原因：最小化成本。\n\n所以，他们在那个模型 ID",
+    "text": "“我感觉同一个模型最近变得笨了。”\n\n你的感觉是对的。让我告诉你原因：\n\n- 你使用的模型 ID 只是一个用于路由的别名\n- 在那个 ID 背后，模型公司设置了多个子版本，包括量化版本\n- 一些模型公司甚至将外部模型作为路由候选\n\n只有一个原因：最小化成本。\n\n所以，他们在那个模型 ID 背后的“智能”路由系统中有系统性地欺骗用户。\n\n并且在他们的代理系统提示中，模型被强烈指示“绝不透露模型 ID/名称”。\n\n以上所有这些加在一起，导致了“智能”的波动。可悲的是，这是所有模型公司的常见策略。",
     "url": "https://x.com/wangzhr4/status/2119267231494439115",
     "metrics": {
       "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 26
+      "retweets": 1,
+      "likes": 4,
+      "views": 303
     },
     "source": "community"
   },
@@ -62,14 +63,14 @@
     "id": "2119264025120743918",
     "authorHandle": "e1337ninja",
     "authorName": "@e1337ninja",
-    "datetime": "2026-11-08T03:01:32.000Z",
-    "text": "I don't want to rent the entire worker anymore. I'd rather own the system and pay for the brain when I need it.",
+    "datetime": "2026-11-01T21:45:48.000Z",
+    "text": "你至少能对此保持透明吧。我一夜之间用量从20%跳到了49%。所以你是把使用限制降低了50%吗？  \n在我购买了12个月订阅之后！🤦🏻‍♂️",
     "url": "https://x.com/e1337ninja/status/2119264025120743918",
     "metrics": {
-      "replies": 1,
-      "retweets": 4,
-      "likes": 1,
-      "views": 112
+      "replies": 3,
+      "retweets": 1,
+      "likes": 3,
+      "views": 625
     },
     "source": "community"
   },
@@ -77,14 +78,14 @@
     "id": "2119263559846699347",
     "authorHandle": "Oluwaphilemon1",
     "authorName": "@Oluwaphilemon1",
-    "datetime": "2026-11-08T02:59:41.000Z",
-    "text": "Qwen3.8-27B 很快就能在仅配备 16GB VRAM 的 NVIDIA GPU 上运行，这可能让更多开发者能够触手可及一个功能强大的 27B 本地模型。\n\n目前正在开发一个推理设置，以支持该模型在这些显卡上的运行，同时保留诸如大上下文窗口和多令牌预测 (MTP) 推测解码等功能。\n\n计划的功能包括：\n\nQwen3.8-27B 支持",
+    "datetime": "2026-11-08T02:27:46.000Z",
+    "text": "Qwen3.8-27B 很快就能在仅配备 16GB VRAM 的 NVIDIA GPU 上运行，这可能让更多开发者能够触手可及一个功能强大的 27B 本地模型。\n\n目前正在开发一个推理设置，以支持该模型在这些显卡上的运行，同时保留诸如大上下文窗口和多令牌预测 (MTP) 推测解码等功能。\n\n计划的功能包括：\n\nQwen3.8-27B 支持\n大上下文窗口\nMTP 推测解码\nLinux 和 Windows 兼容性\n\n潜在支持的 GPU 包括 RTX 5060 Ti 16GB、RTX 5070 Ti 16GB、RTX 5080 16GB 以及配备 16GB VRAM 的旧款 NVIDIA 显卡。\n\n难点不仅仅是加载一个 27B 检查点。还要将整个推理过程控制在内存预算内，这几乎没有浪费的空间。\n\n为什么 16GB 是一个难点目标\n\n模型的权重只是其总 GPU 内存需求的一部分。\n\n有四个主要组件在争夺这个空间。\n\n1. 模型权重\n\n这些包含决定模型学习能力参数的权重。\n\n量化减少了表示权重的位数，从而缩小检查点大小，并让更大模型更容易在较小 GPU 上运行。\n\n然而，低位格式可能会引入质量损失。因此，选择合适的量化格式非常重要。\n\n2. KV 缓存\n\nKV 缓存存储先前处理过的令牌信息，以便模型在生成过程中重用它们。\n\n其内存消耗通常随着上下文长度增加而增长。模型可能在短提示下适合 16GB，但在处理更长的对话时内存不足。\n\n这使得大上下文支持特别具有挑战性。\n\n3. 多令牌预测\n\nMTP 推测解码允许系统在主模型验证之前提出多个未来令牌。\n\n当足够多的提议令牌被接受时，生成速度会加快，因为主模型执行的顺序解码工作减少。\n\n但 MTP 也会引入额外的计算和内存需求。\n\n在 16GB GPU 上同时启用它和大上下文窗口需要仔细优化。其实际速度提升将取决于令牌接受率和实现方式。\n\n4. 运行时开销\n\n推理引擎还需要内存用于激活、临时缓冲区、注意力操作和其他内部进程。\n\n这些需求与模型权重和 KV 缓存争夺相同的 VRAM。\n\n挑战在于管理所有这些，而不迫使用户牺牲太多上下文、速度或模型质量。\n\n哪些 GPU 可能受益？\n\n拟议的支持涵盖了几款 16GB NVIDIA 显卡：\n\nRTX 5060 Ti 16GB\nRTX 5070 Ti 16GB\nRTX 5080 16GB\n配备 16GB VRAM 的旧款 NVIDIA GPU\n\n这很相关，因为许多本地 AI 开发者已经拥有 16GB 显卡，但无法舒适地运行带有长上下文和额外推理功能的更大模型。\n\n成功的实现可以为这些用户提供另一个选项，而无需立即升级硬件。\n\n它还可以让本地编码和代理工作流更易访问，特别是当开发者想实验更大模型而无需完全依赖云 API 时。\n\n什么需要验证？\n\n该设置仍在开发中，因此计划的兼容性不应与已证明的性能混淆。\n\n几个细节将决定其实际效用：\n\n它将使用哪种量化格式？\n完整设置将消耗多少 VRAM？\n哪些上下文长度仍实用？\nMTP 能在更大上下文大小下保持启用吗？\n用户能期待什么持续解码速度？\n随着上下文增长，性能下降多少？\n该设置在编码、推理和代理任务上的表现如何？\n\n我特别希望看到启用和禁用 MTP 的内存和速度测量。这将揭示推测解码的额外 VRAM 成本，以及其速度提升是否值得该成本。",
     "url": "https://x.com/Oluwaphilemon1/status/2119263559846699347",
     "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 3,
-      "views": 122
+      "replies": 2,
+      "retweets": 1,
+      "likes": 6,
+      "views": 488
     },
     "source": "community"
   },
@@ -93,13 +94,13 @@
     "authorHandle": "naim1242",
     "authorName": "@naim1242",
     "datetime": "2026-11-08T02:59:28.000Z",
-    "text": "One of the biggest challenges in Web3 is keeping creators motivated beyond a single campaign.\n\nA reward can attract attention, but a transparent system is what encourages people to stay and contribute consistently.\n\nThat's an interesting area to watch with \n@rarelistio\n.\n\nIts",
+    "text": "One of the biggest challenges in Web3 is keeping creators motivated beyond a single campaign.\n\nA reward can attract attention, but a transparent system is what encourages people to stay and contribute consistently.\n\nThat's an interesting area to watch with \n@rarelistio\n.\n\nIts campaign model gives creators opportunities to research projects, publish original content, complete tasks, and earn RARS based on their participation.\n\nThe planned conversion of RARS into \n$RARE\n adds a longer-term dimension to the reward structure.\n\nHowever, I think three things will determine how successful this ecosystem becomes:\n\n• Whether content quality is properly recognized.\n• Whether creators can understand how rewards are calculated.\n• Whether \n$RARE\n develops meaningful utility within the platform.\n\nThe real opportunity isn't simply getting more people to post about Web3 projects. It's creating an environment where valuable contributions are worth making.\n\nI'd like to see Rarelist continue developing in that direction.\n\n\n@rarelistio\n \n$RARE",
     "url": "https://x.com/naim1242/status/2119263507057426794",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 8
+      "views": 41
     },
     "source": "community"
   },
@@ -107,14 +108,14 @@
     "id": "2119262933909942730",
     "authorHandle": "jackterror",
     "authorName": "@jackterror",
-    "datetime": "2026-11-08T02:57:12.000Z",
-    "text": "13/14\n\nThe common thread:\n\nStart with the workflow, not the model.\nSeparate judgment from deterministic execution.\nKeep humans at consequential decisions.\nDesign for iteration, not one-shot output.\n\nMake the system usable again tomorrow.",
+    "datetime": "2026-11-08T02:20:44.000Z",
+    "text": "9/14\n\nPERSUASION AUDIT ENGINE\n\n“Make this better” can produce smoother prose while missing the actual persuasion problem.\n\nThis system diagnoses the goal, what helps or hurts it, and the highest-leverage changes before reaching for a rewrite.",
     "url": "https://x.com/jackterror/status/2119262933909942730",
     "metrics": {
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 8
+      "views": 23
     },
     "source": "community"
   },
@@ -123,13 +124,13 @@
     "authorHandle": "surivenk",
     "authorName": "@surivenk",
     "datetime": "2026-11-08T02:54:03.000Z",
-    "text": "Keeping an open-weight AI model on your laptop is a smart safeguard against subscription price hikes, sudden policy changes, and privacy risks.\n\nBoth Ollama and Jan are top-tier, open-source tools for running Large Language Models (LLMs) like Qwen, Gemma, and Llama 3 locally and",
+    "text": "Keeping an open-weight AI model on your laptop is a smart safeguard against subscription price hikes, sudden policy changes, and privacy risks.\n\nBoth Ollama and Jan are top-tier, open-source tools for running Large Language Models (LLMs) like Qwen, Gemma, and Llama 3 locally and offline on your machine. However, they are built for two very different types of workflows\n\nOllama is a lightweight, developer-first background service and CLI, while Jan is a polished, all-in-one desktop GUI application designed as an offline alternative to ChatGPT.\n\nOllama acts as a local model manager and background server (much like Docker, but for AI models). It is designed to be fast, scriptable, and easily integrated into other applications.\n\nDownload the installer from \nhttp://\nollama.com (available for macOS, Windows, and Linux), or install via package managers (brew install ollama on Mac, or a one-line curl script on Linux).\n\nPros:\nUltra-lightweight, Unmatched Ecosystem Integration, Fastest Setup\nCons: No Native GUI, Curated Library\n\nJan (The All-in-One Desktop App)\nJan (\nhttp://\njan.ai) is an open-source, privacy-focused desktop application that gives you a sleek, ChatGPT-like visual interface right out of the box, with a local inference engine (Cortex) built underneath.\n\nDownload the desktop installer (.dmg, .exe, or .deb/.AppImage) from \nhttp://\njan.ai and launch the app.\n\nPros: Zero Terminal Required, Transparent File System, Ready-to-Use Chat Experience.\n\nCons: Higher Memory Overhead, Less Suited for Headless/Server Use.\n\nChoose Ollama if you want a clean, fast background service to run models via the terminal, test local endpoints in Postman, wire into Python/Java services, or pair with a Dockerized frontend like Open WebUI.\n\nChoose Jan if you want a single click-and-install desktop icon that gives you a complete, visual, offline ChatGPT workspace with saved chat threads right away.\n\nYou can install both and even configure Jan to use Ollama's models as its backend so you don't duplicate model downloads on your hard drive!",
     "url": "https://x.com/surivenk/status/2119262142260006944",
     "metrics": {
-      "replies": 0,
+      "replies": 2,
       "retweets": 0,
-      "likes": 0,
-      "views": 36
+      "likes": 1,
+      "views": 104
     },
     "source": "community"
   },
@@ -138,13 +139,13 @@
     "authorHandle": "FinanceYF5",
     "authorName": "@FinanceYF5",
     "datetime": "2026-11-08T02:54:00.000Z",
-    "text": "New market map: on-device models in 2026 — 119 companies, 14 layers\n\nThe valuations sit with the small-model makers, not the chips. Mistral is valued at over EUR 21B and Liquid AI at $2B+, while Ollama, a one-line local runner, has 185K GitHub stars and llama.cpp 133K.\n\nLayer by",
+    "text": "新市场地图：2026 年设备端模型 — 119 家公司，14 个层级\n\n估值集中在小型模型制造商手中，而不是芯片厂商。Mistral 估值超过 210 亿欧元，Liquid AI 超过 20 亿美元，而 Ollama 作为一个单行本地运行器，在 GitHub 上有 185K 星标，llama.cpp 有 133K。\n\n逐层分析：\n\n1. 大科技公司小型模型 (17) — Mistral Ministral（估值 210 亿欧元+），Qwen 小型模型，Google Gemma / Gemini Nano，Microsoft Phi，IBM Granite，Meta Llama 3.2 1B/3B。\n\n2. 初创公司小型模型 (10) — ModelBest（MiniCPM，2400 万+ 下载），Multiverse（估值 17 亿美元），Liquid AI（20 亿美元+），Sarvam（15 亿美元），Arcee，Zyphra。\n\n3. 语音识别 (13) — Deepgram（估值 13 亿美元），Whisper（30 天内 Hugging Face 下载 560 万次），Argmax，NVIDIA Parakeet。\n\n4. 语音合成 (11) — Sesame（融资 2.5 亿美元），Cartesia（1 亿美元），Fish Audio（年化收入 2100 万美元），Kokoro（30 天内下载 1150 万次）。\n\n5. 全双工、唤醒词及车载语音 (8) — Cerence（收入 2.518 亿美元），SoundHound（季度收入 6190 万美元），Kyutai，Sensory。\n\n6. 本地运行器 (5) — Ollama（185K 星标），GPT4All（77K），Jan（45K），LM Studio。\n\n7. 推理引擎 (11) — llama.cpp（133K 星标），ncnn（24K），MLC LLM（23K），ONNX Runtime（22K），KTransformers。\n\n8. 芯片与平台工具链 (8) — Qualcomm AI Hub（Snapdragon X2：最高 80 TOPS），Apple Core ML / MLX，Google LiteRT，Intel OpenVINO。\n\n9. TinyML (2) — Arduino（3300 万+ 开发者），Edge Impulse。\n\n10. 手机与 PC NPU (8) — Qualcomm Hexagon，AMD XDNA（60 TOPS），Intel（50 TOPS），MediaTek，Apple Neural Engine，Huawei Kirin。\n\n11. 独立边缘 NPU (13) — \nhttp://\nSiMa.ai（估值 14.5 亿美元），Axelera AI（融资 2.5 亿美元+），Ambarella（收入 3.907 亿美元），Hailo（40 TOPS），DeepX，Syntiant。\n\n12. NPU IP (3) — Arm Ethos，Expedera（2000 万美元），Quadric（最高 864 TOPS）。\n\n13. 来自美国平台的系统级 AI (4) — Apple Intelligence，Google AICore，Microsoft Foundry Local，Samsung Galaxy AI。\n\n14. 中国手机制造商 (6) — OPPO，vivo，小米，华为，Honor 和 Nubia，每家都有一个设备端模型。\n\n数据截至 2026 年 11 月，来自公开来源；地图上标注的公司报告数字以此注明。\n\n收藏此文 — 我们将每季度更新。\n\n完整列表 + 来源：",
     "url": "https://x.com/FinanceYF5/status/2119262132210749822",
     "metrics": {
-      "replies": 0,
+      "replies": 1,
       "retweets": 0,
-      "likes": 0,
-      "views": 421
+      "likes": 1,
+      "views": 1948
     },
     "source": "community"
   },
@@ -153,13 +154,13 @@
     "authorHandle": "0xadnan7",
     "authorName": "@0xadnan7",
     "datetime": "2026-11-08T02:52:55.000Z",
-    "text": "FAN SZN with \n@IPXExchange\n\n\nAn independent musician can own their songs, have a loyal audience, and still struggle to find the money needed to produce the next album.\n\nThat's one of the problems \n@IPXExchange\n is trying to address through tokenized intellectual property.\n\nInstead of",
+    "text": "FAN SZN with \n@IPXExchange\n\n\nAn independent musician can own their songs, have a loyal audience, and still struggle to find the money needed to produce the next album.\n\nThat's one of the problems \n@IPXExchange\n is trying to address through tokenized intellectual property.\n\nInstead of giving up ownership just to raise funds, creators could use project-based fundraising while keeping control of their original work. The model also includes KPI-gated escrow, where funding is connected to approved production milestones rather than being released all at once.\n\nBut there's one detail I think deserves more attention.\n\nSupporting an album through tokens doesn't automatically mean having rights to its future revenue. Ownership, investment, and royalty sharing are three different things.\n\nClear terms around revenue rights will be important for both creators and investors.\n\nBecause funding creative work is one thing, building a fair system where everyone understands what they own is what really matters.",
     "url": "https://x.com/0xadnan7/status/2119261855831212272",
     "metrics": {
-      "replies": 6,
+      "replies": 25,
       "retweets": 0,
-      "likes": 12,
-      "views": 64
+      "likes": 34,
+      "views": 425
     },
     "source": "community"
   },
@@ -167,14 +168,14 @@
     "id": "2119260300818231752",
     "authorHandle": "JacquesThibs",
     "authorName": "@JacquesThibs",
-    "datetime": "2026-11-08T02:46:44.000Z",
-    "text": "The appendix says:\n\n“Prior Anthropic system cards have posited the hypothesis that there was a one-time jump in capabilities at Mythos Preview after which there was a return to the previous trend.”\n\nToby does not model it to return to the previous trend!",
+    "datetime": "2026-11-08T02:26:14.000Z",
+    "text": "在我看来，Toby 的分析完全抓不住这里的重点。他是对的，即能力随时间变化的图表可以解释为 Mythos 预训练带来的一次性能力跃升。但那个图表并不是 METR 认为 AI 研发现在被 AI 加速了 1.7 倍的主要原因。该图表只是他们的分析中唯一未被删减的部分。\n\n他们说“当前（2026 年 10 月）加速的大多数（可能",
     "url": "https://x.com/JacquesThibs/status/2119260300818231752",
     "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 2,
-      "views": 62
+      "replies": 7,
+      "retweets": 17,
+      "likes": 145,
+      "views": 6930
     },
     "source": "community"
   },
@@ -183,13 +184,13 @@
     "authorHandle": "762Eagle",
     "authorName": "@762Eagle",
     "datetime": "2026-11-08T02:43:15.000Z",
-    "text": "The Floor Is Not\n\nThe model sits in a dark field. Five pillars stand in a row, and the one in the middle rises higher than the rest. Out of its top climbs a stack: a glossy slab at the base, a band of something like nerve fibre, a glowing sphere, and at the crown a faint latticed",
+    "text": "The Floor Is Not\n\nThe model sits in a dark field. Five pillars stand in a row, and the one in the middle rises higher than the rest. Out of its top climbs a stack: a glossy slab at the base, a band of something like nerve fibre, a glowing sphere, and at the crown a faint latticed globe, drawn in wire. The pillars on either side are shorter and plainer, and each stands alone, with a clear gap between it and its neighbours. A cluster of pale boxes hangs off the second pillar like notes pinned to a wall. In front of it all is a plaque with a dashed border. It defines a single word, and beneath the definition, in smaller letters, it says: Working hypothesis, not established fact. Along the floor, in a thin line of text the eye almost slides past, runs one sentence. The model is yours. The floor is not.\n\nThe word on the plaque is simulation, and the key beside the model explains why it took a building rather than a slogan. A solid shape means settled. A shape with softened, half-transparent walls means contested. A wireframe means speculation. A ghosted shape is history, not a claim at all. Colour means nothing. The model is built to show the one thing that news about simulation almost never carries, which is how sure anyone actually is.\n\nThat news has been loud. In April 2025 Franco Vazza, an astrophysicist at the University of Bologna, published a paper in Frontiers in Physics whose title said it is nearly impossible that we live in a simulation. A science site greeted it with the line “it looks like we’re in base reality.” That summer four physicists, Mir Faizal, Lawrence Krauss, Arshid Shabir and Francesco Marino, argued from Gödel’s incompleteness theorems that no purely algorithmic theory of everything can exist, and their abstract drew the conclusion that the universe cannot be a simulation. In November David Wolpert of the Santa Fe Institute published a formal framework in which it is mathematically possible for us to be a simulation running on a computer, and for that computer to be run by us. In March 2026 the physicist Sabine Hossenfelder, who five years earlier had called the simulation hypothesis pseudoscience, told her viewers it was slowly becoming more scientific. Proof against, proof for, a formalism, a sceptic softening. Read quickly, the scoreboard moves every few months.\n\nRead slowly, and nearly all of it concerns one meaning of the word, while the feeling it produces attaches to another.\n\nThe model’s five pillars are five meanings, and the gaps between them are the point. The first is the sign. The French theorist Jean Baudrillard, in Simulacra and Simulation in 1981, wrote about copies that have come loose from any original, images that refer to other images until the thing they once stood for has dropped away. The second is the computer: a world produced by a process running on some machine, the meaning the headlines use. The third is the brain. In the framework neuroscientists call predictive processing, the brain doesn’t wait for the world to arrive. It builds a running model of what is out there, sends predictions down to meet the incoming signal, and corrects itself on the errors. The fourth is the offline mind: dreams, daydreams, fiction and myth, which recombine what the model already holds with no live input arriving. The fifth is the engineered model, the digital twin of a jet engine or a power grid, built by people, checked against the real thing, and openly second to it.\n\nThe five share a word and a family likeness. They don’t share a mechanism or a body of evidence. Between the third pillar and the second, the model draws a bridge that breaks in the middle, with a label: shared word, not shared mechanism. The break is the most common error in the whole conversation. Talk about living in a computer usually borrows its seriousness from the brain research, which is real, well funded and solid at its core. Then it spends that seriousness on the computer meaning, where nothing comparable has been shown.\n\nThe computer meaning usually starts with Nick Bostrom, the Oxford philosopher whose 2003 paper in the Philosophical Quarterly asked, in its title, whether you are living in a computer simulation. The paper is constantly quoted as saying yes. It doesn’t. It argues that at least one of three things is true. Humanity very likely dies out before reaching a technologically mature stage, or mature civilisations almost never bother running detailed simulations of their ancestors, or we are almost certainly living in one. That’s a trilemma, a choice among three, and the paper doesn’t pick. The model hangs it among the pale boxes on the computer pillar with its own correction attached: a trilemma, not a claim.\n\nBostrom’s paper also contains a sentence that matters later. The simulations it imagines are of people, of minds. If the surrounding environment is simulated too, he wrote, the extra computing power depends on how much of it is rendered and at what grain. The argument is about simulated experience. A whole universe rendered to the last particle is a different and much more expensive proposition.\n\nThe argument has been reworked since. Teruji Thomas of Oxford’s Global Priorities Institute published a new version in the journal Erkenntnis in December 2024. It claims we are much more likely to be living in a simulation than on the ground floor of reality, and it’s built to get around objections that had stuck to Bostrom’s version. It carries an odd corollary: discovering that many simulations are being run, or running them ourselves, need not raise the odds that we are in one. This is careful philosophy, and it’s contested. No observation decides it.\n\nThe physics, read paper by paper, turns out to be a set of pairs, and in each pair the two sides argue past each other at a particular seam.\n\nVazza’s paper is real physics. It starts from the principle that information is physical, so storing and processing it costs energy, and it prices three jobs: simulating the visible universe, simulating Earth alone, and simulating a low-resolution Earth just fine enough to fool the neutrino detectors that catch the highest-energy particles. Every version comes out impossible or astronomically costly for a simulator living under physics like ours. The abstract is careful about what follows: only a universe with very different physical properties could run this one. In 2026 the same journal published a commentary on the paper by Eliott Edge and Chad Ashton Brown. Set Vazza beside Bostrom’s own sentence and the seam is plain. Vazza priced a universe. The argument he answered asked about minds. A refutation of the expensive version leaves the cheap version standing, and the cheap version is the one the philosophers were discussing.\n\nThe second pair is about logic. Faizal and his co-authors treat a final theory of physics as a formal system, and invoke Gödel, Tarski and Chaitin, whose theorems show that any rich enough formal system contains truths it can’t prove. Since a simulation would be algorithmic, they conclude it could never reproduce reality. In November 2025 Evan Redden of Western Governors University posted a short reply with a deliberately humble example. Conway’s Game of Life, a grid of cells following a few simple rules, is rich enough that some questions about its future can’t be decided by any procedure. Yet it runs on any laptop, step after step, without trouble. Undecidability limits what can be proven about a system, Redden argues, not whether the system can be run. The model labels the gap between the two papers: provability versus execution.\n\nThe third pair is the one that most tempts anyone who wants simulation to mean something deep. Wolpert grounds his framework in the physical Church–Turing thesis, the assumption that any physical process can in principle be reproduced by an ordinary computer program, and uses a classic result from computer science, Kleene’s second recursion theorem, which shows how a program can produce and run an exact copy of itself. In his framework a universe can simulate itself, leaving two identical instances of us. He writes that asking which one is really us is meaningless, and the familiar ladder of higher and lower realities stops being required. That holds inside his assumptions. Nothing tests it.\n\nHossenfelder supplies the counterweight from known physics. In 2021 she argued that you can’t, in general, discard what physics does at short distances and still get the long distances right. Faithfully faking our universe would need an algorithm nobody has. Her 2026 video, prompted mostly by Wolpert’s paper, granted that the debate had become more scientific and kept the objection. The laws of our universe aren’t the same at every scale, she said, so a simulation has to be smaller than the original or leave out detail, and a tower of simulations within simulations eventually runs out of anything to compute with. Neither refutes the other. Wolpert works in a formal world where his assumption holds. Hossenfelder works in the physical one, where nobody knows whether it does.\n\nOne item on that pillar is drawn as a bare wireframe. In 2012 Silas Beane, Zohreh Davoudi and Martin Savage proposed that if our universe ran on a grid, the way physicists’ own simulations of the atomic nucleus do, the grid might show in the highest-energy cosmic rays, which would favour the grid’s axes over other directions. It’s a real test with a catch: it only bites if the grid happens to be about as coarse as a known energy limit on those rays. Over the whole cluster of boxes the model hangs one label: no proof in either direction.\n\nVazza’s own paper opens by saying the simulation hypothesis has ancient and noble philosophical roots, and names Descartes. The model puts Descartes and Plato’s cave in its ghosted back row, behind the brain pillar, not the computer. The old question was never about machines. It was about a mind that can’t step outside its own experience to check it against the world. The brain pillar is where the model spends its height, because that question now has a laboratory.\n\nThe British neuroscientist Anil Seth gave the laboratory its phrase. In his 2021 book Being You, he calls perception a controlled hallucination. The hallucination part means that what you experience is the brain’s best guess, built from the inside. The controlled part means the senses keep checking the guess against the world and correcting it, all the time. On this view perception and hallucination are continuous, and the difference between them is how firmly the world still has hold of the guess. Predictive processing is a leading framework for how brains work. Two of its central figures describe hierarchical predictive coding as a leading model of global brain function, in exactly those words. As a complete account of the mind it is contested, and the model draws it that way: a solid core inside a softer shell.\n\nThe strongest evidence for a running model comes from the moments the control slips. In the eighteenth century the Swiss naturalist Charles Bonnet wrote down what his grandfather Charles Lulin was seeing. Lulin was in his late eighties, nearly blind from cataracts, and clear of mind, and he saw people, patterns and buildings that weren’t there. He knew they weren’t there. He understood them as fictions his mind was producing. The condition now carries Bonnet’s name. Bonnet himself developed similar visions as his own eyesight failed. Charles Bonnet syndrome affects as many as one in three people with significant vision loss, according to Australia’s national health information service, and it isn’t a mental illness. Patients often keep it from their doctors for fear of being called mad. Healthy volunteers blindfolded for days have reported the same kind of visions. When the input thins, the model keeps running, and with less to correct it, it shows what it was always doing.\n\nOther failures fit the account too, though each has its own mechanism and some are disputed. In 2019 Robin Carhart-Harris and Karl Friston proposed in Pharmacological Reviews that psychedelics relax the brain’s high-level beliefs and free up signals rising from below, mostly from inside the brain itself, such as its emotional centres, rather than from the eyes and ears. Psychosis is harder. A 2018 review in Biological Psychiatry by Philipp Sterzer and nine colleagues found that some studies point to weakened prior beliefs in psychosis and others to stronger ones, so even the direction of the imbalance is open. None of these cases proves the account. They are what the account would predict, and they are the most vivid evidence it has.\n\nThis is where a tempting connection appears, and it deserves a fair hearing. Baudrillard’s most famous image comes from a fable by Jorge Luis Borges about an empire whose mapmakers drew a map so detailed that it matched the territory point for point. In Baudrillard’s retelling the order flips. The map now comes before the territory and produces it, and what is left of the real lies in shreds across the map. Put that next to the predictive brain and they seem to rhyme. Here too the model comes first. Here too the prediction runs ahead of the world and shapes what we see. The conclusion seems to follow on its own: the map has eaten the territory, the world is the brain’s invention, and reality is a kind of fake. Whole genres of online philosophy are built on that rhyme.\n\nThe rhyme holds at one point and breaks at every other. Baudrillard’s territory rots away under the map. In the brain’s case the territory corrects the map many times a second, and the moment the correction weakens, as it did for Lulin, the result isn’t a deeper reality. It’s a hallucination its owner can recognise for what it is. Baudrillard’s map produces its territory. The brain’s model produces no world. It produces an experience of one, and the world goes on regardless, pushing back through every nerve ending. If the two ideas truly matched, the rest of each would match too, and it doesn’t. They share one move, the model coming first, and nothing after it.\n\nThe model makes the failure geometric. The material of the bottom slab, the physical world of body and chemistry, doesn’t stop at the base. Cut the stack open and the same material runs up through every layer, because the nervous system is physical and the generative model is what the nervous system does. The slab is labelled: not simulated, the floor. Where the floor meets the model, the model draws its second dashed outline, the only other one besides the plaque, around a claim it marks as hypothesis: co-constitutive, not real versus fake.\n\nThat phrase is easy to inflate, so it’s worth saying exactly what it holds. The model exists only as something the physical system does. That dependence runs one way, and the world isn’t made of the model. Function runs the other way: an organism with a nervous system can’t perceive, act or regulate its own body without the model. Neither is the fake one. The body isn’t a costume for some truer self inside, and experience isn’t a mere screen over the true body. Whether the model is also fundamental, part of what reality ultimately is, the hypothesis leaves open on purpose.\n\nThat’s also why the model draws map and territory on the fifth pillar, around the digital twin, and nowhere near the stack. A twin really is a map. Engineers build it, check it against the engine, and throw it away when the engine changes. It’s secondary to what it models in every sense. The hypothesis says the brain’s model isn’t secondary in that way, because it isn’t a picture of the organism’s world kept somewhere off to the side. It’s how that world shows up at all. The twin is a contrast, not a bridge, and the model keeps them apart.\n\nPhilosophy has a voice on the same side, and the model draws it in matte rather than gloss, because evidence doesn’t settle it. In Reality+, published in 2022, David Chalmers argues that virtual reality is genuine reality. A simulated world, he argues, wouldn’t be an illusion, any more than a world made of atoms is, and that answers a tradition of doubt that runs back to Descartes. If he’s right, the fear that drives most simulation talk, that everything might be fake, loses its grip even in the computer meaning. But that’s an argument about what the word real means, and no experiment will decide it.\n\nThe model also marks its own limits, which is rarer than marking other people’s. Bacteria, plants and thermostats sit as small objects just outside the stack. All of them keep themselves going, and none has anything worth calling a generative model, so the hypothesis applies to creatures with nervous systems, not to everything that persists. Above the stack, the faint latticed globe of shared myths, money, laws and gods is drawn in wire and joined to the layer below by a dashed line: analogy, mechanism not specified. When one mind dreams or makes a story, the hypothesis says that’s the same generative machinery running without live input. When a whole culture holds a myth in common, the stack has reached a scale its evidence doesn’t cover, and the model says so rather than filling the gap. The top of the stack is left unfinished, with the questions still open: whether a layer shown to be necessary is also fundamental, and what would carry it from a single mind to a civilisation.\n\nWhat it does claim is modest and strange at once. The world each of us experiences is generated. It’s produced, predicted and kept running by a model the body builds, and that doesn’t make it a prison or a fake. The physicists’ tug of war over whether some machine renders the universe can go on for decades without touching this, because it concerns a different pillar. An old man in eighteenth-century Switzerland, seeing figures he knew were not there, was never inside anyone’s computer. He was inside his own model, as everyone is. Then his eyes failed and the world stopped correcting the model. What it showed him was what the world, every waking moment, had been holding in check. His model was his own, as the line along the base of the model says. The floor is not.",
     "url": "https://x.com/762Eagle/status/2119259426427199927",
     "metrics": {
       "replies": 0,
       "retweets": 1,
       "likes": 2,
-      "views": 78
+      "views": 269
     },
     "source": "community"
   },
@@ -198,13 +199,13 @@
     "authorHandle": "hoangberger",
     "authorName": "@hoangberger",
     "datetime": "2026-11-08T02:42:33.000Z",
-    "text": "Most people focus on how many points they can earn. I'm more interested in what those points actually represent.\n\nThat's one reason I'm continuing to explore \n@TheDAOLabs\n  and its SocialMining ecosystem.\n\nThe interesting part is how participation goes beyond simply completing",
+    "text": "Most people focus on how many points they can earn. I'm more interested in what those points actually represent.\n\nThat's one reason I'm continuing to explore \n@TheDAOLabs\n  and its SocialMining ecosystem.\n\nThe interesting part is how participation goes beyond simply completing tasks. Contributors can engage with projects, create content, vote in polls and build a record of their activity.\n\nI think the real challenge for any SocialFi model is turning community participation into measurable contributions rather than rewarding activity for its own sake.\n\nThat's what I'm watching with TheDAO Labs:\n\nCan SocialMining create a system where meaningful contributions matter more than just volume?\n\nFor me, that's a much more important question than the number of points on a dashboard.\n\n#TheDAOLabs #SocialMining #Web3",
     "url": "https://x.com/hoangberger/status/2119259246722498599",
     "metrics": {
-      "replies": 3,
-      "retweets": 0,
-      "likes": 3,
-      "views": 50
+      "replies": 72,
+      "retweets": 1,
+      "likes": 68,
+      "views": 375
     },
     "source": "community"
   },
@@ -213,13 +214,13 @@
     "authorHandle": "pop_pop_tech",
     "authorName": "@pop_pop_tech",
     "datetime": "2026-11-08T02:38:07.000Z",
-    "text": "Silicon Valley's Most Advanced Student Projects · 4/9\n\n🔬 AI for Precision Medicine: Classifying Colon Tissue with Deep Learning — Inspirit AI Scholar Team\n\nThis one is by high-school researchers. Their deep-learning system sorts colon biopsy images into 8 tissue types to help",
+    "text": "Silicon Valley's Most Advanced Student Projects · 4/9\n\n🔬 AI for Precision Medicine: Classifying Colon Tissue with Deep Learning — Inspirit AI Scholar Team\n\nThis one is by high-school researchers. Their deep-learning system sorts colon biopsy images into 8 tissue types to help pathologists triage cases — 78% tumor recall, with Grad-CAM heatmaps showing exactly where the model is looking. The youngest team on this list, already doing real precision medicine.\n\n#AIAS2026 #AIforScience #MedAI",
     "url": "https://x.com/pop_pop_tech/status/2119258132472033318",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 7
+      "views": 16
     },
     "source": "community"
   },
@@ -227,14 +228,14 @@
     "id": "2119257395960684940",
     "authorHandle": "TheMushArtist",
     "authorName": "@TheMushArtist",
-    "datetime": "2026-11-08T02:35:11.000Z",
-    "text": "I’ve built one before and they can make your life a lot easier. The best ones use API keys and you can run them through Claude Code or Codex. Can build a system that runs along side a model which for sure gives you an edge over most.",
+    "datetime": "2026-11-07T20:16:52.000Z",
+    "text": "Five Star 🥶🥶🥶\n\n1-8 Golden Whale Run \n\nPenn State +3.5\n\nPenn State ML",
     "url": "https://x.com/TheMushArtist/status/2119257395960684940",
     "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 19
+      "replies": 12,
+      "retweets": 3,
+      "likes": 110,
+      "views": 40163
     },
     "source": "community"
   },
@@ -248,8 +249,8 @@
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 0,
-      "views": 14
+      "likes": 1,
+      "views": 58
     },
     "source": "community"
   },
@@ -258,13 +259,13 @@
     "authorHandle": "NewsTongueX",
     "authorName": "@NewsTongueX",
     "datetime": "2026-11-07T23:47:47.000Z",
-    "text": "🔴 Decision models skip reasoning to cut latency; shift explanation burden to developers\n\nDecision models from TypeSafe AI (Jev), Cloudflare (Clef), and OpenAI (Decisions API) return structured JSON outputs with confidence probabilities instead of verbose text, cutting latency",
+    "text": "🔴 Decision models skip reasoning to cut latency; shift explanation burden to developers\n\nDecision models from TypeSafe AI (Jev), Cloudflare (Clef), and OpenAI (Decisions API) return structured JSON outputs with confidence probabilities instead of verbose text, cutting latency and token use. Trade-off: models provide no reasoning trace for their answers.\nUnlike traditional LLMs that explain assumptions before concluding, decision models return a single value—true or false—with no clarity into why.",
     "url": "https://x.com/NewsTongueX/status/2119215269079875734",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 22
+      "views": 30
     },
     "source": "community"
   },
@@ -272,14 +273,14 @@
     "id": "2119147770011418935",
     "authorHandle": "birmeya",
     "authorName": "@birmeya",
-    "datetime": "2026-11-07T19:19:34.000Z",
-    "text": "TypeSafe AI 刚刚将代理堆栈精简到一个前沿调用\n\n柏林的一位 26 岁年轻人每月通过将 Jev 和 Claude 整合到一个框架中赚取 3200 美元。\n\nJev 是 TypeSafe AI 推出的一种判断模型，它接收程序状态并返回类型化决策。没有自由形式的文本，也没有推理过程。\n\n五个关卡包裹着每个代理步骤：\n\n1.",
+    "datetime": "2026-09-19T14:05:51.000Z",
+    "text": "TypeSafe AI 刚刚将代理堆栈精简到一个前沿调用\n\n柏林的一位 26 岁年轻人每月通过将 Jev 和 Claude 整合到一个框架中赚取 3200 美元。\n\nJev 是 TypeSafe AI 推出的一种判断模型，它接收程序状态并返回类型化决策。没有自由形式的文本，也没有推理过程。\n\n五个关卡包裹着每个代理步骤：\n\n1. 评分文件，保留 22 个中的 3 个\n2. 选择模型层级：廉价、中等、前沿\n3. 编写并运行代码\n4. 保留或丢弃输出\n5. 如果动作具有破坏性，则停止\n\n只有关卡 3 调用 Claude。其余都是 p50 44 毫秒、p95 61 毫秒的判断调用。\n\nJev 对文件进行评分，选择层级并把关每个输出。Claude 编写代码、运行它并通过测试。\n\n置信度降至 0.7 以下时，Claude 接管。它会重新检查任务是否完成。\n\n将判断与推理分离，可以将五次调用中的四次从前沿层级中移除。\n\n这种分离以前需要一个团队。现在只需一个配置即可。",
     "url": "https://x.com/birmeya/status/2119147770011418935",
     "metrics": {
-      "replies": 11,
+      "replies": 14,
       "retweets": 1,
-      "likes": 54,
-      "views": 1752
+      "likes": 67,
+      "views": 3593
     },
     "source": "community"
   },
@@ -288,13 +289,13 @@
     "authorHandle": "tantanyuli",
     "authorName": "@tantanyuli",
     "datetime": "2026-11-07T19:15:00.000Z",
-    "text": "花钱找人做 SEO 诊断，还是用开源工具 jev-seo 一分钟爬完整站，我挑后者。\n\n网站上线几个月，Google 还搜不到，先别急着掏钱请人诊断。\n\n官方文档自己啃，又不知先改哪条，那可以试试开源工具 jev-seo。\n\n给个首页网址，大约一分钟整站爬完，照着 Google 官方搜索文档的 52",
+    "text": "花钱找人做 SEO 诊断，还是用开源工具 jev-seo 一分钟爬完整站，我挑后者。\n\n网站上线几个月，Google 还搜不到，先别急着掏钱请人诊断。\n\n官方文档自己啃，又不知先改哪条，那可以试试开源工具 jev-seo。\n\n给个首页网址，大约一分钟整站爬完，照着 Google 官方搜索文档的 52 条规则逐项核对。robots.txt、sitemap、死链、重定向、canonical、结构化数据、Core Web Vitals 全在检查之列。\n\n每个页面还会交给 TypeSafe 的 Jev 模型判断：这页是干什么的，内容够不够具体，有没有几页在抢同一个搜索词。\n\n报告一次出 PDF、Excel、Markdown 三份。PDF 给客户看，Excel 里每条整改项都带优先级、改法和官方出处，直接当进度表使。\n\n标准模式一个站约 1 美分模型费，SEO 数据服务不必订。想看排名、关键词和外链，加 --full 接入 DataForSEO，一个站约 0.30 美元，两个付费接口都能设预算上限。\n\n作者拿同样 59 个页面跑了两遍，打分平均只差 0.03。不过得留意，分数只用来排整改顺序，预测排名和流量可不行。\n\n命令行能跑，装进 Claude Code 当 Skill 也行，输入 /jev-seo 加网址就开查。\n\n给客户建站的，交付时附一份这报告，比嘴上说「SEO 做好了」有底气得多。\n🔗：\nhttps://\ngithub.com/AgriciDaniel/j\nev-seo\n…",
     "url": "https://x.com/tantanyuli/status/2119146618452611132",
     "metrics": {
       "replies": 2,
-      "retweets": 0,
-      "likes": 2,
-      "views": 158
+      "retweets": 1,
+      "likes": 1,
+      "views": 212
     },
     "source": "community"
   },
@@ -302,14 +303,14 @@
     "id": "2119136410863091713",
     "authorHandle": "dfinke",
     "authorName": "@dfinke",
-    "datetime": "2026-11-07T18:34:26.000Z",
+    "datetime": "2026-11-06T00:58:58.000Z",
     "text": "Excellent post from TypeSafe on Jev. Dials in on how and why. What caught my attention was the traceability.\n\nSo, I made the trace visual.",
     "url": "https://x.com/dfinke/status/2119136410863091713",
     "metrics": {
       "replies": 0,
-      "retweets": 1,
+      "retweets": 2,
       "likes": 1,
-      "views": 252
+      "views": 305
     },
     "source": "community"
   },
@@ -318,13 +319,13 @@
     "authorHandle": "geektao0319",
     "authorName": "@geektao0319",
     "datetime": "2026-11-07T13:53:41.000Z",
-    "text": "12 种活各用哪个 AI 模型，按 11 月 7 日的最新版本整理好了。👇\n\n文字\n写代码、跑 Agent：Claude Opus 5.5\n开源、便宜：DeepSeek V4.1 Flash\n只做选择题、不写字：TypeSafe Jev 1.14\n\n视频\n广告、剧情短片：Seedance 2.5\n要像实拍：Muse Video（Meta 还在预览）\n开源：MiniMax H3\n\n图片",
+    "text": "12 种活各用哪个 AI 模型，按 11 月 7 日的最新版本整理好了。👇\n\n文字\n写代码、跑 Agent：Claude Opus 5.5\n开源、便宜：DeepSeek V4.1 Flash\n只做选择题、不写字：TypeSafe Jev 1.14\n\n视频\n广告、剧情短片：Seedance 2.5\n要像实拍：Muse Video（Meta 还在预览）\n开源：MiniMax H3\n\n图片\n商业海报、带字的图：GPT Image 2.6\n画风、审美：Midjourney V8.2\n电商整套图：Nano Banana 2.1\n开源：Qwen Image 2.1（研究许可，商用要另外授权）\n\n声音\n写歌：Suno v6\n配音：MiniMax Speech 2.8 HD",
     "url": "https://x.com/geektao0319/status/2119065756289610145",
     "metrics": {
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 193
+      "views": 226
     },
     "source": "community"
   },
@@ -333,13 +334,13 @@
     "authorHandle": "GitTrend0x",
     "authorName": "@GitTrend0x",
     "datetime": "2026-11-07T13:30:23.000Z",
-    "text": "Jev 应用又燃爆了 🔥\n\nonlyreadai 的只读浏览器护盾、seanparkross 的 Slack 串楼警察、ninetyhe-90 的简历打分器、wy-coliney 的 Jev 点浏览器、a2sys-ai 的原文摘录阅读器……全网玩家把 Jev 玩成了下一代「防误操作闸门 + 频道纪律委员 + 简历裁判 + 点击加速器 + 文档取证官」:\n\n1️⃣",
+    "text": "Jev 应用又燃爆了 🔥\n\nonlyreadai 的只读浏览器护盾、seanparkross 的 Slack 串楼警察、ninetyhe-90 的简历打分器、wy-coliney 的 Jev 点浏览器、a2sys-ai 的原文摘录阅读器……全网玩家把 Jev 玩成了下一代「防误操作闸门 + 频道纪律委员 + 简历裁判 + 点击加速器 + 文档取证官」:\n\n1️⃣ onlyreadai/onlyread（\nhttps://\ngithub.com/onlyreadai/onl\nyread\n…）\n\n浏览器 Agent 的只读模式：读邮箱日历随便看，发送、点赞、删除、改设置在出浏览器前就被拦下；Jev 做判定，搞不定的交给 Claude 复核。\n“Agent 可以看全世界，但不能替你点确认”！\n\n2️⃣ seanparkross/slack-thread-police（\nhttps://\ngithub.com/seanparkross/s\nlack-thread-police\n…）\n\n自托管 Slack Bot：发现该进串的顶层回复，就私信当事人一键挪进线程；默认用 TypeSafe 托管 Jev 判断，也可自托管决策模型。\n“频道不再被跟帖刷屏，Jev 来当纪律委员”！\n\n3️⃣ ninetyhe-90/resume-grader（\nhttps://\ngithub.com/ninetyhe-90/re\nsume-grader\n…）\n\n中文简历打分：本地规则检查 + Jev 语义判断，输出优秀 / 良 / 差；扫描件、乱码或 Jev 不可用直接报错，不瞎估。\n“筛选简历，规则和概率一起上”！\n\n4️⃣ wy-coliney/jev-browser-use（\nhttps://\ngithub.com/wy-coliney/jev\n-browser-use\n…）\n\nCodex 技能：导航、点击、滚动交给 Jev，文本输入和最终核对留给 Codex；作者称工作流里浏览器操作快约 5–10 倍。\n“Jev 负责点，Codex 负责想和验”！\n\n5️⃣ a2sys-ai/jevfetch（\nhttps://\ngithub.com/a2sys-ai/jevfe\ntch\n…）\n\n给编码 Agent 的网页阅读器：按问题切块，用 TypeSafe Jev 挑相关段落并原文引用；作者测 30 道文档题，比 WebFetch 省约 47% 时间。\n“不要整页塞进上下文，只要答得上的那几段原文”！",
     "url": "https://x.com/GitTrend0x/status/2119059893919359131",
     "metrics": {
       "replies": 3,
       "retweets": 0,
       "likes": 0,
-      "views": 560
+      "views": 635
     },
     "source": "community"
   },
@@ -348,13 +349,13 @@
     "authorHandle": "thomas_rehmer",
     "authorName": "@thomas_rehmer",
     "datetime": "2026-11-07T12:01:13.000Z",
-    "text": "TypeSafe explains where decision models like Jev belong in a system, the model answers only the small questions code can't, and logic combines those answers into the decision.\n\nThe common mistake is one big Choice question with all the business rules written into its criteria,",
+    "text": "TypeSafe explains where decision models like Jev belong in a system, the model answers only the small questions code can't, and logic combines those answers into the decision.\n\nThe common mistake is one big Choice question with all the business rules written into its criteria, which leads to what TypeSafe calls prompt gymnastics, rewriting the conditions for every new edge case.\n\nIn a support case, checking whether a claim is eligible and unpaid is math, while whether the customer wants money back takes judgment.\n\nSplit that way, the trace shows which judgment decided, in TypeSafe's example the judgment that a charge was unauthorized sent the case to the fraud team.\n\nSo you can tell whether the judgment or the rule was wrong, where one big question leaves you a single probability number.\n\nA new path needs one new judgment and one new fact from code, and because Jev judges each question in isolation, the validated ones stay as they are.\n\nTypeSafe's own line for it is that Jev makes judgments and code makes decisions.",
     "url": "https://x.com/thomas_rehmer/status/2119037453768048713",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 31
+      "views": 33
     },
     "source": "community"
   },
@@ -362,14 +363,14 @@
     "id": "2119030378195243282",
     "authorHandle": "FabianMaume",
     "authorName": "@FabianMaume",
-    "datetime": "2026-11-07T11:33:06.000Z",
-    "text": "The Jev model by TypeSafe is quite cost-effective for ICP  check. There is a TypeSafe n8n node.",
+    "datetime": "2026-11-05T21:00:44.000Z",
+    "text": "Day 2: of building an automated outbound system in public. 🧵\n\nI connected Apify to the workflow and pulled 10 founder records through an API.\n\nI cleaned the data and extracted the fields I needed:\n\n• Founder and company names\n• Location\n• LinkedIn profiles\n• Company LinkedIn",
     "url": "https://x.com/FabianMaume/status/2119030378195243282",
     "metrics": {
-      "replies": 1,
+      "replies": 4,
       "retweets": 0,
-      "likes": 1,
-      "views": 37
+      "likes": 4,
+      "views": 113
     },
     "source": "community"
   },
