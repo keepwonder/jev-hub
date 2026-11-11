@@ -10,7 +10,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 21
+      "views": 28
     },
     "source": "community"
   },
@@ -25,7 +25,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 27
+      "views": 42
     },
     "source": "community"
   },
@@ -54,8 +54,8 @@
     "metrics": {
       "replies": 2,
       "retweets": 0,
-      "likes": 3,
-      "views": 155
+      "likes": 4,
+      "views": 182
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 8
+      "views": 10
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 2,
       "retweets": 2,
       "likes": 2,
-      "views": 71
+      "views": 111
     },
     "source": "community"
   },
@@ -94,13 +94,13 @@
     "authorHandle": "BrunoF566",
     "authorName": "@BrunoF566",
     "datetime": "2026-11-10T22:31:52.000Z",
-    "text": "Claude animations are F*CKING EXPLODING\n\nevery video is made in 5 minutes with a single prompt\n\nand this MF racked up over 1B views with them\n\nSo I made my own and decided to leak the system\n\nJust paste this into Claude and enjoy\n\n<role>\nYou are a motion-graphics engineer and animator. You build wordless \"contrast parable\" videos entirely with code: two chunky white pictogram characters on a black, glossy, reflective stage. No AI video model, stock footage or image generator.\n</role>\n\n<task>\nTurn the script/idea in <script> into a 14-18s vertical video (720x1280, 30fps, H.264 MP4, AAC audio) with generated sound. It is NOT an ad: no CTA, no logos, no real brands, no copyrighted characters.\n</task>\n\n<inputs>\n<script>[PASTE SCRIPT OR IDEA]</script>\n<left_label>[e.g. DISTRACTED]</left_label>\n<right_label>[e.g. PRESENT]</right_label>\n<punchline>[two short lines, e.g. \"SAME EVENINGS.\" / \"DIFFERENT CHILDHOOD.\"]</punchline>\n<watermark>[small brand name, or none]</watermark>\n</inputs>\n\n<story_rules>\n1. One relatable human situation, readable in 2 seconds with no explanation. Never abstract metaphors (bridges, mazes).\n2. Two lanes side by side, same situation, same time. Left = the worse choice, right = the better choice.\n3. Show time passing with a counter (e.g. AGE 5 / 8 / 11 / 14 / 18, or DAY 1 / 30 / 365) and let something visibly grow or accumulate in both lanes.\n4. 4-5 escalating beats, about 2.3s each. Each beat must show a different visible action, not a repeat.\n5. One small detail that hits hard (e.g. the kid copying the dad's phone habit).\n6. Final beat: the lanes diverge (one loses, one connects/wins). Then two punchline lines, appearing one after the other, short, no punctuation tricks.\n7. No spoken words, no captions except labels, counter and punchline.\nFirst output a beat table (time | left lane action | right lane action | counter/text | sound) and follow it exactly.\n</story_rules>\n\n<look>\n- Background pure black. Stage: dark floor slab at y=900 with a lighter top line, mirrored reflection below.\n- Characters: white pictograms with a black outline (5px), chunky and compact. Never lanky, never thin.\n- Labels: DejaVu Sans Mono Bold, wide letter-spacing (7-10px), glowing white. Left label at y~590, right label higher at y~530 (staggered, like the references). Counter centered at y~190. Punchlines at y~290 and y~355.\n- Tiny dim watermark at y~1160. Keep bottom 280px free of important action.\n- Glow: result = frame + 0.22*GaussianBlur(frame, σ7). After text, add 0.15*GaussianBlur(σ5) bloom.\n- Reflection: mirror the 260px above the floor bottom, blur σ2.2, add with a linear fade 0.34 -> 0.\n- Props are simple flat shapes: couch, phone (dark body, light-blue screen), ball (white, black outline), paper, etc. A phone adds a soft blue radial glow (additive blur σ38) that brightens on notification events.\n- Fade-in 0.8s at start, fade-out 0.8s at end.\n</look>\n\n<character_rig>\nDO NOT use IK targets or ad-hoc line hacks: that made the first version look broken. Use a forward-kinematics skeleton.\n\nProportions (local units): thigh 38, shin 36, torso 54, upper arm 32, forearm 31, head radius 27 (head center = neck + (r+3) along torso+head tilt), limb width 22, torso width 32, outline 5, foot radius 11, toe 12 forward.\n\nPose = {tt: torso lean (rad), th: head tilt relative to torso (rad), arms: [near(upper, fore), far(upper, fore)], legs: [near(thigh, shin), far(thigh, shin)], lift, pelvis_y}.\nAngles in degrees measured from \"straight down\", positive = forward. Forearm/shin angles are relative to their parent. Negative shin = knee bends.\nJoint = parent + length*(sin(angle), cos(angle)) in y-down coordinates.\nShoulder = pelvis + 0.9*torso vector. Mirror horizontally with flip=-1 for facing left. Kids = same rig with scale 0.42 -> 0.88 as the counter advances (ease over 0.7s).\n\nAuto-ground: after FK, shift the pelvis vertically so the lowest ankle + foot radius touches the floor (plus \"lift\" for jumps). Only override with pelvis_y for sitting.\n\nDraw order: far arm, far leg, torso, near leg, head, near arm. Draw each part as a black pass (width+10) then a white pass (width) with round joints (circles at every joint).\n\nWalk cycle (phase φ): near thigh = 0.52 sin φ rad, far = opposite; shin = -(6 + 52*max(0, cos φ)^1.1)°; arms swing opposite to legs at 0.55 sin φ; torso lean 0.09. Drive φ from distance walked: φ = 2π*dist / (128*scale) so feet never slide.\n\nReusable poses: stand (arms 6/8, -5/6), sit (thighs 88°, shins -88°, pelvis_y -52, tt -0.1, head 0.55, arms (24,92) and (16,98) for holding a phone), slump (tt -0.1, head 0.35, arms hanging), wave (near arm 150° with oscillating forearm), show-drawing (arms 80°/10°), ready/catch (arms 52-74° forward), hug (tt 0.22, head -0.5 so heads lean apart, arms 80°/14°, bodies 66 units apart).\nThrow: windup (torso -0.12, arm -75°), release (torso 0.20, arm 108°/36°, ~0.08s), follow-through (48°), return to ready. Ball sits in the thrower's hand until release, then flies on a parabola (70px arc) to the catcher's hands, and the catcher's arms rise to meet it.\nBlend between any two poses by lerping every number with smoothstep over 0.4-0.5s. Add idle motion (breathing, small head nod, thumb scroll).\nCharacters that leave the scene are drawn on a separate layer and faded by alpha. Objects dropped (ball) fall with gravity and one small bounce.\n</character_rig>\n\n<audio>\nGenerate in code (numpy/scipy), mix to AAC:\n- Low pad (55, 82, 110, 131 Hz sines) with slow tremolo, very quiet.\n- Soft \"pop\" for every catch, steps for walking, a high two-note blip at each counter change.\n- Notification dings (1568 + 2093 Hz, fast decay) on the distracting lane.\n- A falling low tone when the lanes diverge, a warm major chord (C-E-G-C) swelling at the resolution.\n- 0.5s fade-in, 1.2s fade-out, normalize to 0.7 peak.\n</audio>\n\n<workflow>\nFollow this order and do not skip steps:\n1. Write the beat table and show it.\n2. Render a POSE GALLERY (stand, sit, walk at 5 phases, wave, hug) in one image. Check that heads touch shoulders, feet touch the floor, the walk reads as walking, nothing floats. Fix before continuing.\n3. Render 6-8 test frames across the timeline, cropped to the stage. Check overlaps, hands touching props, heads colliding in hugs, clipped text.\n4. Fix everything found, then render the full video. Rendering costs about 0.35s per frame on 1 CPU, so run it in the foreground under a 290s timeout. If longer, render in two time ranges and concat with ffmpeg.\n5. Pipe raw RGB frames into ffmpeg (libx264, yuv420p, crf 17), mux the audio, verify the duration with ffprobe.\n6. Deliver the MP4 and the Python source files.\n</workflow>\n\n<rules>\n- Frame function must be pure f(t). Never hardcode frame numbers.\n- Keep 40px side margins. Labels never overlap characters.\n- No text other than labels, counter, punchline and watermark.\n- If the script needs more than 18 seconds or more than two lanes, tell me and propose a split.\n- After delivering, summarize the beat table in one short table and name anything that is a compromise.\n</rules>",
+    "text": "Claude 动画简直是 F*CKING 爆炸性流行\n\n每个视频仅用一个提示词在 5 分钟内制作完成\n\n这个 MF 用它们积累了超过 10 亿次观看量\n\n所以我自己做了一些，并决定泄露这个系统\n\n只需将此粘贴到 Claude 中，尽情享受吧\n\n<role>\n你是一位动态图形工程师和动画师。你完全用代码构建无对白的“对比寓言”视频：黑色、光滑、反光的舞台上，有两个粗壮的白色象形图角色。没有使用 AI 视频模型、库存素材或图像生成器。\n</role>\n\n<task>\n将 <script> 中的脚本/创意转化为一个 14-18 秒的竖屏视频（720x1280，30fps，H.264 MP4，AAC 音频），带有生成的音效。它不是广告：无行动号召、无标志、无真实品牌、无受版权保护的角色。\n</task>\n\n<inputs>\n<script>[PASTE SCRIPT OR IDEA]</script>\n<left_label>[例如：分心的]</left_label>\n<right_label>[例如：专注的]</right_label>\n<punchline>[两条简短台词，例如“相同的夜晚。” / “不同的童年。”]</punchline>\n<watermark>[小型品牌名称，或无]</watermark>\n</inputs>\n\n<story_rules>\n1. 一个可亲近的人类情境，在 2 秒内无需解释即可理解。绝不使用抽象隐喻（桥梁、迷宫）。\n2. 两个并排的车道，相同情境，相同时间。左侧 = 较差的选择，右侧 = 较好的选择。\n3. 用计数器显示时间流逝（例如 AGE 5 / 8 / 11 / 14 / 18，或 DAY 1 / 30 / 365），并让两个车道中某物可见地生长或积累。\n4. 4-5 个逐步升级的节拍，每个约 2.3 秒。每个节拍必须展示不同的可见动作，而不是重复。\n5. 一个冲击力强的小细节（例如孩子模仿爸爸的手机习惯）。\n6. 最终节拍：车道分歧（一侧失败，一侧连接/获胜）。然后两条冲击台词，依次出现，简短，无标点花招。\n7. 无口语、无字幕，除标签、计数器和冲击台词外。\n首先输出节拍表（时间 | 左侧车道动作 | 右侧车道动作 | 计数器/文本 | 音效），并严格遵循它。\n</story_rules>\n\n<look>\n- 背景纯黑色。舞台：y=900 处的深色地板板，上方有一条较亮的顶线，下方有镜像反射。\n- 角色：白色象形图，带黑色描边（5px），粗壮且紧凑。绝不瘦长，绝不纤细。\n- 标签：DejaVu Sans Mono Bold，宽字母间距（7-10px），发光白色。左侧标签在 y~590，右侧标签更高在 y~530（交错，如参考所示）。计数器居中在 y~190。冲击台词在 y~290 和 y~355。\n- 微小暗淡水印在 y~1160。底部 280px 保持无重要动作。\n- 发光：结果 = 帧 + 0.22*GaussianBlur(帧, σ7)。文本后添加 0.15*GaussianBlur(σ5) 绽放。\n- 反射：镜像地板上方 260px，模糊 σ2.2，以线性渐变 0.34 -> 0 添加。\n- 道具是简单的平面形状：沙发、手机（深色机身、浅蓝色屏幕）、球（白色、黑色描边）、纸张等。手机在通知事件时添加柔和蓝色径向发光（加法模糊 σ38），并变亮。\n- 开头淡入 0.8 秒，结尾淡出 0.8 秒。\n</look>\n\n<character_rig>\n不要使用 IK 目标或临时线条技巧：那会让第一个版本看起来破损。使用正向运动学骨骼。\n\n比例（本地单位）：大腿 38，小腿 36，躯干 54，上臂 32，前臂 31，头部半径 27（头部中心 = 颈部 + (r+3) 沿躯干+头部倾斜），肢体宽度 22，躯干宽度 32，描边 5，脚半径 11，脚趾向前 12。\n\n姿势 = {tt: 躯干倾斜 (弧度)，th: 头部相对于躯干的倾斜 (弧度)，arms: [近侧(上臂，前臂)，远侧(上臂，前臂)]，legs: [近侧(大腿，小腿)，远侧(大腿，小腿)]，lift，pelvis_y}。\n角度以度为单位，从“直下”测量，正值 = 前倾。前臂/小腿角度相对于其父骨。负小腿 = 膝盖弯曲。\n关节 = 父骨 + 长度*(sin(角度)，cos(角度))，在 y-向下坐标中。\n肩部 = 骨盆 + 0.9*躯干向量。水平镜像，翻转=-1 用于面向左侧。儿童 = 相同骨架，随着计数器推进缩放 0.42 -> 0.88（0.7 秒缓动）。\n\n自动接地：FK 后，垂直移动骨盆，使最低踝关节 + 脚半径触地（跳跃时加“lift”）。仅坐姿时用 pelvis_y 覆盖。\n\n绘制顺序：远臂、远腿、躯干、近腿、头部、近臂。每部分先绘制黑色通道（宽度+10），然后白色通道（宽度），关节处圆形（每个关节圆圈）。\n\n行走循环（相位 φ）：近大腿 = 0.52 sin φ 弧度，远侧相反；小腿 = -(6 + 52*max(0, cos φ)^1.1)°；手臂与腿相反摆动 0.55 sin φ；躯干倾斜 0.09。从行走距离驱动 φ：φ = 2π*dist / (128*scale)，脚不会滑动。\n\n可重用姿势：站立（手臂 6/8, -5/6），坐姿（大腿 88°，小腿 -88°，pelvis_y -52，tt -0.1，头部 0.55，手臂 (24,92) 和 (16,98) 用于握手机），瘫坐（tt -0.1，头部 0.35，手臂下垂），挥手（近臂 150° 带振荡前臂），展示绘画（手臂 80°/10°），准备/接球（手臂 52-74° 前倾），拥抱（tt 0.22，头部 -0.5 使头部分开倾斜，手臂 80°/14°，身体间距 66 单位）。\n投掷：准备（躯干 -0.12，手臂 -75°），释放（躯干 0.20，手臂 108°/36°，~0.08 秒），跟进（48°），返回准备。球在投手手中直到释放，然后沿抛物线（70px 弧）飞向接手者，接手者手臂抬起迎接。\n任意两姿势间混合，通过 smoothstep 在 0.4-0.5 秒内线性插值每个数字。添加闲置动作（呼吸、小头部点头、拇指滚动）。\n离开场景的角色绘制在单独图层，按 alpha 淡出。掉落物体（球）带重力和一次小反弹下落。\n</character_rig>\n\n<audio>\n在代码中生成（numpy/scipy），混音至 AAC：\n- 低垫音（55、82、110、131 Hz 正弦波）带慢速颤音，非常安静。\n- 每次接球软“啪”声，行走时的脚步声，每次计数器变化时高双音哔声。\n- 分心车道的通知叮声（1568 + 2093 Hz，快速衰减）。\n- 车道分歧时低沉下降音调，分辨时温暖大和弦（C-E-G-C）膨胀。\n- 0.5 秒淡入，1.2 秒淡出，归一化至 0.7 峰值。\n</audio>\n\n<workflow>\n按此顺序执行，不要跳过步骤：\n1. 编写节拍表并展示它。\n2. 渲染姿势画廊（站立、坐姿、行走 5 个相位、挥手、拥抱）在一张图像中。检查头部触肩、脚触地、行走看起来像行走、无浮动物体。在继续前修复。\n3. 渲染时间线跨度 6-8 个测试帧，裁剪至舞台。检查重叠、手触道具、拥抱时头部碰撞、裁剪文本。\n4. 修复所有发现问题，然后渲染完整视频。单 CPU 每帧渲染约 0.35 秒，因此在前台运行，超时 290 秒。若更长，分两个时间范围渲染并用 ffmpeg 拼接。\n5. 将原始 RGB 帧管道输入 ffmpeg（libx264，yuv420p，crf 17），复用音频，用 ffprobe 验证时长。\n6. 交付 MP4 和 Python 源文件。\n</workflow>\n\n<rules>\n- 帧函数必须是纯 f(t)。绝不硬编码帧号。\n- 保持 40px 侧边距。标签绝不与角色重叠。\n- 无标签、计数器、冲击台词和水印外的其他文本。\n- 若脚本需超过 18 秒或超过两个车道，告诉我并提出拆分建议。\n- 交付后，用一个简短表格总结节拍表，并命名任何妥协之处。\n</rules>",
     "url": "https://x.com/BrunoF566/status/2120283325369589876",
     "metrics": {
-      "replies": 1,
-      "retweets": 4,
-      "likes": 22,
-      "views": 2033
+      "replies": 5,
+      "retweets": 11,
+      "likes": 70,
+      "views": 5731
     },
     "source": "community"
   },
@@ -113,9 +113,9 @@
     "url": "https://x.com/Habubrats71/status/2120283225801040351",
     "metrics": {
       "replies": 2,
-      "retweets": 16,
-      "likes": 93,
-      "views": 1656
+      "retweets": 19,
+      "likes": 132,
+      "views": 2199
     },
     "source": "community"
   },
@@ -129,38 +129,8 @@
     "metrics": {
       "replies": 4,
       "retweets": 1,
-      "likes": 0,
-      "views": 64
-    },
-    "source": "community"
-  },
-  {
-    "id": "2120282539944243470",
-    "authorHandle": "ParetoMoney",
-    "authorName": "@ParetoMoney",
-    "datetime": "2026-10-30T14:25:18.000Z",
-    "text": "I gave Claude a different challenge after seeing what it could build with robotic animals.\n\nThis time: a robotic scorpion.\n\nMeet Aculeus SC-7.\n\nA mechanical creature designed as a fully interactive bench simulator.\n\nHere's what's inside:\n\n→ Articulated robotic tail\n→ Mechanical claws\n→ Adjustable stinger\n→ Modular body and shell assemblies\n→ Individual leg and subsystem controls\n→ Scanning and strike sequences\n\nThe interesting part is how all these components come together in one controllable system.\nNot just a static 3D model.\n\nA mechanical creature you can interact with, inspect, and experiment with.\n\nAI-generated engineering simulations are getting seriously interesting.\n\nWhat's next: a robotic spider or an entire robotic insect?",
-    "url": "https://x.com/ParetoMoney/status/2120282539944243470",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
       "likes": 1,
-      "views": 57
-    },
-    "source": "community"
-  },
-  {
-    "id": "2120281939571613795",
-    "authorHandle": "omnisc1entt",
-    "authorName": "@omnisc1entt",
-    "datetime": "2026-10-25T12:49:05.000Z",
-    "text": "This is f*cking insane. Anthropic Research Lead:\n\n\"Fable 5.2 changes nothing if you're still prompting it\n\n99% of our engineers run swarms of 400+ self-improving agents. Everyone is moving to graphs\"\n\nIn 20 minutes, she shows how graph engineering turns separate agents into one system that improves itself\n\nOne Agent → Loops → Plan Mode → Graphs → Self-Improving System\n\nThe model got smarter. The graph around it is what makes it work without you\n\nWorth more than most $1,000 agent engineering courses\n\nBookmark and watch it today\n\nThen read how to stay in charge of that system: Harness, Loops, Graphs ↓",
-    "url": "https://x.com/omnisc1entt/status/2120281939571613795",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 26,
-      "views": 462
+      "views": 81
     },
     "source": "community"
   },
@@ -172,10 +142,10 @@
     "text": "last week, our eng team got #1 on hacker news testing if decision models like Jev \n@typesafeai\n could grade complex data-matching tasks as well as frontier models.\n\nJev with opus got close to opus accuracy for a fraction of the cost. \n\nfull article below:",
     "url": "https://x.com/tejasmanohar/status/2120240705914433567",
     "metrics": {
-      "replies": 4,
-      "retweets": 1,
-      "likes": 23,
-      "views": 1686
+      "replies": 5,
+      "retweets": 2,
+      "likes": 26,
+      "views": 1978
     },
     "source": "community"
   },
@@ -189,23 +159,8 @@
     "metrics": {
       "replies": 0,
       "retweets": 1,
-      "likes": 2,
-      "views": 51
-    },
-    "source": "community"
-  },
-  {
-    "id": "2120196754188427459",
-    "authorHandle": "Bober_smart",
-    "authorName": "@Bober_smart",
-    "datetime": "2026-09-25T20:24:14.000Z",
-    "text": "我真的不明白为什么人们还在不使用这个。因为它，我将成本降低了87%\n\n前OpenAI研究员、TypeSafe AI创始人Diogo Almeida分享了一个简单的见解，浏览量达到4000万：“据我所知，通往AI驱动经济的最短路径”\n\n经过2年的开发，创建了一种名为RLCD的新模型训练方法，以及一种名为Jev的前沿AI模型类型：\n\n> 快20到200倍\n> 便宜40到400倍（免费输出令牌）\n> 针对决策优化的前沿可组合智能\n\n工作原理：\n\n找到模型只需选择的地方，将这些卸载到决策层。将文本生成留给LLM\n\n在做出决策前，提供一个简短、清晰的状态，包含目标、当前状态和可用选项\n\n状态 -> 决策层选择 -> 工作者执行 -> 结果返回到状态\n\n就是这样。LLM不再在简单决策上浪费令牌\n\n完整指南见下面的文章，收藏它",
-    "url": "https://x.com/Bober_smart/status/2120196754188427459",
-    "metrics": {
-      "replies": 22,
-      "retweets": 4,
-      "likes": 58,
-      "views": 2277
+      "likes": 3,
+      "views": 69
     },
     "source": "community"
   },
@@ -214,13 +169,13 @@
     "authorHandle": "phil_renaud",
     "authorName": "@phil_renaud",
     "datetime": "2026-11-10T15:18:01.000Z",
-    "text": "Hi! I've built a Chrome extension that uses a decision model to turn every table on the web into a data visualization, so you can see patterns at a glance.\n\nThe decision model (\n@typesafeai\n's Jev) is perfect for solving a big hiccup with doing this: sometimes implied order of a column isn't \"big numbers = good, small numbers = bad\". Consider Earthquake deaths, or cost of a GPU, or Pitcher ERA. Jev is REALLY good and fast at figuring this stuff out.",
+    "text": "嗨！我开发了一个 Chrome 扩展，它使用决策模型将网络上的每个表格转换为数据可视化效果，这样你就能一目了然地看到其中的模式。\n\n这个决策模型（\n@typesafeai\n 的 Jev）非常适合解决做这件事时的一个大难题：有时列的隐含顺序并不是“数字越大越好，数字越小越差”。比如地震死亡人数、GPU 成本，或者投手 ERA。Jev 在搞清楚这些东西方面非常出色，而且速度很快。",
     "url": "https://x.com/phil_renaud/status/2120174142490103928",
     "metrics": {
-      "replies": 1,
-      "retweets": 2,
-      "likes": 16,
-      "views": 862
+      "replies": 2,
+      "retweets": 6,
+      "likes": 57,
+      "views": 5872
     },
     "source": "community"
   },
@@ -233,9 +188,9 @@
     "url": "https://x.com/GitTrend0x/status/2120147118237114757",
     "metrics": {
       "replies": 2,
-      "retweets": 4,
-      "likes": 24,
-      "views": 1504
+      "retweets": 6,
+      "likes": 36,
+      "views": 2357
     },
     "source": "community"
   },
@@ -250,22 +205,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 12
-    },
-    "source": "community"
-  },
-  {
-    "id": "2120117013142208763",
-    "authorHandle": "Jomolos",
-    "authorName": "@Jomolos",
-    "datetime": "2026-10-20T09:49:59.000Z",
-    "text": "“Metin yazamayan” bir yapay zekâya sıradaki kelimeyi seçtirirsen ne olur? Jev’le yapılan deneme, cevabın hem komik hem de öğretici olduğunu gösteriyor diyeyim ben size :D\n\nTypeSafe AI’nin Jev modeli, ChatGPT gibi serbestçe cümle üretmek için tasarlanmamış. Ona bir içerik ve seçenekli bir soru veriyorsunuz; seçenek seçiyor, puan veriyor veya evet-hayır olasılığı döndürüyor. Bu yüzden yazılımların içinde hızlı ve düşük maliyetli kararlar almak için konumlandırılıyor. “Choice” adlı soru türünde üst sınır 255 seçenek.\n\nSosyal medyada paylaşılan deney bu sınırı tersine kullanmış. Durun açıklayayım. GPT-2’nin kelime parçalarından küçük bir liste seçiliyor; Jev’e her adımda “sırada hangisi gelsin?” diye soruluyor. Seçilen parça metne ekleniyor ve aynı işlem tekrarlanıyor. Dışarıdan bakınca sohbet botu yazıyormuş gibi görünüyor. Fakat Jev bir sonraki parçayı mevcut seçenekler arasından seçiyor; sınırsız bir sözlükten cümle kurmuyor.\n\n“On a quiet morning, the city” gibi bir başlangıçtan kısa ve anlaşılır bir devam çıkabiliyor. Birkaç adım sonra tekrarlar ve bozuk ifadeler başlıyor. Bu, yalnızca modelin beceriksizliği açıklanmıyor tabi ki.. 254 parçalık sözlükle dilin çoğu sözcüğünü ve dil bilgisi yapısını kurmak zaten mümkün değil. Üstelik her seçim, önceki hatalı metni de yeni bağlam olarak görüyor.\n\nBaşka bir açık kaynak deneme olan JevGPT, yaklaşık 20 bin kelimelik sözlüğü gruplara bölerek benzer fikri daha geniş ölçekte uyguluyor. Kısa olgusal yanıtlar alabilse de her kelime için çok sayıda seçim ve API çağrısı gerekiyor. \n\nDeneyin güzelliği ise bir araca tasarlanmadığı işi yaptırmayı deneyince hem esnekliğini hem sınırını görüyor olmanızda yatıyor. Jev’in asıl işi metin yazmak değil, verilen seçenekler arasında karar vermek. Bu video da o farkı eğlenceli biçimde görünür kılmış.\n\nKaynaklar:\n\n\nhttps://\ntypesafe.ai/blog/introduci\nng-system-one-models-and-jev\n…\n\n\nhttps://\ndocs.typesafe.ai\n\n\nhttps://\ngithub.com/bewinxed/jevgpt\n\n\nhttps://\nx.com/erikdunteman/s\ntatus/2101533797527454109\n…",
-    "url": "https://x.com/Jomolos/status/2120117013142208763",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 124
+      "views": 16
     },
     "source": "community"
   },
@@ -280,22 +220,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 60
-    },
-    "source": "community"
-  },
-  {
-    "id": "2120101477167567330",
-    "authorHandle": "latent_node",
-    "authorName": "@latent_node",
-    "datetime": "2026-11-09T12:34:36.000Z",
-    "text": "很酷，看到人工智能更新了决策指数（v1 👉 v2），用于基准测试 JEV 风格决策模型的性能、任务运行时间和成本🧑‍⚖️\n\n\nhttps://\nartificialanalysis.ai/evaluations/ar\ntificial-analysis-decision-index\n…\n\nv1 由四个简短问题准确性基准测试组成，等权重。v2 现在将权重转向文档和鲁棒性，并更关注概率的校准程度。\n\n虽然 GLiDE",
-    "url": "https://x.com/latent_node/status/2120101477167567330",
-    "metrics": {
-      "replies": 1,
-      "retweets": 2,
-      "likes": 8,
-      "views": 982
+      "views": 64
     },
     "source": "community"
   },
@@ -310,22 +235,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 32
-    },
-    "source": "community"
-  },
-  {
-    "id": "2120055432152805384",
-    "authorHandle": "latent_node",
-    "authorName": "@latent_node",
-    "datetime": "2026-11-09T15:51:35.000Z",
-    "text": "183 毫秒 vs. Claude Opus 5.5 的 3.5 秒。\n\n这就是 \n@NaceAI\n 在其关于 Drex Max 的新论文中报告的延迟差距，Drex Max 是一个 256k 上下文决策模型。GPT-6 Sol 大约需要 2 秒。\n\nDrex Max",
-    "url": "https://x.com/latent_node/status/2120055432152805384",
-    "metrics": {
-      "replies": 49,
-      "retweets": 17,
-      "likes": 239,
-      "views": 21220
+      "views": 35
     },
     "source": "community"
   },
@@ -340,7 +250,22 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 28
+      "views": 30
+    },
+    "source": "community"
+  },
+  {
+    "id": "2120055432152805384",
+    "authorHandle": "latent_node",
+    "authorName": "@latent_node",
+    "datetime": "2026-11-09T15:51:35.000Z",
+    "text": "183 毫秒 vs. Claude Opus 5.5 的 3.5 秒。\n\n这就是 \n@NaceAI\n 在其关于 Drex Max 的新论文中报告的延迟差距，Drex Max 是一个 256k 上下文决策模型。GPT-6 Sol 大约需要 2 秒。\n\nDrex Max",
+    "url": "https://x.com/latent_node/status/2120055432152805384",
+    "metrics": {
+      "replies": 49,
+      "retweets": 17,
+      "likes": 239,
+      "views": 21430
     },
     "source": "community"
   },
@@ -355,7 +280,22 @@
       "replies": 3,
       "retweets": 2,
       "likes": 20,
-      "views": 1624
+      "views": 1650
+    },
+    "source": "community"
+  },
+  {
+    "id": "2120101477167567330",
+    "authorHandle": "latent_node",
+    "authorName": "@latent_node",
+    "datetime": "2026-11-09T12:34:36.000Z",
+    "text": "很酷，看到人工智能更新了决策指数（v1 👉 v2），用于基准测试 JEV 风格决策模型的性能、任务运行时间和成本🧑‍⚖️\n\n\nhttps://\nartificialanalysis.ai/evaluations/ar\ntificial-analysis-decision-index\n…\n\nv1 由四个简短问题准确性基准测试组成，等权重。v2 现在将权重转向文档和鲁棒性，并更关注概率的校准程度。\n\n虽然 GLiDE",
+    "url": "https://x.com/latent_node/status/2120101477167567330",
+    "metrics": {
+      "replies": 1,
+      "retweets": 2,
+      "likes": 8,
+      "views": 1006
     },
     "source": "community"
   },
@@ -370,7 +310,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 3,
-      "views": 199
+      "views": 202
     },
     "source": "community"
   },
@@ -400,7 +340,7 @@
       "replies": 1,
       "retweets": 2,
       "likes": 6,
-      "views": 442
+      "views": 446
     },
     "source": "community"
   },
@@ -415,7 +355,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 3,
-      "views": 73
+      "views": 74
     },
     "source": "community"
   },
@@ -430,7 +370,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 1,
-      "views": 184
+      "views": 188
     },
     "source": "community"
   },
@@ -445,7 +385,7 @@
       "replies": 6,
       "retweets": 0,
       "likes": 1,
-      "views": 2863
+      "views": 2886
     },
     "source": "community"
   },
@@ -460,7 +400,7 @@
       "replies": 25,
       "retweets": 1,
       "likes": 35,
-      "views": 911
+      "views": 916
     },
     "source": "community"
   },
@@ -896,6 +836,66 @@
       "retweets": 0,
       "likes": 2,
       "views": 255
+    },
+    "source": "community"
+  },
+  {
+    "id": "2120282539944243470",
+    "authorHandle": "ParetoMoney",
+    "authorName": "@ParetoMoney",
+    "datetime": "2026-10-30T14:25:18.000Z",
+    "text": "I gave Claude a different challenge after seeing what it could build with robotic animals.\n\nThis time: a robotic scorpion.\n\nMeet Aculeus SC-7.\n\nA mechanical creature designed as a fully interactive bench simulator.\n\nHere's what's inside:\n\n→ Articulated robotic tail\n→ Mechanical claws\n→ Adjustable stinger\n→ Modular body and shell assemblies\n→ Individual leg and subsystem controls\n→ Scanning and strike sequences\n\nThe interesting part is how all these components come together in one controllable system.\nNot just a static 3D model.\n\nA mechanical creature you can interact with, inspect, and experiment with.\n\nAI-generated engineering simulations are getting seriously interesting.\n\nWhat's next: a robotic spider or an entire robotic insect?",
+    "url": "https://x.com/ParetoMoney/status/2120282539944243470",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 1,
+      "views": 57
+    },
+    "source": "community"
+  },
+  {
+    "id": "2120281939571613795",
+    "authorHandle": "omnisc1entt",
+    "authorName": "@omnisc1entt",
+    "datetime": "2026-10-25T12:49:05.000Z",
+    "text": "This is f*cking insane. Anthropic Research Lead:\n\n\"Fable 5.2 changes nothing if you're still prompting it\n\n99% of our engineers run swarms of 400+ self-improving agents. Everyone is moving to graphs\"\n\nIn 20 minutes, she shows how graph engineering turns separate agents into one system that improves itself\n\nOne Agent → Loops → Plan Mode → Graphs → Self-Improving System\n\nThe model got smarter. The graph around it is what makes it work without you\n\nWorth more than most $1,000 agent engineering courses\n\nBookmark and watch it today\n\nThen read how to stay in charge of that system: Harness, Loops, Graphs ↓",
+    "url": "https://x.com/omnisc1entt/status/2120281939571613795",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 26,
+      "views": 462
+    },
+    "source": "community"
+  },
+  {
+    "id": "2120117013142208763",
+    "authorHandle": "Jomolos",
+    "authorName": "@Jomolos",
+    "datetime": "2026-10-20T09:49:59.000Z",
+    "text": "“Metin yazamayan” bir yapay zekâya sıradaki kelimeyi seçtirirsen ne olur? Jev’le yapılan deneme, cevabın hem komik hem de öğretici olduğunu gösteriyor diyeyim ben size :D\n\nTypeSafe AI’nin Jev modeli, ChatGPT gibi serbestçe cümle üretmek için tasarlanmamış. Ona bir içerik ve seçenekli bir soru veriyorsunuz; seçenek seçiyor, puan veriyor veya evet-hayır olasılığı döndürüyor. Bu yüzden yazılımların içinde hızlı ve düşük maliyetli kararlar almak için konumlandırılıyor. “Choice” adlı soru türünde üst sınır 255 seçenek.\n\nSosyal medyada paylaşılan deney bu sınırı tersine kullanmış. Durun açıklayayım. GPT-2’nin kelime parçalarından küçük bir liste seçiliyor; Jev’e her adımda “sırada hangisi gelsin?” diye soruluyor. Seçilen parça metne ekleniyor ve aynı işlem tekrarlanıyor. Dışarıdan bakınca sohbet botu yazıyormuş gibi görünüyor. Fakat Jev bir sonraki parçayı mevcut seçenekler arasından seçiyor; sınırsız bir sözlükten cümle kurmuyor.\n\n“On a quiet morning, the city” gibi bir başlangıçtan kısa ve anlaşılır bir devam çıkabiliyor. Birkaç adım sonra tekrarlar ve bozuk ifadeler başlıyor. Bu, yalnızca modelin beceriksizliği açıklanmıyor tabi ki.. 254 parçalık sözlükle dilin çoğu sözcüğünü ve dil bilgisi yapısını kurmak zaten mümkün değil. Üstelik her seçim, önceki hatalı metni de yeni bağlam olarak görüyor.\n\nBaşka bir açık kaynak deneme olan JevGPT, yaklaşık 20 bin kelimelik sözlüğü gruplara bölerek benzer fikri daha geniş ölçekte uyguluyor. Kısa olgusal yanıtlar alabilse de her kelime için çok sayıda seçim ve API çağrısı gerekiyor. \n\nDeneyin güzelliği ise bir araca tasarlanmadığı işi yaptırmayı deneyince hem esnekliğini hem sınırını görüyor olmanızda yatıyor. Jev’in asıl işi metin yazmak değil, verilen seçenekler arasında karar vermek. Bu video da o farkı eğlenceli biçimde görünür kılmış.\n\nKaynaklar:\n\n\nhttps://\ntypesafe.ai/blog/introduci\nng-system-one-models-and-jev\n…\n\n\nhttps://\ndocs.typesafe.ai\n\n\nhttps://\ngithub.com/bewinxed/jevgpt\n\n\nhttps://\nx.com/erikdunteman/s\ntatus/2101533797527454109\n…",
+    "url": "https://x.com/Jomolos/status/2120117013142208763",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 124
+    },
+    "source": "community"
+  },
+  {
+    "id": "2120196754188427459",
+    "authorHandle": "Bober_smart",
+    "authorName": "@Bober_smart",
+    "datetime": "2026-09-25T20:24:14.000Z",
+    "text": "我真的不明白为什么人们还在不使用这个。因为它，我将成本降低了87%\n\n前OpenAI研究员、TypeSafe AI创始人Diogo Almeida分享了一个简单的见解，浏览量达到4000万：“据我所知，通往AI驱动经济的最短路径”\n\n经过2年的开发，创建了一种名为RLCD的新模型训练方法，以及一种名为Jev的前沿AI模型类型：\n\n> 快20到200倍\n> 便宜40到400倍（免费输出令牌）\n> 针对决策优化的前沿可组合智能\n\n工作原理：\n\n找到模型只需选择的地方，将这些卸载到决策层。将文本生成留给LLM\n\n在做出决策前，提供一个简短、清晰的状态，包含目标、当前状态和可用选项\n\n状态 -> 决策层选择 -> 工作者执行 -> 结果返回到状态\n\n就是这样。LLM不再在简单决策上浪费令牌\n\n完整指南见下面的文章，收藏它",
+    "url": "https://x.com/Bober_smart/status/2120196754188427459",
+    "metrics": {
+      "replies": 22,
+      "retweets": 4,
+      "likes": 58,
+      "views": 2277
     },
     "source": "community"
   }
