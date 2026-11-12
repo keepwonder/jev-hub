@@ -10,7 +10,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 35
+      "views": 36
     },
     "source": "community"
   },
@@ -25,7 +25,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 76
+      "views": 82
     },
     "source": "community"
   },
@@ -55,7 +55,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 5,
-      "views": 210
+      "views": 215
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 21
+      "views": 22
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 2,
       "retweets": 2,
       "likes": 2,
-      "views": 120
+      "views": 122
     },
     "source": "community"
   },
@@ -97,10 +97,10 @@
     "text": "Claude 动画简直是 F*CKING 爆炸性流行\n\n每个视频仅用一个提示词在 5 分钟内制作完成\n\n这个 MF 用它们积累了超过 10 亿次观看量\n\n所以我自己做了一些，并决定泄露这个系统\n\n只需将此粘贴到 Claude 中，尽情享受吧\n\n<role>\n你是一位动态图形工程师和动画师。你完全用代码构建无对白的“对比寓言”视频：黑色、光滑、反光的舞台上，有两个粗壮的白色象形图角色。没有使用 AI 视频模型、库存素材或图像生成器。\n</role>\n\n<task>\n将 <script> 中的脚本/创意转化为一个 14-18 秒的竖屏视频（720x1280，30fps，H.264 MP4，AAC 音频），带有生成的音效。它不是广告：无行动号召、无标志、无真实品牌、无受版权保护的角色。\n</task>\n\n<inputs>\n<script>[PASTE SCRIPT OR IDEA]</script>\n<left_label>[例如：分心的]</left_label>\n<right_label>[例如：专注的]</right_label>\n<punchline>[两条简短台词，例如“相同的夜晚。” / “不同的童年。”]</punchline>\n<watermark>[小型品牌名称，或无]</watermark>\n</inputs>\n\n<story_rules>\n1. 一个可亲近的人类情境，在 2 秒内无需解释即可理解。绝不使用抽象隐喻（桥梁、迷宫）。\n2. 两个并排的车道，相同情境，相同时间。左侧 = 较差的选择，右侧 = 较好的选择。\n3. 用计数器显示时间流逝（例如 AGE 5 / 8 / 11 / 14 / 18，或 DAY 1 / 30 / 365），并让两个车道中某物可见地生长或积累。\n4. 4-5 个逐步升级的节拍，每个约 2.3 秒。每个节拍必须展示不同的可见动作，而不是重复。\n5. 一个冲击力强的小细节（例如孩子模仿爸爸的手机习惯）。\n6. 最终节拍：车道分歧（一侧失败，一侧连接/获胜）。然后两条冲击台词，依次出现，简短，无标点花招。\n7. 无口语、无字幕，除标签、计数器和冲击台词外。\n首先输出节拍表（时间 | 左侧车道动作 | 右侧车道动作 | 计数器/文本 | 音效），并严格遵循它。\n</story_rules>\n\n<look>\n- 背景纯黑色。舞台：y=900 处的深色地板板，上方有一条较亮的顶线，下方有镜像反射。\n- 角色：白色象形图，带黑色描边（5px），粗壮且紧凑。绝不瘦长，绝不纤细。\n- 标签：DejaVu Sans Mono Bold，宽字母间距（7-10px），发光白色。左侧标签在 y~590，右侧标签更高在 y~530（交错，如参考所示）。计数器居中在 y~190。冲击台词在 y~290 和 y~355。\n- 微小暗淡水印在 y~1160。底部 280px 保持无重要动作。\n- 发光：结果 = 帧 + 0.22*GaussianBlur(帧, σ7)。文本后添加 0.15*GaussianBlur(σ5) 绽放。\n- 反射：镜像地板上方 260px，模糊 σ2.2，以线性渐变 0.34 -> 0 添加。\n- 道具是简单的平面形状：沙发、手机（深色机身、浅蓝色屏幕）、球（白色、黑色描边）、纸张等。手机在通知事件时添加柔和蓝色径向发光（加法模糊 σ38），并变亮。\n- 开头淡入 0.8 秒，结尾淡出 0.8 秒。\n</look>\n\n<character_rig>\n不要使用 IK 目标或临时线条技巧：那会让第一个版本看起来破损。使用正向运动学骨骼。\n\n比例（本地单位）：大腿 38，小腿 36，躯干 54，上臂 32，前臂 31，头部半径 27（头部中心 = 颈部 + (r+3) 沿躯干+头部倾斜），肢体宽度 22，躯干宽度 32，描边 5，脚半径 11，脚趾向前 12。\n\n姿势 = {tt: 躯干倾斜 (弧度)，th: 头部相对于躯干的倾斜 (弧度)，arms: [近侧(上臂，前臂)，远侧(上臂，前臂)]，legs: [近侧(大腿，小腿)，远侧(大腿，小腿)]，lift，pelvis_y}。\n角度以度为单位，从“直下”测量，正值 = 前倾。前臂/小腿角度相对于其父骨。负小腿 = 膝盖弯曲。\n关节 = 父骨 + 长度*(sin(角度)，cos(角度))，在 y-向下坐标中。\n肩部 = 骨盆 + 0.9*躯干向量。水平镜像，翻转=-1 用于面向左侧。儿童 = 相同骨架，随着计数器推进缩放 0.42 -> 0.88（0.7 秒缓动）。\n\n自动接地：FK 后，垂直移动骨盆，使最低踝关节 + 脚半径触地（跳跃时加“lift”）。仅坐姿时用 pelvis_y 覆盖。\n\n绘制顺序：远臂、远腿、躯干、近腿、头部、近臂。每部分先绘制黑色通道（宽度+10），然后白色通道（宽度），关节处圆形（每个关节圆圈）。\n\n行走循环（相位 φ）：近大腿 = 0.52 sin φ 弧度，远侧相反；小腿 = -(6 + 52*max(0, cos φ)^1.1)°；手臂与腿相反摆动 0.55 sin φ；躯干倾斜 0.09。从行走距离驱动 φ：φ = 2π*dist / (128*scale)，脚不会滑动。\n\n可重用姿势：站立（手臂 6/8, -5/6），坐姿（大腿 88°，小腿 -88°，pelvis_y -52，tt -0.1，头部 0.55，手臂 (24,92) 和 (16,98) 用于握手机），瘫坐（tt -0.1，头部 0.35，手臂下垂），挥手（近臂 150° 带振荡前臂），展示绘画（手臂 80°/10°），准备/接球（手臂 52-74° 前倾），拥抱（tt 0.22，头部 -0.5 使头部分开倾斜，手臂 80°/14°，身体间距 66 单位）。\n投掷：准备（躯干 -0.12，手臂 -75°），释放（躯干 0.20，手臂 108°/36°，~0.08 秒），跟进（48°），返回准备。球在投手手中直到释放，然后沿抛物线（70px 弧）飞向接手者，接手者手臂抬起迎接。\n任意两姿势间混合，通过 smoothstep 在 0.4-0.5 秒内线性插值每个数字。添加闲置动作（呼吸、小头部点头、拇指滚动）。\n离开场景的角色绘制在单独图层，按 alpha 淡出。掉落物体（球）带重力和一次小反弹下落。\n</character_rig>\n\n<audio>\n在代码中生成（numpy/scipy），混音至 AAC：\n- 低垫音（55、82、110、131 Hz 正弦波）带慢速颤音，非常安静。\n- 每次接球软“啪”声，行走时的脚步声，每次计数器变化时高双音哔声。\n- 分心车道的通知叮声（1568 + 2093 Hz，快速衰减）。\n- 车道分歧时低沉下降音调，分辨时温暖大和弦（C-E-G-C）膨胀。\n- 0.5 秒淡入，1.2 秒淡出，归一化至 0.7 峰值。\n</audio>\n\n<workflow>\n按此顺序执行，不要跳过步骤：\n1. 编写节拍表并展示它。\n2. 渲染姿势画廊（站立、坐姿、行走 5 个相位、挥手、拥抱）在一张图像中。检查头部触肩、脚触地、行走看起来像行走、无浮动物体。在继续前修复。\n3. 渲染时间线跨度 6-8 个测试帧，裁剪至舞台。检查重叠、手触道具、拥抱时头部碰撞、裁剪文本。\n4. 修复所有发现问题，然后渲染完整视频。单 CPU 每帧渲染约 0.35 秒，因此在前台运行，超时 290 秒。若更长，分两个时间范围渲染并用 ffmpeg 拼接。\n5. 将原始 RGB 帧管道输入 ffmpeg（libx264，yuv420p，crf 17），复用音频，用 ffprobe 验证时长。\n6. 交付 MP4 和 Python 源文件。\n</workflow>\n\n<rules>\n- 帧函数必须是纯 f(t)。绝不硬编码帧号。\n- 保持 40px 侧边距。标签绝不与角色重叠。\n- 无标签、计数器、冲击台词和水印外的其他文本。\n- 若脚本需超过 18 秒或超过两个车道，告诉我并提出拆分建议。\n- 交付后，用一个简短表格总结节拍表，并命名任何妥协之处。\n</rules>",
     "url": "https://x.com/BrunoF566/status/2120283325369589876",
     "metrics": {
-      "replies": 8,
-      "retweets": 22,
-      "likes": 155,
-      "views": 14046
+      "replies": 9,
+      "retweets": 24,
+      "likes": 158,
+      "views": 14468
     },
     "source": "community"
   },
@@ -114,8 +114,8 @@
     "metrics": {
       "replies": 2,
       "retweets": 21,
-      "likes": 153,
-      "views": 2661
+      "likes": 155,
+      "views": 2695
     },
     "source": "community"
   },
@@ -130,7 +130,7 @@
       "replies": 4,
       "retweets": 1,
       "likes": 1,
-      "views": 97
+      "views": 100
     },
     "source": "community"
   },
@@ -143,9 +143,9 @@
     "url": "https://x.com/tejasmanohar/status/2120240705914433567",
     "metrics": {
       "replies": 5,
-      "retweets": 2,
-      "likes": 26,
-      "views": 2230
+      "retweets": 3,
+      "likes": 27,
+      "views": 2266
     },
     "source": "community"
   },
@@ -160,7 +160,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 3,
-      "views": 78
+      "views": 79
     },
     "source": "community"
   },
@@ -174,8 +174,8 @@
     "metrics": {
       "replies": 2,
       "retweets": 7,
-      "likes": 75,
-      "views": 7932
+      "likes": 80,
+      "views": 8693
     },
     "source": "community"
   },
@@ -190,7 +190,7 @@
       "replies": 2,
       "retweets": 6,
       "likes": 36,
-      "views": 2744
+      "views": 2764
     },
     "source": "community"
   },
@@ -205,7 +205,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 19
+      "views": 20
     },
     "source": "community"
   },
@@ -220,7 +220,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 72
+      "views": 74
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 39
+      "views": 40
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 37
+      "views": 39
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 49,
       "retweets": 17,
       "likes": 239,
-      "views": 21602
+      "views": 21634
     },
     "source": "community"
   },
@@ -279,8 +279,8 @@
     "metrics": {
       "replies": 3,
       "retweets": 2,
-      "likes": 20,
-      "views": 1679
+      "likes": 21,
+      "views": 1686
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 1,
       "retweets": 2,
       "likes": 9,
-      "views": 1041
+      "views": 1044
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 3,
-      "views": 214
+      "views": 217
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 149
+      "views": 150
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 1,
       "retweets": 2,
       "likes": 6,
-      "views": 450
+      "views": 451
     },
     "source": "community"
   },
@@ -355,7 +355,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 3,
-      "views": 77
+      "views": 78
     },
     "source": "community"
   },
@@ -370,7 +370,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 1,
-      "views": 197
+      "views": 198
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 6,
       "retweets": 0,
       "likes": 1,
-      "views": 2931
+      "views": 2948
     },
     "source": "community"
   },
@@ -400,7 +400,7 @@
       "replies": 25,
       "retweets": 1,
       "likes": 35,
-      "views": 921
+      "views": 922
     },
     "source": "community"
   },
