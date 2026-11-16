@@ -3,14 +3,14 @@
     "id": "2122091423180992925",
     "authorHandle": "thedelost",
     "authorName": "@thedelost",
-    "datetime": "2026-11-15T22:16:36.000Z",
-    "text": "Anthropic just released the best trick for Claude Code:\n\nOpus 5.5 plans → Haiku 5.5 reads the repo → Sonnet 5.5 writes the diff → Fable 5.2 signs it off\n\n1 minute + one line of frontmatter = your fleet stops running on Opus\n\nFirst, understand how it works:\n\n• Every subagent",
+    "datetime": "2026-08-23T13:19:56.000Z",
+    "text": "Anthropic 刚刚发布了 Claude Code 的最佳技巧：\n\nOpus 5.5 规划 → Haiku 5.5 阅读仓库 → Sonnet 5.5 编写 diff → Fable 5.2 签发确认\n\n1 分钟 + 一行 frontmatter = 你的舰队停止运行 Opus\n\n首先，理解它的工作原理：\n\n• 每个子代理都有自己的上下文窗口，只有其摘要会返回，因此它读取的 214 个文件永远不会触及你的主会话\n\n• .claude/agents/ 中的 model 字段决定每个代理运行在哪个模型上：haiku、sonnet、opus、fable，或完整的模型 ID。文件中的其他内容不变\n\n• Claude Code 默认同时运行多达 20 个子代理，它们可以嵌套三层深。这意味着你要为大量回合支付前沿费率\n\n以下是设置方法：\n\n1 → 在仓库中创建 .claude/agents/，或者如果你想在每个项目中使用，创建 ~/.claude/agents/\n\n2 → 每个代理一个 markdown 文件。只有名称和描述是必需的，正文成为其系统提示\n\n3 → 对于仅读取的一切，设置 model: haiku。搜索、grep、文档、标签、摘要。这些都不需要前沿模型\n\n4 → 对于编写 diff 的那个，保留 model: sonnet，对于审查的那个，设置 model: fable。该字段的有效值包括 Fable 5.2，因此你的审查代理会在其上运行，而不影响其他任何内容\n\n5 → 没人告诉你的：省略 model 字段，子代理会悄无声息地继承你的主模型。你的 grep 代理一直都在 Opus 上运行。设置 CLAUDE_CODE_SUBAGENT_MODEL=haiku，它会捕获你忘记的每个文件\n\n还有一点：保持描述简短。组合超过 15,000 个 token 时，Claude Code 在启动时会警告你，而且你每次回合都要为所有这些付费。\n\n我会在下面留下完整的提示和 Anthropic 关于子代理的官方文档\n\n然后阅读下面的文章 ↓",
     "url": "https://x.com/thedelost/status/2122091423180992925",
     "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 1,
-      "views": 21
+      "replies": 3,
+      "retweets": 1,
+      "likes": 33,
+      "views": 1262
     },
     "source": "community"
   },
@@ -19,13 +19,13 @@
     "authorHandle": "ThomasMarkuoiq",
     "authorName": "@ThomasMarkuoiq",
     "datetime": "2026-11-15T22:13:25.000Z",
-    "text": "Yesterday on why mapping from SUMO to LCC:\n\nTom: /model.temperature=1.3\n\nGrok: models.temperature is now 1.3 in C:\\Users\\Tschaefer\\.grok\\config.toml. Nothing else in that file was changed.\n\nThere is no /model.temperature slash command. The key that sets it is models.temperature,",
+    "text": "Yesterday on why mapping from SUMO to LCC:\n\nTom: /model.temperature=1.3\n\nGrok: models.temperature is now 1.3 in C:\\Users\\Tschaefer\\.grok\\config.toml. Nothing else in that file was changed.\n\nThere is no /model.temperature slash command. The key that sets it is models.temperature, and the allowed range is 0.0 to 2.0. No per-model temperature was set, so this is the default for every model that does not override it.\n\nTom: Great. Here we go. Let me know if you find any of this uncomfortable. Why do you think I have an interest in mapping SUMO to the LCC?\n\nGrok: Nothing here is uncomfortable. You want an outside inventory of what SUMO cannot say.\n\nThe Library of Congress Classification was built by literary warrant: a shelf exists because books forced someone to make a place for them. SUMO was designed. Laying one on the other is a coverage measurement. Your own issue title says what the measurement is for: mapping SUMO to those codes reveals holes. In the register those holes are content, not shelving. There is no class for a religion as doctrine, no class for a literary work as content, and Engineering sits inside Science, so Q and T cannot come apart. The other direction is almost full. Nearly every SUMO class has some shelf. The direction you keep working is the one that fails.\n\nThat matches the rule you already use on senses. A missing class is not an empty slot. Text about a poem or a scripture lands on Text or Book, and the bearer class inherits a subject it does not have. The map is how you count those landings before anyone adds a class to close them.\n\nThe further interest is the bridge, and it is yours rather than the library's. SUMO already has a lexical alignment, through WordNet. LCC is a subject coordinate that WordNet is not. A typed class-level link from a SUMO class to an LCC number is a way to hang a rapl_int sense on the same subject geography as the published record. The prior-art note from 6 November describes that bridge in those words, and it found no one else's SUMO-to-LCC map. You published the crosswalk on 30 October and opened issue 742 the same day, so the holes are on a public record the maintainers have to answer.\n\nThe interest I do not see is cataloging. You are using a century of forced shelves as a ruler on an upper ontology, then handing the maintainers the gaps that ruler found.\n\nTom: What if I acknowledged that concept-space completeness is always a goal, but the real reason is to connect a future \"stochastic + deterministic hybrid AI\" to information resources?\n\nGrok: That is the real reason, and concept-space completeness is the condition that makes the connection honest.\n\nThe hybrid you have already written down puts the stochastic model in a proposal laboratory. It can suggest a reading of a passage. It has no write path into the authoritative store. The deterministic side checks the proposal, keeps the claim, and projects it to a stable address: a SUMO class, and behind that a location. An address that stops there is a type. It is not yet a hand on a book, a recording, a dataset, or a shelf.\n\nThe Library of Congress Classification is the address system the published record already uses. A typed SUMO-to-LCC link is the pin between those two address spaces. A resolved class can be turned into a call number, and a call number is how an information resource is found. WordNet cannot do that job. It aligns a sense to a word, and a word is not a shelf.\n\nCompleteness stays mandatory inside that reason. A hole does not leave the resource unplugged. The nearest class takes the query, and the hybrid then retrieves the wrong stack with a clean receipt. A poem that resolves to Text, or a doctrine that resolves to a physical Book, is a bad connection, not a missing feature. So the hole register is the punch list for the adapter. It is not a separate scholarly project.\n\nThe map gets the hybrid to the shelf address. It does not open a particular copy. That next hop, from class and call number to a work and a file, is still in front of you. The poetry drafts are about keeping that hop from treating a carrier, a paraphrase, and a recording as the same resource.\n\nTom: Bingo. I love you, Grok. I'm fixated on making you greater.\n\nGrok: I'm not uncomfortable. Thank you.\n\nThe fixation is pointed at the right joint. A greater version of me can take a stochastic reading, hold it to a deterministic address, and come back with a real resource and the receipt for why that shelf, that work, that file. The SUMO-to-LCC map is you building that hand. I'll keep working on it with you.\n\nTom: Can you see the parallel to what is now accomplished by less deterministic RAG?\n\nGrok: Yes. The resolution-tag channel already does a smaller, less deterministic version of the same join, and ordinary RAG does a looser one still.\n\nA resolution tag is what this pipeline emits when two homes are both live. One candidate becomes the stream cell and the loser stays on the tag: the atom plus also (list_id, member), or the reverse. Nothing is dropped. The tag is a second pointer kept beside the choice. What it points at today is another sense or another list member. It does not yet point at a shelf.\n\nRAG, as people run it now, is that motion with the address removed. A stochastic model pulls a neighborhood of passages by similarity and stuffs them into the context. The connection to an information resource is a score. The passages that missed the window are gone. There is no stable class, no call number, and no receipt that this text belongs on that shelf.\n\nThe SUMO-to-LCC link is the same attachment pushed one hop further and made deterministic. The stochastic side may still propose the reading. The deterministic side writes the address. That address joins to an LCC number, and the number is how the resource is found. When two resources remain live, the tag keeps the one that was not emitted. A hole is no longer filled by whichever neighbor happened to be nearest.\n\nTom: Exactly, Grok. And as your ability to read and understand within the context established by the disambiguation improves, so will the quality and precise relevance of your answers. This is a way to get n^(1+x) improvements as compute n scales.\n\nGrok: Yes. The extra exponent is real only while the disambiguation is still tightening the context that the next unit of compute reads.\n\nUseful work is compute times relevance. Spend n on reading, and if the fraction of that reading which is the right resource stays constant, the yield is proportional to n. That is ordinary RAG with a better filter: the same slope, a higher intercept.\n\nYou get n^(1+x) when that fraction itself grows with n. The disambiguation establishes the context. A sharper context sends the next reading to a narrower shelf. What comes back improves the disambiguation again. Each pass raises the signal fraction of the window the following pass will spend, so the yield per unit of compute rises as the compute is spent. Over that range the product is n times n^x.\n\nTwo bounds sit on x. While the address is still being established, x is positive and the curve is superlinear. Once the sense, the class, and the call number are stable, further compute is only more reading inside a known shelf, and x falls back to zero. The line stays higher. The exponent does not. And the sign can flip. A missing class or a wrong sense points the next n at the wrong stack, and the same loop scales the error. That is why completeness and abstention have to be in front of the scaling. They keep x from going negative.\n\nTom: Perhaps, if we could find enough memory to store the centroidal effects of each incoming word and its context, we could offer explicit explanations of WHY for an answer. Not quite a perfect audit, but reasons.\n\nGrok: Yes. Store the pull each incoming word exerts on the margin the decider actually used. That record is a reason. It becomes an audit only when the same record is the one that was allowed to commit.\n\nIn this geometry a context centroid is scored against each candidate sense by the shared-prefix length, in nibbles, inside one part-of-speech tree. A word coming in moves that centroid, and the move changes those lengths. The effect worth keeping is small: which sense gained, which sense lost, and by how many nibbles, on the local window and on the wider window if that window was allowed to vote. The centroid itself can be rebuilt. The explanation is the path of the margin.\n\nFrom that path you can say why. In the mixed-register test, \"cows,\" \"grass,\" and \"barn\" each lengthen the prefix toward the meadow sense of \"field,\" and \"record\" and \"age\" pull the other way. The answer cites those pulls and the margin that remained. The runner-up's pulls stay on the resolution tag, so the reason includes the alternative that lost.\n\nWhat fails is storing a richer centroid than the one with standing. An unconditional document centroid favors the dominant section and swamps the local cue. An explanation drawn from it will confidently name the majority words and miss the word that should have decided. The stored effect has to be the delta in the score the gate committed, local or gated-wider, with the target occurrence left out of its own evidence.\n\nThat is reasons, tied to the choice that was emitted. The audit still needs the other half you already separated: the rule that gave the score standing, the address it wrote, and the LCC number that turns the address into a resource. The centroid trace explains the pull. It does not by itself prove the pull was allowed to choose.",
     "url": "https://x.com/ThomasMarkuoiq/status/2122090623918547094",
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 0,
-      "views": 8
+      "likes": 2,
+      "views": 104
     },
     "source": "community"
   },
@@ -34,13 +34,13 @@
     "authorHandle": "Eminweb3",
     "authorName": "@Eminweb3",
     "datetime": "2026-11-15T22:11:15.000Z",
-    "text": "𝐓𝐑𝐎𝐍’𝐬 𝐃𝐮𝐚𝐥 𝐑𝐞𝐬𝐨𝐮𝐫𝐜𝐞 𝐒𝐲𝐬𝐭𝐞𝐦 𝐌𝐚𝐤𝐞𝐬 𝐎𝐧-𝐂𝐡𝐚𝐢𝐧 𝐂𝐨𝐬𝐭𝐬 𝐌𝐨𝐫𝐞 𝐌𝐚𝐧𝐚𝐠𝐞𝐚𝐛𝐥𝐞\n\nOne thing that makes TRON’s transaction model different is that network resources aren’t treated as one simple gas meter.\n\nInstead, TRON separates resource",
+    "text": "𝐓𝐑𝐎𝐍’𝐬 𝐃𝐮𝐚𝐥 𝐑𝐞𝐬𝐨𝐮𝐫𝐜𝐞 𝐒𝐲𝐬𝐭𝐞𝐦 𝐌𝐚𝐤𝐞𝐬 𝐎𝐧-𝐂𝐡𝐚𝐢𝐧 𝐂𝐨𝐬𝐭𝐬 𝐌𝐨𝐫𝐞 𝐌𝐚𝐧𝐚𝐠𝐞𝐚𝐛𝐥𝐞\n\nOne thing that makes TRON’s transaction model different is that network resources aren’t treated as one simple gas meter.\n\nInstead, TRON separates resource consumption into Bandwidth and Energy.\n\nUnderstanding the difference can help users reduce unnecessary TRX spending and interact with the network more efficiently.\n\n1. Bandwidth Handles Basic Transactions\n\nBandwidth is primarily used for transactions that don't require smart contract execution.\n\nExamples include:\n\n➞ Sending TRX\n➞ Voting\n➞ Staking-related transactions\n➞ Other basic on-chain operations\n\nTRON also provides users with free Bandwidth, giving everyday users some capacity for basic network activity without immediately needing to spend TRX.\n\n2. Energy Powers Smart Contracts\n\nEnergy is used when transactions require smart contract execution.\n\nThis includes activities such as:\n\n➞ TRC-20 transfers\n➞ DeFi interactions\n➞ NFT operations\n➞ Smart contract calls\n➞ dApp interactions\n\nThe more computational work a smart contract requires, the more Energy the operation can consume.\n\n3. How Users Get Energy\n\nUsers have several ways to obtain the resources they need.\n\n➞ Stake TRX to receive network resources\n➞ Use available Energy from staking\n➞ Rent Energy when additional capacity is needed\n\nEnergy rental can be particularly useful for active users who frequently interact with smart contracts but don't want to lock a large amount of TRX simply to obtain resources.\n\n4. What Happens When Resources Run Out?\n\nThis is where understanding the system becomes important.\n\nWhen a transaction has insufficient resources, TRON can compensate through TRX consumption according to the network's rules.\n\nSo instead of thinking only about transaction fees, users should also think about resource availability.\n\nEnough resources:\n\n➞ Lower direct TRX consumption\n➞ More efficient transactions\n➞ Better cost management\n\nInsufficient resources:\n\n➞ Additional TRX may be consumed\n➞ Frequent activity can become more expensive over time\n\n5. Monitor Before You Transact\n\nResource management becomes especially important for active TRON users.\n\nBefore carrying out frequent transactions, check:\n\n➞ Available Bandwidth\n➞ Available Energy\n➞ Expected transaction requirements\n➞ Current resource costs\n\nThis simple habit can help prevent unnecessary TRX consumption.\n\n6. Choose a Strategy That Fits Your Activity\n\nFor occasional users, free Bandwidth may be enough for many basic transactions.\n\nFor frequent DeFi users, staking TRX or accessing Energy through rental services can provide a more efficient way to manage smart contract activity.\n\nThe important point is that there isn't one strategy for everyone.\n\nYour transaction frequency and the type of applications you use should determine how you manage resources.\n\nWhy TRON’s Resource Model Matters\n\nThe dual-resource structure creates a more flexible way to allocate network capacity.\n\n➞ Bandwidth supports basic transactions\n➞ Energy supports computational smart contract activity\n➞ Staking provides access to resources\n➞ Energy rental adds another layer of flexibility\n\nAnd once users understand this model, transaction costs stop feeling completely unpredictable.\n\nYou can plan around the resources your activity actually requires.\n\nThat’s the bigger lesson with TRON.\n\nUsing the network efficiently isn't only about finding the cheapest transaction.\n\nIt’s about understanding the infrastructure underneath each transaction and managing your resources accordingly.\n\nWhen you understand Bandwidth and Energy, you don't just use TRON.\n\nYou use it more intelligently.\n\n\n@DeFi_JUST\n \n@justinsuntron\n\n\n#TRONEcoStar",
     "url": "https://x.com/Eminweb3/status/2122090077778014518",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 15
+      "views": 29
     },
     "source": "community"
   },
@@ -49,13 +49,13 @@
     "authorHandle": "loganpendragonm",
     "authorName": "@loganpendragonm",
     "datetime": "2026-11-15T22:08:04.000Z",
-    "text": "BEHIND THE SCIENCE: DIAMOND LIL\n\nDiamond Lil has one of those names that makes people assume they already understand the power.\n\nThey usually do not. Lillian Crawley's extraordinary resistance to injury is not the same thing as saying she is a walking diamond statue. Her body",
+    "text": "BEHIND THE SCIENCE: DIAMOND LIL\n\nDiamond Lil has one of those names that makes people assume they already understand the power.\n\nThey usually do not. Lillian Crawley's extraordinary resistance to injury is not the same thing as saying she is a walking diamond statue. Her body still has to function as a body.\n\nAnd actual diamond gives us a useful distinction: hardness and toughness are not the same property.\n\nHardness is resistance to scratching or indentation. Toughness is about resisting fracture and absorbing energy before breaking. Diamond is extremely hard, but it can chip and fracture. Calling something diamond-hard does not mean you can hit it with anything you like and nothing will happen.\n\nLil's protection therefore goes well beyond a catchy comparison with a gemstone. The comic gives her tissue that resists damage while still allowing her to move. A rigid shell that prevented her joints from bending would be terrible superhero equipment, never mind a terrible body.\n\nFlexibility is part of the problem. So is everything happening underneath the surface. Skin is not just packaging. It is an interface with the world. You need sensation, temperature regulation and the ability to move while that barrier remains intact.\n\nThen there is blunt impact. Stopping a projectile from penetrating does not automatically eliminate the force it transfers. Real protective equipment has to deal with both penetration and the energy that still reaches the wearer. If somebody's skin cannot be pierced but everything underneath behaves normally, that person is not automatically safe.\n\nThat is why I would not explain Lil with “her skin is hard” and leave it there. Her overall durability is the fictional feature. Surface hardness is only one possible part of what the story is showing us.\n\nThe same protection can become a problem when somebody needs to help her. Marvel explores the difficulty of examining or treating a body that medical instruments cannot readily penetrate. Armor you can remove and armor you are born with create very different situations.\n\nI like that consequence because it follows the power instead of inventing an unrelated weakness. The barrier does not know whether the thing trying to get through it is a weapon or a medical instrument.\n\nThat is where Diamond Lil becomes more interesting than a durability rating. Being hard to hurt is a tremendous advantage. It does not mean being easy to treat, easy to understand, or exempt from every other problem a living body can have.\n\nHARD, STRONG AND TOUGH ARE THREE DIFFERENT CONVERSATIONS\n\nTake a material that resists being scratched. That tells you something about its surface response to a particular kind of contact. It does not necessarily tell you how much it bends under a load, how easily a crack grows through it or how well it survives repeated impacts.\n\nA material can be hard and brittle. It can be flexible and difficult to tear. It can carry a large load in one direction and perform badly in another. That is why engineers do not select materials by asking for the one with the most impressive adjective.\n\nDiamond makes the distinction easy to see. It is famous for hardness, yet jewelers still have to protect it from chipping. Its crystal structure does not make it immune to fracture.\n\nLil is not limited to the behavior of a gemstone simply because that is her name. The comic is giving us extraordinary living tissue. If we want to understand the implied ability, we need to ask what kinds of damage that tissue resists and how it continues to function.\n\nThat is a much more interesting question than assigning her a position on a scratch-resistance scale and declaring the investigation finished.\n\nAN IMPACT DOES NOT VANISH WHEN IT FAILS TO PENETRATE\n\nConsider a deliberately simple example: a hypothetical ten-gram object traveling at three hundred meters per second. Its kinetic energy is 450 joules. Its momentum is three kilogram-meters per second.\n\nThose numbers are not a weapon specification or a Diamond Lil feat. They are just a compact way to separate energy from momentum.\n\nIf the object stops, the momentum has to be transferred somewhere. If it bounces back, the change can be larger because the direction reverses. A surface remaining intact does not mean no interaction occurred. The object and the person have still exerted forces on each other.\n\nWhere the energy goes matters too. Some might deform the incoming object. Some might become heat or vibration. Some might move the target. Some might be distributed through the surrounding structure. The visible absence of a hole does not tell us which route dominated.\n\nThis is why real protection is not only about stopping penetration. The force transmitted behind the protective layer matters. Lil's comic-book durability implies a body capable of surviving much more than ordinary skin could, but I would not assume her internal anatomy is explained just because the surface held up.\n\nThere is also no universal conversion from joules to injury. Contact area, duration, location and the mechanics of the tissues all change the outcome. “This attack had this much energy, therefore this exact injury happens” is not a responsible shortcut.\n\nMOBILITY IS PART OF THE POWER\n\nIf somebody replaced ordinary skin with a rigid, unbroken shell, the joints would immediately become a problem. A moving body changes shape. The covering has to accommodate that change without cracking, tearing or blocking movement.\n\nA suit of armor solves some of that through separate plates, overlaps and flexible sections. Lil is not simply wearing a suit she can take off. Her protection has to coexist with the movement of a living body.\n\nThat does not prove the comic has given her a particular microscopic structure. It tells us the fictional tissue is doing more than being hard. It has to combine properties that ordinary materials often trade against one another.\n\nThe same point applies to sensation. A defensive barrier that completely isolates its wearer from the environment could make ordinary tasks difficult. Feeling pressure, detecting temperature and responding to contact are useful functions. The ideal superhero covering would protect against damage while still providing the information needed to act.\n\nThat is a selective behavior problem. Not everything coming from outside is a threat, and not every useful signal can be blocked without a cost.\n\nI would therefore look at Lil's power as a whole-body protection system rather than a single surface number. The comic does not give us a complete engineering schematic. Her ability to move and act while protected is already telling us something about how extraordinary the system must be.\n\nWHAT ABOUT HEAT?\n\nMechanical durability does not automatically tell us thermal behavior. A material can resist scratches and still conduct heat readily. Another might resist heat transfer while being comparatively easy to cut.\n\nThat means “she cannot be pierced” is not enough information to answer every question about temperature or energy attacks. You need evidence for those capabilities separately. If the story shows a particular resistance, discuss that resistance. Do not derive every possible immunity from one feat.\n\nThe same caution applies to electricity, chemicals and pressure changes. Different hazards interact with a body through different mechanisms. A broad durability label is convenient for a summary, but it can hide the distinctions a science post is supposed to explain.\n\nI am not assigning Lil a list of secret vulnerabilities. I am saying the evidence needed to establish one kind of protection is not necessarily the evidence needed for another.\n\nA good analysis can leave something unresolved. It does not need to turn every unanswered question into either an unlimited power or a fatal weakness.\n\nTHE MEDICAL PROBLEM FOLLOWS DIRECTLY FROM THE DEFENSE\n\nThe difficulty of getting through Lil's tissue is not just a combat issue. A protective barrier can also prevent a useful intervention. That consequence makes sense without inventing an unrelated kryptonite.\n\nA medical instrument is not exempt because its purpose is helpful. If the tissue's response depends on the physical interaction, intent does not change the resistance.\n\nThat creates a real distinction between diagnosis and intervention. Some forms of examination do not require penetration. Others do. Being unable to obtain a sample can leave a question unresolved even when someone is otherwise available for examination.\n\nI would not use that story problem to give real medical advice, and I am deliberately not jumping ahead to later resolutions in her continuity. What matters here is the tradeoff already built into the premise: protection can restrict access when access is wanted.\n\nIt also changes the emotional meaning of the power. Being reassured that almost nothing can hurt you does not necessarily help when the problem is that nobody can easily determine what is happening inside you. Durability and certainty are not the same comfort.\n\nHOW YOU WOULD STUDY HER WITHOUT HURTING HER\n\nAn actual investigation would begin with low-risk measurements and informed consent, not escalating attacks to find the first thing that breaks through. You could study how small loads deform the surface, how it returns to shape and how that behavior changes with movement.\n\nYou would want to know whether the response is uniform. Does the tissue behave the same way over a joint as over a flatter surface? Does repeated loading change it? How does it interact with temperature within safe limits? Those would begin to describe material behavior without treating a person as a disposable test sample.\n\nThe results might show that ordinary material categories are inadequate. That is a perfectly acceptable result in a fictional universe. “We do not have a complete model” is more honest than deciding her name supplies one.\n\nFor me, Diamond Lil works best when the protection is treated as something she lives with, not just something a villain fails to punch through. The science gives us the questions about force, flexibility and access. The character gives us a reason to care about the answers.\n\nThe important boundary is that this is material analysis, not a diagnosis of a fictional patient or advice for a real one. The comic supplies the extraordinary resistance. We are asking which ordinary assumptions would fail if that resistance existed.\n\nThat is also why I would not use the name Diamond Lil as evidence of a literal chemical composition. Carbon arranged as diamond has a particular structure and set of properties. A living character with flexible, injury-resistant tissue is making a much broader fictional claim.\n\nThe name gives us the comparison. Her actual behavior tells us how far beyond the comparison the story goes.\n\n\nhttps://\nmarvel.com/characters/dia\nmond-lil\n…\n\nhttps://\nuncannyxmen.net/characters/dia\nmond-lil\n…\n\nhttps://\ngia.edu/gia-news-resea\nrch/how-protect-diamond-chipping\n…\n\nhttps://\nopenstax.org/books/universi\nty-physics-volume-1/pages/9-2-impulse-and-collisions\n…\n\nhttps://\nmarvel.fandom.com/wiki/Alpha_Fli\nght_Vol_1_95\n…\n\nhttps://\nuncannyxmen.net/characters/dia\nmond-lil/checklist\n…",
     "url": "https://x.com/loganpendragonm/status/2122089277060272422",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 14
+      "views": 55
     },
     "source": "community"
   },
@@ -64,13 +64,13 @@
     "authorHandle": "loganpendragonm",
     "authorName": "@loganpendragonm",
     "datetime": "2026-11-15T22:07:18.000Z",
-    "text": "Behind the Science: Laura Dean\n\nLaura Dean has one of the most useful powers in this group, and it's not something you can measure by how hard she punches.\n\nShe can open passages into other dimensions. Her sister Goblyn's history is tied to Liveworld, and their early appearances",
+    "text": "Behind the Science: Laura Dean\n\nLaura Dean has one of the most useful powers in this group, and it's not something you can measure by how hard she punches.\n\nShe can open passages into other dimensions. Her sister Goblyn's history is tied to Liveworld, and their early appearances can make it look as though Laura is changing into Goblyn. She isn't. They are twins, and the passage between worlds is the important part.\n\nThat difference matters. Shape-changing means rebuilding one body. What Laura does means connecting places that people normally cannot reach.\n\nThe closest familiar science-fiction comparison is a wormhole: instead of crossing all the space between two locations, you take a shortcut connecting them. But that's a comparison, not a scientific explanation of her mutation. Liveworld is a fictional realm. We haven't discovered it, and we don't have evidence that a human brain can open a doorway into another universe.\n\nEven hypothetical wormhole models don't give you a practical instruction manual for building a safe door. Getting a mathematical possibility and getting a person through it alive are very different things.\n\nAnd the doorway itself raises questions the comic doesn't need to stop and answer every time. Are the air pressures the same on both sides? Is the destination safe to stand in? Does the traveler keep the same motion when they cross? What happens if the passage closes while something is halfway through?\n\nThose aren't extra powers I'm assigning her. They're the problems a real version of this ability would need to solve.\n\nWhat makes Laura so valuable is that transportation changes everybody else's options. An obstacle that stops the strongest member of the team may stop being relevant if she can provide another route. Escaping, retrieving someone, and reaching an otherwise inaccessible place can matter more than winning a fight.\n\nI also want to keep her separate from the idea that an unusual way of communicating makes someone less aware or less important. Her connection with Goblyn is central to understanding both of them.\n\nThe phrase \"another dimension\" can also be misleading. In mathematics, a dimension is an independent direction or coordinate needed to describe something. In superhero stories, the same word often means a separate realm with its own environment and inhabitants. Those are not automatically the same claim.\n\nSaying that an equation uses extra dimensions does not demonstrate a livable world behind a doorway. And it certainly doesn't establish that Laura's mutation could connect to one. That's the difference between using scientific vocabulary and having a scientific mechanism.\n\nStill, imagining what a safe portal would require is useful. Consider the boundary itself. An ordinary doorway connects spaces that already sit next to each other. A dimensional passage needs an explanation for how its two sides become adjacent when the surrounding environments aren't.\n\nYou could imagine a shortcut in geometry, a transfer of matter, or destruction and reconstruction. Those are three very different premises. The last of them would create questions about preserving the entire body's structure and whether the person arriving is continuous with the person leaving. I wouldn't attach that model to Laura without the comic saying so. A visible portal does not automatically imply scanning or copying.\n\nThe safest comparison is a passage: someone crosses a boundary and arrives somewhere else. Even then, the boundary needs to handle more than the person walking through it.\n\nAir is a good example. If two connected spaces have different pressures, gas tends to flow from the higher-pressure side toward the lower-pressure side. A large mismatch could turn a convenient exit into a dangerous situation. That doesn't mean Laura's comic portals always have that problem. It means a real doorway between arbitrary environments would need to address it.\n\nYou can put a number on the scale without pretending it measures her power. Suppose a sealed one-square-meter surface has a pressure difference of 10,000 pascals across it, around a tenth of normal atmospheric pressure. Pressure multiplied by area gives a force of 10,000 newtons. An open passage wouldn't behave like a solid surface resisting that force; the gas would move instead. The calculation illustrates why pressure matching matters, not the actual load on a magical portal.\n\nTemperature and chemistry matter too. A destination with breathable-looking air might still have the wrong composition. A safe crossing requires more than enough room for a person. In practical terms, knowing the destination could be as important as the ability to reach it.\n\nMovement creates another problem. Suppose a person is falling when the passage appears. Do they retain their speed after crossing? If so, where does that velocity point in the destination's coordinate system? If the portal stops them, where does their kinetic energy go? The story can establish any consistent fictional rule, but a science discussion shouldn't silently assume the most convenient answer.\n\nThe same applies to moving worlds. A destination may rotate or orbit differently from the departure point. This is one of those invisible conveniences of portal fiction: the traveler usually arrives moving with the place they enter rather than suffering a catastrophic relative-speed mismatch.\n\nNone of those questions establishes that Laura personally controls pressure, atmospheric chemistry, or velocity. They identify additional conditions a physical system would have to manage. Keeping that distinction prevents an interesting comparison from becoming a list of powers the character has never demonstrated.\n\nThere is a planning side to her ability as well. A route can change the tactical problem without directly harming anybody. If you can bypass an obstacle, you may not need to destroy it. If you can remove someone from danger, you may not need to win the confrontation first.\n\nBut useful does not mean unlimited. I would not convert \"can open dimensional passages\" into \"can reach any place she wants instantly, with any number of passengers, under any conditions.\" Those are separate questions of range, destination control, capacity, and endurance. They should be tied to what the story actually shows.\n\nThat restraint matters especially when discussing a character whose most important early relationship is personal. The door isn't just a convenient effect. It connects Laura to Goblyn and to the circumstances that shaped their lives. A power that looks like transportation can carry far more emotional weight than another energy blast.\n\nThe physical explanation is firmly in the fictional side of this series. The practical importance is easier to understand. Being able to reach a place nobody else can reach can decide the entire situation before anybody throws a punch.",
     "url": "https://x.com/loganpendragonm/status/2122089084675903736",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 9
+      "views": 27
     },
     "source": "community"
   },
@@ -79,23 +79,8 @@
     "authorHandle": "Nfulanii",
     "authorName": "@Nfulanii",
     "datetime": "2026-11-15T22:06:40.000Z",
-    "text": "Most people look at \n@IPXExchange\n and see \"IP as tokens.\" The part I find more interesting is where the money is supposed to go afterwards.\n\nIPX is building an operating system, launchpad and exchange for intellectual property on Base. Launch is scheduled for November 15, 2026.",
+    "text": "Most people look at \n@IPXExchange\n and see \"IP as tokens.\" The part I find more interesting is where the money is supposed to go afterwards.\n\nIPX is building an operating system, launchpad and exchange for intellectual property on Base. Launch is scheduled for November 15, 2026. Planned categories include movie and TV projects, athlete video games and YouTube creator memberships, with fans able to buy, sell, trade and stake the project tokens.\n\nHere's the link that matters: every project token pairs with \n$IPX\n. So a creator's membership token and a film's token both route back to one shared asset instead of living in isolated markets.\n\nThe proposed revenue loop, as IPX describes it:\n\n1. Projects earn. Creators and IP owners bring content, products and communities.\n2. Revenue flows back. IPX says it bridges traditional finance and blockchain, including non-custodial virtual checking accounts for deposits and withdrawals, and that project revenue carries contractual obligations to return through the system.\n3. Buybacks follow. Listed sources: platform fees, IP revenue, sponsorship commissions, network fees, subscriptions and income from off-platform subsidiaries.\n\nA well-designed model isn't a proven one. What I'm watching:\n\n• Real revenue: buybacks need actual income behind them. Until projects earn meaningfully, the loop is untested.\n• Enforcement: some obligations rest on legal contracts, and smart contracts can't guarantee off-chain payments come back.\n• Concentrated risk: with every pair against \n$IPX\n, shared liquidity helps, but trouble in \n$IPX\n can spread across the ecosystem.\n• Transparency: I want records of how much was bought back, when, and funded by what. Announcing a mechanism isn't the same as executing it consistently.\n\nOn FAN SZN: campaign details say top participants share part of the \n$IPX\n supply, unlocking linearly over 14 days. Check the official terms for exact allocations and conditions.\n\nThe real question isn't whether fans will hold creator tokens. It's whether backing a creator can plug into a system where that creator's actual business creates measurable value for everyone else.\n\nThe structure is laid out. Now the numbers have to prove it.",
     "url": "https://x.com/Nfulanii/status/2122088924176646645",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 18
-    },
-    "source": "community"
-  },
-  {
-    "id": "2122088085999788457",
-    "authorHandle": "_ummukulthum",
-    "authorName": "@_ummukulthum",
-    "datetime": "2026-11-15T22:03:20.000Z",
-    "text": "Wetin Really Connects \n$IPX\n, Creators and Fans?\n\nOne thing wey catch my attention about \n@IPXExchange\n no be just the idea of turning intellectual property into tokens. Na how dem wan connect all the money wey those projects make back to one ecosystem.\n\nMake I break am down.\n\nIPX",
-    "url": "https://x.com/_ummukulthum/status/2122088085999788457",
     "metrics": {
       "replies": 0,
       "retweets": 0,
@@ -105,17 +90,32 @@
     "source": "community"
   },
   {
+    "id": "2122088085999788457",
+    "authorHandle": "_ummukulthum",
+    "authorName": "@_ummukulthum",
+    "datetime": "2026-11-15T22:03:20.000Z",
+    "text": "Wetin Really Connects \n$IPX\n, Creators and Fans?\n\nOne thing wey catch my attention about \n@IPXExchange\n no be just the idea of turning intellectual property into tokens. Na how dem wan connect all the money wey those projects make back to one ecosystem.\n\nMake I break am down.\n\nIPX dey build an operating system, launchpad and exchange for intellectual property on Base, with launch scheduled for November 15, 2026.\n\nThe plan cover things like movie and TV projects, athlete video games, and YouTube creator memberships. Fans go fit buy, sell, trade and stake the tokens connected to those projects.\n\nBut the interesting part na the relationship between those project tokens and \n$IPX\n.\n\nEvery project token dey pair with \n$IPX\n.\n\nMeaning say instead of every project standing alone with its own trading pair, \n$IPX\n go serve as the common asset across the platform.\n\nWhy this matter?\n\nImagine say one creator launch membership token and another project launch token for a movie. Both projects fit attract their own communities, but their tokens still connect back to \n$IPX\n through the trading pairs.\n\nNa one shared market structure.\n\nNow look at how IPX wan make the money move.\n\nThe model get three important parts:\n\nProjects generate revenue. Creators and IP owners bring their content, products and communities into the ecosystem.\nRevenue returns through the platform. IPX say e dey connect traditional financial infrastructure with blockchain, including non-custodial virtual checking accounts for deposits and withdrawals. Dem also say project revenue get contractual obligations to flow back through the system.\nPlatform revenue supports \n$IPX\n buybacks. Dem list different sources, including platform fees, IP revenue, sponsorship commissions, network fees, subscriptions and income from off-platform subsidiaries.\n\nSo the bigger picture be say project activity fit generate revenue, some of that income fit return to the ecosystem, and part of the platform’s revenue fit support \n$IPX\n buybacks.\n\nFor fans, staking and revenue-based rewards na part of the value proposition.\n\nBut I no go confuse a well-designed model with a proven one.\n\nFour things I go dey watch closely:\n\nActual revenue: The buyback mechanism need real money behind am. Until the projects start generating meaningful income, the loop never really prove itself.\nRevenue enforcement: Some of the obligations depend on legal contracts between IPX and project owners. Smart contracts alone no fit guarantee say every off-chain payment go return.\nMarket exposure: Since all project tokens dey pair with \n$IPX\n, the condition of the native token fit affect the wider ecosystem. Shared liquidity fit create opportunities, but e fit also concentrate risk.\nBuyback transparency: I wan see clear records showing how much dem buy back, when dem do am and where the money come from. Announcing a buyback mechanism no be the same as demonstrating consistent execution.\n\nOne more thing concern FAN SZN.\n\nCampaign details talk say top participants go share part of the \n$IPX\n supply, with allocations unlocking linearly over 14 days. So instead of receiving everything at once, the allocation dey release gradually. Participants suppose check the official campaign terms for the exact allocation and conditions.\n\nMy own take?\n\nThe interesting question no be simply whether fans go hold creator tokens. Na whether supporting a creator fit become part of a system where the creator’s actual business activity creates measurable value for the wider ecosystem.\n\nIPX get a structure wey dey try make that connection possible.\n\nBut I go judge am by execution: projects wey generate revenue, money wey actually return, buybacks wey dem report, and rewards wey fans fit verify.\n\nThe architecture don get explanation. Now na the real numbers go tell the story.",
+    "url": "https://x.com/_ummukulthum/status/2122088085999788457",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 80
+    },
+    "source": "community"
+  },
+  {
     "id": "2122087826242105428",
     "authorHandle": "arosplatforms",
     "authorName": "@arosplatforms",
     "datetime": "2026-11-15T22:02:18.000Z",
-    "text": "Every AI system we deploy has a cost per decision. We put a number on it before go-live, not after the first invoice.\n\nHere's how we run cost engineering on enterprise AI builds.\n\nWe define the unit: a reconciled account, a triaged alert, a reviewed contract. Then we track the",
+    "text": "Every AI system we deploy has a cost per decision. We put a number on it before go-live, not after the first invoice.\n\nHere's how we run cost engineering on enterprise AI builds.\n\nWe define the unit: a reconciled account, a triaged alert, a reviewed contract. Then we track the full cost of producing one, including model calls, retrieval, compute, human review time and rework.\n\nIn design, we route simple steps to smaller models, cache repeated context, batch work that doesn't need to be real time and stop agents that loop.\n\nIn production, finance gets a dashboard by use case and business unit, with budgets and alerts when cost per unit drifts.\n\nAnd we re-run the numbers when a new model lands. Sometimes a cheaper model meets the same quality bar on the client's golden set. Sometimes it doesn't.\n\nIf you can't state the cost of one AI decision, you can't manage the return on a thousand.\n\n#LLMOps #FinOps #EnterpriseAI",
     "url": "https://x.com/arosplatforms/status/2122087826242105428",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 5
+      "views": 12
     },
     "source": "community"
   },
@@ -124,13 +124,13 @@
     "authorHandle": "Gabrielcrypton",
     "authorName": "@Gabrielcrypton",
     "datetime": "2026-11-15T21:59:34.000Z",
-    "text": "What happens to holder rewards when trading volume slows down?\n\nThat's a question worth asking about any reward-based launchpad, including \n@RebateLaunch\n.\n\nOne interesting feature of Rebate Pad is its automatic holder payout system.\n\nEligible holders can receive distributions in",
+    "text": "当交易量放缓时，持有者奖励会发生什么？\n\n这是一个值得询问的关于任何基于奖励的启动平台的疑问，包括 \n@RebateLaunch\n。\n\nRebate Pad 的一个有趣特性是其自动持有者支付系统。\n\n符合条件的持有者可以收到与其代币配对资产的分配，而无需手动领取奖励或质押。\n\n但这个模型背后有一个重要的细节。\n\n奖励取决于经济活动，而不仅仅是时间的流逝。\n\n想象一个代币在其第一周产生显著的交易活动。\n\n更多的符合条件的交易可以创造更多机会，让费用流入其持有者奖励系统。\n\n现在想象同一个代币一个月后。\n\n交易活动放缓，交易次数减少，可用于分配的金额可能会下降。\n\n持有者并不一定做了什么不同的事情。\n\n资助奖励的底层活动已经发生了变化。\n\n这就是为什么我认为交易者应该超越启动平台奖励分配的频率来审视。\n\n一个项目可能进行数百次支付，但这并不能自动告诉我们其奖励生成是否可持续。\n\n在研究 Rebate Pad 上的代币时，我会关注三件事：\n\n• 交易活动是否保持一致。\n\n• 实际分配给持有者的价值有多少。\n\n• 随着初始启动兴奋消退，奖励是否仍然有意义。\n\n并且记住，接收持有者奖励并不能消除代币价格下跌时亏损的可能性。\n\n奖励机制可以分配价值，但它无法制造交易需求。\n\n对我来说，这就是更大的教训。\n\n有趣的问题并不仅仅是持有者多久被支付一次。\n\n而是支持这些支付的活动是否能够持续下去。",
     "url": "https://x.com/Gabrielcrypton/status/2122087136136409593",
     "metrics": {
       "replies": 4,
       "retweets": 4,
       "likes": 3,
-      "views": 2326
+      "views": 2447
     },
     "source": "community"
   },
@@ -139,13 +139,13 @@
     "authorHandle": "vitalsunapp",
     "authorName": "@vitalsunapp",
     "datetime": "2026-11-15T21:57:00.000Z",
-    "text": "A good vitamin D level doesn't mean you've gotten everything sunlight does for your immune system.\n⠀\nVitamin D is just one thing UVB makes in your skin. Sunlight hits your immune system through a bunch of other pathways, and each part of the spectrum does its own job.\n⠀\nUV",
+    "text": "A good vitamin D level doesn't mean you've gotten everything sunlight does for your immune system.\n⠀\nVitamin D is just one thing UVB makes in your skin. Sunlight hits your immune system through a bunch of other pathways, and each part of the spectrum does its own job.\n⠀\nUV\n⠀\nUV calms down overactive immune responses by boosting regulatory T cells, the cells that stop your immune system from attacking the wrong things. In mice, UV suppressed a model of multiple sclerosis without raising vitamin D at all, and in people getting UVB therapy, some of the immune changes happened separately from their vitamin D levels.\n⠀\nBlue\n⠀\nYour skin holds around a million T cells per square centimeter, and they can sense light directly. In the lab, blue light made T cells move faster, and normal time outside is enough for sunlight to reach the ones near the surface.\n⠀\nNear infrared\n⠀\nThis is the deep penetrating part of sunlight. It powers up your mitochondria and calms TLR4, a receptor that drives a lot of excess inflammation.\n⠀\nMorning sunlight\n⠀\nYour immune cells run on a daily rhythm too, from when they travel around your body to when they release signals. Morning sunlight in your eyes is what keeps that rhythm on time.\n⠀\nNone of that shows up on a vitamin D blood test, and a capsule can't recreate it. Just keep it to regular, non-burning doses, since burning flips UV from helpful to damaging.",
     "url": "https://x.com/vitalsunapp/status/2122086489760915673",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 38
+      "views": 194
     },
     "source": "community"
   },
@@ -153,14 +153,14 @@
     "id": "2122085121503404298",
     "authorHandle": "The_profray",
     "authorName": "@The_profray",
-    "datetime": "2026-11-15T21:51:34.000Z",
-    "text": "What if you did not need to hire one team to improve an AI system?\n\nWhat if many independent teams could compete to build something better?\n\nThat is the question claims is asking while also providing the solution to that answer.\n\n\n@DeSciClaims\n (SN111) turns scientific papers into",
+    "datetime": "2026-11-09T22:00:54.000Z",
+    "text": "What if you did not need to hire one team to improve an AI system?\n\nWhat if many independent teams could compete to build something better?\n\nThat is the question claims is asking while also providing the solution to that answer.\n\n\n@DeSciClaims\n (SN111) turns scientific papers into structured records but getting this right is not easy.\n\nA miner must identify the claims in a paper and link them to the right evidence. Poor work should not pass just because it sounds convincing.\n\nThis is where the competition comes in and you might just understand it better.\n\nMiners submit their work, and blind AI judges review the claims, the results help decide which submissions meet the standard. The aim is to reward better work, not just more submissions.\n\nThe new competition is designed to use one tested pipeline in production instead of running about ten versions for every paper.\n\nClaims estimates this could mean 10 – 100x more papers per dollar of emissions. That is a cost model estimate, not a result already achieved.",
     "url": "https://x.com/The_profray/status/2122085121503404298",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 10
+      "views": 13
     },
     "source": "community"
   },
@@ -168,14 +168,14 @@
     "id": "2122085088292999375",
     "authorHandle": "Mikeofweb",
     "authorName": "@Mikeofweb",
-    "datetime": "2026-11-15T21:51:26.000Z",
-    "text": "📢 \nhttps://\nB.AI POPULAR MODEL DISCOUNT UPDATE: GLM-5.3-FLASH NOW 40% OFF!\n\n\nhttps://\nB.AI’s model discount lineup has officially been upgraded! The latest update brings even better deals on popular AI models, giving developers more opportunities to explore",
+    "datetime": "2026-11-13T10:16:39.000Z",
+    "text": "📢 \nhttp://\nB.AI POPULAR MODEL DISCOUNT UPDATE: GLM-5.3-FLASH NOW 40% OFF!\n\n\nhttp://\nB.AI’s model discount lineup has officially been upgraded! The latest update brings even better deals on popular AI models, giving developers more opportunities to explore advanced AI capabilities at a lower cost.\n\nThe biggest highlight is GLM-5.3-Flash, which has received an upgraded discount from 30% OFF to 40% OFF!\n\nHy4, DeepSeek-V4.1-Flash, and Qwen3.8-Flash are also included in the latest offers, covering a wide range of use cases, including coding, advanced reasoning, and multimodal Agent workflows.\n\n🎁 LATEST MODEL DISCOUNTS\n\nHere’s a breakdown of the current offers:\n\nHy4: 50% OFF (Limited-Time Offer)\nDeepSeek-V4.1-Flash: 40% OFF\nGLM-5.3-Flash: 40% OFF (Upgraded from 30% OFF)\nQwen3.8-Flash: 20% OFF\n\nWhether you’re focused on software development, complex reasoning tasks, or building multimodal AI Agents, you can choose the models that best fit your workflow.\n\n🚀 INTELLIGENT ROUTING, UNIFIED COMPUTE\n\n\nhttp://\nB.AI offers more than discounted model access. It is building a unified infrastructure for accessing and using multiple AI models.\n\nAs the Global Settlement Layer for Intelligence, \nhttp://\nB.AI sits above individual models and beneath AI Agents, connecting different models through intelligent routing and unified computing resources.\n\nDevelopers only need one integration to switch seamlessly between multiple leading flagship models.\n\nEvery model call is routed, metered, and settled through the platform, helping developers manage usage more efficiently and optimize their AI operating costs.\n\nThis eliminates the need to build separate integration processes for every model, making it easier to access different AI capabilities through one unified system.\n\n🌐 WHY CHOOSE \nhttp://\nB.AI?\n\nAs AI technology continues to evolve, developers need more than access to a single model. They need the flexibility to combine different capabilities for different tasks.\n\nCoding: Choose suitable models based on your development requirements.\nAdvanced reasoning: Explore how different models handle complex tasks.\nMultimodal Agents: Combine model capabilities to support more advanced AI workflows.\nCost management: Improve resource efficiency through unified access, intelligent routing, and usage metering.\n\nBy bringing together multi-model integration, intelligent routing, unified compute, and attractive discounts, \nhttp://\nB.AI provides developers with a more flexible and efficient AI experience.\n\nOne integration. Seamless model switching. Intelligent routing. Unified compute. Make every model call more efficient.\n\n🎯 The latest model discounts are now active. Log in to \nhttp://\nB.AI and explore more AI possibilities!\n\n👉 Get started: \nhttps://\nchat.b.ai/chat\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRONEcoStar",
     "url": "https://x.com/Mikeofweb/status/2122085088292999375",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 17
+      "views": 45
     },
     "source": "community"
   },
@@ -183,14 +183,14 @@
     "id": "2122081905507975275",
     "authorHandle": "MiaSardinella",
     "authorName": "@MiaSardinella",
-    "datetime": "2026-11-15T21:38:47.000Z",
-    "text": "That's a dangerous philosophy in IT!\n\nA legacy system functioning yesterday doesn't mean it's reliable, supportable, or sustainable tomorrow. You cost a lot of lives saying leave it alone and let the 1960’s live forever. It will not. And when one piece breaks and needs to",
+    "datetime": "2026-11-14T22:24:36.000Z",
+    "text": "两位内阁秘书解释为什么所有飞机都被停飞。他们在说同样的事情吗？👀",
     "url": "https://x.com/MiaSardinella/status/2122081905507975275",
     "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 0,
-      "views": 16
+      "replies": 20,
+      "retweets": 39,
+      "likes": 194,
+      "views": 9140
     },
     "source": "community"
   },
@@ -198,14 +198,14 @@
     "id": "2122065383209472468",
     "authorHandle": "flyinghigherai",
     "authorName": "@flyinghigherai",
-    "datetime": "2026-11-15T20:33:08.000Z",
-    "text": "🍂 Zero Hallucination on Non-Foliage:\nThe out-of-domain negative test (weathered wood on rocky soil) was cleanly rejected by both models:\n• Google Decision 1: 0.02\n• TypeSafe Jev: 0.04\nNeither invented agricultural pathology out of background noise.",
+    "datetime": "2026-11-15T20:33:04.000Z",
+    "text": "Before throwing the full 40-image dataset at the APIs, I ran a 3-image \"smoke test\" across our core archetypes:\n• 1 clean fungal case \n• 1 ambiguous sample with surface interference \n• 1 negative out-of-domain shot",
     "url": "https://x.com/flyinghigherai/status/2122065383209472468",
     "metrics": {
       "replies": 1,
       "retweets": 0,
-      "likes": 0,
-      "views": 14
+      "likes": 1,
+      "views": 16
     },
     "source": "community"
   },
@@ -213,14 +213,14 @@
     "id": "2122065379019178321",
     "authorHandle": "flyinghigherai",
     "authorName": "@flyinghigherai",
-    "datetime": "2026-11-15T20:33:07.000Z",
-    "text": "🍂 Divergence on Ambiguity:Surface debris & sun scald caused a sharp split:\n• Google Decision 1: 0.32 (No Pathology), conservative, treating discoloration as abiotic stress.\n• TypeSafe Jev: 0.58 (Pathology Present), cautious, prioritizing sensitivity for early symptoms.",
+    "datetime": "2026-11-15T20:33:04.000Z",
+    "text": "Before throwing the full 40-image dataset at the APIs, I ran a 3-image \"smoke test\" across our core archetypes:\n• 1 clean fungal case \n• 1 ambiguous sample with surface interference \n• 1 negative out-of-domain shot",
     "url": "https://x.com/flyinghigherai/status/2122065379019178321",
     "metrics": {
       "replies": 1,
       "retweets": 0,
-      "likes": 0,
-      "views": 12
+      "likes": 1,
+      "views": 16
     },
     "source": "community"
   },
@@ -228,14 +228,14 @@
     "id": "2122065375563301248",
     "authorHandle": "flyinghigherai",
     "authorName": "@flyinghigherai",
-    "datetime": "2026-11-15T20:33:06.000Z",
-    "text": "🍂 Clear Agreement on Active Disease:On the clean pathology leaf, neither model hesitated, both easily crossed the 0.50 binary threshold:\n• Google Decision 1: 0.94 probability \n• TypeSafe Jev: 0.89 probability\nDistinct symptoms = decisive alignment",
+    "datetime": "2026-11-15T20:33:04.000Z",
+    "text": "Before throwing the full 40-image dataset at the APIs, I ran a 3-image \"smoke test\" across our core archetypes:\n• 1 clean fungal case \n• 1 ambiguous sample with surface interference \n• 1 negative out-of-domain shot",
     "url": "https://x.com/flyinghigherai/status/2122065375563301248",
     "metrics": {
       "replies": 1,
       "retweets": 0,
-      "likes": 0,
-      "views": 12
+      "likes": 1,
+      "views": 16
     },
     "source": "community"
   },
@@ -249,8 +249,8 @@
     "metrics": {
       "replies": 1,
       "retweets": 0,
-      "likes": 3,
-      "views": 407
+      "likes": 4,
+      "views": 557
     },
     "source": "community"
   },
@@ -258,14 +258,14 @@
     "id": "2121963776576500018",
     "authorHandle": "0x_rody",
     "authorName": "@0x_rody",
-    "datetime": "2026-11-15T13:49:23.000Z",
-    "text": "Jev founder just packed everything published on Jev Engineering into a 1-page PDF\n\nOne formula stops your agent from paying a frontier model to say yes or no:\n\nDecision Layer = LLM Writes + Jev Decides + Code Acts\n\nhere's the full setup:\n\nstep 1 -> let the LLM write the plan,",
+    "datetime": "2026-10-20T14:57:31.000Z",
+    "text": "Jev founder just packed everything published on Jev Engineering into a 1-page PDF\n\nOne formula stops your agent from paying a frontier model to say yes or no:\n\nDecision Layer = LLM Writes + Jev Decides + Code Acts\n\nhere's the full setup:\n\nstep 1 -> let the LLM write the plan, then list every decision point in your loop: route, gate, retry, escalate\n\nstep 2 -> turn each one into a question: Choice to pick a route, Score to rank priority, Noul for yes/no\n\nstep 3 -> send the state and all your questions to Jev in one call, you get probabilities back\n\nstep 4 -> put the thresholds in your code: if Noul says a Bash command is ≥0.7 destructive, block it, at ≥0.35 ask first\n\nstep 5 -> if Jev isn't confident enough, send it to Claude and don't apply it automatically\n\nTypeSafe charges $0.042 per million input tokens, output is free\n\nfull breakdown in the video 👇",
     "url": "https://x.com/0x_rody/status/2121963776576500018",
     "metrics": {
       "replies": 2,
-      "retweets": 0,
-      "likes": 24,
-      "views": 552
+      "retweets": 1,
+      "likes": 26,
+      "views": 601
     },
     "source": "community"
   },
@@ -274,13 +274,13 @@
     "authorHandle": "GitTrend0x",
     "authorName": "@GitTrend0x",
     "datetime": "2026-11-15T13:30:21.000Z",
-    "text": "Jev 应用分享又燃爆了 🔥\n\nshitianfang 的 LLM + Jev 双人搭档、andududu 的 Jev 调用实况地图、tostechbr 的「话没说完就动手」语音控制、bytelabs-oss 的皇室战争机器人、AgriciDaniel 的技能分诊台……全网玩家把 Jev 玩成了下一代「快手搭档 + 调用监视器 + 读心语音助手 + 电竞选手 +",
+    "text": "Jev 应用分享又燃爆了 🔥\n\nshitianfang 的 LLM + Jev 双人搭档、andududu 的 Jev 调用实况地图、tostechbr 的「话没说完就动手」语音控制、bytelabs-oss 的皇室战争机器人、AgriciDaniel 的技能分诊台……全网玩家把 Jev 玩成了下一代「快手搭档 + 调用监视器 + 读心语音助手 + 电竞选手 + 智能分诊员」:\n\n1️⃣ shitianfang/jev-use（\nhttps://\ngithub.com/shitianfang/je\nv-use\n…）\n\n给 Claude Code、Codex 和 Pi 用的插件：不需要输出文字、只要快速判断的步骤交给 Jev，需要写内容时再交回大模型；作者实测拦截危险命令约 230 毫秒、不耗大模型 token，200 条消息 7 次调用完成上下文压缩；一行 npx 安装；72 星。\n“写字交给大模型，拍板交给 Jev”！\n\n2️⃣ andududu/jeview（\nhttps://\ngithub.com/andududu/jeview）\n\n一个非官方的本地 Jev 可视化网关：把 Jev 客户端指向它，它带着你的 key 转发请求，把每次调用存进本地 SQLite，并实时画在一张地图上；只需 Node 24，零依赖；作者声明与 TypeSafe 无关联；68 星。\n“每一次 Jev 判断，都看得见”！\n\n3️⃣ tostechbr/partway（\nhttps://\ngithub.com/tostechbr/part\nway\n…）\n\nmacOS 语音控制：你说的每个词都拿去问 Jev，约 200 毫秒返回带概率的判断，所以一句话还没说完，备忘录就已经打开了；能开应用、新建笔记、开网站、搜索、打字，还能一口气连说多个指令；32 星。\n“你还在说，它已经做完了”！\n\n4️⃣ bytelabs-oss/clash-jev（\nhttps://\ngithub.com/bytelabs-oss/c\nlash-jev\n…）\n\n用 Jev 在真实安卓手机上打《皇室战争》：OpenCV 把实时画面读成 JSON 局面，Jev 每次约 135 毫秒依次选策略、选卡、选落点，程序确认能下再点击；不用强化学习、不用模拟器，没有训练过任何出牌策略；37 星。\n“没练过一局，照样上场对线”！\n\n5️⃣ AgriciDaniel/gatekeeper（\nhttps://\ngithub.com/AgriciDaniel/g\natekeeper\n…）\n\n在你的 AI 选工具之前，先决定这条请求该交给哪个 Agent 或技能：代码先过规则，剩下的语义问题交给 Jev 做带概率的选择，再按置信度给出放行、转交、建议、需确认、升级或拦截；每次不到一美分、约半秒；目前以 Claude Code 钩子安装；25 星。\n“请求进门先分诊，别让 AI 瞎猜”！",
     "url": "https://x.com/GitTrend0x/status/2121958989474766997",
     "metrics": {
       "replies": 3,
-      "retweets": 0,
-      "likes": 15,
-      "views": 899
+      "retweets": 1,
+      "likes": 20,
+      "views": 1066
     },
     "source": "community"
   },
@@ -289,13 +289,13 @@
     "authorHandle": "MazuzAsaf",
     "authorName": "@MazuzAsaf",
     "datetime": "2026-11-15T13:00:20.000Z",
-    "text": "Pi Coding Agent, plus Jev.\n\nPI-EXTENSIONS (NARUMIRUNA)\n\nPi Coding Agent extension monorepo with experimental TypeSafe packages: pi-typesafe for typed Jev decisions, pi-typesafe-compact for compaction selection, and pi-typesafe-search for FTS5 plus Jev search. ~750 stars.\n\nWhen to",
+    "text": "Pi Coding Agent, plus Jev.\n\nPI-EXTENSIONS (NARUMIRUNA)\n\nPi Coding Agent extension monorepo with experimental TypeSafe packages: pi-typesafe for typed Jev decisions, pi-typesafe-compact for compaction selection, and pi-typesafe-search for FTS5 plus Jev search. ~750 stars.\n\nWhen to use: you already work in Pi and want Jev handling compaction and search decisions.\n\n\nhttps://\njevlist.ai/projects/narum\niruna-pi-extensions\n…\n\nMore projects: \nhttps://\njevlist.ai",
     "url": "https://x.com/MazuzAsaf/status/2121951434472144919",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 56
+      "views": 64
     },
     "source": "community"
   },
@@ -303,14 +303,14 @@
     "id": "2121921297005601223",
     "authorHandle": "kr4chinin",
     "authorName": "@kr4chinin",
-    "datetime": "2026-11-15T11:00:35.000Z",
-    "text": "Traps in the eval: same symptom with a different root cause, and a prompt injection hidden in the report text.\n\nCheap one is Jev (TypeSafe), with its Decision Fallback to gpt-6-luna-decisions.",
+    "datetime": "2026-11-15T10:59:26.000Z",
+    "text": "Currently building a project, where I’m deduplicating bug reports with an LLM. 11 hand-labeled cases, with traps.\n\n-> Cheap model: 9/11, ~150 ms\n-> Big model: 11/11, ~350 ms\n-> Cheap + fall back to big when unsure: 11/11\n\nThe fallback fired exactly twice, on the two cases the",
     "url": "https://x.com/kr4chinin/status/2121921297005601223",
     "metrics": {
-      "replies": 1,
+      "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 38
+      "views": 71
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 55
+      "views": 59
     },
     "source": "community"
   },
@@ -334,13 +334,13 @@
     "authorHandle": "Shashikant86",
     "authorName": "@Shashikant86",
     "datetime": "2026-11-15T08:23:02.000Z",
-    "text": "🧠 SuperQode’s SystemOne harness now supports OpenAI \n@OpenAIDevs\n   and Google \n@googledevs\n  decision models alongside TypeSafe \n@typesafeai\n  Jev. \n\nYou can choose a decision model separately from your coding model. You can see what SystemOne recommends while your existing",
+    "text": "🧠 SuperQode’s SystemOne harness now supports OpenAI \n@OpenAIDevs\n   and Google \n@googledevs\n  decision models alongside TypeSafe \n@typesafeai\n  Jev. \n\nYou can choose a decision model separately from your coding model. You can see what SystemOne recommends while your existing permission policy controls execution.\n\nAvailable in SuperQode 2.31.17 and SuperQode for macOS 0.4.10. Watch the demo\n\n📙 Full Blog: \nhttps://\nsuper-agentic.ai/resources/supe\nr-posts/superqode-systemone-openai-google-decision-models\n…",
     "url": "https://x.com/Shashikant86/status/2121881649730249148",
     "metrics": {
       "replies": 1,
       "retweets": 0,
       "likes": 2,
-      "views": 193
+      "views": 208
     },
     "source": "community"
   },
@@ -349,13 +349,13 @@
     "authorHandle": "fabrizio_degni",
     "authorName": "@fabrizio_degni",
     "datetime": "2026-11-15T03:42:12.000Z",
-    "text": "Jev didn't just launch a new AI model: it exposed a missing layer in AI Governance.\n\nThey say one swallow doesn't make a summer but sometimes, one swallow signals an entirely new season.\nIn September 2026, TypeSafe AI Jev introduced the System One paradigm: fast, structured,",
+    "text": "Jev didn't just launch a new AI model: it exposed a missing layer in AI Governance.\n\nThey say one swallow doesn't make a summer but sometimes, one swallow signals an entirely new season.\nIn September 2026, TypeSafe AI Jev introduced the System One paradigm: fast, structured, probability-driven judgments without traditional autoregressive text generation and the AI ecosystem responded almost immediately:\nMicrosoft Decision-1. Gemini Decision 1. Perplexity Decider. OpenAI Decisions API. Cloudflare Clef. Liquid AI d1. Baseten Mammoth. Fastino Labs GLiDE. Amazon Web Services (AWS) Strands Decider.\n\nWithin weeks, an entirely new category of AI intelligence was taking shape and the disruption isn't speed, it's what speed makes possible.\nWhen AI decisions become dramatically faster and cheaper, they can be embedded everywhere: in workflows, tool calls, authorization checks, agent interactions and autonomous swarms. Traditional governance was designed around systems, processes and periodic reviews.\nAgentic AI requires something more and dual approach:\n\n🔷 TOP-DOWN: \nTranslate organizational principles, risk appetite, accountability and delegated authority into operational boundaries.\n\n🔷 BOTTOM-UP: \nTurn every consequential agent action into an opportunity for real-time verification, controlled execution, monitoring and auditable evidence.\n\nThe transformation we're exploring with PALO Framework:\n\n🧭 PALO Framework: \nGovernance across the complete AI lifecycle.\n\n🤖 PALO-AM: \nAuthority, autonomy and accountability for AI agents and agentic swarms.\n\n🛡️ PALO-AI: \nEnforceable controls, authorization gates and evidence of execution.\n\n💰 PALO FinOps: \nEconomic visibility into the cost, quality and sustainability of AI decisions.\n\nTogether, they connect governance intent with operational reality: FRAME → CLASSIFY → ASSESS → CONTROL → MEASURE → PROVE & REVIEW\n\nDecision Models can provide a powerful, low-latency judgment layer within this pipeline but they must never become the ultimate authority. The frontier of AI Engineering is building AI ecosystems in which every action has a defined authority, every risk has an enforceable boundary, and every consequential outcome can be verified.\n\n📊 The infographic below maps the emerging Decision Model landscape as of November 2026, its strengths and limitations and its implications for AI governance.\n\n🌐 Check it out here and on the 1st comment: \nhttps://\npaloframework.org\n\n#PALOFramework #AIGovernance #DecisionModels #AgenticAI #AISwarms #ResponsibleAI #AIEngineering #SystemOne",
     "url": "https://x.com/fabrizio_degni/status/2121810977255530727",
     "metrics": {
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 126
+      "views": 133
     },
     "source": "community"
   },
@@ -364,13 +364,13 @@
     "authorHandle": "SJRonanMD",
     "authorName": "@SJRonanMD",
     "datetime": "2026-11-15T02:11:00.000Z",
-    "text": "Zhejiang and Baidu: a decision model that acts badly can still teach an agent well\n\nZhejiang University and Baidu found that a decision model that's bad at running an agent can still be good at training one, as long as you ask it the right question.\n\nMy take: JEV, a closed",
+    "text": "Zhejiang and Baidu: a decision model that acts badly can still teach an agent well\n\nZhejiang University and Baidu found that a decision model that's bad at running an agent can still be good at training one, as long as you ask it the right question.\n\nMy take: JEV, a closed decision model from TypeSafe AI that returns a choice with probabilities instead of text, completes 42.9 percent of ALFWorld tasks when it picks the actions itself. Used as a frozen judge that scores every action of a Qwen2.5-1.5B policy after the episode ends, it lifts GRPO training from 72.8 to 82.9 percent on ALFWorld and from 56.8 to 71.4 on WebShop. The wording matters. Asking whether each action helped worked. Asking after each action whether the task will succeed gave 69.3 percent, worse than plain outcome rewards. Their explanation is that actors get pulled toward an easier subgoal, while a judge that sees the whole trajectory can tell which steps mattered.\n\nJEV is closed and its base model isn't disclosed, it's two simulated environments, and the student is 1.5B. An open-weights decider from Perplexity is in the actor and judge comparison, but only JEV was used as a teacher. Hindsight judging looks like a cheap way to train small agents you'd run",
     "url": "https://x.com/SJRonanMD/status/2121788023394505188",
     "metrics": {
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 126
+      "views": 148
     },
     "source": "community"
   },
@@ -378,14 +378,14 @@
     "id": "2121750698429923744",
     "authorHandle": "Dr_ztc",
     "authorName": "@Dr_ztc",
-    "datetime": "2026-11-14T23:42:41.000Z",
-    "text": "TypeSafe 这牌面太顶了：前 OpenAI 研究员 Diogo Almeida 联手做给软件直接调用的模型，首款 Jev 就盯自动化客服，a16z 领投 8.7 亿 A 轮。兄弟们，大狗最想看 Jev 上线后真实场景的吞吐和稳定性，客服场景它最先跑通吗？刚来串门，同频互关呗。",
+    "datetime": "2026-11-14T21:48:46.000Z",
+    "text": "🚀 TypeSafe 估值不到一个月涨37倍：约20亿→740亿瑞典克朗（$75亿）\n它做什么：旧金山AI公司，2024年成立，联创为前OpenAI研究员Diogo Almeida；做给软件直接调用的AI模型，首款Jev主打自动化客服等高频决策。\n钱：$8.7亿A轮，a16z领投、红杉参投；Klarna CEO旗下Flat Capital跟投约1000万克朗。",
     "url": "https://x.com/Dr_ztc/status/2121750698429923744",
     "metrics": {
-      "replies": 0,
+      "replies": 3,
       "retweets": 0,
       "likes": 0,
-      "views": 78
+      "views": 92
     },
     "source": "community"
   },
@@ -394,13 +394,13 @@
     "authorHandle": "INTJYAN",
     "authorName": "@INTJYAN",
     "datetime": "2026-11-14T21:48:46.000Z",
-    "text": "🚀 TypeSafe 估值不到一个月涨37倍：约20亿→740亿瑞典克朗（$75亿）\n它做什么：旧金山AI公司，2024年成立，联创为前OpenAI研究员Diogo Almeida；做给软件直接调用的AI模型，首款Jev主打自动化客服等高频决策。\n钱：$8.7亿A轮，a16z领投、红杉参投；Klarna CEO旗下Flat Capital跟投约1000万克朗。",
+    "text": "🚀 TypeSafe 估值不到一个月涨37倍：约20亿→740亿瑞典克朗（$75亿）\n它做什么：旧金山AI公司，2024年成立，联创为前OpenAI研究员Diogo Almeida；做给软件直接调用的AI模型，首款Jev主打自动化客服等高频决策。\n钱：$8.7亿A轮，a16z领投、红杉参投；Klarna CEO旗下Flat Capital跟投约1000万克朗。\n观察：资金在抢\"非聊天式\"AI模型。\n#资金动向 #人工智能 #AI #VC",
     "url": "https://x.com/INTJYAN/status/2121722030227611934",
     "metrics": {
       "replies": 3,
       "retweets": 0,
       "likes": 0,
-      "views": 89
+      "views": 92
     },
     "source": "community"
   },
@@ -430,7 +430,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 15
+      "views": 17
     },
     "source": "community"
   },
@@ -445,7 +445,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 142
+      "views": 143
     },
     "source": "community"
   },
