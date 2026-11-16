@@ -1,20 +1,5 @@
 [
   {
-    "id": "2122091423180992925",
-    "authorHandle": "thedelost",
-    "authorName": "@thedelost",
-    "datetime": "2026-08-23T13:19:56.000Z",
-    "text": "Anthropic 刚刚发布了 Claude Code 的最佳技巧：\n\nOpus 5.5 规划 → Haiku 5.5 阅读仓库 → Sonnet 5.5 编写 diff → Fable 5.2 签发确认\n\n1 分钟 + 一行 frontmatter = 你的舰队停止运行 Opus\n\n首先，理解它的工作原理：\n\n• 每个子代理都有自己的上下文窗口，只有其摘要会返回，因此它读取的 214 个文件永远不会触及你的主会话\n\n• .claude/agents/ 中的 model 字段决定每个代理运行在哪个模型上：haiku、sonnet、opus、fable，或完整的模型 ID。文件中的其他内容不变\n\n• Claude Code 默认同时运行多达 20 个子代理，它们可以嵌套三层深。这意味着你要为大量回合支付前沿费率\n\n以下是设置方法：\n\n1 → 在仓库中创建 .claude/agents/，或者如果你想在每个项目中使用，创建 ~/.claude/agents/\n\n2 → 每个代理一个 markdown 文件。只有名称和描述是必需的，正文成为其系统提示\n\n3 → 对于仅读取的一切，设置 model: haiku。搜索、grep、文档、标签、摘要。这些都不需要前沿模型\n\n4 → 对于编写 diff 的那个，保留 model: sonnet，对于审查的那个，设置 model: fable。该字段的有效值包括 Fable 5.2，因此你的审查代理会在其上运行，而不影响其他任何内容\n\n5 → 没人告诉你的：省略 model 字段，子代理会悄无声息地继承你的主模型。你的 grep 代理一直都在 Opus 上运行。设置 CLAUDE_CODE_SUBAGENT_MODEL=haiku，它会捕获你忘记的每个文件\n\n还有一点：保持描述简短。组合超过 15,000 个 token 时，Claude Code 在启动时会警告你，而且你每次回合都要为所有这些付费。\n\n我会在下面留下完整的提示和 Anthropic 关于子代理的官方文档\n\n然后阅读下面的文章 ↓",
-    "url": "https://x.com/thedelost/status/2122091423180992925",
-    "metrics": {
-      "replies": 3,
-      "retweets": 1,
-      "likes": 33,
-      "views": 1262
-    },
-    "source": "community"
-  },
-  {
     "id": "2122090623918547094",
     "authorHandle": "ThomasMarkuoiq",
     "authorName": "@ThomasMarkuoiq",
@@ -24,8 +9,8 @@
     "metrics": {
       "replies": 0,
       "retweets": 0,
-      "likes": 2,
-      "views": 104
+      "likes": 3,
+      "views": 127
     },
     "source": "community"
   },
@@ -40,7 +25,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 29
+      "views": 33
     },
     "source": "community"
   },
@@ -55,7 +40,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 55
+      "views": 78
     },
     "source": "community"
   },
@@ -70,7 +55,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 27
+      "views": 35
     },
     "source": "community"
   },
@@ -83,9 +68,9 @@
     "url": "https://x.com/Nfulanii/status/2122088924176646645",
     "metrics": {
       "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 40
+      "retweets": 1,
+      "likes": 1,
+      "views": 53
     },
     "source": "community"
   },
@@ -100,7 +85,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 80
+      "views": 113
     },
     "source": "community"
   },
@@ -115,7 +100,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 12
+      "views": 17
     },
     "source": "community"
   },
@@ -129,8 +114,8 @@
     "metrics": {
       "replies": 4,
       "retweets": 4,
-      "likes": 3,
-      "views": 2447
+      "likes": 4,
+      "views": 2479
     },
     "source": "community"
   },
@@ -145,52 +130,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 194
-    },
-    "source": "community"
-  },
-  {
-    "id": "2122085121503404298",
-    "authorHandle": "The_profray",
-    "authorName": "@The_profray",
-    "datetime": "2026-11-09T22:00:54.000Z",
-    "text": "What if you did not need to hire one team to improve an AI system?\n\nWhat if many independent teams could compete to build something better?\n\nThat is the question claims is asking while also providing the solution to that answer.\n\n\n@DeSciClaims\n (SN111) turns scientific papers into structured records but getting this right is not easy.\n\nA miner must identify the claims in a paper and link them to the right evidence. Poor work should not pass just because it sounds convincing.\n\nThis is where the competition comes in and you might just understand it better.\n\nMiners submit their work, and blind AI judges review the claims, the results help decide which submissions meet the standard. The aim is to reward better work, not just more submissions.\n\nThe new competition is designed to use one tested pipeline in production instead of running about ten versions for every paper.\n\nClaims estimates this could mean 10 – 100x more papers per dollar of emissions. That is a cost model estimate, not a result already achieved.",
-    "url": "https://x.com/The_profray/status/2122085121503404298",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 13
-    },
-    "source": "community"
-  },
-  {
-    "id": "2122085088292999375",
-    "authorHandle": "Mikeofweb",
-    "authorName": "@Mikeofweb",
-    "datetime": "2026-11-13T10:16:39.000Z",
-    "text": "📢 \nhttp://\nB.AI POPULAR MODEL DISCOUNT UPDATE: GLM-5.3-FLASH NOW 40% OFF!\n\n\nhttp://\nB.AI’s model discount lineup has officially been upgraded! The latest update brings even better deals on popular AI models, giving developers more opportunities to explore advanced AI capabilities at a lower cost.\n\nThe biggest highlight is GLM-5.3-Flash, which has received an upgraded discount from 30% OFF to 40% OFF!\n\nHy4, DeepSeek-V4.1-Flash, and Qwen3.8-Flash are also included in the latest offers, covering a wide range of use cases, including coding, advanced reasoning, and multimodal Agent workflows.\n\n🎁 LATEST MODEL DISCOUNTS\n\nHere’s a breakdown of the current offers:\n\nHy4: 50% OFF (Limited-Time Offer)\nDeepSeek-V4.1-Flash: 40% OFF\nGLM-5.3-Flash: 40% OFF (Upgraded from 30% OFF)\nQwen3.8-Flash: 20% OFF\n\nWhether you’re focused on software development, complex reasoning tasks, or building multimodal AI Agents, you can choose the models that best fit your workflow.\n\n🚀 INTELLIGENT ROUTING, UNIFIED COMPUTE\n\n\nhttp://\nB.AI offers more than discounted model access. It is building a unified infrastructure for accessing and using multiple AI models.\n\nAs the Global Settlement Layer for Intelligence, \nhttp://\nB.AI sits above individual models and beneath AI Agents, connecting different models through intelligent routing and unified computing resources.\n\nDevelopers only need one integration to switch seamlessly between multiple leading flagship models.\n\nEvery model call is routed, metered, and settled through the platform, helping developers manage usage more efficiently and optimize their AI operating costs.\n\nThis eliminates the need to build separate integration processes for every model, making it easier to access different AI capabilities through one unified system.\n\n🌐 WHY CHOOSE \nhttp://\nB.AI?\n\nAs AI technology continues to evolve, developers need more than access to a single model. They need the flexibility to combine different capabilities for different tasks.\n\nCoding: Choose suitable models based on your development requirements.\nAdvanced reasoning: Explore how different models handle complex tasks.\nMultimodal Agents: Combine model capabilities to support more advanced AI workflows.\nCost management: Improve resource efficiency through unified access, intelligent routing, and usage metering.\n\nBy bringing together multi-model integration, intelligent routing, unified compute, and attractive discounts, \nhttp://\nB.AI provides developers with a more flexible and efficient AI experience.\n\nOne integration. Seamless model switching. Intelligent routing. Unified compute. Make every model call more efficient.\n\n🎯 The latest model discounts are now active. Log in to \nhttp://\nB.AI and explore more AI possibilities!\n\n👉 Get started: \nhttps://\nchat.b.ai/chat\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRONEcoStar",
-    "url": "https://x.com/Mikeofweb/status/2122085088292999375",
-    "metrics": {
-      "replies": 0,
-      "retweets": 0,
-      "likes": 0,
-      "views": 45
-    },
-    "source": "community"
-  },
-  {
-    "id": "2122081905507975275",
-    "authorHandle": "MiaSardinella",
-    "authorName": "@MiaSardinella",
-    "datetime": "2026-11-14T22:24:36.000Z",
-    "text": "两位内阁秘书解释为什么所有飞机都被停飞。他们在说同样的事情吗？👀",
-    "url": "https://x.com/MiaSardinella/status/2122081905507975275",
-    "metrics": {
-      "replies": 20,
-      "retweets": 39,
-      "likes": 194,
-      "views": 9140
+      "views": 207
     },
     "source": "community"
   },
@@ -205,7 +145,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 16
+      "views": 19
     },
     "source": "community"
   },
@@ -220,7 +160,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 16
+      "views": 19
     },
     "source": "community"
   },
@@ -235,7 +175,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 16
+      "views": 19
     },
     "source": "community"
   },
@@ -250,22 +190,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 4,
-      "views": 557
-    },
-    "source": "community"
-  },
-  {
-    "id": "2121963776576500018",
-    "authorHandle": "0x_rody",
-    "authorName": "@0x_rody",
-    "datetime": "2026-10-20T14:57:31.000Z",
-    "text": "Jev founder just packed everything published on Jev Engineering into a 1-page PDF\n\nOne formula stops your agent from paying a frontier model to say yes or no:\n\nDecision Layer = LLM Writes + Jev Decides + Code Acts\n\nhere's the full setup:\n\nstep 1 -> let the LLM write the plan, then list every decision point in your loop: route, gate, retry, escalate\n\nstep 2 -> turn each one into a question: Choice to pick a route, Score to rank priority, Noul for yes/no\n\nstep 3 -> send the state and all your questions to Jev in one call, you get probabilities back\n\nstep 4 -> put the thresholds in your code: if Noul says a Bash command is ≥0.7 destructive, block it, at ≥0.35 ask first\n\nstep 5 -> if Jev isn't confident enough, send it to Claude and don't apply it automatically\n\nTypeSafe charges $0.042 per million input tokens, output is free\n\nfull breakdown in the video 👇",
-    "url": "https://x.com/0x_rody/status/2121963776576500018",
-    "metrics": {
-      "replies": 2,
-      "retweets": 1,
-      "likes": 26,
-      "views": 601
+      "views": 690
     },
     "source": "community"
   },
@@ -277,10 +202,10 @@
     "text": "Jev 应用分享又燃爆了 🔥\n\nshitianfang 的 LLM + Jev 双人搭档、andududu 的 Jev 调用实况地图、tostechbr 的「话没说完就动手」语音控制、bytelabs-oss 的皇室战争机器人、AgriciDaniel 的技能分诊台……全网玩家把 Jev 玩成了下一代「快手搭档 + 调用监视器 + 读心语音助手 + 电竞选手 + 智能分诊员」:\n\n1️⃣ shitianfang/jev-use（\nhttps://\ngithub.com/shitianfang/je\nv-use\n…）\n\n给 Claude Code、Codex 和 Pi 用的插件：不需要输出文字、只要快速判断的步骤交给 Jev，需要写内容时再交回大模型；作者实测拦截危险命令约 230 毫秒、不耗大模型 token，200 条消息 7 次调用完成上下文压缩；一行 npx 安装；72 星。\n“写字交给大模型，拍板交给 Jev”！\n\n2️⃣ andududu/jeview（\nhttps://\ngithub.com/andududu/jeview）\n\n一个非官方的本地 Jev 可视化网关：把 Jev 客户端指向它，它带着你的 key 转发请求，把每次调用存进本地 SQLite，并实时画在一张地图上；只需 Node 24，零依赖；作者声明与 TypeSafe 无关联；68 星。\n“每一次 Jev 判断，都看得见”！\n\n3️⃣ tostechbr/partway（\nhttps://\ngithub.com/tostechbr/part\nway\n…）\n\nmacOS 语音控制：你说的每个词都拿去问 Jev，约 200 毫秒返回带概率的判断，所以一句话还没说完，备忘录就已经打开了；能开应用、新建笔记、开网站、搜索、打字，还能一口气连说多个指令；32 星。\n“你还在说，它已经做完了”！\n\n4️⃣ bytelabs-oss/clash-jev（\nhttps://\ngithub.com/bytelabs-oss/c\nlash-jev\n…）\n\n用 Jev 在真实安卓手机上打《皇室战争》：OpenCV 把实时画面读成 JSON 局面，Jev 每次约 135 毫秒依次选策略、选卡、选落点，程序确认能下再点击；不用强化学习、不用模拟器，没有训练过任何出牌策略；37 星。\n“没练过一局，照样上场对线”！\n\n5️⃣ AgriciDaniel/gatekeeper（\nhttps://\ngithub.com/AgriciDaniel/g\natekeeper\n…）\n\n在你的 AI 选工具之前，先决定这条请求该交给哪个 Agent 或技能：代码先过规则，剩下的语义问题交给 Jev 做带概率的选择，再按置信度给出放行、转交、建议、需确认、升级或拦截；每次不到一美分、约半秒；目前以 Claude Code 钩子安装；25 星。\n“请求进门先分诊，别让 AI 瞎猜”！",
     "url": "https://x.com/GitTrend0x/status/2121958989474766997",
     "metrics": {
-      "replies": 3,
-      "retweets": 1,
-      "likes": 20,
-      "views": 1066
+      "replies": 4,
+      "retweets": 2,
+      "likes": 26,
+      "views": 1464
     },
     "source": "community"
   },
@@ -295,7 +220,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 64
+      "views": 86
     },
     "source": "community"
   },
@@ -310,7 +235,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 71
+      "views": 80
     },
     "source": "community"
   },
@@ -325,7 +250,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 59
+      "views": 71
     },
     "source": "community"
   },
@@ -340,7 +265,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 2,
-      "views": 208
+      "views": 228
     },
     "source": "community"
   },
@@ -355,7 +280,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 133
+      "views": 147
     },
     "source": "community"
   },
@@ -370,7 +295,22 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 148
+      "views": 160
+    },
+    "source": "community"
+  },
+  {
+    "id": "2122081905507975275",
+    "authorHandle": "MiaSardinella",
+    "authorName": "@MiaSardinella",
+    "datetime": "2026-11-14T22:24:36.000Z",
+    "text": "两位内阁秘书解释为什么所有飞机都被停飞。他们在说同样的事情吗？👀",
+    "url": "https://x.com/MiaSardinella/status/2122081905507975275",
+    "metrics": {
+      "replies": 20,
+      "retweets": 38,
+      "likes": 199,
+      "views": 9395
     },
     "source": "community"
   },
@@ -385,7 +325,7 @@
       "replies": 3,
       "retweets": 0,
       "likes": 0,
-      "views": 92
+      "views": 103
     },
     "source": "community"
   },
@@ -400,7 +340,7 @@
       "replies": 3,
       "retweets": 0,
       "likes": 0,
-      "views": 92
+      "views": 103
     },
     "source": "community"
   },
@@ -430,7 +370,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 17
+      "views": 18
     },
     "source": "community"
   },
@@ -445,7 +385,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 143
+      "views": 148
     },
     "source": "community"
   },
@@ -460,7 +400,7 @@
       "replies": 3,
       "retweets": 0,
       "likes": 3,
-      "views": 202
+      "views": 214
     },
     "source": "community"
   },
@@ -475,7 +415,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 173
+      "views": 199
     },
     "source": "community"
   },
@@ -489,8 +429,8 @@
     "metrics": {
       "replies": 5,
       "retweets": 0,
-      "likes": 4,
-      "views": 43
+      "likes": 5,
+      "views": 46
     },
     "source": "community"
   },
@@ -502,10 +442,10 @@
     "text": "批评者说“没人用 Three.js 开发”\n好吧……解释一下这个：\n\n一个编码模型怎么能和 Blender 中烘焙的 3D 网格相媲美？？\n\n顶部是 Three.js\n底部是 Blender\n\n水、天空中所有的模拟机制 = 同样通过 Opus 5.5 + Fable 5.2 构建\n\n有疑问吗？",
     "url": "https://x.com/maxt3chno/status/2121714747578147058",
     "metrics": {
-      "replies": 70,
-      "retweets": 49,
-      "likes": 904,
-      "views": 69918
+      "replies": 76,
+      "retweets": 50,
+      "likes": 987,
+      "views": 77295
     },
     "source": "community"
   },
@@ -735,6 +675,21 @@
     "source": "community"
   },
   {
+    "id": "2122085088292999375",
+    "authorHandle": "Mikeofweb",
+    "authorName": "@Mikeofweb",
+    "datetime": "2026-11-13T10:16:39.000Z",
+    "text": "📢 \nhttp://\nB.AI POPULAR MODEL DISCOUNT UPDATE: GLM-5.3-FLASH NOW 40% OFF!\n\n\nhttp://\nB.AI’s model discount lineup has officially been upgraded! The latest update brings even better deals on popular AI models, giving developers more opportunities to explore advanced AI capabilities at a lower cost.\n\nThe biggest highlight is GLM-5.3-Flash, which has received an upgraded discount from 30% OFF to 40% OFF!\n\nHy4, DeepSeek-V4.1-Flash, and Qwen3.8-Flash are also included in the latest offers, covering a wide range of use cases, including coding, advanced reasoning, and multimodal Agent workflows.\n\n🎁 LATEST MODEL DISCOUNTS\n\nHere’s a breakdown of the current offers:\n\nHy4: 50% OFF (Limited-Time Offer)\nDeepSeek-V4.1-Flash: 40% OFF\nGLM-5.3-Flash: 40% OFF (Upgraded from 30% OFF)\nQwen3.8-Flash: 20% OFF\n\nWhether you’re focused on software development, complex reasoning tasks, or building multimodal AI Agents, you can choose the models that best fit your workflow.\n\n🚀 INTELLIGENT ROUTING, UNIFIED COMPUTE\n\n\nhttp://\nB.AI offers more than discounted model access. It is building a unified infrastructure for accessing and using multiple AI models.\n\nAs the Global Settlement Layer for Intelligence, \nhttp://\nB.AI sits above individual models and beneath AI Agents, connecting different models through intelligent routing and unified computing resources.\n\nDevelopers only need one integration to switch seamlessly between multiple leading flagship models.\n\nEvery model call is routed, metered, and settled through the platform, helping developers manage usage more efficiently and optimize their AI operating costs.\n\nThis eliminates the need to build separate integration processes for every model, making it easier to access different AI capabilities through one unified system.\n\n🌐 WHY CHOOSE \nhttp://\nB.AI?\n\nAs AI technology continues to evolve, developers need more than access to a single model. They need the flexibility to combine different capabilities for different tasks.\n\nCoding: Choose suitable models based on your development requirements.\nAdvanced reasoning: Explore how different models handle complex tasks.\nMultimodal Agents: Combine model capabilities to support more advanced AI workflows.\nCost management: Improve resource efficiency through unified access, intelligent routing, and usage metering.\n\nBy bringing together multi-model integration, intelligent routing, unified compute, and attractive discounts, \nhttp://\nB.AI provides developers with a more flexible and efficient AI experience.\n\nOne integration. Seamless model switching. Intelligent routing. Unified compute. Make every model call more efficient.\n\n🎯 The latest model discounts are now active. Log in to \nhttp://\nB.AI and explore more AI possibilities!\n\n👉 Get started: \nhttps://\nchat.b.ai/chat\n\n\n@BAI_AGI\n \n@justinsuntron\n #TRONEcoStar",
+    "url": "https://x.com/Mikeofweb/status/2122085088292999375",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 45
+    },
+    "source": "community"
+  },
+  {
     "id": "2121152082984231265",
     "authorHandle": "feisalgro",
     "authorName": "@feisalgro",
@@ -896,6 +851,51 @@
       "retweets": 0,
       "likes": 5,
       "views": 231
+    },
+    "source": "community"
+  },
+  {
+    "id": "2122085121503404298",
+    "authorHandle": "The_profray",
+    "authorName": "@The_profray",
+    "datetime": "2026-11-09T22:00:54.000Z",
+    "text": "What if you did not need to hire one team to improve an AI system?\n\nWhat if many independent teams could compete to build something better?\n\nThat is the question claims is asking while also providing the solution to that answer.\n\n\n@DeSciClaims\n (SN111) turns scientific papers into structured records but getting this right is not easy.\n\nA miner must identify the claims in a paper and link them to the right evidence. Poor work should not pass just because it sounds convincing.\n\nThis is where the competition comes in and you might just understand it better.\n\nMiners submit their work, and blind AI judges review the claims, the results help decide which submissions meet the standard. The aim is to reward better work, not just more submissions.\n\nThe new competition is designed to use one tested pipeline in production instead of running about ten versions for every paper.\n\nClaims estimates this could mean 10 – 100x more papers per dollar of emissions. That is a cost model estimate, not a result already achieved.",
+    "url": "https://x.com/The_profray/status/2122085121503404298",
+    "metrics": {
+      "replies": 0,
+      "retweets": 0,
+      "likes": 0,
+      "views": 13
+    },
+    "source": "community"
+  },
+  {
+    "id": "2121963776576500018",
+    "authorHandle": "0x_rody",
+    "authorName": "@0x_rody",
+    "datetime": "2026-10-20T14:57:31.000Z",
+    "text": "Jev founder just packed everything published on Jev Engineering into a 1-page PDF\n\nOne formula stops your agent from paying a frontier model to say yes or no:\n\nDecision Layer = LLM Writes + Jev Decides + Code Acts\n\nhere's the full setup:\n\nstep 1 -> let the LLM write the plan, then list every decision point in your loop: route, gate, retry, escalate\n\nstep 2 -> turn each one into a question: Choice to pick a route, Score to rank priority, Noul for yes/no\n\nstep 3 -> send the state and all your questions to Jev in one call, you get probabilities back\n\nstep 4 -> put the thresholds in your code: if Noul says a Bash command is ≥0.7 destructive, block it, at ≥0.35 ask first\n\nstep 5 -> if Jev isn't confident enough, send it to Claude and don't apply it automatically\n\nTypeSafe charges $0.042 per million input tokens, output is free\n\nfull breakdown in the video 👇",
+    "url": "https://x.com/0x_rody/status/2121963776576500018",
+    "metrics": {
+      "replies": 2,
+      "retweets": 1,
+      "likes": 26,
+      "views": 601
+    },
+    "source": "community"
+  },
+  {
+    "id": "2122091423180992925",
+    "authorHandle": "thedelost",
+    "authorName": "@thedelost",
+    "datetime": "2026-08-23T13:19:56.000Z",
+    "text": "Anthropic 刚刚发布了 Claude Code 的最佳技巧：\n\nOpus 5.5 规划 → Haiku 5.5 阅读仓库 → Sonnet 5.5 编写 diff → Fable 5.2 签发确认\n\n1 分钟 + 一行 frontmatter = 你的舰队停止运行 Opus\n\n首先，理解它的工作原理：\n\n• 每个子代理都有自己的上下文窗口，只有其摘要会返回，因此它读取的 214 个文件永远不会触及你的主会话\n\n• .claude/agents/ 中的 model 字段决定每个代理运行在哪个模型上：haiku、sonnet、opus、fable，或完整的模型 ID。文件中的其他内容不变\n\n• Claude Code 默认同时运行多达 20 个子代理，它们可以嵌套三层深。这意味着你要为大量回合支付前沿费率\n\n以下是设置方法：\n\n1 → 在仓库中创建 .claude/agents/，或者如果你想在每个项目中使用，创建 ~/.claude/agents/\n\n2 → 每个代理一个 markdown 文件。只有名称和描述是必需的，正文成为其系统提示\n\n3 → 对于仅读取的一切，设置 model: haiku。搜索、grep、文档、标签、摘要。这些都不需要前沿模型\n\n4 → 对于编写 diff 的那个，保留 model: sonnet，对于审查的那个，设置 model: fable。该字段的有效值包括 Fable 5.2，因此你的审查代理会在其上运行，而不影响其他任何内容\n\n5 → 没人告诉你的：省略 model 字段，子代理会悄无声息地继承你的主模型。你的 grep 代理一直都在 Opus 上运行。设置 CLAUDE_CODE_SUBAGENT_MODEL=haiku，它会捕获你忘记的每个文件\n\n还有一点：保持描述简短。组合超过 15,000 个 token 时，Claude Code 在启动时会警告你，而且你每次回合都要为所有这些付费。\n\n我会在下面留下完整的提示和 Anthropic 关于子代理的官方文档\n\n然后阅读下面的文章 ↓",
+    "url": "https://x.com/thedelost/status/2122091423180992925",
+    "metrics": {
+      "replies": 3,
+      "retweets": 1,
+      "likes": 33,
+      "views": 1262
     },
     "source": "community"
   }
