@@ -10,7 +10,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 3,
-      "views": 127
+      "views": 148
     },
     "source": "community"
   },
@@ -25,7 +25,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 33
+      "views": 38
     },
     "source": "community"
   },
@@ -40,7 +40,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 78
+      "views": 87
     },
     "source": "community"
   },
@@ -55,7 +55,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 35
+      "views": 38
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 1,
-      "views": 53
+      "views": 56
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 113
+      "views": 130
     },
     "source": "community"
   },
@@ -100,7 +100,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 17
+      "views": 19
     },
     "source": "community"
   },
@@ -115,7 +115,7 @@
       "replies": 4,
       "retweets": 4,
       "likes": 4,
-      "views": 2479
+      "views": 2481
     },
     "source": "community"
   },
@@ -130,7 +130,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 207
+      "views": 217
     },
     "source": "community"
   },
@@ -145,7 +145,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 19
+      "views": 22
     },
     "source": "community"
   },
@@ -160,7 +160,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 19
+      "views": 22
     },
     "source": "community"
   },
@@ -175,7 +175,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 1,
-      "views": 19
+      "views": 22
     },
     "source": "community"
   },
@@ -190,7 +190,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 4,
-      "views": 690
+      "views": 725
     },
     "source": "community"
   },
@@ -202,10 +202,10 @@
     "text": "Jev 应用分享又燃爆了 🔥\n\nshitianfang 的 LLM + Jev 双人搭档、andududu 的 Jev 调用实况地图、tostechbr 的「话没说完就动手」语音控制、bytelabs-oss 的皇室战争机器人、AgriciDaniel 的技能分诊台……全网玩家把 Jev 玩成了下一代「快手搭档 + 调用监视器 + 读心语音助手 + 电竞选手 + 智能分诊员」:\n\n1️⃣ shitianfang/jev-use（\nhttps://\ngithub.com/shitianfang/je\nv-use\n…）\n\n给 Claude Code、Codex 和 Pi 用的插件：不需要输出文字、只要快速判断的步骤交给 Jev，需要写内容时再交回大模型；作者实测拦截危险命令约 230 毫秒、不耗大模型 token，200 条消息 7 次调用完成上下文压缩；一行 npx 安装；72 星。\n“写字交给大模型，拍板交给 Jev”！\n\n2️⃣ andududu/jeview（\nhttps://\ngithub.com/andududu/jeview）\n\n一个非官方的本地 Jev 可视化网关：把 Jev 客户端指向它，它带着你的 key 转发请求，把每次调用存进本地 SQLite，并实时画在一张地图上；只需 Node 24，零依赖；作者声明与 TypeSafe 无关联；68 星。\n“每一次 Jev 判断，都看得见”！\n\n3️⃣ tostechbr/partway（\nhttps://\ngithub.com/tostechbr/part\nway\n…）\n\nmacOS 语音控制：你说的每个词都拿去问 Jev，约 200 毫秒返回带概率的判断，所以一句话还没说完，备忘录就已经打开了；能开应用、新建笔记、开网站、搜索、打字，还能一口气连说多个指令；32 星。\n“你还在说，它已经做完了”！\n\n4️⃣ bytelabs-oss/clash-jev（\nhttps://\ngithub.com/bytelabs-oss/c\nlash-jev\n…）\n\n用 Jev 在真实安卓手机上打《皇室战争》：OpenCV 把实时画面读成 JSON 局面，Jev 每次约 135 毫秒依次选策略、选卡、选落点，程序确认能下再点击；不用强化学习、不用模拟器，没有训练过任何出牌策略；37 星。\n“没练过一局，照样上场对线”！\n\n5️⃣ AgriciDaniel/gatekeeper（\nhttps://\ngithub.com/AgriciDaniel/g\natekeeper\n…）\n\n在你的 AI 选工具之前，先决定这条请求该交给哪个 Agent 或技能：代码先过规则，剩下的语义问题交给 Jev 做带概率的选择，再按置信度给出放行、转交、建议、需确认、升级或拦截；每次不到一美分、约半秒；目前以 Claude Code 钩子安装；25 星。\n“请求进门先分诊，别让 AI 瞎猜”！",
     "url": "https://x.com/GitTrend0x/status/2121958989474766997",
     "metrics": {
-      "replies": 4,
+      "replies": 5,
       "retweets": 2,
-      "likes": 26,
-      "views": 1464
+      "likes": 27,
+      "views": 1535
     },
     "source": "community"
   },
@@ -220,7 +220,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 86
+      "views": 92
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 80
+      "views": 83
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 71
+      "views": 76
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 2,
-      "views": 228
+      "views": 237
     },
     "source": "community"
   },
@@ -280,7 +280,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 1,
-      "views": 147
+      "views": 156
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 160
+      "views": 162
     },
     "source": "community"
   },
@@ -308,9 +308,9 @@
     "url": "https://x.com/MiaSardinella/status/2122081905507975275",
     "metrics": {
       "replies": 20,
-      "retweets": 38,
-      "likes": 199,
-      "views": 9395
+      "retweets": 39,
+      "likes": 202,
+      "views": 9576
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 3,
       "retweets": 0,
       "likes": 0,
-      "views": 103
+      "views": 105
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 3,
       "retweets": 0,
       "likes": 0,
-      "views": 103
+      "views": 105
     },
     "source": "community"
   },
@@ -370,7 +370,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 18
+      "views": 19
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 148
+      "views": 151
     },
     "source": "community"
   },
@@ -400,7 +400,7 @@
       "replies": 3,
       "retweets": 0,
       "likes": 3,
-      "views": 214
+      "views": 218
     },
     "source": "community"
   },
@@ -415,7 +415,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 199
+      "views": 212
     },
     "source": "community"
   },
@@ -430,7 +430,7 @@
       "replies": 5,
       "retweets": 0,
       "likes": 5,
-      "views": 46
+      "views": 47
     },
     "source": "community"
   },
@@ -443,9 +443,9 @@
     "url": "https://x.com/maxt3chno/status/2121714747578147058",
     "metrics": {
       "replies": 76,
-      "retweets": 50,
-      "likes": 987,
-      "views": 77295
+      "retweets": 54,
+      "likes": 1013,
+      "views": 81555
     },
     "source": "community"
   },
