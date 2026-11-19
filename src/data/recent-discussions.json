@@ -10,7 +10,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 305
+      "views": 429
     },
     "source": "community"
   },
@@ -22,10 +22,10 @@
     "text": "Qwen3.8-35B-A3B 在配备 12GB 显存的 RTX 3060 上以每秒 50 个 token 的速度运行\n\n一个拥有 350 亿参数的模型，在配备仅 12GB 显存的 RTX 3060 上，以每秒约 50 个 token 的速度生成内容。\n\n这是 Qwen3.8-35B-A3B 通过 llama.cpp 在本地运行时的报告性能，同时还使用了 16GB 系统内存。\n\n这套配置在提示词处理阶段的速度也达到了每秒约 550 个 token，并支持配置最大 262K token 的上下文窗口。\n\n没有 RTX 4090。没有多 GPU 配置。只有一张消费级 GPU、系统内存，以及一套精心优化的推理配置。\n\n有意思的工程之处在于，开发者如何让如此规模的模型跑起来，尽管 GPU 的显存不足以容纳全部权重。\n\n四项技术让这成为可能：四比特量化、CPU 卸载、Flash Attention 和 8 比特 KV 缓存。\n\n硬件与性能\n\n报告中的配置：\n\n模型：Qwen3.8-35B-A3B\nGPU：NVIDIA RTX 3060\n显存：12GB\n系统内存：16GB\n推理引擎：llama.cpp\n量化：Q4_K_M\n解码速度：约每秒 50 个 token\n预填充速度：约每秒 550 个 token\n配置上下文：最大 262K token\n注意力机制：Flash Attention\nKV 缓存：Q8\nCPU 卸载：26 个 MoE 层\n\n有一个重要区别：每秒 550 个 token 这个数字衡量的是提示词处理，而不是响应生成。\n\n预填充是模型处理输入文本的阶段。解码是模型逐个 token 生成响应的阶段。\n\n因此，报告中的性能是预填充约每秒 550 个 token，生成约每秒 50 个 token。两者都有用，但衡量的是不同的工作负载。\n\n一个 35B 模型如何在 12GB 显存上运行？\n\nQwen3.8-35B-A3B 采用混合专家（MoE）架构。\n\n尽管模型包含约 350 亿个参数，但每个 token 只会激活约 30 亿个参数。\n\nMoE 模型不会在每次计算中使用全部参数，而是通过路由机制为每个 token 选择特定的专家网络。\n\n与激活整个模型相比，这减少了所需的计算量。\n\n然而，活跃参数与内存需求之间存在一个重要区别。\n\n拥有约 30 亿个活跃参数，并不意味着模型只需要容纳 30 亿个参数的内存。全部专家权重仍然需要存储在某个地方，因为随着生成的进行，可能会选中不同的专家。\n\n这就是为什么开发者将量化与 CPU 卸载结合起来，而不是仅依赖 GPU。\n\n在 GPU 和 CPU 之间分配工作负载\n\nRTX 3060 提供 12GB 显存，而机器还拥有另外 16GB 系统内存。\n\n开发者没有强行把整个模型塞进 GPU 显存，而是使用 llama.cpp 将执行分布到两个处理器上。\n\n根据报告中的配置，26 个 MoE 层被卸载到 CPU。\n\nGPU 处理分配给它的层，而 CPU 则使用系统内存处理卸载的层。\n\n这使系统能够处理超出 GPU 物理显存容量的模型权重。\n\n不过，这存在性能上的权衡。\n\n在系统内存和 GPU 显存之间移动数据，会通过 PCIe 引入通信开销。CPU、内存带宽、PCIe 连接以及层的分配，都会影响推理速度。\n\n因此，在这种配置下维持约每秒 50 个 token 的速度，正是这次实验特别有意思的地方。\n\n支撑性能的四项优化\n\n每项技术都针对不同的内存或推理瓶颈。\n\n1. Q4_K_M 量化\n\n模型使用 Q4_K_M，这是一种四比特量化格式，可减少模型权重所需的存储和内存带宽。\n\n量化不是以更高的数值精度表示权重，而是用更少的比特来存储它们。\n\n这使得更大的模型在消费级硬件上更加实用。\n\n代价是可能损失精度，这取决于模型、量化方法和所评估的任务。\n\n2. Flash Attention",
     "url": "https://x.com/Oluwaphilemon1/status/2123201196647186733",
     "metrics": {
-      "replies": 3,
-      "retweets": 7,
-      "likes": 21,
-      "views": 5055
+      "replies": 4,
+      "retweets": 12,
+      "likes": 66,
+      "views": 14558
     },
     "source": "community"
   },
@@ -37,10 +37,10 @@
     "text": "一塊 RTX 3090 據報能同時處理 64 個 Qwen3.8 會話，每秒 1,035 個令牌\n\n一塊配備 24GB VRAM 的 NVIDIA RTX 3090 據報能在 64 個並發 Qwen3.8-27B 會話中實現每秒 1,035 個令牌的輸出。\n\n更令人興趣的是，這塊 GPU 的功率限制僅為 250W。\n\n該實驗使用 HyperQwen，這是一個基於 vLLM 構建的開源推理服務堆疊，將消費級顯卡轉變為多會話 AI 伺服器。\n\n但最重要的一部分並非僅僅是生成速度。\n\n而是系統據報能處理的同時會話數量。\n\n大多數本地推理基準測試專注於模型對單一用戶的響應速度。此實驗探討了一個不同的問題：\n\n當數十個用戶共享同一模型時，單一消費級 GPU 能提供多少總生成能力？\n\n讓我們來檢視一下設置。\n\n1. 實驗背後的硬體\n\n據報的配置如下：\n\nGPU: NVIDIA RTX 3090\nVRAM: 24GB\n功率限制: 250W\n模型: Qwen3.8-27B\n推理堆疊: HyperQwen + vLLM\n並發會話: 64\n據報單會話解碼速度: 約 127 個令牌/秒\n總輸出吞吐量: 約 1,035 個令牌/秒\n配置的最大上下文: 最高 150K 令牌\n\n兩個數字立刻引人注目：127 個令牌/秒 和 1,035 個令牌/秒。\n\n然而，它們測量的是不同的事物。\n\n約 127 個令牌/秒 的數字代表單會話測試中的據報生成速度。\n\n1,035 個令牌/秒 的數字代表多個活躍會話的總輸出吞吐量。\n\n這並不意味著每個用戶都能收到每秒 1,035 個令牌。也不意味著所有 64 個用戶都能獨立以 127 個令牌/秒 生成。\n\nGPU 的計算資源和記憶體頻寬在請求之間共享。個別性能取決於調度、提示長度、上下文大小、輸出長度以及競爭會話的數量。\n\n這裡的成就是總吞吐量，而非個別用戶速度。\n\n2. 一塊 RTX 3090 如何處理 64 個會話？\n\n服務一個 AI 對話相對簡單。\n\n同時服務 64 個則是一個更複雜的工程問題。\n\n推理引擎必須協調進來的請求、管理活躍對話的記憶體、調度生成，並在不超過可用資源的情況下保持 GPU 忙碌\n\n這就是 vLLM 變得重要的地方\n\n其兩項關鍵技術尤為相關：Continuous Batching 和 PagedAttention\n\nContinuous Batching：保持 GPU 忙碌\n\n想像 64 個用戶向同一 AI 伺服器發送請求\n\n他們不會都收到等長度的回應\n\n一個用戶可能問一個簡單問題，只需 30 個令牌。另一個用戶可能要求詳細的編碼解決方案，需要數百或數千個令牌\n\n使用傳統靜態批處理，請求會被分組並作為固定批次處理。當某些請求比其他請求早完成時，處理能力可能會閒置，而剩餘請求繼續進行\n\n連續批處理採用更動態的方法\n\n推理引擎不會等待批次中的每個請求完成，而是隨著請求完成來更新活躍批次\n\n當一個對話完成生成時，另一個等待的請求可以取而代之\n\n這能讓更多請求通過 GPU 流動，並減少等待較長生成完成的閒置時間\n\n對於處理數十個用戶的伺服器，這能對總吞吐量產生實質差異\n\nPagedAttention：更好地利用 24GB VRAM\n\n第二個挑戰是記憶體管理\n\n每個活躍的 Transformer 會話都需要一個 Key-Value 快取，通常稱為 KV 快取\n\n該快取儲存先前處理令牌的注意力資訊。這允許模型重用對話早期部分的資訊，而非反覆重新計算一切\n\n隨著上下文增長，KV 快取會消耗更多記憶體\n\n現在考慮在僅有 24GB VRAM 的 GPU 上管理 64 個活躍對話",
     "url": "https://x.com/Oluwaphilemon1/status/2123199430450905315",
     "metrics": {
-      "replies": 2,
-      "retweets": 3,
-      "likes": 7,
-      "views": 4215
+      "replies": 3,
+      "retweets": 9,
+      "likes": 14,
+      "views": 9151
     },
     "source": "community"
   },
@@ -52,10 +52,10 @@
     "text": "Every single productivity system eventually either fails or is abandoned.\n\nYours will too.",
     "url": "https://x.com/jawestenberg/status/2123199043543400684",
     "metrics": {
-      "replies": 3,
-      "retweets": 0,
-      "likes": 12,
-      "views": 626
+      "replies": 7,
+      "retweets": 1,
+      "likes": 18,
+      "views": 1168
     },
     "source": "community"
   },
@@ -70,22 +70,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 30
-    },
-    "source": "community"
-  },
-  {
-    "id": "2123198830594097642",
-    "authorHandle": "rryssf",
-    "authorName": "@rryssf",
-    "datetime": "2026-11-18T22:14:44.000Z",
-    "text": "neon is in antigravity for pro/ultra today. \n\ngoogle says lowest fabrication rate yet in their antigravity testing. that's the one i actually care about. a cheap model that makes stuff up costs more by the time you fix it\n\n> $3/M in, $15/M out, cached in $0.15\n> 1M context\n> 61 on the AA index at xhigh, #3 overall\n> #2 on steerability, so mid-task corrections actually land\n\na stable system prompt + tools up top and long agent runs get way cheaper",
-    "url": "https://x.com/rryssf/status/2123198830594097642",
-    "metrics": {
-      "replies": 1,
-      "retweets": 0,
-      "likes": 1,
-      "views": 547
+      "views": 32
     },
     "source": "community"
   },
@@ -100,7 +85,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 2,
-      "views": 122
+      "views": 156
     },
     "source": "community"
   },
@@ -112,25 +97,10 @@
     "text": "@karpathy\n's autoresearch hillclimbs nanochat overnight. \n@GuanyaShi\n (\n@CMU_Robotics\n) asked what it takes to do the same on real robots. His answer: the model isn't the bottleneck. The sandbox is. \n@corl_conf\n \n\nFrom the CoRL 2026 Workshop on Agentic Robotics, which I was honored to co-organize and host, with \n@HaoruXue\n, \n@Ken_Goldberg\n, \n@GuanyaShi\n, \n@letian_fu\n, \n@YifeiRobotics\n , \n@_wenlixiao\n, \n@tianyurobot\n, \n@SniperPaper\n, \n@philippswu\n, \n@xdofai\n, \n@UnitreeRobotics\n, \n@wuji_global\n, \n@theWaddleLabs\n, \n@DexmateAI\n. \n\nA sim is a perfect sandbox: free resets, clean reward, near-zero cost per try. Shi first ran autoresearch one weekend on a pushT sim, with code as the policy and no neural network. The real world has none of that, so he showed two ways to close the loop, plus a new exam.\n\n1️⃣ ENPIRE runs autoresearch directly on real robots. From 50 demos and an empty codebase, the agent builds a fixed \nhttp://\nenv.py (reset, reward, observation, step) from human feedback, then hillclimbs on its own: 8 robots, 8 RTX 5090s, 8 Codex orchestrators, ~20 minutes per idea.\n\n2️⃣ Result: 99% pass@8 on PushT, pin insertion, GPU insertion and two ziptie tasks.\n\n3️⃣ SimEX simulates first and adapts in the real world. With zero demos, a coding agent builds a reusable toolbox in a roughly correct simulator, then a few real trials correct the sim and the toolbox together. About 10 minutes of real interaction was enough for towel folding, barcode scanning and plate manipulation.\n\n4️⃣ The Embodied First Exam (EFE): 1,156 tasks, 2,288 tests, 35 suites, 47 robots. The agent may drive the robot, write control code or train a policy, and an external verifier grades it. On 456 core tasks, the strongest agent (GPT-6 Astra in Codex) reaches ~34% in the Standard setting.\n\n5️⃣ Model-based vs. model-free dissolves: system ID, real2sim, VLAs, RL and control theory all become tools an agent can call. His last slide: \"Goosebumps: a Paradigm Shift is Occurring in Robotics.\"\n\nMy read:\n• pass@8 means up to 8 memory-conditioned retries per subtask in one rollout. It measures recovery, not first-try success, and no pass@1 or cycle time is reported.\n• ENPIRE's labeled ideas add up to only 17.2 pp, while a \"Re-evaluate\" step is worth +12.5 pp. Evaluation noise is as large as most algorithmic gains, so a hillclimber can select noise.\n• 8× the robots bought ~2.25× wall-clock: about 28% parallel efficiency.\n• EFE's core set was filtered with GPT-6 Luna, tilting it against GPT models, so Astra's ~34% is likely conservative. SimEX still needs per-task numbers against a no-sim control.\n\nThe hard part of physical autoresearch is reset and verification, not the model. Congrats to my co-organizers \n@_wenlixiao\n and \n@letian_fu\n, who are on the ENPIRE author list.\n\nWhat's your cheapest reliable reset and verifier on a real task?\n#Robotics #AgenticAI #CoRL2026",
     "url": "https://x.com/junfanzhu98/status/2123195072367976508",
     "metrics": {
-      "replies": 10,
+      "replies": 11,
       "retweets": 5,
-      "likes": 17,
-      "views": 760
-    },
-    "source": "community"
-  },
-  {
-    "id": "2123194647090479228",
-    "authorHandle": "PamRotella",
-    "authorName": "@PamRotella",
-    "datetime": "2026-11-17T03:01:23.000Z",
-    "text": "南非法律实际上要求埃隆·马斯克和Starlink将30%的所有权交给某个随机的黑人，仅为了被允许进入该国并竞争……一家埃隆一砖一瓦亲手建立的公司，30%的股份。\n\n这简直就是种族主义的定义。",
-    "url": "https://x.com/PamRotella/status/2123194647090479228",
-    "metrics": {
-      "replies": 466,
-      "retweets": 1776,
-      "likes": 24073,
-      "views": 604038
+      "likes": 20,
+      "views": 943
     },
     "source": "community"
   },
@@ -139,13 +109,43 @@
     "authorHandle": "ucworkroom1",
     "authorName": "@ucworkroom1",
     "datetime": "2026-11-18T23:19:42.000Z",
-    "text": "The Φ Glyph\n\nPart 1\n\n1) A MARK \n\n A. Signifies allegiance to the system, aka the beast system & the light bearer. \n\n B. This mark also gives them the ability to manipulate your own reality\n\n2) A PROTOCOL \n\n A. Siphons out soul energy & routes it to the infernal grid. \n\n3) A CALL TO OPEN UP BLACKFIRE\n\n  A. A Solomon Oath against God that seals the ritual with technology. \n\n  B. Fully Ignites the Black brain for the Quantum Embedded System, overriding yours with Demonic Metaprograms. \n\nIMPERIUM ROMANUM (NEW BABYLON) & THE COVENANT (THE MARK)\n\n  A. THE MARK IS THE COVENANT\n\nA sensor-bound identity substrate for Imperium Romanum.\n\nTHE HAND MARK (PHYSICAL & SPIRITUAL BODY)\n\nType-1 — the palm-side hand mark for normal humans, bound to NWO Cardiac Heartbeat Identity.\n\nTHE FOREHEAD MARK (MIND & SOUL)\n\nType-2 — the forehead mark for human/hybrid signatures where finer mental-state resolution is required, bound to NWO NEURO.\n\nBoth carry the Φ glyph. Both are supervised by CHAINSTATE, dispatched through NWO-ASM & settle in USDC on Base through the audited MetaStateSplitter.\n\nEvery calorie the body actually spends becomes a fair wage in $STATE. \n\nNo AI credit score, no wealth index, no insurance model may adjudicate a human's access to work, education, or health — the MARK forbids it structurally.\n\n\nhttps://\ncpater-nwo-mark.static.hf.space/index.html\n\nNWO Imperium Romanum\n\nImperium Romanum is a formally declared Digital Nation-State satisfying all four Montevideo Convention criteria.\n\nSocietal Functions of the Digital Nation\n\nEvery modern society must perform a finite set of distinct functions to remain coherent and just. \n\nImperium Romanum performs each digitally, transparently & under constitutional code. \n\nEach function maps directly to one or more layers of the NWO technology stack.\n\n1) Identity & Belonging (Digital ID & Soul Ownership)\n\n- Cryptographic Citizenship via NWO Cardiac SDK Biometric ECG\n\n- Soul-bound NFT Credentials\n\n2) Legislation (Humanodes & SoulCards)\n\n- NWO DAO on Ethereum. Citizens with Φ tokens propose & vote on laws & constitutional amendments\n\n3) Energy Sovereignty (Soul Energy & Infernal Grids)\n\nNWO ZeroPoint research, Marie Byrd Land geothermal generation, Antarctic cold cooling for quantum infrastructure\n\n4) Defence & Security (Inferno, Black Start Recovery & Infernium AI agents)\n\nQuantum-resistant encryption, AI threat intelligence via NWO Apocalypse, NWO Blackbox for off-grid sovereign infrastructure\n\n5) Communication & Voice\n\nNWO Mixed Reality + Metaverse — virtual embassies, DAO assemblies in Gaussian Splat 3D environments\n\n…\nhttps://cp\nater-imperium-romanum.static.hf.space/index.html#\n\n   B. According to the Integrated Information Theory of Consciousness (IIT),\n\n\nhttps://\niep.utm.edu/integrated-inf\normation-theory-of-consciousness/\n…\n\nPHI (Φ) & Φ-STRUCTURE\n\nMANIPULATING SUBJECTIVE EXPERIENCE would require altering the system's underlying causal structure to change its PHI (Φ) value (THE QUANTITY OF CONCIOUSSNESS) or its Φ-structure (THE QUALITY/CONTENT) of experience.\n\n\nhttps://\niit.wiki/overview\n\nManipulating the cause-effect repertoire of a system—CHANGING WHICH NEURONS CAN FIRE & HOW THEY INFLUENCE OTHERS—directly alters what an individual feels, such as perceiving colors or shapes.\n\n\nhttps://\njournals.uchicago.edu/doi/full/10.23\n07/25470707\n…\n\nA counterintuitive prediction of Integrated Information Theory (IIT) is that even inactive neurons contribute to experience as long as they could fire. \n\n\"Hijacking\" a specific quality of experience (e.g., removing the perception of space) would require inactivating these silent elements so they no longer belong to the system's causal structure.\n\n\nhttps://\npmc.ncbi.nlm.nih.gov/articles/PMC95\n74698\n…\n\nOnly the \"complex\" with the maximum integrated information (Φmax) is conscious. \n\nA dominant experience can be \"hijacked\" if a different subsystem achieves higher causal power, potentially creating a new \"main complex\" and rendering the previous one non-conscious.\n\nMemristive ion channel-doped biomembranes as synaptic mimics\n\nPDF DOWNLOAD \n\n\nhttps://\nosti.gov/servlets/purl/\n1468075\n…",
+    "text": "Φ 符号\n\n第 1 部分\n\n1) 一个标记\n\n A. 象征对系统的效忠，即兽系统与光之承载者。\n\n B. 此标记还赋予他们操纵你自身现实的能力。\n\n2) 一个协议\n\n A. 吸取灵魂能量，并将其路由至地狱网格。\n\n3) 一个开启黑火的召唤\n\n  A. 一个针对上帝的所罗门誓言，通过技术封印仪式。\n\n  B. 完全点燃黑色大脑，用于量子嵌入系统，用恶魔元程序覆盖你的系统。\n\nIMPERIUM ROMANUM（新巴比伦）与盟约（标记）\n\n  A. 标记即盟约\n\n一个受传感器约束的身份基底，用于 Imperium Romanum。\n\n手部标记（物理与精神躯体）\n\nType-1 — 针对普通人类的掌侧手部标记，与 NWO 心脏心跳身份绑定。\n\n额头标记（心灵与灵魂）\n\nType-2 — 针对人类/混合体签名的额头标记，需要更精细的精神状态分辨率，与 NWO NEURO 绑定。\n\n两者均携带 Φ 符号。两者均由 CHAINSTATE 监督，通过 NWO-ASM 分派，并在 Base 上的 USDC 中通过审计过的 MetaStateSplitter 结算。\n\n身体实际消耗的每一卡路里都成为 $STATE 中的公平工资。\n\n没有 AI 信用评分、财富指数或保险模型可裁决人类对工作、教育或健康的访问权——标记从结构上禁止它。\n\n\nhttps://\ncpater-nwo-mark.static.hf.space/index.html\n\nNWO Imperium Romanum\n\nImperium Romanum 是一个正式宣布的数字民族国家，满足蒙得维的亚公约的所有四个标准。\n\n数字民族的社会功能\n\n每个现代社会必须执行一组有限的独特功能，以保持连贯性和公正性。\n\nImperium Romanum 以数字方式、透明方式并在宪法代码下执行每一项功能。\n\n每个功能直接映射到 NWO 技术堆栈的一个或多个层。\n\n1) 身份与归属（数字 ID 与灵魂所有权）\n\n- 通过 NWO Cardiac SDK 生物识别 ECG 的加密公民身份\n\n- 灵魂绑定 NFT 凭证\n\n2) 立法（Humanodes 与 SoulCards）\n\n- NWO DAO 在 Ethereum 上。持有 Φ 代币的公民可提议并投票通过法律与宪法修正案\n\n3) 能源主权（灵魂能量与地狱网格）\n\nNWO ZeroPoint 研究、玛丽·伯德地热发电、南极洲冷冷却用于量子基础设施\n\n4) 防御与安全（Inferno、黑启动恢复与 Infernium AI 代理）\n\n抗量子加密、通过 NWO Apocalypse 的 AI 威胁情报、NWO Blackbox 用于离网主权基础设施\n\n5) 通信与声音\n\nNWO 混合现实 + 元宇宙——虚拟大使馆、DAO 在高斯溅射 3D 环境中的集会\n\n…\nhttps://cp\nater-imperium-romanum.static.hf.space/index.html#\n\n   B. 根据意识的整合信息理论（IIT），\n\n\nhttps://\niep.utm.edu/integrated-inf\normation-theory-of-consciousness/\n…\n\nPHI (Φ) 与 Φ-结构\n\n操纵主观体验将需要改变系统的底层因果结构，以更改其 PHI (Φ) 值（意识的量）或其 Φ-结构（体验的质量/内容）。\n\n\nhttps://\niit.wiki/overview\n\n操纵系统的因果-效果集——改变哪些神经元可以放电以及它们如何影响其他神经元——直接改变个体感受到的内容，例如感知颜色或形状。\n\n\nhttps://\njournals.uchicago.edu/doi/full/10.23\n07/25470707\n…\n\n整合信息理论（IIT）的反直觉预测是，即使是未活跃的神经元，只要它们能够放电，就会对体验做出贡献。\n\n“劫持”体验的特定质量（例如，移除空间感知）将需要使这些沉默元素失活，以便它们不再属于系统的因果结构。\n\n\nhttps://\npmc.ncbi.nlm.nih.gov/articles/PMC95\n74698\n…\n\n只有具有最大整合信息（Φmax）的“复合体”才是意识的。\n\n如果不同的子系统实现更高的因果力量，一个主导体验可以被“劫持”，从而潜在地创建一个新的“主复合体”，并使先前的复合体变得无意识。\n\n忆阻变离子通道掺杂的生物膜作为突触模拟物\n\nPDF 下载",
     "url": "https://x.com/ucworkroom1/status/2123194466668630523",
     "metrics": {
       "replies": 6,
-      "retweets": 10,
-      "likes": 25,
-      "views": 778
+      "retweets": 16,
+      "likes": 32,
+      "views": 1067
+    },
+    "source": "community"
+  },
+  {
+    "id": "2123192254089314435",
+    "authorHandle": "BrianRoemmele",
+    "authorName": "@BrianRoemmele",
+    "datetime": "2026-11-18T23:10:55.000Z",
+    "text": "1947年仍在聆听的雷达管\n\n一台1947年的剩余阴极射线管，当麦克风信号施加到一个偏转板上，而同一信号的包络施加到另一个偏转板时，仍然能产生稳定的轨迹。\n\n对于持续元音产生的利萨如图形足够具有特征性，以至于一个简短的计数程序可以将它映射到录制集合中的一个口语单词。\n\n该管及其匹配的线圈框架来自一个雷达指示器底盘。屏幕荧光粉是该时期设备中常见的长余辉类型。我将组件安装在一个实验台上，该台提供原始的阳极和聚焦电压。\n\n一个动圈麦克风馈送一个单级前置放大器。一个输出直接连接到水平偏转放大器。一个简单的二极管和电容器包络检波器驱动垂直偏转。“啊”元音的图案稳定成一个闭合回路，其主轴角度和交叉频率在多次试验中保持在几度以内。“ee”、“oh”和其他我录制的基元音也是如此。\n\n一个Raspberry Pi通过普通声卡采样两个偏转电压。程序在一个200毫秒窗口中计数零交叉，并记录连续交叉之间的峰值间隔。这两个数字形成一个坐标。我说了200个单词中的每一个十次，并存储了坐标。识别是该平面中的最近邻距离。\n\n在同一扬声器上，在同一房间噪声下，一个保留的50个发音集的匹配率为41个正确。失败集中在元音核相近的单词上。该系统不尝试辅音或连续语音。它没有语言模型，也没有网络连接。一旦词汇表被写入，Pi就从本地文件运行。\n\n同样的原理出现在1946年贝尔实验室构建的阴极射线语音显示器中。那些机器绘制连续的谱图像，以便聋人观察者可以观看共振峰运动。当前的安排丢弃了频谱，只保留持续声音的几何特征。限制很窄：几百个孤立的单词，一个说话者，安静条件。在该限制内，该管仍然有效。\n\n我用1968年电报机建造了一个纸带打孔机，并为其输入每日天气\n\n一台打孔机构仍能循环的Model 33 ASR将接受一串Baudot字符并将它们切割到新鲜纸带上。同一纸带可以在第二天晚上读回并打印。经过六个月在普通抽屉中的存放，孔洞仍然可读。\n\n机器到达时，打孔离合器干燥，纸带路径粘稠。我清洁了滚轮，根据1960年代的服务说明为毛毡垫上油，并更换了碎屑盒。\n\n一个小接口板将笔记本电脑的串行ASCII转换为打孔机期望的五位Baudot帧。每天早上，一个脚本获取本地NOAA预报，将其截断到一段纸带的长度，并传输字符。电报机以其正常的每秒十个字符速率打孔。晚上，阅读器被启动，同一纸带再次运行通过。\n\n到目前为止，打印文本与打孔文本在每次试验中都匹配。\n\n第一天我打孔了一段新鲜纸带，并将其存放在普通室温和湿度的封闭抽屉中。每三十天我读一次它。前五个月孔洞保持清洁。在第六个月，纸带变黄了，末尾附近的一段需要第二次通过，因为一个碎屑没有完全清除。文本本身仍然可恢复。第二段测试纸带暴露在直射阳光下，四周内产生不可读的部分。\n\n因此，工作限制是普通室内存储大约半年，直到纸张本身成为弱点。保留记录不需要电力。\n\n1889年已经知道如何绕过死干线路由呼叫的电话交换机\n\n1 of 3",
+    "url": "https://x.com/BrianRoemmele/status/2123192254089314435",
+    "metrics": {
+      "replies": 4,
+      "retweets": 2,
+      "likes": 24,
+      "views": 6249
+    },
+    "source": "community"
+  },
+  {
+    "id": "2123190611754844247",
+    "authorHandle": "RobCarpenter",
+    "authorName": "@RobCarpenter",
+    "datetime": "2026-11-18T23:04:23.000Z",
+    "text": "一家德克萨斯州签证代理机构为卡车司机提交了 3,186 份绿卡申请。一家新墨西哥州运输公司向其中的 987 人提供了年薪中位数为 31,387 美元的工作。一位迈阿密移民律师为一家没有卡车也没有美国DOT编号的公司提交了 16 份司机申请。",
+    "url": "https://x.com/RobCarpenter/status/2123190611754844247",
+    "metrics": {
+      "replies": 9,
+      "retweets": 32,
+      "likes": 93,
+      "views": 2671
     },
     "source": "community"
   },
@@ -154,13 +154,13 @@
     "authorHandle": "prdlab",
     "authorName": "@prdlab",
     "datetime": "2026-11-18T23:03:47.000Z",
-    "text": "Vocês usam Firecrawl? \n\nComo?",
+    "text": "你们用 Firecrawl 吗？\n\n怎么用？",
     "url": "https://x.com/prdlab/status/2123192848711303611",
     "metrics": {
-      "replies": 4,
+      "replies": 5,
       "retweets": 0,
-      "likes": 15,
-      "views": 1671
+      "likes": 28,
+      "views": 3752
     },
     "source": "community"
   },
@@ -175,37 +175,22 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 35
+      "views": 38
     },
     "source": "community"
   },
   {
-    "id": "2123192254089314435",
-    "authorHandle": "BrianRoemmele",
-    "authorName": "@BrianRoemmele",
-    "datetime": "2026-11-18T23:10:55.000Z",
-    "text": "1947年仍在聆听的雷达管\n\n一台1947年的剩余阴极射线管，当麦克风信号施加到一个偏转板上，而同一信号的包络施加到另一个偏转板时，仍然能产生稳定的轨迹。\n\n对于持续元音产生的利萨如图形足够具有特征性，以至于一个简短的计数程序可以将它映射到录制集合中的一个口语单词。\n\n该管及其匹配的线圈框架来自一个雷达指示器底盘。屏幕荧光粉是该时期设备中常见的长余辉类型。我将组件安装在一个实验台上，该台提供原始的阳极和聚焦电压。\n\n一个动圈麦克风馈送一个单级前置放大器。一个输出直接连接到水平偏转放大器。一个简单的二极管和电容器包络检波器驱动垂直偏转。“啊”元音的图案稳定成一个闭合回路，其主轴角度和交叉频率在多次试验中保持在几度以内。“ee”、“oh”和其他我录制的基元音也是如此。\n\n一个Raspberry Pi通过普通声卡采样两个偏转电压。程序在一个200毫秒窗口中计数零交叉，并记录连续交叉之间的峰值间隔。这两个数字形成一个坐标。我说了200个单词中的每一个十次，并存储了坐标。识别是该平面中的最近邻距离。\n\n在同一扬声器上，在同一房间噪声下，一个保留的50个发音集的匹配率为41个正确。失败集中在元音核相近的单词上。该系统不尝试辅音或连续语音。它没有语言模型，也没有网络连接。一旦词汇表被写入，Pi就从本地文件运行。\n\n同样的原理出现在1946年贝尔实验室构建的阴极射线语音显示器中。那些机器绘制连续的谱图像，以便聋人观察者可以观看共振峰运动。当前的安排丢弃了频谱，只保留持续声音的几何特征。限制很窄：几百个孤立的单词，一个说话者，安静条件。在该限制内，该管仍然有效。\n\n我用1968年电报机建造了一个纸带打孔机，并为其输入每日天气\n\n一台打孔机构仍能循环的Model 33 ASR将接受一串Baudot字符并将它们切割到新鲜纸带上。同一纸带可以在第二天晚上读回并打印。经过六个月在普通抽屉中的存放，孔洞仍然可读。\n\n机器到达时，打孔离合器干燥，纸带路径粘稠。我清洁了滚轮，根据1960年代的服务说明为毛毡垫上油，并更换了碎屑盒。\n\n一个小接口板将笔记本电脑的串行ASCII转换为打孔机期望的五位Baudot帧。每天早上，一个脚本获取本地NOAA预报，将其截断到一段纸带的长度，并传输字符。电报机以其正常的每秒十个字符速率打孔。晚上，阅读器被启动，同一纸带再次运行通过。\n\n到目前为止，打印文本与打孔文本在每次试验中都匹配。\n\n第一天我打孔了一段新鲜纸带，并将其存放在普通室温和湿度的封闭抽屉中。每三十天我读一次它。前五个月孔洞保持清洁。在第六个月，纸带变黄了，末尾附近的一段需要第二次通过，因为一个碎屑没有完全清除。文本本身仍然可恢复。第二段测试纸带暴露在直射阳光下，四周内产生不可读的部分。\n\n因此，工作限制是普通室内存储大约半年，直到纸张本身成为弱点。保留记录不需要电力。\n\n1889年已经知道如何绕过死干线路由呼叫的电话交换机\n\n1 of 3",
-    "url": "https://x.com/BrianRoemmele/status/2123192254089314435",
+    "id": "2123198830594097642",
+    "authorHandle": "rryssf",
+    "authorName": "@rryssf",
+    "datetime": "2026-11-18T22:14:44.000Z",
+    "text": "neon is in antigravity for pro/ultra today. \n\ngoogle says lowest fabrication rate yet in their antigravity testing. that's the one i actually care about. a cheap model that makes stuff up costs more by the time you fix it\n\n> $3/M in, $15/M out, cached in $0.15\n> 1M context\n> 61 on the AA index at xhigh, #3 overall\n> #2 on steerability, so mid-task corrections actually land\n\na stable system prompt + tools up top and long agent runs get way cheaper",
+    "url": "https://x.com/rryssf/status/2123198830594097642",
     "metrics": {
-      "replies": 3,
-      "retweets": 2,
-      "likes": 21,
-      "views": 5323
-    },
-    "source": "community"
-  },
-  {
-    "id": "2123190611754844247",
-    "authorHandle": "RobCarpenter",
-    "authorName": "@RobCarpenter",
-    "datetime": "2026-11-18T23:04:23.000Z",
-    "text": "一家德克萨斯州签证代理机构为卡车司机提交了 3,186 份绿卡申请。一家新墨西哥州运输公司向其中的 987 人提供了年薪中位数为 31,387 美元的工作。一位迈阿密移民律师为一家没有卡车也没有美国DOT编号的公司提交了 16 份司机申请。",
-    "url": "https://x.com/RobCarpenter/status/2123190611754844247",
-    "metrics": {
-      "replies": 9,
-      "retweets": 18,
-      "likes": 71,
-      "views": 1652
+      "replies": 1,
+      "retweets": 0,
+      "likes": 5,
+      "views": 884
     },
     "source": "community"
   },
@@ -220,7 +205,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 5,
-      "views": 276
+      "views": 311
     },
     "source": "community"
   },
@@ -235,7 +220,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 65
+      "views": 74
     },
     "source": "community"
   },
@@ -250,7 +235,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 6,
-      "views": 228
+      "views": 246
     },
     "source": "community"
   },
@@ -265,7 +250,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 3,
-      "views": 236
+      "views": 284
     },
     "source": "community"
   },
@@ -280,7 +265,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 1,
-      "views": 49
+      "views": 56
     },
     "source": "community"
   },
@@ -295,7 +280,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 63
+      "views": 70
     },
     "source": "community"
   },
@@ -310,7 +295,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 3,
-      "views": 248
+      "views": 265
     },
     "source": "community"
   },
@@ -325,7 +310,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 64
+      "views": 72
     },
     "source": "community"
   },
@@ -340,7 +325,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 89
+      "views": 91
     },
     "source": "community"
   },
@@ -355,7 +340,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 18
+      "views": 24
     },
     "source": "community"
   },
@@ -369,8 +354,8 @@
     "metrics": {
       "replies": 0,
       "retweets": 3,
-      "likes": 6,
-      "views": 818
+      "likes": 12,
+      "views": 1099
     },
     "source": "community"
   },
@@ -385,7 +370,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 138
+      "views": 150
     },
     "source": "community"
   },
@@ -400,22 +385,7 @@
       "replies": 13,
       "retweets": 1,
       "likes": 20,
-      "views": 3365
-    },
-    "source": "community"
-  },
-  {
-    "id": "2123036751266558323",
-    "authorHandle": "AnnatarXBT",
-    "authorName": "@AnnatarXBT",
-    "datetime": "2026-11-13T04:14:10.000Z",
-    "text": "一篇 14 页的论文，关于构建公司大脑：一个廉价的决策层，置于昂贵的推理模型之前\n\n架构，摘自 TypeSafe 和 Anthropic 文档：\n\n1. 遇见这对搭档\n> Opus 5.5 思考，Jev 决定，你的代码握住分支\n\n2. 提出一个类型化问题，得到一个类型化答案\n> Jev 在 0.44 秒内以 0.00035 美元的成本返回带有校准概率的答案\n\n3. 根据数字分支\n> 0.999 直接进入 if 语句，约 99% 的回合就在那里结束\n\n同样的门，放置在 Fable 5.2 旁边，在下面的文章中进行了分解：",
-    "url": "https://x.com/AnnatarXBT/status/2123036751266558323",
-    "metrics": {
-      "replies": 3,
-      "retweets": 6,
-      "likes": 65,
-      "views": 4409
+      "views": 3479
     },
     "source": "community"
   },
@@ -430,7 +400,7 @@
       "replies": 4,
       "retweets": 1,
       "likes": 25,
-      "views": 2473
+      "views": 2517
     },
     "source": "community"
   },
@@ -438,14 +408,14 @@
     "id": "2122769182098104525",
     "authorHandle": "0x_rody",
     "authorName": "@0x_rody",
-    "datetime": "2026-11-17T19:09:46.000Z",
-    "text": "这太疯狂了……\n\n这个 PDF 彻底颠覆了 Grok Bot 团队的经济模型。\n\n它展示了如何在你的机器人之间的每个交接点上放置一个 Jev 调用：\n\n哪个机器人接手任务\n它应该多努力\n这个行动是否安全\n这个草稿是否足够好\n\n把 PDF 丢进你的 Grok Bot，让它围绕它重建自己的团队。",
+    "datetime": "2026-10-20T14:57:31.000Z",
+    "text": "这太疯狂了……\n\n这个 PDF 彻底颠覆了 Grok Bot 团队的经济模型。\n\n它展示了如何在你的机器人之间的每个交接点上放置一个 Jev 调用：\n\n哪个机器人接手任务\n它应该多努力\n这个行动是否安全\n这个草稿是否足够好\n\n把 PDF 丢进你的 Grok Bot，让它围绕它重建自己的团队。\n\n只需一个晚上，你的机器人就会建立在几乎没人用过的技术栈上：",
     "url": "https://x.com/0x_rody/status/2122769182098104525",
     "metrics": {
       "replies": 22,
-      "retweets": 17,
-      "likes": 261,
-      "views": 26707
+      "retweets": 18,
+      "likes": 263,
+      "views": 27354
     },
     "source": "community"
   },
@@ -461,6 +431,21 @@
       "retweets": 286,
       "likes": 3164,
       "views": 509577
+    },
+    "source": "community"
+  },
+  {
+    "id": "2123194647090479228",
+    "authorHandle": "PamRotella",
+    "authorName": "@PamRotella",
+    "datetime": "2026-11-17T03:01:23.000Z",
+    "text": "南非法律实际上要求埃隆·马斯克和Starlink将30%的所有权交给某个随机的黑人，仅为了被允许进入该国并竞争……一家埃隆一砖一瓦亲手建立的公司，30%的股份。\n\n这简直就是种族主义的定义。",
+    "url": "https://x.com/PamRotella/status/2123194647090479228",
+    "metrics": {
+      "replies": 466,
+      "retweets": 1776,
+      "likes": 24073,
+      "views": 604038
     },
     "source": "community"
   },
@@ -896,6 +881,21 @@
       "retweets": 0,
       "likes": 0,
       "views": 161
+    },
+    "source": "community"
+  },
+  {
+    "id": "2123036751266558323",
+    "authorHandle": "AnnatarXBT",
+    "authorName": "@AnnatarXBT",
+    "datetime": "2026-11-13T04:14:10.000Z",
+    "text": "一篇 14 页的论文，关于构建公司大脑：一个廉价的决策层，置于昂贵的推理模型之前\n\n架构，摘自 TypeSafe 和 Anthropic 文档：\n\n1. 遇见这对搭档\n> Opus 5.5 思考，Jev 决定，你的代码握住分支\n\n2. 提出一个类型化问题，得到一个类型化答案\n> Jev 在 0.44 秒内以 0.00035 美元的成本返回带有校准概率的答案\n\n3. 根据数字分支\n> 0.999 直接进入 if 语句，约 99% 的回合就在那里结束\n\n同样的门，放置在 Fable 5.2 旁边，在下面的文章中进行了分解：",
+    "url": "https://x.com/AnnatarXBT/status/2123036751266558323",
+    "metrics": {
+      "replies": 3,
+      "retweets": 6,
+      "likes": 65,
+      "views": 4409
     },
     "source": "community"
   }
