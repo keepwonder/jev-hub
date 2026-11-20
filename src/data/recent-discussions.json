@@ -10,7 +10,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 429
+      "views": 495
     },
     "source": "community"
   },
@@ -23,9 +23,9 @@
     "url": "https://x.com/Oluwaphilemon1/status/2123201196647186733",
     "metrics": {
       "replies": 4,
-      "retweets": 12,
-      "likes": 66,
-      "views": 14558
+      "retweets": 16,
+      "likes": 109,
+      "views": 27603
     },
     "source": "community"
   },
@@ -37,10 +37,10 @@
     "text": "一塊 RTX 3090 據報能同時處理 64 個 Qwen3.8 會話，每秒 1,035 個令牌\n\n一塊配備 24GB VRAM 的 NVIDIA RTX 3090 據報能在 64 個並發 Qwen3.8-27B 會話中實現每秒 1,035 個令牌的輸出。\n\n更令人興趣的是，這塊 GPU 的功率限制僅為 250W。\n\n該實驗使用 HyperQwen，這是一個基於 vLLM 構建的開源推理服務堆疊，將消費級顯卡轉變為多會話 AI 伺服器。\n\n但最重要的一部分並非僅僅是生成速度。\n\n而是系統據報能處理的同時會話數量。\n\n大多數本地推理基準測試專注於模型對單一用戶的響應速度。此實驗探討了一個不同的問題：\n\n當數十個用戶共享同一模型時，單一消費級 GPU 能提供多少總生成能力？\n\n讓我們來檢視一下設置。\n\n1. 實驗背後的硬體\n\n據報的配置如下：\n\nGPU: NVIDIA RTX 3090\nVRAM: 24GB\n功率限制: 250W\n模型: Qwen3.8-27B\n推理堆疊: HyperQwen + vLLM\n並發會話: 64\n據報單會話解碼速度: 約 127 個令牌/秒\n總輸出吞吐量: 約 1,035 個令牌/秒\n配置的最大上下文: 最高 150K 令牌\n\n兩個數字立刻引人注目：127 個令牌/秒 和 1,035 個令牌/秒。\n\n然而，它們測量的是不同的事物。\n\n約 127 個令牌/秒 的數字代表單會話測試中的據報生成速度。\n\n1,035 個令牌/秒 的數字代表多個活躍會話的總輸出吞吐量。\n\n這並不意味著每個用戶都能收到每秒 1,035 個令牌。也不意味著所有 64 個用戶都能獨立以 127 個令牌/秒 生成。\n\nGPU 的計算資源和記憶體頻寬在請求之間共享。個別性能取決於調度、提示長度、上下文大小、輸出長度以及競爭會話的數量。\n\n這裡的成就是總吞吐量，而非個別用戶速度。\n\n2. 一塊 RTX 3090 如何處理 64 個會話？\n\n服務一個 AI 對話相對簡單。\n\n同時服務 64 個則是一個更複雜的工程問題。\n\n推理引擎必須協調進來的請求、管理活躍對話的記憶體、調度生成，並在不超過可用資源的情況下保持 GPU 忙碌\n\n這就是 vLLM 變得重要的地方\n\n其兩項關鍵技術尤為相關：Continuous Batching 和 PagedAttention\n\nContinuous Batching：保持 GPU 忙碌\n\n想像 64 個用戶向同一 AI 伺服器發送請求\n\n他們不會都收到等長度的回應\n\n一個用戶可能問一個簡單問題，只需 30 個令牌。另一個用戶可能要求詳細的編碼解決方案，需要數百或數千個令牌\n\n使用傳統靜態批處理，請求會被分組並作為固定批次處理。當某些請求比其他請求早完成時，處理能力可能會閒置，而剩餘請求繼續進行\n\n連續批處理採用更動態的方法\n\n推理引擎不會等待批次中的每個請求完成，而是隨著請求完成來更新活躍批次\n\n當一個對話完成生成時，另一個等待的請求可以取而代之\n\n這能讓更多請求通過 GPU 流動，並減少等待較長生成完成的閒置時間\n\n對於處理數十個用戶的伺服器，這能對總吞吐量產生實質差異\n\nPagedAttention：更好地利用 24GB VRAM\n\n第二個挑戰是記憶體管理\n\n每個活躍的 Transformer 會話都需要一個 Key-Value 快取，通常稱為 KV 快取\n\n該快取儲存先前處理令牌的注意力資訊。這允許模型重用對話早期部分的資訊，而非反覆重新計算一切\n\n隨著上下文增長，KV 快取會消耗更多記憶體\n\n現在考慮在僅有 24GB VRAM 的 GPU 上管理 64 個活躍對話",
     "url": "https://x.com/Oluwaphilemon1/status/2123199430450905315",
     "metrics": {
-      "replies": 3,
-      "retweets": 9,
-      "likes": 14,
-      "views": 9151
+      "replies": 6,
+      "retweets": 8,
+      "likes": 20,
+      "views": 15600
     },
     "source": "community"
   },
@@ -54,8 +54,8 @@
     "metrics": {
       "replies": 7,
       "retweets": 1,
-      "likes": 18,
-      "views": 1168
+      "likes": 19,
+      "views": 1339
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 32
+      "views": 35
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 2,
-      "views": 156
+      "views": 176
     },
     "source": "community"
   },
@@ -97,10 +97,10 @@
     "text": "@karpathy\n's autoresearch hillclimbs nanochat overnight. \n@GuanyaShi\n (\n@CMU_Robotics\n) asked what it takes to do the same on real robots. His answer: the model isn't the bottleneck. The sandbox is. \n@corl_conf\n \n\nFrom the CoRL 2026 Workshop on Agentic Robotics, which I was honored to co-organize and host, with \n@HaoruXue\n, \n@Ken_Goldberg\n, \n@GuanyaShi\n, \n@letian_fu\n, \n@YifeiRobotics\n , \n@_wenlixiao\n, \n@tianyurobot\n, \n@SniperPaper\n, \n@philippswu\n, \n@xdofai\n, \n@UnitreeRobotics\n, \n@wuji_global\n, \n@theWaddleLabs\n, \n@DexmateAI\n. \n\nA sim is a perfect sandbox: free resets, clean reward, near-zero cost per try. Shi first ran autoresearch one weekend on a pushT sim, with code as the policy and no neural network. The real world has none of that, so he showed two ways to close the loop, plus a new exam.\n\n1️⃣ ENPIRE runs autoresearch directly on real robots. From 50 demos and an empty codebase, the agent builds a fixed \nhttp://\nenv.py (reset, reward, observation, step) from human feedback, then hillclimbs on its own: 8 robots, 8 RTX 5090s, 8 Codex orchestrators, ~20 minutes per idea.\n\n2️⃣ Result: 99% pass@8 on PushT, pin insertion, GPU insertion and two ziptie tasks.\n\n3️⃣ SimEX simulates first and adapts in the real world. With zero demos, a coding agent builds a reusable toolbox in a roughly correct simulator, then a few real trials correct the sim and the toolbox together. About 10 minutes of real interaction was enough for towel folding, barcode scanning and plate manipulation.\n\n4️⃣ The Embodied First Exam (EFE): 1,156 tasks, 2,288 tests, 35 suites, 47 robots. The agent may drive the robot, write control code or train a policy, and an external verifier grades it. On 456 core tasks, the strongest agent (GPT-6 Astra in Codex) reaches ~34% in the Standard setting.\n\n5️⃣ Model-based vs. model-free dissolves: system ID, real2sim, VLAs, RL and control theory all become tools an agent can call. His last slide: \"Goosebumps: a Paradigm Shift is Occurring in Robotics.\"\n\nMy read:\n• pass@8 means up to 8 memory-conditioned retries per subtask in one rollout. It measures recovery, not first-try success, and no pass@1 or cycle time is reported.\n• ENPIRE's labeled ideas add up to only 17.2 pp, while a \"Re-evaluate\" step is worth +12.5 pp. Evaluation noise is as large as most algorithmic gains, so a hillclimber can select noise.\n• 8× the robots bought ~2.25× wall-clock: about 28% parallel efficiency.\n• EFE's core set was filtered with GPT-6 Luna, tilting it against GPT models, so Astra's ~34% is likely conservative. SimEX still needs per-task numbers against a no-sim control.\n\nThe hard part of physical autoresearch is reset and verification, not the model. Congrats to my co-organizers \n@_wenlixiao\n and \n@letian_fu\n, who are on the ENPIRE author list.\n\nWhat's your cheapest reliable reset and verifier on a real task?\n#Robotics #AgenticAI #CoRL2026",
     "url": "https://x.com/junfanzhu98/status/2123195072367976508",
     "metrics": {
-      "replies": 11,
+      "replies": 12,
       "retweets": 5,
       "likes": 20,
-      "views": 943
+      "views": 1043
     },
     "source": "community"
   },
@@ -113,9 +113,9 @@
     "url": "https://x.com/ucworkroom1/status/2123194466668630523",
     "metrics": {
       "replies": 6,
-      "retweets": 16,
-      "likes": 32,
-      "views": 1067
+      "retweets": 17,
+      "likes": 38,
+      "views": 1298
     },
     "source": "community"
   },
@@ -128,9 +128,9 @@
     "url": "https://x.com/BrianRoemmele/status/2123192254089314435",
     "metrics": {
       "replies": 4,
-      "retweets": 2,
-      "likes": 24,
-      "views": 6249
+      "retweets": 3,
+      "likes": 25,
+      "views": 6608
     },
     "source": "community"
   },
@@ -143,9 +143,9 @@
     "url": "https://x.com/RobCarpenter/status/2123190611754844247",
     "metrics": {
       "replies": 9,
-      "retweets": 32,
-      "likes": 93,
-      "views": 2671
+      "retweets": 37,
+      "likes": 99,
+      "views": 3165
     },
     "source": "community"
   },
@@ -159,8 +159,8 @@
     "metrics": {
       "replies": 5,
       "retweets": 0,
-      "likes": 28,
-      "views": 3752
+      "likes": 38,
+      "views": 4888
     },
     "source": "community"
   },
@@ -175,7 +175,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 38
+      "views": 42
     },
     "source": "community"
   },
@@ -190,7 +190,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 5,
-      "views": 884
+      "views": 1000
     },
     "source": "community"
   },
@@ -205,7 +205,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 5,
-      "views": 311
+      "views": 327
     },
     "source": "community"
   },
@@ -220,7 +220,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 74
+      "views": 84
     },
     "source": "community"
   },
@@ -234,8 +234,8 @@
     "metrics": {
       "replies": 1,
       "retweets": 0,
-      "likes": 6,
-      "views": 246
+      "likes": 8,
+      "views": 269
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 3,
-      "views": 284
+      "views": 298
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 1,
-      "views": 56
+      "views": 63
     },
     "source": "community"
   },
@@ -280,7 +280,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 70
+      "views": 74
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 3,
-      "views": 265
+      "views": 270
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 72
+      "views": 74
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 91
+      "views": 96
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 24
+      "views": 25
     },
     "source": "community"
   },
@@ -355,7 +355,7 @@
       "replies": 0,
       "retweets": 3,
       "likes": 12,
-      "views": 1099
+      "views": 1135
     },
     "source": "community"
   },
@@ -370,7 +370,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 150
+      "views": 164
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 13,
       "retweets": 1,
       "likes": 20,
-      "views": 3479
+      "views": 3485
     },
     "source": "community"
   },
@@ -400,22 +400,7 @@
       "replies": 4,
       "retweets": 1,
       "likes": 25,
-      "views": 2517
-    },
-    "source": "community"
-  },
-  {
-    "id": "2122769182098104525",
-    "authorHandle": "0x_rody",
-    "authorName": "@0x_rody",
-    "datetime": "2026-10-20T14:57:31.000Z",
-    "text": "这太疯狂了……\n\n这个 PDF 彻底颠覆了 Grok Bot 团队的经济模型。\n\n它展示了如何在你的机器人之间的每个交接点上放置一个 Jev 调用：\n\n哪个机器人接手任务\n它应该多努力\n这个行动是否安全\n这个草稿是否足够好\n\n把 PDF 丢进你的 Grok Bot，让它围绕它重建自己的团队。\n\n只需一个晚上，你的机器人就会建立在几乎没人用过的技术栈上：",
-    "url": "https://x.com/0x_rody/status/2122769182098104525",
-    "metrics": {
-      "replies": 22,
-      "retweets": 18,
-      "likes": 263,
-      "views": 27354
+      "views": 2544
     },
     "source": "community"
   },
@@ -427,10 +412,10 @@
     "text": "介绍 Jev \n@typesafeai\n 驱动的 jobs-api  \n\n在 \nhttps://\ntreg.to/jobs-api 试用\n\n- 一个 API 连接所有职位数据 \n- 0.03 美元完成完整职位搜索 \n- 真实薪资 & 招聘经理数据 \n- 插件适用于任何代理，实现你的梦想工作  \n\n完全开源，0% 加价\n\nGit 仓库如下 👇",
     "url": "https://x.com/treg_ai/status/2122647673056735318",
     "metrics": {
-      "replies": 186,
-      "retweets": 286,
-      "likes": 3164,
-      "views": 509577
+      "replies": 188,
+      "retweets": 297,
+      "likes": 3235,
+      "views": 537614
     },
     "source": "community"
   },
@@ -896,6 +881,21 @@
       "retweets": 6,
       "likes": 65,
       "views": 4409
+    },
+    "source": "community"
+  },
+  {
+    "id": "2122769182098104525",
+    "authorHandle": "0x_rody",
+    "authorName": "@0x_rody",
+    "datetime": "2026-10-20T14:57:31.000Z",
+    "text": "这太疯狂了……\n\n这个 PDF 彻底颠覆了 Grok Bot 团队的经济模型。\n\n它展示了如何在你的机器人之间的每个交接点上放置一个 Jev 调用：\n\n哪个机器人接手任务\n它应该多努力\n这个行动是否安全\n这个草稿是否足够好\n\n把 PDF 丢进你的 Grok Bot，让它围绕它重建自己的团队。\n\n只需一个晚上，你的机器人就会建立在几乎没人用过的技术栈上：",
+    "url": "https://x.com/0x_rody/status/2122769182098104525",
+    "metrics": {
+      "replies": 22,
+      "retweets": 18,
+      "likes": 263,
+      "views": 27354
     },
     "source": "community"
   }
