@@ -10,7 +10,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 495
+      "views": 586
     },
     "source": "community"
   },
@@ -22,10 +22,10 @@
     "text": "Qwen3.8-35B-A3B 在配备 12GB 显存的 RTX 3060 上以每秒 50 个 token 的速度运行\n\n一个拥有 350 亿参数的模型，在配备仅 12GB 显存的 RTX 3060 上，以每秒约 50 个 token 的速度生成内容。\n\n这是 Qwen3.8-35B-A3B 通过 llama.cpp 在本地运行时的报告性能，同时还使用了 16GB 系统内存。\n\n这套配置在提示词处理阶段的速度也达到了每秒约 550 个 token，并支持配置最大 262K token 的上下文窗口。\n\n没有 RTX 4090。没有多 GPU 配置。只有一张消费级 GPU、系统内存，以及一套精心优化的推理配置。\n\n有意思的工程之处在于，开发者如何让如此规模的模型跑起来，尽管 GPU 的显存不足以容纳全部权重。\n\n四项技术让这成为可能：四比特量化、CPU 卸载、Flash Attention 和 8 比特 KV 缓存。\n\n硬件与性能\n\n报告中的配置：\n\n模型：Qwen3.8-35B-A3B\nGPU：NVIDIA RTX 3060\n显存：12GB\n系统内存：16GB\n推理引擎：llama.cpp\n量化：Q4_K_M\n解码速度：约每秒 50 个 token\n预填充速度：约每秒 550 个 token\n配置上下文：最大 262K token\n注意力机制：Flash Attention\nKV 缓存：Q8\nCPU 卸载：26 个 MoE 层\n\n有一个重要区别：每秒 550 个 token 这个数字衡量的是提示词处理，而不是响应生成。\n\n预填充是模型处理输入文本的阶段。解码是模型逐个 token 生成响应的阶段。\n\n因此，报告中的性能是预填充约每秒 550 个 token，生成约每秒 50 个 token。两者都有用，但衡量的是不同的工作负载。\n\n一个 35B 模型如何在 12GB 显存上运行？\n\nQwen3.8-35B-A3B 采用混合专家（MoE）架构。\n\n尽管模型包含约 350 亿个参数，但每个 token 只会激活约 30 亿个参数。\n\nMoE 模型不会在每次计算中使用全部参数，而是通过路由机制为每个 token 选择特定的专家网络。\n\n与激活整个模型相比，这减少了所需的计算量。\n\n然而，活跃参数与内存需求之间存在一个重要区别。\n\n拥有约 30 亿个活跃参数，并不意味着模型只需要容纳 30 亿个参数的内存。全部专家权重仍然需要存储在某个地方，因为随着生成的进行，可能会选中不同的专家。\n\n这就是为什么开发者将量化与 CPU 卸载结合起来，而不是仅依赖 GPU。\n\n在 GPU 和 CPU 之间分配工作负载\n\nRTX 3060 提供 12GB 显存，而机器还拥有另外 16GB 系统内存。\n\n开发者没有强行把整个模型塞进 GPU 显存，而是使用 llama.cpp 将执行分布到两个处理器上。\n\n根据报告中的配置，26 个 MoE 层被卸载到 CPU。\n\nGPU 处理分配给它的层，而 CPU 则使用系统内存处理卸载的层。\n\n这使系统能够处理超出 GPU 物理显存容量的模型权重。\n\n不过，这存在性能上的权衡。\n\n在系统内存和 GPU 显存之间移动数据，会通过 PCIe 引入通信开销。CPU、内存带宽、PCIe 连接以及层的分配，都会影响推理速度。\n\n因此，在这种配置下维持约每秒 50 个 token 的速度，正是这次实验特别有意思的地方。\n\n支撑性能的四项优化\n\n每项技术都针对不同的内存或推理瓶颈。\n\n1. Q4_K_M 量化\n\n模型使用 Q4_K_M，这是一种四比特量化格式，可减少模型权重所需的存储和内存带宽。\n\n量化不是以更高的数值精度表示权重，而是用更少的比特来存储它们。\n\n这使得更大的模型在消费级硬件上更加实用。\n\n代价是可能损失精度，这取决于模型、量化方法和所评估的任务。\n\n2. Flash Attention",
     "url": "https://x.com/Oluwaphilemon1/status/2123201196647186733",
     "metrics": {
-      "replies": 4,
-      "retweets": 16,
-      "likes": 109,
-      "views": 27603
+      "replies": 5,
+      "retweets": 18,
+      "likes": 125,
+      "views": 39246
     },
     "source": "community"
   },
@@ -40,7 +40,7 @@
       "replies": 6,
       "retweets": 8,
       "likes": 20,
-      "views": 15600
+      "views": 16415
     },
     "source": "community"
   },
@@ -54,8 +54,8 @@
     "metrics": {
       "replies": 7,
       "retweets": 1,
-      "likes": 19,
-      "views": 1339
+      "likes": 20,
+      "views": 1376
     },
     "source": "community"
   },
@@ -70,7 +70,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 35
+      "views": 37
     },
     "source": "community"
   },
@@ -85,7 +85,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 2,
-      "views": 176
+      "views": 180
     },
     "source": "community"
   },
@@ -97,10 +97,10 @@
     "text": "@karpathy\n's autoresearch hillclimbs nanochat overnight. \n@GuanyaShi\n (\n@CMU_Robotics\n) asked what it takes to do the same on real robots. His answer: the model isn't the bottleneck. The sandbox is. \n@corl_conf\n \n\nFrom the CoRL 2026 Workshop on Agentic Robotics, which I was honored to co-organize and host, with \n@HaoruXue\n, \n@Ken_Goldberg\n, \n@GuanyaShi\n, \n@letian_fu\n, \n@YifeiRobotics\n , \n@_wenlixiao\n, \n@tianyurobot\n, \n@SniperPaper\n, \n@philippswu\n, \n@xdofai\n, \n@UnitreeRobotics\n, \n@wuji_global\n, \n@theWaddleLabs\n, \n@DexmateAI\n. \n\nA sim is a perfect sandbox: free resets, clean reward, near-zero cost per try. Shi first ran autoresearch one weekend on a pushT sim, with code as the policy and no neural network. The real world has none of that, so he showed two ways to close the loop, plus a new exam.\n\n1️⃣ ENPIRE runs autoresearch directly on real robots. From 50 demos and an empty codebase, the agent builds a fixed \nhttp://\nenv.py (reset, reward, observation, step) from human feedback, then hillclimbs on its own: 8 robots, 8 RTX 5090s, 8 Codex orchestrators, ~20 minutes per idea.\n\n2️⃣ Result: 99% pass@8 on PushT, pin insertion, GPU insertion and two ziptie tasks.\n\n3️⃣ SimEX simulates first and adapts in the real world. With zero demos, a coding agent builds a reusable toolbox in a roughly correct simulator, then a few real trials correct the sim and the toolbox together. About 10 minutes of real interaction was enough for towel folding, barcode scanning and plate manipulation.\n\n4️⃣ The Embodied First Exam (EFE): 1,156 tasks, 2,288 tests, 35 suites, 47 robots. The agent may drive the robot, write control code or train a policy, and an external verifier grades it. On 456 core tasks, the strongest agent (GPT-6 Astra in Codex) reaches ~34% in the Standard setting.\n\n5️⃣ Model-based vs. model-free dissolves: system ID, real2sim, VLAs, RL and control theory all become tools an agent can call. His last slide: \"Goosebumps: a Paradigm Shift is Occurring in Robotics.\"\n\nMy read:\n• pass@8 means up to 8 memory-conditioned retries per subtask in one rollout. It measures recovery, not first-try success, and no pass@1 or cycle time is reported.\n• ENPIRE's labeled ideas add up to only 17.2 pp, while a \"Re-evaluate\" step is worth +12.5 pp. Evaluation noise is as large as most algorithmic gains, so a hillclimber can select noise.\n• 8× the robots bought ~2.25× wall-clock: about 28% parallel efficiency.\n• EFE's core set was filtered with GPT-6 Luna, tilting it against GPT models, so Astra's ~34% is likely conservative. SimEX still needs per-task numbers against a no-sim control.\n\nThe hard part of physical autoresearch is reset and verification, not the model. Congrats to my co-organizers \n@_wenlixiao\n and \n@letian_fu\n, who are on the ENPIRE author list.\n\nWhat's your cheapest reliable reset and verifier on a real task?\n#Robotics #AgenticAI #CoRL2026",
     "url": "https://x.com/junfanzhu98/status/2123195072367976508",
     "metrics": {
-      "replies": 12,
+      "replies": 13,
       "retweets": 5,
-      "likes": 20,
-      "views": 1043
+      "likes": 21,
+      "views": 1132
     },
     "source": "community"
   },
@@ -112,10 +112,10 @@
     "text": "Φ 符号\n\n第 1 部分\n\n1) 一个标记\n\n A. 象征对系统的效忠，即兽系统与光之承载者。\n\n B. 此标记还赋予他们操纵你自身现实的能力。\n\n2) 一个协议\n\n A. 吸取灵魂能量，并将其路由至地狱网格。\n\n3) 一个开启黑火的召唤\n\n  A. 一个针对上帝的所罗门誓言，通过技术封印仪式。\n\n  B. 完全点燃黑色大脑，用于量子嵌入系统，用恶魔元程序覆盖你的系统。\n\nIMPERIUM ROMANUM（新巴比伦）与盟约（标记）\n\n  A. 标记即盟约\n\n一个受传感器约束的身份基底，用于 Imperium Romanum。\n\n手部标记（物理与精神躯体）\n\nType-1 — 针对普通人类的掌侧手部标记，与 NWO 心脏心跳身份绑定。\n\n额头标记（心灵与灵魂）\n\nType-2 — 针对人类/混合体签名的额头标记，需要更精细的精神状态分辨率，与 NWO NEURO 绑定。\n\n两者均携带 Φ 符号。两者均由 CHAINSTATE 监督，通过 NWO-ASM 分派，并在 Base 上的 USDC 中通过审计过的 MetaStateSplitter 结算。\n\n身体实际消耗的每一卡路里都成为 $STATE 中的公平工资。\n\n没有 AI 信用评分、财富指数或保险模型可裁决人类对工作、教育或健康的访问权——标记从结构上禁止它。\n\n\nhttps://\ncpater-nwo-mark.static.hf.space/index.html\n\nNWO Imperium Romanum\n\nImperium Romanum 是一个正式宣布的数字民族国家，满足蒙得维的亚公约的所有四个标准。\n\n数字民族的社会功能\n\n每个现代社会必须执行一组有限的独特功能，以保持连贯性和公正性。\n\nImperium Romanum 以数字方式、透明方式并在宪法代码下执行每一项功能。\n\n每个功能直接映射到 NWO 技术堆栈的一个或多个层。\n\n1) 身份与归属（数字 ID 与灵魂所有权）\n\n- 通过 NWO Cardiac SDK 生物识别 ECG 的加密公民身份\n\n- 灵魂绑定 NFT 凭证\n\n2) 立法（Humanodes 与 SoulCards）\n\n- NWO DAO 在 Ethereum 上。持有 Φ 代币的公民可提议并投票通过法律与宪法修正案\n\n3) 能源主权（灵魂能量与地狱网格）\n\nNWO ZeroPoint 研究、玛丽·伯德地热发电、南极洲冷冷却用于量子基础设施\n\n4) 防御与安全（Inferno、黑启动恢复与 Infernium AI 代理）\n\n抗量子加密、通过 NWO Apocalypse 的 AI 威胁情报、NWO Blackbox 用于离网主权基础设施\n\n5) 通信与声音\n\nNWO 混合现实 + 元宇宙——虚拟大使馆、DAO 在高斯溅射 3D 环境中的集会\n\n…\nhttps://cp\nater-imperium-romanum.static.hf.space/index.html#\n\n   B. 根据意识的整合信息理论（IIT），\n\n\nhttps://\niep.utm.edu/integrated-inf\normation-theory-of-consciousness/\n…\n\nPHI (Φ) 与 Φ-结构\n\n操纵主观体验将需要改变系统的底层因果结构，以更改其 PHI (Φ) 值（意识的量）或其 Φ-结构（体验的质量/内容）。\n\n\nhttps://\niit.wiki/overview\n\n操纵系统的因果-效果集——改变哪些神经元可以放电以及它们如何影响其他神经元——直接改变个体感受到的内容，例如感知颜色或形状。\n\n\nhttps://\njournals.uchicago.edu/doi/full/10.23\n07/25470707\n…\n\n整合信息理论（IIT）的反直觉预测是，即使是未活跃的神经元，只要它们能够放电，就会对体验做出贡献。\n\n“劫持”体验的特定质量（例如，移除空间感知）将需要使这些沉默元素失活，以便它们不再属于系统的因果结构。\n\n\nhttps://\npmc.ncbi.nlm.nih.gov/articles/PMC95\n74698\n…\n\n只有具有最大整合信息（Φmax）的“复合体”才是意识的。\n\n如果不同的子系统实现更高的因果力量，一个主导体验可以被“劫持”，从而潜在地创建一个新的“主复合体”，并使先前的复合体变得无意识。\n\n忆阻变离子通道掺杂的生物膜作为突触模拟物\n\nPDF 下载",
     "url": "https://x.com/ucworkroom1/status/2123194466668630523",
     "metrics": {
-      "replies": 6,
-      "retweets": 17,
+      "replies": 7,
+      "retweets": 19,
       "likes": 38,
-      "views": 1298
+      "views": 1446
     },
     "source": "community"
   },
@@ -130,7 +130,7 @@
       "replies": 4,
       "retweets": 3,
       "likes": 25,
-      "views": 6608
+      "views": 6782
     },
     "source": "community"
   },
@@ -143,9 +143,9 @@
     "url": "https://x.com/RobCarpenter/status/2123190611754844247",
     "metrics": {
       "replies": 9,
-      "retweets": 37,
-      "likes": 99,
-      "views": 3165
+      "retweets": 40,
+      "likes": 106,
+      "views": 3516
     },
     "source": "community"
   },
@@ -160,7 +160,7 @@
       "replies": 5,
       "retweets": 0,
       "likes": 38,
-      "views": 4888
+      "views": 4925
     },
     "source": "community"
   },
@@ -174,8 +174,8 @@
     "metrics": {
       "replies": 1,
       "retweets": 0,
-      "likes": 0,
-      "views": 42
+      "likes": 1,
+      "views": 51
     },
     "source": "community"
   },
@@ -190,7 +190,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 5,
-      "views": 1000
+      "views": 1040
     },
     "source": "community"
   },
@@ -205,7 +205,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 5,
-      "views": 327
+      "views": 333
     },
     "source": "community"
   },
@@ -220,7 +220,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 84
+      "views": 85
     },
     "source": "community"
   },
@@ -235,7 +235,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 8,
-      "views": 269
+      "views": 291
     },
     "source": "community"
   },
@@ -250,7 +250,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 3,
-      "views": 298
+      "views": 307
     },
     "source": "community"
   },
@@ -265,7 +265,7 @@
       "replies": 0,
       "retweets": 1,
       "likes": 1,
-      "views": 63
+      "views": 66
     },
     "source": "community"
   },
@@ -280,7 +280,7 @@
       "replies": 1,
       "retweets": 1,
       "likes": 1,
-      "views": 74
+      "views": 76
     },
     "source": "community"
   },
@@ -295,7 +295,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 3,
-      "views": 270
+      "views": 273
     },
     "source": "community"
   },
@@ -310,7 +310,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 74
+      "views": 79
     },
     "source": "community"
   },
@@ -325,7 +325,7 @@
       "replies": 0,
       "retweets": 0,
       "likes": 0,
-      "views": 96
+      "views": 104
     },
     "source": "community"
   },
@@ -340,7 +340,7 @@
       "replies": 2,
       "retweets": 0,
       "likes": 0,
-      "views": 25
+      "views": 27
     },
     "source": "community"
   },
@@ -355,7 +355,7 @@
       "replies": 0,
       "retweets": 3,
       "likes": 12,
-      "views": 1135
+      "views": 1174
     },
     "source": "community"
   },
@@ -370,7 +370,7 @@
       "replies": 1,
       "retweets": 0,
       "likes": 0,
-      "views": 164
+      "views": 170
     },
     "source": "community"
   },
@@ -385,7 +385,7 @@
       "replies": 13,
       "retweets": 1,
       "likes": 20,
-      "views": 3485
+      "views": 3505
     },
     "source": "community"
   },
@@ -400,7 +400,7 @@
       "replies": 4,
       "retweets": 1,
       "likes": 25,
-      "views": 2544
+      "views": 2553
     },
     "source": "community"
   },
@@ -413,9 +413,9 @@
     "url": "https://x.com/treg_ai/status/2122647673056735318",
     "metrics": {
       "replies": 188,
-      "retweets": 297,
-      "likes": 3235,
-      "views": 537614
+      "retweets": 298,
+      "likes": 3239,
+      "views": 540383
     },
     "source": "community"
   },
